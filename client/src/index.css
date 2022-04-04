@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-white p-0 m-0;
+  }
+}
+
+@layer components {
+  .main-bg {
+    background-image: url("/bg.jpeg");
+    background-size: cover;
+  }
+}
