@@ -1,7 +1,7 @@
 import React from "react";
 
 function SinglePost() {
-  return <div>SinglePost</div>;
+  return <main className="home-bg bg-setup">home</main>;
 }
 
 export default SinglePost;

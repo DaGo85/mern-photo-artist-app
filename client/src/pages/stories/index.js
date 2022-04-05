@@ -1,7 +1,7 @@
 import React from "react";
 
 function Stories() {
-  return <div>Stories</div>;
+  return <main className="home-bg bg-setup">home</main>;
 }
 
 export default Stories;

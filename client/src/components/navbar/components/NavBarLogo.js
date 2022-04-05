@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavBarLogo() {
   return (
-    <a href="/">
+    <Link to="/">
       <img src="logo.jfif" alt="app-owner-logo" />
-    </a>
+    </Link>
   );
 }
 

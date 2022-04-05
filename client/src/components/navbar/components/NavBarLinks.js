@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { navLinks } from "../../../assets/data";
 
 function NavBarLinks({ toggleNav }) {
@@ -6,7 +7,7 @@ function NavBarLinks({ toggleNav }) {
     <>
       {navLinks.map((item) => {
         return (
-          <a key={item.name} href={item.link}>
+          <Link key={item.name} to={item.link}>
             <li
               onClick={() => {
                 if (toggleNav) {
@@ -17,10 +18,10 @@ function NavBarLinks({ toggleNav }) {
             >
               {item.name}
             </li>
-          </a>
+          </Link>
         );
       })}
-      <a href="/write">
+      <Link to="/write">
         <li
           onClick={() => {
             if (toggleNav) {
@@ -31,7 +32,7 @@ function NavBarLinks({ toggleNav }) {
         >
           Write
         </li>
-      </a>
+      </Link>
     </>
   );
 }

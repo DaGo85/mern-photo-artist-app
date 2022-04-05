@@ -1,7 +1,7 @@
 import React from "react";
 
 function Gallery() {
-  return <div>Gallery</div>;
+  return <main className="home-bg bg-setup">home</main>;
 }
 
 export default Gallery;
