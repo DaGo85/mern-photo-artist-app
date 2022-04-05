@@ -46,7 +46,7 @@ function Contact() {
           <SubText subtext={subtexts.contact} />
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col min-w-[320px] md:w-[600px] gap-4 justify-center items-center p-4 md:p-12 rounded-xl shadow-lg bg-b/95 "
+            className="card-setup md:w-[600px] py-6 gap-4"
           >
             <div className="w-full relative">
               <input

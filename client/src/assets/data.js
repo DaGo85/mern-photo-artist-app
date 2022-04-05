@@ -1,3 +1,6 @@
+import writepostimage from "./images/writepostimage.svg";
+import writestoryimage from "./images/writestoryimage.svg";
+
 export const navLinks = [
   { name: "Home", link: "/" },
   { name: "Gallery", link: "/gallery" },
@@ -54,14 +57,14 @@ export const write = [
     url: "/blogpostwriting",
     title: "Blog-Section",
     text: "Find your way to the Blog and create news for the world!",
-    icon: "writepostimage",
+    icon: writepostimage,
   },
   {
     id: 2,
     url: "/storieswriting",
     title: "Story-Section",
     text: "Find your way to the storyboard and create an album for the world!",
-    icon: "writestoryimage",
+    icon: writestoryimage,
   },
 ];
 
