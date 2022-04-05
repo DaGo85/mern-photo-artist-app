@@ -13,6 +13,15 @@
     left: 0;
     right: 0;
   }
+
+  h1 {
+    font-family: "Dancing Script", "sans-serif", "roboto";
+    @apply text-6xl font-extrabold text-d;
+  }
+
+  h3 {
+    @apply text-3xl text-center;
+  }
 }
 
 @tailwind components;
@@ -27,7 +36,7 @@
   }
 
   .bg-setup {
-    @apply bg-fixed bg-center bg-cover h-screen pt-32;
-    @apply w-full flex flex-col items-center justify-start;
+    @apply bg-fixed bg-center bg-cover h-screen pt-36;
+    @apply w-full flex flex-col items-center justify-start gap-4;
   }
 }

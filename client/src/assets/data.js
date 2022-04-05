@@ -32,3 +32,102 @@ export const socialIconsList = [
     link: "https://github.com",
   },
 ];
+
+// Data for subtexts on pages
+export const subtexts = {
+  contact: "You want to get in touch? Write me!",
+  impressum: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  gallery: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  home: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  stories: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  write: "The right place to choose a good direction for your creativity!",
+  writeblog: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  writestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  singlestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+};
+
+// Data for the cards
+// used in: Write
+export const write = [
+  {
+    id: 1,
+    url: "/blogpostwriting",
+    title: "Blog-Section",
+    text: "Find your way to the Blog and create news for the world!",
+    icon: "writepostimage",
+  },
+  {
+    id: 2,
+    url: "/storieswriting",
+    title: "Story-Section",
+    text: "Find your way to the storyboard and create an album for the world!",
+    icon: "writestoryimage",
+  },
+];
+
+// Backend server address
+const server = "http://localhost:5000/";
+
+// Server side addresslist for photo requests
+// [0] = Gallery photo storage, [1] = Post photo storage, [2] = Story photo storage
+export const address = [
+  {
+    id: 0,
+    url: `${server}galleryimages/`,
+  },
+  {
+    id: 1,
+    url: `${server}postimages/`,
+  },
+  {
+    id: 2,
+    url: `${server}storyimages/`,
+  },
+];
+
+// Server side addresslist for API requests
+// [0] = Gallery route (/ = post, /:id = get, delete, /photos = get )
+// [1] = Gallery upload photo route (/ = post)
+// [2] = Posts route (/ = get, /:id = get, delete)
+// [3] = Post upload photo route (/ = post)
+// [4] = Singlestory photo route (/ = get, post)
+// [5] = Singlestory upload photo route (/ = post)
+// [6] = Singlestory route (/ = get)
+export const apiroutes = [
+  {
+    id: 0,
+    url: `${server}api/gallery/`,
+  },
+  {
+    id: 1,
+    url: `${server}api/uploadgallery/`,
+  },
+  {
+    id: 2,
+    url: `${server}api/posts/`,
+  },
+  {
+    id: 3,
+    url: `${server}api/uploadpost/`,
+  },
+  {
+    id: 4,
+    url: `${server}api/stories/photos/`,
+  },
+  {
+    id: 5,
+    url: `${server}api/uploadstory/`,
+  },
+  {
+    id: 6,
+    url: `${server}api/stories/story/`,
+  },
+  {
+    id: 7,
+    url: `${server}api/contact/`,
+  },
+  {
+    id: 8,
+    url: `${server}api/gallery/photos/`,
+  },
+];

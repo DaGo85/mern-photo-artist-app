@@ -1,13 +1,13 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import NavBar from "./components/navbar";
-import Contact from "./pages/contact";
-import Gallery from "./pages/gallery";
-import Home from "./pages/home";
-import Impressum from "./pages/impressum";
-import Stories from "./pages/stories";
-import WritePost from "./pages/writepost";
-import WriteStory from "./pages/writestory";
+import NavBar from "./components/NavBar";
+import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import Home from "./pages/Home";
+import Impressum from "./pages/Impressum";
+import Stories from "./pages/Stories";
+import WritePost from "./pages/WritePost";
+import WriteStory from "./pages/WriteStory";
 
 function App() {
   const userData = "DG";
