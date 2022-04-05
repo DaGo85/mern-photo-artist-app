@@ -10,14 +10,14 @@ function WriteCards() {
           <Link
             to={card.url}
             key={card.id}
-            className="card-setup text-center gap-6 py-6"
+            className="card-setup text-center gap-6 py-6 transition-all hover:scale-105 duration-500"
           >
             <h4 className="">{card.title}</h4>
             <p className="">{card.text}</p>
             <img className="" src={card.icon} alt={card.title} />
           </Link>
         );
-      })}{" "}
+      })}
     </div>
   );
 }

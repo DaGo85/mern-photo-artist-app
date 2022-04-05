@@ -39,7 +39,8 @@ export const socialIconsList = [
 // Data for subtexts on pages
 export const subtexts = {
   contact: "You want to get in touch? Write me!",
-  impressum: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  impressum:
+    "Contact-Data of the possessor and any legal questions are answered here!",
   gallery: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   home: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   stories: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",

@@ -21,15 +21,19 @@
   }
 
   h3 {
-    @apply text-4xl text-center;
+    @apply text-4xl text-center text-d;
   }
 
   h4 {
     @apply text-slate-100 text-3xl;
   }
 
+  h5 {
+    @apply text-slate-100 text-2xl;
+  }
+
   p {
-    @apply text-slate-100 text-lg;
+    @apply text-slate-100;
   }
 }
 
