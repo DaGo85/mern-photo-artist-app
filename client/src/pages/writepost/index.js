@@ -6,9 +6,11 @@ import { subtexts } from "../../assets/data";
 function WritePost() {
   return (
     <TransitionWrapper>
-      <main className="home-bg bg-setup">
-        <PageHeadLine headline={"Writepost"} />
-        <SubText subtext={subtexts.writepost} />
+      <main>
+        <div className="home-bg bg-setup">
+          <PageHeadLine headline={"Writepost"} />
+          <SubText subtext={subtexts.writepost} />
+        </div>{" "}
       </main>
     </TransitionWrapper>
   );

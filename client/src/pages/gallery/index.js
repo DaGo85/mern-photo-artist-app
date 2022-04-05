@@ -6,9 +6,11 @@ import { subtexts } from "../../assets/data";
 function Gallery() {
   return (
     <TransitionWrapper>
-      <main className="home-bg bg-setup">
-        <PageHeadLine headline={"Gallery"} />
-        <SubText subtext={subtexts.gallery} />
+      <main>
+        <div className="home-bg bg-setup">
+          <PageHeadLine headline={"Gallery"} />
+          <SubText subtext={subtexts.gallery} />
+        </div>
       </main>
     </TransitionWrapper>
   );

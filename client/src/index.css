@@ -6,6 +6,7 @@
   body {
     @apply bg-black p-0 m-0;
   }
+
   main {
     position: absolute;
     top: 0;
@@ -36,7 +37,21 @@
   }
 
   .bg-setup {
-    @apply bg-fixed bg-center bg-cover h-screen pt-36;
+    @apply bg-fixed bg-center bg-cover py-36;
     @apply w-full flex flex-col items-center justify-start gap-4;
+  }
+
+  [type="text"],
+  [type="email"],
+  textarea {
+    @apply w-full resize-none h-14 rounded-lg border-2 border-gray-200 
+    focus:border-black focus:ring-black 
+    shadow-sm placeholder-transparent;
+  }
+
+  label {
+    @apply font-normal absolute z-10 left-2 -top-3  text-xs rounded-full py-1 px-2 bg-white
+    peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:bg-transparent
+    transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:bg-white;
   }
 }

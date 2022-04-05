@@ -6,9 +6,11 @@ import { subtexts } from "../../assets/data";
 function Impressum() {
   return (
     <TransitionWrapper>
-      <main className="impressum-bg bg-setup">
-        <PageHeadLine headline={"Impressum"} />
-        <SubText subtext={subtexts.impressum} />
+      <main>
+        <div className="impressum-bg bg-setup">
+          <PageHeadLine headline={"Impressum"} />
+          <SubText subtext={subtexts.impressum} />
+        </div>
       </main>
     </TransitionWrapper>
   );

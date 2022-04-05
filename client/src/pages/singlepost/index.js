@@ -6,9 +6,11 @@ import { subtexts } from "../../assets/data";
 function SinglePost() {
   return (
     <TransitionWrapper>
-      <main className="home-bg bg-setup">
-        <PageHeadLine headline={"SinglePost"} />
-        <SubText subtext={subtexts.Singlepost} />
+      <main>
+        <div className="home-bg bg-setup">
+          <PageHeadLine headline={"SinglePost"} />
+          <SubText subtext={subtexts.Singlepost} />
+        </div>
       </main>
     </TransitionWrapper>
   );

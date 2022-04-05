@@ -8,6 +8,7 @@ import Impressum from "./pages/Impressum";
 import Stories from "./pages/Stories";
 import WritePost from "./pages/WritePost";
 import WriteStory from "./pages/WriteStory";
+import Write from "./pages/Write";
 
 function App() {
   const userData = "DG";
@@ -27,6 +28,7 @@ function App() {
         {!userData && <Route path="/register" element={<Register />} />}
         {!userData && <Route path="/reset" element={<Reset />} />}
         {!userData && <Route path="*" element={<Login />} />}*/}
+          {userData && <Route path="/write" element={<Write />} />}
           {userData && <Route path="/writepost" element={<WritePost />} />}
           {userData && <Route path="/writestory" element={<WriteStory />} />}
         </Routes>

@@ -6,9 +6,11 @@ import { subtexts } from "../../assets/data";
 function SingleStory() {
   return (
     <TransitionWrapper>
-      <main className="home-bg bg-setup">
-        <PageHeadLine headline={"Singlestory"} />
-        <SubText subtext={subtexts.singlestory} />
+      <main>
+        <div className="home-bg bg-setup">
+          <PageHeadLine headline={"Singlestory"} />
+          <SubText subtext={subtexts.singlestory} />
+        </div>
       </main>
     </TransitionWrapper>
   );
