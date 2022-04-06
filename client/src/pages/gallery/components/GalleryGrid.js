@@ -1,10 +1,18 @@
-import React from "react";
+import { address } from "../../../assets/data";
 
 function GalleryGrid({ currentGridData }) {
   return (
-    <section>
+    <section className="card-setup image-grid py-6 justify-center">
       {currentGridData.map((item, index) => {
-        return <img key={index} src={item.address} alt="gridimage"></img>;
+        return (
+          <div key={index} className="col-span-12 overflow-hidden">
+            <img
+              className=" "
+              src={`${address[0].url}${item.photo}`}
+              alt="gridimage"
+            />
+          </div>
+        );
       })}
     </section>
   );
