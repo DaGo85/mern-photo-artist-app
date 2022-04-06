@@ -3,6 +3,7 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
 import { subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
+import ImpressumSocialIcons from "./components/ImpressumSocialIcons";
 
 function Impressum() {
   return (
@@ -33,7 +34,9 @@ function Impressum() {
                 <br />
                 E-Mail: d.goergens@gmail.com
               </p>
+              <hr />
             </span>
+            <ImpressumSocialIcons />
           </section>
         </div>
       </main>
