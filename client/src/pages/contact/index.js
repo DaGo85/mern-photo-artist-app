@@ -31,6 +31,7 @@ function Contact() {
         headers: { "Content-Type": "application/json;charset=utf-8" },
       });
       setStatus("Done");
+      document.getElementById("form-reset").reset();
     } catch (err) {
       console.error(err);
       setIsError(true);
@@ -45,8 +46,9 @@ function Contact() {
           <PageHeadLine headline={"Contact"} />
           <SubText subtext={subtexts.contact} />
           <form
+            id="form-reset"
             onSubmit={handleSubmit}
-            className="card-setup md:w-[600px] py-6 gap-4"
+            className="card-setup md:w-[600px] py-form gap-form"
           >
             <div className="w-full relative">
               <input
@@ -76,7 +78,7 @@ function Contact() {
               <textarea
                 id="message"
                 label="Message"
-                className="peer h-96 pt-2 px-1"
+                className="peer h-96 pt-2 "
                 required
                 placeholder="Please enter your message"
               />
@@ -85,18 +87,18 @@ function Contact() {
             <button
               disabled={isError}
               type="submit"
-              className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+              className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
             >
               {status}
             </button>
           </form>
           {status === "Done" ? (
-            <p className="mx-auto my-8 w-full text-center text-2xl text-white">
+            <p className="card-setup status-msg text-light">
               Thank you for your Message!
             </p>
           ) : (
             isError && (
-              <p className="mx-auto my-8 w-full text-center text-2xl text-red-300">
+              <p className="card-setup status-msg text-err">
                 Something went wrong. Please try again later!
               </p>
             )

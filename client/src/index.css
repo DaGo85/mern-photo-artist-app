@@ -49,22 +49,22 @@
   }
 
   .bg-setup {
-    @apply bg-fixed bg-center bg-cover py-36
-    w-full flex flex-col items-center justify-start gap-4;
+    @apply bg-fixed bg-center bg-cover py-40 md:py-48 lg:py-60
+    w-full flex flex-col items-center justify-start gap-6 md:gap-12;
   }
 
   [type="text"],
   [type="email"],
   textarea {
     @apply w-full resize-none h-14 rounded-lg border-2 border-d
-    focus:border-black focus:ring-black 
-    shadow-sm placeholder-transparent;
+    focus:border-black focus:ring-black px-1
+    shadow-sm placeholder-transparent text-d;
   }
 
   label {
     @apply font-normal absolute z-10 left-2 -top-3  text-xs rounded-full py-1 px-2 bg-white
     peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:bg-transparent
-    transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:bg-white;
+    transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:bg-white text-d;
   }
 
   .card-setup {
@@ -75,7 +75,33 @@
   .image-grid {
     @apply grid grid-cols-12 gap-4;
   }
+
+  .gap-form {
+    @apply gap-4 md:gap-6 lg:gap-8;
+  }
+
+  .py-form {
+    @apply py-4 md:py-8 lg:py-10;
+  }
+
+  .text-err {
+    @apply text-red-400;
+  }
+
+  .text-light {
+    @apply text-slate-100;
+  }
+
+  .text-dark {
+    @apply text-d;
+  }
+
+  .status-msg {
+    @apply py-6 my-8 text-center text-2xl;
+  }
 }
+
+/**/
 
 .pagination-container {
   display: flex;
