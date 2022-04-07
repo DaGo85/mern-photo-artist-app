@@ -45,7 +45,7 @@ export const subtexts = {
   home: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   stories: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   write: "The right place to choose a good direction for your creativity!",
-  writeblog: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  writepost: "Write an article for your blog!",
   writestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   singlestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
 };
@@ -55,14 +55,14 @@ export const subtexts = {
 export const write = [
   {
     id: 1,
-    url: "/blogpostwriting",
+    url: "/writepost",
     title: "Blog-Section",
     text: "Find your way to the Blog and create news for the world!",
     icon: writepostimage,
   },
   {
     id: 2,
-    url: "/storieswriting",
+    url: "/writestory",
     title: "Story-Section",
     text: "Find your way to the storyboard and create an album for the world!",
     icon: writestoryimage,
