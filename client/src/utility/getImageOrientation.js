@@ -18,7 +18,6 @@ const getImageOrientation = (image) => {
       };
       img.src = url;
     }
-    reject(1);
   });
 };
 

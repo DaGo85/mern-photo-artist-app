@@ -46,7 +46,7 @@ export const subtexts = {
   stories: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   write: "The right place to choose a good direction for your creativity!",
   writepost: "Write an article for your blog!",
-  writestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  writestory: "Create a new story and show everyone your pictures!",
   singlestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
 };
 

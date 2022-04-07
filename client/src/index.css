@@ -80,6 +80,10 @@
     @apply gap-4 md:gap-6 lg:gap-8;
   }
 
+  .gap-image {
+    @apply gap-4 md:gap-6 lg:gap-8;
+  }
+
   .py-form {
     @apply py-4 md:py-8 lg:py-10;
   }

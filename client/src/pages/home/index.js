@@ -4,7 +4,6 @@ import SubText from "../../components/elements/SubText";
 import { subtexts } from "../../assets/data";
 
 function Home() {
-  console.log("home");
   return (
     <TransitionWrapper>
       <main>

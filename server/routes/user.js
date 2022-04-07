@@ -3,7 +3,6 @@ const router = express.Router();
 const { User } = require("../models/User");
 const { auth } = require("../middleware/auth");
 
-
 // related to sending password reset email
 const config = require("../config/key");
 const crypto = require("crypto");
@@ -13,7 +12,7 @@ const moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Europe/Berlin");
 
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 //=================================
@@ -76,7 +75,7 @@ router.get("/auth", auth, (req, res) => {
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
     email: req.user.email,
-    username: req.user.username,  //possible error name/username maybe wrong
+    username: req.user.username, //possible error name/username maybe wrong
     role: req.user.role,
   });
 });
@@ -123,7 +122,7 @@ router.post("/forgot", (req, res) => {
         port: 465,
         secure: true,
         auth: {
-          user:`${process.env.EMAIL_ADDRESS}`,
+          user: `${process.env.EMAIL_ADDRESS}`,
           pass: `${process.env.EMAIL_PASSWORD}`,
         },
       });
@@ -133,10 +132,10 @@ router.post("/forgot", (req, res) => {
       const message = {
         from: `${config.emailAddress}`,
         to: `${user.email}`,
-        bcc: "danielgoerg1983@gmail.com",
+        bcc: "dgoergens@gmail.com",
         subject: "Password reset guide",
         text:
-         "You have been asked to set a new password for the React-boilerplate account.\n" +
+          "You have been asked to set a new password for the React-boilerplate account.\n" +
           "If you have ever requested, please access the link below and set a new password.\n" +
           `Link is valid up to ${tenMinsFromNow}.\n\n` +
           `localhost:3000/reset/${user.resetPwdToken}\n\n` +
@@ -174,7 +173,8 @@ router.post("/forgot", (req, res) => {
 });
 
 // Password reset API
-router.post("/reset", (req, res) => { // , next was the third parameter
+router.post("/reset", (req, res) => {
+  // , next was the third parameter
   User.findOne({
     resetPwdToken: req.body.resetPwdToken,
     resetPwdExp: { $gt: moment().valueOf() },

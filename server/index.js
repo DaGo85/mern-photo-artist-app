@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 const galleryRoute = require("./routes/gallery");
 const storyRoute = require("./routes/story");
@@ -21,11 +22,16 @@ mongoose
   .connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
   })
   .then(() => console.log(`MongoDB Connected...`))
   .catch((err) => console.log(err));
+
+// Middleware
+// 1. application/x-www-form-urlencoded data analysis
+// 2. application-json data analysis
+// 3. cookie analysis
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
@@ -89,7 +95,8 @@ const storagepostimg = multer.diskStorage({
 //Multer image upload settings for all routes
 const fileSizeLimitErrorHandler = (err, req, res, next) => {
   if (err) {
-    res.send(413);
+    console.log(err.message);
+    res.sendStatus(413);
   } else {
     next();
   }
