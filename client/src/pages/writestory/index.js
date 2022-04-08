@@ -3,6 +3,7 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import getImageOrientation from "../../utility/getImageOrientation";
 import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
@@ -12,6 +13,7 @@ function WriteStory() {
   const [isError, setIsError] = useState(false);
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
+  const navigate = useNavigate();
 
   const user = "DG";
 
@@ -39,7 +41,7 @@ function WriteStory() {
       } catch (err) {}
       try {
         const res = await axios.post(apiroutes[6].url, newStory);
-        window.location.replace("/post/" + res.data._id);
+        navigate("/post/" + res.data._id);
       } catch (err) {}
       setIsError(false);
     }

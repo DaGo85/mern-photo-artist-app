@@ -1,7 +1,7 @@
-import TransitionWrapper from "../../utility/TransitionWrapper";
+import { subtexts } from "../../assets/data";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
-import { subtexts } from "../../assets/data";
+import TransitionWrapper from "../../utility/TransitionWrapper";
 
 function SinglePost() {
   return (
@@ -9,7 +9,7 @@ function SinglePost() {
       <main>
         <div className="home-bg bg-setup">
           <PageHeadLine headline={"SinglePost"} />
-          <SubText subtext={subtexts.Singlepost} />
+          <SubText subtext={subtexts.singlespost} />
         </div>
       </main>
     </TransitionWrapper>
