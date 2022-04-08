@@ -41,7 +41,7 @@ function WriteStory() {
       } catch (err) {}
       try {
         const res = await axios.post(apiroutes[6].url, newStory);
-        navigate("/post/" + res.data._id);
+        navigate("/" + res.data._id);
       } catch (err) {}
       setIsError(false);
     }

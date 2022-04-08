@@ -9,6 +9,8 @@ import Stories from "./pages/Stories";
 import WritePost from "./pages/WritePost";
 import WriteStory from "./pages/WriteStory";
 import Write from "./pages/Write";
+import SinglePost from "./pages/SinglePost";
+import SingleStory from "./pages/SingleStory";
 
 function App() {
   const userData = "DG";
@@ -24,6 +26,8 @@ function App() {
           <Route path="/stories" element={<Stories />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
+          <Route path="/:postId" element={<SinglePost />} />
+          <Route path="/:writeId" element={<SingleStory />} />
           {/*{!userData && <Route path="/" element={<Login />} />}
         {!userData && <Route path="/register" element={<Register />} />}
         {!userData && <Route path="/reset" element={<Reset />} />}

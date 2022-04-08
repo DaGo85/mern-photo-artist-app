@@ -48,18 +48,21 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api/contact", contactRoute);
 
 //PostRoute
-app.use("/postimages", express.static(path.join(__dirname, "/postimages/")));
+app.use("/postimages", express.static(path.join(__dirname, "../postimages/")));
 app.use("/api/posts", postRoute);
 
 //StoryRoute
 app.use("/api/stories", storyRoute);
-app.use("/storyimages", express.static(path.join(__dirname, "/storyimages/")));
+app.use(
+  "/storyimages",
+  express.static(path.join(__dirname, "../storyimages/"))
+);
 
 //GalleryRoute
 app.use("/api/gallery", galleryRoute);
 app.use(
   "/galleryimages",
-  express.static(path.join(__dirname, "/galleryimages/"))
+  express.static(path.join(__dirname, "../galleryimages/"))
 );
 
 //Multer storage settings for galleryimages
