@@ -18,7 +18,10 @@ function SinglePostUpdate() {
   const PF = address[1].url;
   const user = "DG";
 
+  console.log("data in update:" + JSON.stringify(location.state));
+
   // Fetching singlepost from the API
+  /*
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get(`${apiroutes[2].url}${path}`);
@@ -27,7 +30,7 @@ function SinglePostUpdate() {
       setDesc(res.data.desc);
     };
     getPost();
-  }, [path]);
+  }, [path]); */
 
   //Handler for deleting singlepost from the API
   const handleDelete = async () => {

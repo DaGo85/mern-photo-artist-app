@@ -11,6 +11,7 @@ import WriteStory from "./pages/WriteStory";
 import Write from "./pages/Write";
 import SinglePost from "./pages/SinglePost";
 import SingleStory from "./pages/SingleStory";
+import SinglePostUpdate from "./pages/SinglePostUpdate";
 
 function App() {
   const userData = "DG";
@@ -27,7 +28,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/:postId" element={<SinglePost />} />
-          <Route path="/:writeId" element={<SingleStory />} />
+          <Route path={`/story:storyId`} element={<SingleStory />} />
           {/*{!userData && <Route path="/" element={<Login />} />}
         {!userData && <Route path="/register" element={<Register />} />}
         {!userData && <Route path="/reset" element={<Reset />} />}
@@ -35,6 +36,9 @@ function App() {
           {userData && <Route path="/write" element={<Write />} />}
           {userData && <Route path="/writepost" element={<WritePost />} />}
           {userData && <Route path="/writestory" element={<WriteStory />} />}
+          {userData && (
+            <Route path="/singlepostupdate" element={<SinglePostUpdate />} />
+          )}
         </Routes>
       </AnimatePresence>
     </>

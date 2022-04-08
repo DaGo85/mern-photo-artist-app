@@ -17,7 +17,7 @@ function WriteStory() {
 
   const user = "DG";
 
-  //Handler for submitting a new post
+  //Handler for submitting a new story
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -25,7 +25,7 @@ function WriteStory() {
 
     const newStory = {
       username: user,
-      title: title.value,
+      story: title.value,
       desc: story.value,
     };
 
@@ -41,7 +41,7 @@ function WriteStory() {
       } catch (err) {}
       try {
         const res = await axios.post(apiroutes[6].url, newStory);
-        navigate("/" + res.data._id);
+        navigate("/story" + res.data._id);
       } catch (err) {}
       setIsError(false);
     }

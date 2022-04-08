@@ -52,11 +52,11 @@ app.use("/postimages", express.static(path.join(__dirname, "../postimages/")));
 app.use("/api/posts", postRoute);
 
 //StoryRoute
-app.use("/api/stories", storyRoute);
 app.use(
   "/storyimages",
   express.static(path.join(__dirname, "../storyimages/"))
 );
+app.use("/api/stories", storyRoute);
 
 //GalleryRoute
 app.use("/api/gallery", galleryRoute);

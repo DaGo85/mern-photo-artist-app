@@ -17,7 +17,7 @@
 
   h1 {
     font-family: "Dancing Script", "sans-serif", "roboto";
-    @apply text-6xl font-extrabold text-d;
+    @apply text-6xl font-extrabold text-d text-center;
   }
 
   h3 {
@@ -30,6 +30,10 @@
 
   h5 {
     @apply text-slate-100 text-2xl;
+  }
+
+  h6 {
+    @apply text-slate-100 text-xl;
   }
 
   p {
@@ -70,6 +74,10 @@
   .card-setup {
     @apply flex flex-col min-w-[320px] 
     items-center px-4 md:px-12 rounded-xl shadow-lg bg-b/95;
+  }
+
+  .text-setup {
+    @apply flex flex-col items-center justify-center gap-2;
   }
 
   .image-grid {

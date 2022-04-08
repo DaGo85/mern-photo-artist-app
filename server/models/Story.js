@@ -12,10 +12,6 @@ const StorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    cat: {
-      type: Array,
-      required: false,
-    },
     photo: {
       type: String,
       required: false,
