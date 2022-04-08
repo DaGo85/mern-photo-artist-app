@@ -1,11 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
+import ImageGrid from "../../components/elements/ImageGrid";
 import OrientedImage from "../../components/elements/OrientedImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
+import Pagination from "../../components/Pagination";
 import TransitionWrapper from "../../utility/TransitionWrapper";
+
+const PageSize = 9;
 
 function SingleStory() {
   const [story, setStory] = useState();
@@ -17,26 +21,28 @@ function SingleStory() {
 
   const user = "DG";
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const currentGridData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return storyImages.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
+
   // Fetching singlestory from the API
+  // Fetches and filters all story gallery images
   useEffect(() => {
     const getStory = async () => {
       const res = await axios.get(`${apiroutes[6].url}${path}`);
       setStory(res.data);
     };
-    getStory();
-  }, [path]);
-
-  // Fetches and filters all story gallery images
-  useEffect(() => {
     const fetchStoryImages = async () => {
       const res = await axios.get(apiroutes[4].url);
       setStoryImages(res.data.filter((i) => i.story === path));
     };
     fetchStoryImages();
-    console.log("testtest");
+    getStory();
   }, [path]);
-
-  console.log("story");
 
   return (
     <TransitionWrapper>
@@ -71,6 +77,21 @@ function SingleStory() {
                   </button>
                 </Link>
               )}
+            </>
+          )}
+          {story && (
+            <>
+              <ImageGrid
+                currentGridData={currentGridData}
+                address={address[2]}
+              />
+              <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={storyImages.length}
+                pageSize={PageSize}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
             </>
           )}
         </div>

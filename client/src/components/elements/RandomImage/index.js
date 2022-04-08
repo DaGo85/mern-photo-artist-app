@@ -1,6 +1,11 @@
 function RandomImage() {
   return (
-    <img alt="randomimg" src={require("../../../assets/images/bg-home.jpg")} />
+    <div className="card-setup py-form">
+      <img
+        alt="randomimg"
+        src={require("../../../assets/images/bg-home.jpg")}
+      />
+    </div>
   );
 }
 

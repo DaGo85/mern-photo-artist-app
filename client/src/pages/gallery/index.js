@@ -1,13 +1,13 @@
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
-import { subtexts } from "../../assets/data";
+import { address, subtexts } from "../../assets/data";
 import Pagination from "../../components/Pagination";
 import { useMemo, useState } from "react";
 import { galleryimages } from "../../assets/mockdata";
-import GalleryGrid from "./components/GalleryGrid";
+import ImageGrid from "../../components/elements/ImageGrid";
 
-let PageSize = 9;
+const PageSize = 9;
 
 function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +24,7 @@ function Gallery() {
         <div className="home-bg bg-setup">
           <PageHeadLine headline={"Gallery"} />
           <SubText subtext={subtexts.gallery} />
-          <GalleryGrid currentGridData={currentGridData} />
+          <ImageGrid currentGridData={currentGridData} address={address[0]} />
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}
