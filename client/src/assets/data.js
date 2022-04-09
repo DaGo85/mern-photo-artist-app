@@ -42,7 +42,7 @@ export const subtexts = {
   impressum:
     "Contact-Data of the possessor and any legal questions are answered here!",
   gallery: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
-  home: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  home: "Welcome to my Page, please stay a while and enjoy the content!",
   stories: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
   write: "The right place to choose a good direction for your creativity!",
   writepost: "Write an article for your blog!",

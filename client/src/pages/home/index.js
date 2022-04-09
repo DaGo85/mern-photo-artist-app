@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
 
-const PageSize = 4;
+const PageSize = 2;
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -18,7 +18,7 @@ function Home() {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return posts.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+  }, [currentPage, posts]);
 
   //Initial useEffect for fetching Home data
   useEffect(() => {
@@ -39,13 +39,12 @@ function Home() {
           {posts && (
             <>
               <Pagination
-                className="pagination-bar"
                 currentPage={currentPage}
                 totalCount={posts.length}
                 pageSize={PageSize}
                 onPageChange={(page) => setCurrentPage(page)}
               />
-              <HomeBlogCards currentGridData={posts} />
+              <HomeBlogCards currentGridData={currentGridData} />
               <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
