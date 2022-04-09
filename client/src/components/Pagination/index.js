@@ -3,15 +3,13 @@ import React from "react";
 import "../../index.css";
 import { usePagination, DOTS } from "../../utility/usePagination";
 
-const Pagination = (props) => {
-  const {
-    onPageChange,
-    totalCount,
-    siblingCount = 1,
-    currentPage,
-    pageSize,
-  } = props;
-
+const Pagination = ({
+  onPageChange,
+  totalCount,
+  siblingCount = 1,
+  currentPage,
+  pageSize,
+}) => {
   const paginationRange = usePagination({
     currentPage,
     totalCount,

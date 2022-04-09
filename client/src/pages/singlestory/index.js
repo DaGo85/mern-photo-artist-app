@@ -91,7 +91,6 @@ function SingleStory() {
           {story && (
             <>
               <Pagination
-                className="pagination-bar"
                 currentPage={currentPage}
                 totalCount={storyImages.length}
                 pageSize={PageSize}
@@ -102,7 +101,6 @@ function SingleStory() {
                 address={address[2]}
               />
               <Pagination
-                className="pagination-bar"
                 currentPage={currentPage}
                 totalCount={storyImages.length}
                 pageSize={PageSize}

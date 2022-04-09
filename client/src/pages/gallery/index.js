@@ -33,7 +33,6 @@ function Gallery() {
           <SubText subtext={subtexts.gallery} />
           <div ref={myRef} />
           <Pagination
-            className="pagination-bar"
             currentPage={currentPage}
             totalCount={galleryimages.length}
             pageSize={PageSize}
@@ -41,7 +40,6 @@ function Gallery() {
           />
           <ImageGrid currentGridData={currentGridData} address={address[0]} />
           <Pagination
-            className="pagination-bar"
             currentPage={currentPage}
             totalCount={galleryimages.length}
             pageSize={PageSize}

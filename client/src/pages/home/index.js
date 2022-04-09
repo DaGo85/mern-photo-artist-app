@@ -4,7 +4,7 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
 
@@ -34,10 +34,9 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    if (currentPage === 1) {
-      return;
+    if (currentPage !== 1) {
+      executeScroll();
     }
-    executeScroll();
   }, [currentGridData, currentPage]);
 
   return (
@@ -59,7 +58,6 @@ function Home() {
               />
               <HomeBlogCards currentGridData={currentGridData} />
               <Pagination
-                className="pagination-bar"
                 currentPage={currentPage}
                 totalCount={posts.length}
                 pageSize={PageSize}

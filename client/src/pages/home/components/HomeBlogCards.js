@@ -7,6 +7,38 @@ function HomeBlogCards({ currentGridData }) {
   return (
     <section className="flex flex-col gap-form">
       {currentGridData.map((post, index) => {
+        // Trimmed strings for portrait images
+        // Maximum number of characters to extract
+
+        const maxLengthPortrait = 600;
+
+        // Trim the string to the maximum length
+        let trimmedStringPortrait = post.desc.substr(0, maxLengthPortrait);
+        // Re-trim if it ended in the middle of a word
+        trimmedStringPortrait = trimmedStringPortrait.substr(
+          0,
+          Math.min(
+            trimmedStringPortrait.length,
+            trimmedStringPortrait.lastIndexOf(" ")
+          )
+        );
+
+        // Trimmed strings for landscape images
+        // Maximum number of characters to extract
+        const maxLengthLandscape = 600;
+
+        // Trim the string to the maximum length
+        let trimmedStringLandscape = post.desc.substr(0, maxLengthLandscape);
+
+        // Re-trim if it ended in the middle of a word
+        trimmedStringLandscape = trimmedStringLandscape.substr(
+          0,
+          Math.min(
+            trimmedStringLandscape.length,
+            trimmedStringLandscape.lastIndexOf(" ")
+          )
+        );
+
         return post.orientation === 1 ? (
           <div className="card-setup gap-form py-form" key={post.title}>
             <OrientedImage
@@ -21,7 +53,7 @@ function HomeBlogCards({ currentGridData }) {
             <h6>Last Update: {new Date(post.updatedAt).toDateString()}</h6>
             <hr className="w-full" />
             <pre>
-              <p className="whitespace-pre-line">{post.desc}</p>
+              <p className="whitespace-pre-line">{trimmedStringLandscape}</p>
             </pre>
           </div>
         ) : (
@@ -44,7 +76,7 @@ function HomeBlogCards({ currentGridData }) {
               <h6>Last Update: {new Date(post.updatedAt).toDateString()}</h6>
               <hr className="w-full" />
               <pre>
-                <p className="whitespace-pre-line">{post.desc}</p>
+                <p className="whitespace-pre-line">{trimmedStringPortrait}</p>
               </pre>
             </div>
           </div>
