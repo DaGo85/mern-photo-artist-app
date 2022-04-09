@@ -12,13 +12,15 @@ import Write from "./pages/Write";
 import SinglePost from "./pages/SinglePost";
 import SingleStory from "./pages/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate";
+import useScrollToTop from "./utility/ScrollToTop";
 
 // todo:  stories, modal, user, griddesign, BE refactor?, randomimage, context/redux-toolkit
-//        home texts
+//        home texts, pop in animation change
 
 function App() {
   const userData = "DG";
   const location = useLocation();
+  useScrollToTop();
 
   return (
     <>

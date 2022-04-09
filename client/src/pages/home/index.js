@@ -8,12 +8,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
 
-const PageSize = 2;
+const PageSize = 6;
 
 function Home() {
   const myRef = useRef(null);
   const executeScroll = () =>
-    myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    myRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,16 +33,24 @@ function Home() {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    if (currentPage === 1) {
+      return;
+    }
+    executeScroll();
+  }, [currentGridData, currentPage]);
+
   return (
     <TransitionWrapper>
       <main>
-        <div ref={myRef} className="home-bg bg-setup scroll-smooth">
+        <div className="home-bg bg-setup">
           <PageHeadLine headline={"Home"} />
           <SubText subtext={subtexts.home} />
           <RandomImage />
+          <div ref={myRef} />
           {posts && (
             <>
-              <div className="hidden" id="pagination-start" />
+              <div id="pagination-start" />
               <Pagination
                 currentPage={currentPage}
                 totalCount={posts.length}
@@ -60,10 +68,6 @@ function Home() {
             </>
           )}
         </div>
-        <button className="bg-a" onClick={executeScroll}>
-          {" "}
-          Click to scroll{" "}
-        </button>
       </main>
     </TransitionWrapper>
   );

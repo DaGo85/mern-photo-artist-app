@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
@@ -9,9 +9,13 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import Pagination from "../../components/Pagination";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
-const PageSize = 9;
+const PageSize = 1;
 
 function SingleStory() {
+  const myRef = useRef(null);
+  const executeScroll = () =>
+    myRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+
   const [story, setStory] = useState();
   const [storyImages, setStoryImages] = useState([]);
 
@@ -27,7 +31,7 @@ function SingleStory() {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return storyImages.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+  }, [currentPage, storyImages]);
 
   // Fetching singlestory from the API
   // Fetches and filters all story gallery images
@@ -43,6 +47,10 @@ function SingleStory() {
     fetchStoryImages();
     getStory();
   }, [path]);
+
+  useEffect(() => {
+    executeScroll();
+  }, [currentGridData]);
 
   return (
     <TransitionWrapper>
@@ -79,8 +87,16 @@ function SingleStory() {
               )}
             </>
           )}
+          <div ref={myRef} />
           {story && (
             <>
+              <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={storyImages.length}
+                pageSize={PageSize}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
               <ImageGrid
                 currentGridData={currentGridData}
                 address={address[2]}
