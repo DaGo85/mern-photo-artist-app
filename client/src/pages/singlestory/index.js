@@ -49,8 +49,10 @@ function SingleStory() {
   }, [path]);
 
   useEffect(() => {
-    executeScroll();
-  }, [currentGridData]);
+    if (currentPage !== 1) {
+      executeScroll();
+    }
+  }, [currentGridData, currentPage]);
 
   return (
     <TransitionWrapper>
@@ -58,7 +60,7 @@ function SingleStory() {
         <div className="home-bg bg-setup">
           {story && (
             <>
-              <PageHeadLine headline={story.title} />
+              <PageHeadLine headline={story.story} />
               <div className="card-setup py-4 md:py-10">
                 <OrientedImage
                   orientation={story.orientation}

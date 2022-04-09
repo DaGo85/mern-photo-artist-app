@@ -49,7 +49,6 @@ function Home() {
           <div ref={myRef} />
           {posts && (
             <>
-              <div id="pagination-start" />
               <Pagination
                 currentPage={currentPage}
                 totalCount={posts.length}

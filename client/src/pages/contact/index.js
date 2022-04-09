@@ -82,7 +82,7 @@ function Contact() {
                 required
                 placeholder="Please enter your message"
               />
-              <label>Please enter your message</label>
+              <label htmlFor="message">Please enter your message</label>
             </div>
             <button
               disabled={isError}

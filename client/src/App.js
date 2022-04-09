@@ -14,8 +14,8 @@ import SingleStory from "./pages/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
 
-// todo:  stories, modal, user, griddesign, BE refactor?, randomimage, context/redux-toolkit
-//        home texts, pop in animation change
+// todo:  stories, modal, user, griddesign, BE refactor?, randomimage, context/redux-toolkit,
+//         pop in animation change, home screen bug @md, fix not clickable input placeholders
 
 function App() {
   const userData = "DG";
@@ -34,10 +34,6 @@ function App() {
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/:postId" element={<SinglePost />} />
           <Route path={`/story:storyId`} element={<SingleStory />} />
-          {/*{!userData && <Route path="/" element={<Login />} />}
-        {!userData && <Route path="/register" element={<Register />} />}
-        {!userData && <Route path="/reset" element={<Reset />} />}
-        {!userData && <Route path="*" element={<Login />} />}*/}
           {userData && <Route path="/write" element={<Write />} />}
           {userData && <Route path="/writepost" element={<WritePost />} />}
           {userData && <Route path="/writestory" element={<WriteStory />} />}

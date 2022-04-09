@@ -63,10 +63,10 @@ function WritePost() {
         <div className="home-bg bg-setup">
           <PageHeadLine headline={"Blog Section"} />
           <SubText subtext={subtexts.writepost} />
-          <div className="card-setup py-4 md:py-10">
+          <div className="card-setup py-4 md:py-10 max-w-7xl">
             {file ? (
               <div
-                className="flex flex-col hover:cursor-pointer gap-image text-center "
+                className="flex flex-col hover:cursor-pointer gap-image text-center"
                 onClick={() => {
                   setFile(null);
                   fileRef.current.value = null;
@@ -79,7 +79,7 @@ function WritePost() {
               </div>
             ) : (
               <div
-                className="flex flex-col hover:cursor-pointer gap-image text-center"
+                className="flex flex-col hover:cursor-pointer gap-image text-center max-w-7xl"
                 onClick={() => {
                   setIsError(false);
                   fileRef.current.click();
@@ -116,7 +116,7 @@ function WritePost() {
                 required
                 placeholder="Please enter a title"
               />
-              <label htmlFor="Title">Please enter a title</label>
+              <label htmlFor="title">Please enter a title</label>
             </div>
             <div className="w-full relative">
               <textarea
@@ -126,7 +126,7 @@ function WritePost() {
                 required
                 placeholder="Please enter your message"
               />
-              <label>Please enter your message</label>
+              <label htmlFor="message">Please enter your message</label>
             </div>
             <button
               type="submit"

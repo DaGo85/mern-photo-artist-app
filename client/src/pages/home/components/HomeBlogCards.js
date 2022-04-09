@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
 import OrientedImage from "../../../components/elements/OrientedImage";
 
 function HomeBlogCards({ currentGridData }) {
   const PF = address[1].url;
   return (
-    <section className="flex flex-col gap-form">
+    <section className="flex flex-col gap-form max-w-7xl">
       {currentGridData.map((post, index) => {
         // Trimmed strings for portrait images
         // Maximum number of characters to extract
@@ -40,13 +41,18 @@ function HomeBlogCards({ currentGridData }) {
         );
 
         return post.orientation === 1 ? (
-          <div className="card-setup gap-form py-form" key={post.title}>
+          <Link
+            to={`/${post._id}`}
+            className="card-setup gap-form py-form"
+            key={post.title}
+          >
             <OrientedImage
               orientation={post.orientation}
               image={post.photo}
               path={PF}
               alt="Single blog post"
             />
+            <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
             <h5>Author: {post.username}</h5>
             <hr className="w-full" />
             <h6>Created: {new Date(post.createdAt).toDateString()}</h6>
@@ -55,9 +61,10 @@ function HomeBlogCards({ currentGridData }) {
             <pre>
               <p className="whitespace-pre-line">{trimmedStringLandscape}</p>
             </pre>
-          </div>
+          </Link>
         ) : (
-          <div
+          <Link
+            to={`/${post._id}`}
             className={`card-setup gap-form py-form ${
               index % 2 ? "md:flex-row" : "md:flex-row-reverse"
             }`}
@@ -70,6 +77,7 @@ function HomeBlogCards({ currentGridData }) {
               alt="Single blog post"
             />
             <div className="flex flex-col">
+              <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
               <h5>Author: {post.username}</h5>
               <hr className="w-full" />
               <h6>Created: {new Date(post.createdAt).toDateString()}</h6>
@@ -79,7 +87,7 @@ function HomeBlogCards({ currentGridData }) {
                 <p className="whitespace-pre-line">{trimmedStringPortrait}</p>
               </pre>
             </div>
-          </div>
+          </Link>
         );
       })}
     </section>
