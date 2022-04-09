@@ -4,13 +4,17 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
 
 const PageSize = 2;
 
 function Home() {
+  const myRef = useRef(null);
+  const executeScroll = () =>
+    myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -32,12 +36,13 @@ function Home() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
+        <div ref={myRef} className="home-bg bg-setup scroll-smooth">
           <PageHeadLine headline={"Home"} />
           <SubText subtext={subtexts.home} />
           <RandomImage />
           {posts && (
             <>
+              <div className="hidden" id="pagination-start" />
               <Pagination
                 currentPage={currentPage}
                 totalCount={posts.length}
@@ -55,6 +60,10 @@ function Home() {
             </>
           )}
         </div>
+        <button className="bg-a" onClick={executeScroll}>
+          {" "}
+          Click to scroll{" "}
+        </button>
       </main>
     </TransitionWrapper>
   );

@@ -21,9 +21,10 @@ function Gallery() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
+        <div className="home-bg bg-setup" id="pagination-start">
           <PageHeadLine headline={"Gallery"} />
           <SubText subtext={subtexts.gallery} />
+          <div className="hidden" />
           <ImageGrid currentGridData={currentGridData} address={address[0]} />
           <Pagination
             className="pagination-bar"

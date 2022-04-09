@@ -13,6 +13,9 @@ import SinglePost from "./pages/SinglePost";
 import SingleStory from "./pages/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate";
 
+// todo:  stories, modal, user, griddesign, BE refactor?, randomimage, context/redux-toolkit
+//        home texts
+
 function App() {
   const userData = "DG";
   const location = useLocation();
