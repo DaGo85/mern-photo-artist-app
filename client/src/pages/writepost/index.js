@@ -22,6 +22,7 @@ function WritePost() {
     e.preventDefault();
 
     const { title, message } = e.target.elements;
+    console.log("writepost:" + title + message);
 
     const newPost = {
       username: user,

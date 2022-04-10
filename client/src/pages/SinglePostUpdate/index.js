@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
 import getImageOrientation from "../../utility/getImageOrientation";
+import DeleteModal from "../../components/elements/DeleteModal";
 
 function SinglePostUpdate() {
   const fileRef = useRef();
@@ -13,6 +14,7 @@ function SinglePostUpdate() {
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState(1);
   const [post, setPost] = useState();
+  const [showModal, setShowModal] = useState(false);
 
   const location = useLocation();
   const path = location.pathname.split("singlepostupdate")[1];
@@ -25,7 +27,7 @@ function SinglePostUpdate() {
       setPost(res.data);
     };
     getPost();
-  }, [path]);
+  }, []);
 
   // Fetching singlepost from the API
   /*
@@ -45,7 +47,7 @@ function SinglePostUpdate() {
       await axios.delete(`${apiroutes[2].url}${post._id}`, {
         data: { username: user },
       });
-      location("/");
+      navigate("/");
     } catch (err) {}
   };
 
@@ -54,12 +56,11 @@ function SinglePostUpdate() {
     e.preventDefault();
 
     const { title, desc } = e.target.elements;
-    console.log("titledesc" + title + desc);
 
     const newPost = {
       username: user,
-      title,
-      desc,
+      title: title.value,
+      desc: desc.value,
       photo: post.photo,
     };
 
@@ -163,6 +164,18 @@ function SinglePostUpdate() {
                   Update Post!
                 </button>
               </form>
+              <button
+                onClick={() => setShowModal(true)}
+                className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+              >
+                Delete Post!
+              </button>
+              <DeleteModal
+                handleDelete={handleDelete}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                deleteType="post"
+              />
             </>
           )}
         </div>

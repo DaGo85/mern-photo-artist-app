@@ -56,7 +56,7 @@ function SinglePost() {
               {user === post.username && post && (
                 <Link to={`/singlepostupdate${post._id}`}>
                   <button className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300">
-                    Update Post
+                    Update Post!
                   </button>
                 </Link>
               )}
