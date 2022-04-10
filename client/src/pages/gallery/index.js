@@ -7,13 +7,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { galleryimages } from "../../assets/mockdata";
 import ImageGrid from "../../components/elements/ImageGrid";
 import axios from "axios";
+import getImageOrientation from "../../utility/getImageOrientation";
+import OrientedImage from "../../components/elements/OrientedImage";
 
 const PageSize = 9;
 
 function Gallery() {
   const user = "da";
+  const fileRef = useRef();
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteMode, setDeleteMode] = useState(false);
+  const [file, setFile] = useState();
+  const [orientation, setOrientation] = useState([]);
   const [images, setImages] = useState([]);
 
   const myRef = useRef(null);
@@ -53,6 +58,44 @@ function Gallery() {
     }
   };
 
+  // Handler for adding image
+  //todo: uploadorder
+  const handleSubmit = async () => {
+    const newPhoto = {
+      username: user,
+    };
+
+    // Restriction for files: jpeg,jpg and png only, also the size has to be
+    // maximal 3000000 ( 3mb )
+    if (file) {
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+        const data = new FormData();
+        const filename = Date.now() + file.name;
+        data.append("name", filename);
+        data.append("file", file);
+        newPhoto.photo = filename;
+        newPhoto.orientation = orientation;
+        try {
+          await axios.post(`${apiroutes[1].url}`, data);
+        } catch (err) {}
+        try {
+          await axios.post(`${apiroutes[0].url}`, newPhoto);
+          setFile(null);
+        } catch (err) {}
+        // document.getElementById("input-reset").reset();
+      } else {
+        setFile(null);
+      }
+    }
+  };
+
+  // Handler for getting image orientation
+  const handleInput = async (e) => {
+    setFile(e.target.files[0]);
+    let imgOrientation = await getImageOrientation(e.target.files);
+    setOrientation(imgOrientation);
+  };
+
   return (
     <TransitionWrapper>
       <main>
@@ -60,12 +103,55 @@ function Gallery() {
           <PageHeadLine headline={"Gallery"} />
           <SubText subtext={subtexts.gallery} />
           {user && (
-            <button
-              onClick={() => setDeleteMode(!deleteMode)}
-              className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
-            >
-              Delete Images!
-            </button>
+            <>
+              {file && (
+                <div
+                  className="flex flex-col hover:cursor-pointer gap-image text-center"
+                  onClick={() => {
+                    setFile(null);
+                    fileRef.current.value = null;
+                  }}
+                >
+                  <OrientedImage orientation={orientation} file={file} />
+                  <h4>
+                    Do you want your previous image or an other one? Click me!
+                  </h4>
+                </div>
+              )}
+              <button
+                onClick={() => setDeleteMode(!deleteMode)}
+                className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+              >
+                Delete Images!
+              </button>
+              <input
+                accept="image/jpg,image/png,image/jpeg"
+                className="hidden"
+                type="file"
+                onChange={handleInput}
+                multiple={false}
+                ref={fileRef}
+              />
+              {file ? (
+                <button
+                  onClick={() => {
+                    handleSubmit();
+                  }}
+                  className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                >
+                  Upload Image!
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    fileRef.current.click();
+                  }}
+                  className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                >
+                  Select Image!
+                </button>
+              )}
+            </>
           )}
           <div ref={myRef} />
           <Pagination
