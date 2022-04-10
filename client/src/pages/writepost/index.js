@@ -14,8 +14,7 @@ function WritePost() {
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
   const navigate = useNavigate();
-
-  const user = "DG";
+  const user = "da";
 
   //Handler for submitting a new post
   const handleSubmit = async (e) => {

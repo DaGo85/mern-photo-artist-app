@@ -14,8 +14,9 @@ import SingleStory from "./pages/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
 
-// todo:  stories, modal, user, griddesign, BE refactor?, randomimage, context/redux-toolkit,
-//         pop in animation change, home screen bug @md
+// todo:  stories, modal, user, griddesign, randomimage, context/redux-toolkit,
+//         pop in animation change, home screen bug @md, why 5 pills pagination?, add image gallery
+//
 
 function App() {
   const userData = "DG";
