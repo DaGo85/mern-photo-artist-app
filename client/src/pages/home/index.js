@@ -4,7 +4,7 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
 

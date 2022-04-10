@@ -44,7 +44,7 @@ const Pagination = ({
         }}
       >
         <svg
-          className={`h-8 md:h-12 ${
+          className={`h-8 md:h-12 transition-colors duration-500 ease-in-out ${
             currentPage !== 1 && "hover:fill-slate-100"
           }`}
           xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +68,10 @@ const Pagination = ({
         return (
           <li
             key={index}
-            className={`pagination-item bg-b hover:bg-slate-100 hover:text-d te6xt-slate-100 ${
-              pageNumber === currentPage && "bg-slate-100 text-d"
+            className={`pagination-item  hover:bg-slate-100 hover:text-d transition-colors duration-500 ease-in-out ${
+              pageNumber === currentPage
+                ? "bg-slate-100 text-b"
+                : "bg-b text-slate-100"
             }`}
             onClick={() => {
               onPageChange(pageNumber);
@@ -90,7 +92,7 @@ const Pagination = ({
         }}
       >
         <svg
-          className={`h-8 md:h-12 ${
+          className={`h-8 md:h-12 transition-colors duration-500 ease-in-out ${
             currentPage !== lastPage && "hover:fill-slate-100"
           }`}
           xmlns="http://www.w3.org/2000/svg"

@@ -15,7 +15,7 @@ import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
 
 // todo:  stories, modal, user, griddesign, BE refactor?, randomimage, context/redux-toolkit,
-//         pop in animation change, home screen bug @md, fix not clickable input placeholders
+//         pop in animation change, home screen bug @md
 
 function App() {
   const userData = "DG";
