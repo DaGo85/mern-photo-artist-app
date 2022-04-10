@@ -4,6 +4,7 @@ function NavBarHamBurger({ isOpen, setIsOpen }) {
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-white transition ease transform duration-300`;
   return (
     <button
+      aria-label="Navbar hamburger"
       className="md:hidden flex flex-col h-12 w-12 border-2 border-white rounded justify-center items-center group"
       onClick={() => setIsOpen(!isOpen)}
     >

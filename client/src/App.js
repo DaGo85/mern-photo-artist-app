@@ -38,7 +38,10 @@ function App() {
           {userData && <Route path="/writepost" element={<WritePost />} />}
           {userData && <Route path="/writestory" element={<WriteStory />} />}
           {userData && (
-            <Route path="/singlepostupdate" element={<SinglePostUpdate />} />
+            <Route
+              path="/singlepostupdate:postId"
+              element={<SinglePostUpdate />}
+            />
           )}
         </Routes>
       </AnimatePresence>
