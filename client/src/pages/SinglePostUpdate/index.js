@@ -41,7 +41,7 @@ function SinglePostUpdate() {
       });
       navigate("/");
     } catch (err) {
-      setErrorMsg("Can't delete this post. Try again later!");
+      setErrorMsg("Can't delete this post.Please try again later!");
       setIsError(true);
     }
   };
@@ -73,6 +73,9 @@ function SinglePostUpdate() {
         setErrorMsg("");
         setIsError(true);
       }
+    } else {
+      setErrorMsg("The file size is too big!");
+      setIsError(true);
     }
     //Updating post on MongoDB
     try {
@@ -108,7 +111,7 @@ function SinglePostUpdate() {
                   >
                     <OrientedImage orientation={orientation} file={file} />
                     <h4>
-                      Do you want your previous image or an other one? Click me!
+                      Do you want your previous image or another one? Click me!
                     </h4>
                   </div>
                 ) : (

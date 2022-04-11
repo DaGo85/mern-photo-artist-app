@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
 import DeleteModal from "../../components/elements/DeleteModal";
+import ErrorMsg from "../../components/elements/ErrorMsg";
 import OrientedImage from "../../components/elements/OrientedImage";
 import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
@@ -14,6 +15,9 @@ function SingleStoryUpdate() {
   const [orientation, setOrientation] = useState(1);
   const [story, setStory] = useState();
   const [showModal, setShowModal] = useState(false);
+
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const location = useLocation();
   const path = location.pathname.split("singlestoryupdate")[1];
@@ -36,7 +40,10 @@ function SingleStoryUpdate() {
         data: { username: user },
       });
       navigate("/stories");
-    } catch (err) {}
+    } catch (err) {
+      setErrorMsg("Can't delete this story.Please try again later!");
+      setIsError(true);
+    }
   };
 
   //Handler for updating singlepost
@@ -62,13 +69,22 @@ function SingleStoryUpdate() {
       //Uploading file to server
       try {
         await axios.post(apiroutes[5].url, data);
-      } catch (err) {}
+      } catch (err) {
+        setErrorMsg("");
+        setIsError(true);
+      }
+    } else {
+      setErrorMsg("The file size is too big!");
+      setIsError(true);
     }
     //Updating post on MongoDB
     try {
       await axios.put(`${apiroutes[6].url}${story._id}`, newStory);
       navigate("/story" + story._id);
-    } catch (err) {}
+    } catch (err) {
+      setErrorMsg("");
+      setIsError(true);
+    }
   };
 
   // Handler for getting image orientation
@@ -152,6 +168,14 @@ function SingleStoryUpdate() {
                   Update Story!
                 </button>
               </form>
+              <ErrorMsg
+                isError={isError}
+                message={
+                  errorMsg
+                    ? errorMsg
+                    : "Something went wrong, please try again later!"
+                }
+              />
               <button
                 onClick={() => setShowModal(true)}
                 className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"

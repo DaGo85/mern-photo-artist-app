@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
+import ErrorMsg from "../../components/elements/ErrorMsg";
 import ImageGrid from "../../components/elements/ImageGrid";
 import OrientedImage from "../../components/elements/OrientedImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
@@ -22,6 +23,9 @@ function SingleStory() {
   const [storyImages, setStoryImages] = useState([]);
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState([]);
+
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const location = useLocation();
   const path = location.pathname.split("story")[1];
@@ -71,15 +75,22 @@ function SingleStory() {
         //Uploading file to server
         try {
           await axios.post(apiroutes[5].url, data);
-        } catch (err) {}
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
         //Posting  on MongoDB
         try {
           await axios.post(apiroutes[4].url, newStoryPhoto);
           setFile(null);
-        } catch (err) {}
-
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
         // document.getElementById("form-reset").reset();
       } else {
+        setErrorMsg("The file size is too big!");
+        setIsError(true);
         setFile(null);
       }
     }
@@ -175,6 +186,14 @@ function SingleStory() {
               )}
             </>
           )}
+          <ErrorMsg
+            isError={isError}
+            message={
+              errorMsg
+                ? errorMsg
+                : "Something went wrong, please try again later!"
+            }
+          />
           <div ref={myRef} />
           {story && (
             <>
