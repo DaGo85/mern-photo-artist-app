@@ -13,9 +13,10 @@ import SinglePost from "./pages/SinglePost";
 import SingleStory from "./pages/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
+import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 
 // todo:  stories, modal, user, griddesign, randomimage, context/redux-toolkit,
-//         pop in animation change, home screen bug @md, why 5 pills pagination?, add image gallery
+//         pop in animation change, home screen bug @md, why 5 pills pagination?,
 //
 
 function App() {
@@ -42,6 +43,12 @@ function App() {
             <Route
               path="/singlepostupdate:postId"
               element={<SinglePostUpdate />}
+            />
+          )}
+          {userData && (
+            <Route
+              path="/singlestoryupdate:storyId"
+              element={<SingleStoryUpdate />}
             />
           )}
         </Routes>

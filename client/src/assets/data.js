@@ -45,13 +45,12 @@ export const subtexts = {
   contact: "You want to get in touch? Write me!",
   impressum:
     "Contact-Data of the possessor and any legal questions are answered here!",
-  gallery: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  gallery: "Fine Art presented in unique Photos in this Gallery!",
   home: "Welcome to my Page, please stay a while and enjoy the content!",
-  stories: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
+  stories: "Themed collections of photos!",
   write: "The right place to choose a good direction for your creativity!",
   writepost: "Write an article for your blog!",
   writestory: "Create a new story and show everyone your pictures!",
-  singlestory: "Hallo, dies ist ein subtexttest um zu sehen wie es aussieht.",
 };
 
 // Data for the cards
@@ -100,7 +99,7 @@ export const address = [
 // [3] = Post upload photo route (/ = post)
 // [4] = Singlestory photo route (/ = get, post)
 // [5] = Singlestory upload photo route (/ = post)
-// [6] = Singlestory route (/ = get)
+// [6] = Singlestory route (/ = get, /:id = get, delete)
 export const apiroutes = [
   {
     id: 0,

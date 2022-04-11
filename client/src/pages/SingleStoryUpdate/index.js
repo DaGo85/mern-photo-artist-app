@@ -1,42 +1,41 @@
-import TransitionWrapper from "../../utility/TransitionWrapper";
-import { address, apiroutes } from "../../assets/data";
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router";
-import { useNavigate } from "react-router";
 import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { address, apiroutes } from "../../assets/data";
+import DeleteModal from "../../components/elements/DeleteModal";
 import OrientedImage from "../../components/elements/OrientedImage";
 import getImageOrientation from "../../utility/getImageOrientation";
-import DeleteModal from "../../components/elements/DeleteModal";
+import TransitionWrapper from "../../utility/TransitionWrapper";
 
-function SinglePostUpdate() {
+function SingleStoryUpdate() {
   const fileRef = useRef();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState(1);
-  const [post, setPost] = useState();
+  const [story, setStory] = useState();
   const [showModal, setShowModal] = useState(false);
 
   const location = useLocation();
-  const path = location.pathname.split("singlepostupdate")[1];
-  const PF = address[1].url;
+  const path = location.pathname.split("singlestoryupdate")[1];
+  const PF = address[2].url;
   const user = "DG";
 
   // Fetching singlepost from API
   useEffect(() => {
-    const getPost = async () => {
-      const res = await axios.get(`${apiroutes[2].url}${path}`);
-      setPost(res.data);
+    const getStory = async () => {
+      const res = await axios.get(`${apiroutes[6].url}${path}`);
+      setStory(res.data);
     };
-    getPost();
+    getStory();
   }, []);
 
   //Handler for deleting singlepost from the API
   const handleDelete = async () => {
     try {
-      await axios.delete(`${apiroutes[2].url}${post._id}`, {
+      await axios.delete(`${apiroutes[6].url}${story._id}`, {
         data: { username: user },
       });
-      navigate("/");
+      navigate("/stories");
     } catch (err) {}
   };
 
@@ -44,13 +43,13 @@ function SinglePostUpdate() {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const { title, desc } = e.target.elements;
+    const { storyName, desc } = e.target.elements;
 
-    const newPost = {
+    const newStory = {
       username: user,
-      title: title.value,
+      story: storyName.value,
       desc: desc.value,
-      photo: post.photo,
+      photo: story.photo,
     };
 
     if (file) {
@@ -58,17 +57,17 @@ function SinglePostUpdate() {
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      newPost.photo = filename;
-      newPost.orientation = orientation;
+      newStory.photo = filename;
+      newStory.orientation = orientation;
       //Uploading file to server
       try {
-        await axios.post(apiroutes[3].url, data);
+        await axios.post(apiroutes[5].url, data);
       } catch (err) {}
     }
     //Updating post on MongoDB
     try {
-      await axios.put(`${apiroutes[2].url}${post._id}`, newPost);
-      navigate("/" + post._id);
+      await axios.put(`${apiroutes[6].url}${story._id}`, newStory);
+      navigate("/story" + story._id);
     } catch (err) {}
   };
 
@@ -83,7 +82,7 @@ function SinglePostUpdate() {
     <TransitionWrapper>
       <main>
         <div className="home-bg bg-setup">
-          {post && (
+          {story && (
             <>
               <div className="card-setup py-4 md:py-10 max-w-7xl">
                 {file ? (
@@ -107,9 +106,9 @@ function SinglePostUpdate() {
                     }}
                   >
                     <OrientedImage
-                      orientation={post.orientation}
-                      image={post.photo}
-                      alt="post photo"
+                      orientation={story.orientation}
+                      image={story.photo}
+                      alt="story photo"
                       path={PF}
                     />
                     <h4>Click me for changing title image!</h4>
@@ -130,18 +129,18 @@ function SinglePostUpdate() {
               >
                 <div className="w-full relative">
                   <input
-                    id="title"
-                    label="Title"
-                    defaultValue={post.title}
+                    id="storyName"
+                    label="StoryName"
+                    defaultValue={story.story}
                     type="text"
                     required
                   />
-                  <label htmlFor="title">Please enter a title</label>
+                  <label htmlFor="storyName">Please enter a story title</label>
                 </div>
                 <div className="w-full relative">
                   <textarea
                     id="desc"
-                    defaultValue={post.desc}
+                    defaultValue={story.desc}
                     className="h-96 pt-2"
                     required
                   />
@@ -150,14 +149,14 @@ function SinglePostUpdate() {
                   type="submit"
                   className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
                 >
-                  Update Post!
+                  Update Story!
                 </button>
               </form>
               <button
                 onClick={() => setShowModal(true)}
                 className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
               >
-                Delete Post!
+                Delete Story!
               </button>
               <DeleteModal
                 handleDelete={handleDelete}
@@ -173,4 +172,4 @@ function SinglePostUpdate() {
   );
 }
 
-export default SinglePostUpdate;
+export default SingleStoryUpdate;

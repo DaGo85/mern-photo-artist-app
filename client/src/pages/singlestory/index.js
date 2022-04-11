@@ -127,7 +127,7 @@ function SingleStory() {
               </div>
               {user === story.username && (
                 <>
-                  <Link to="/singlepostupdate" state={story}>
+                  <Link to={`/singlestoryupdate${story._id}`}>
                     <button className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300">
                       Update Story
                     </button>
