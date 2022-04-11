@@ -7,6 +7,7 @@ import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
 import getImageOrientation from "../../utility/getImageOrientation";
 import DeleteModal from "../../components/elements/DeleteModal";
+import ErrorMsg from "../../components/elements/ErrorMsg";
 
 function SinglePostUpdate() {
   const fileRef = useRef();
@@ -15,11 +16,13 @@ function SinglePostUpdate() {
   const [orientation, setOrientation] = useState(1);
   const [post, setPost] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const location = useLocation();
   const path = location.pathname.split("singlepostupdate")[1];
   const PF = address[1].url;
-  const user = "DG";
+  const user = "da";
 
   // Fetching singlepost from API
   useEffect(() => {
@@ -37,7 +40,10 @@ function SinglePostUpdate() {
         data: { username: user },
       });
       navigate("/");
-    } catch (err) {}
+    } catch (err) {
+      setErrorMsg("Can't delete this post. Try again later!");
+      setIsError(true);
+    }
   };
 
   //Handler for updating singlepost
@@ -63,13 +69,19 @@ function SinglePostUpdate() {
       //Uploading file to server
       try {
         await axios.post(apiroutes[3].url, data);
-      } catch (err) {}
+      } catch (err) {
+        setErrorMsg("");
+        setIsError(true);
+      }
     }
     //Updating post on MongoDB
     try {
       await axios.put(`${apiroutes[2].url}${post._id}`, newPost);
       navigate("/" + post._id);
-    } catch (err) {}
+    } catch (err) {
+      setErrorMsg("");
+      setIsError(true);
+    }
   };
 
   // Handler for getting image orientation
@@ -104,6 +116,7 @@ function SinglePostUpdate() {
                     className="flex flex-col hover:cursor-pointer gap-image text-center max-w-7xl"
                     onClick={() => {
                       fileRef.current.click();
+                      setIsError(false);
                     }}
                   >
                     <OrientedImage
@@ -145,6 +158,7 @@ function SinglePostUpdate() {
                     className="h-96 pt-2"
                     required
                   />
+                  <label htmlFor="desc">Please enter a Message</label>
                 </div>
                 <button
                   type="submit"
@@ -153,6 +167,14 @@ function SinglePostUpdate() {
                   Update Post!
                 </button>
               </form>
+              <ErrorMsg
+                isError={isError}
+                message={
+                  errorMsg
+                    ? errorMsg
+                    : "Something went wrong, please try again later!"
+                }
+              />
               <button
                 onClick={() => setShowModal(true)}
                 className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"

@@ -17,7 +17,7 @@ import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 
 // todo:  modal, user, griddesign, randomimage, context/redux-toolkit,
 //         pop in animation change,
-//
+// error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.
 
 function App() {

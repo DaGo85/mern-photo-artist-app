@@ -1,13 +1,4 @@
-import { useState } from "react";
-
-function ImageGrid({
-  currentGridData,
-  address,
-  handleDeleteImg,
-  deleteMode,
-  images,
-  setImages,
-}) {
+function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
   const user = "da";
   return (
     <section className="card-setup image-grid py-6 justify-center">

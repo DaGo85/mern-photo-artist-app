@@ -14,7 +14,7 @@ function SinglePost() {
   const path = location.pathname.split("/")[1];
   const PF = address[1].url;
 
-  const user = "DG";
+  const user = "da";
 
   // Fetching singlepost from the API
   useEffect(() => {

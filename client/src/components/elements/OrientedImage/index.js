@@ -14,9 +14,17 @@ function OrientedImage({ image, path, alt, file, orientation }) {
           <img alt="New portrait" src={URL.createObjectURL(file)} />
         )
       ) : orientation === 1 ? (
-        <img className="max-h-[85vh]" alt={alt} src={path + image} />
+        <img
+          className="max-h-[85vh] object-cover"
+          alt={alt}
+          src={path + image}
+        />
       ) : (
-        <img className="max-h-[85vh]" alt={alt} src={path + image} />
+        <img
+          className="max-h-[85vh] object-cover"
+          alt={alt}
+          src={path + image}
+        />
       )}
     </>
   );

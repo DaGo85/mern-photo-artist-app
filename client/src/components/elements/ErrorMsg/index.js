@@ -4,7 +4,9 @@ function ErrorMsg({ isError, message }) {
   return (
     <>
       {isError && (
-        <div className="card-setup status-msg text-err">{message}</div>
+        <div autoFocus className="card-setup status-msg text-err">
+          {message}
+        </div>
       )}
     </>
   );

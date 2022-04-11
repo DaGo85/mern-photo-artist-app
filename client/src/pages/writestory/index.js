@@ -7,9 +7,11 @@ import { useNavigate } from "react-router";
 import getImageOrientation from "../../utility/getImageOrientation";
 import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
+import ErrorMsg from "../../components/elements/ErrorMsg";
 
 function WriteStory() {
   const [file, setFile] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
   const [isError, setIsError] = useState(false);
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
@@ -38,14 +40,19 @@ function WriteStory() {
       newStory.orientation = orientation;
       try {
         await axios.post(apiroutes[5].url, data);
-      } catch (err) {}
+      } catch (err) {
+        setErrorMsg("");
+      }
       try {
         const res = await axios.post(apiroutes[6].url, newStory);
         navigate("/story" + res.data._id);
-      } catch (err) {}
+      } catch (err) {
+        setErrorMsg("");
+      }
       setIsError(false);
     }
     if (!file) {
+      setErrorMsg("You didn't select a file!");
       setIsError(true);
     }
   };
@@ -135,11 +142,14 @@ function WriteStory() {
               Publish
             </button>
           </form>
-          {isError && (
-            <p className="card-setup status-msg text-err">
-              Please add an image!
-            </p>
-          )}
+          <ErrorMsg
+            isError={isError}
+            message={
+              errorMsg
+                ? errorMsg
+                : "Something went wrong, please try again later!"
+            }
+          />
         </div>
       </main>
     </TransitionWrapper>
