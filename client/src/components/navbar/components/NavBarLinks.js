@@ -7,7 +7,11 @@ function NavBarLinks({ toggleNav }) {
     <>
       {navLinks.map((item) => {
         return (
-          <Link key={item.name} to={item.link}>
+          <Link
+            key={item.name}
+            to={item.link}
+            aria-label={`link to ${item.name}`}
+          >
             <li
               onClick={() => {
                 if (toggleNav) {

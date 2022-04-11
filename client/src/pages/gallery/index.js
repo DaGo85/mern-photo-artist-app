@@ -106,16 +106,14 @@ function Gallery() {
             <>
               {file && (
                 <div
-                  className="flex flex-col hover:cursor-pointer gap-image text-center"
+                  className="flex flex-col hover:cursor-pointer gap-image text-center card-setup py-4 md:py-10 max-w-7xl"
                   onClick={() => {
                     setFile(null);
                     fileRef.current.value = null;
                   }}
                 >
                   <OrientedImage orientation={orientation} file={file} />
-                  <h4>
-                    Do you want your previous image or an other one? Click me!
-                  </h4>
+                  <h4>Don't want this image? Click me!</h4>
                 </div>
               )}
               <button
