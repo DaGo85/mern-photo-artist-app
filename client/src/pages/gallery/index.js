@@ -8,8 +8,10 @@ import ImageGrid from "../../components/elements/ImageGrid";
 import axios from "axios";
 import getImageOrientation from "../../utility/getImageOrientation";
 import OrientedImage from "../../components/elements/OrientedImage";
+import Carousel from "../../components/elements/Carousel";
+import ErrorMsg from "../../components/elements/ErrorMsg";
 
-const PageSize = 3;
+const PageSize = 4;
 
 function Gallery() {
   const user = "da";
@@ -19,6 +21,10 @@ function Gallery() {
   const [file, setFile] = useState();
   const [orientation, setOrientation] = useState([]);
   const [images, setImages] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const [rerenderComponent, setRerenderComponent] = useState(false);
 
   const myRef = useRef(null);
   const executeScroll = (to) =>
@@ -33,17 +39,20 @@ function Gallery() {
       setImages(res.data);
     };
     fetchImages();
-  }, []);
+  }, [rerenderComponent]);
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username) => {
-    console.log("test");
     if (username === user) {
       try {
         await axios.delete(`${apiroutes[0].url}${imageid}`, {
           data: { username: username },
         });
-      } catch (err) {}
+      } catch (err) {
+        setErrorMsg("Can't delete this image now. Please try again later!");
+        setIsError(true);
+      }
+      setRerenderComponent(!rerenderComponent);
     }
   };
 
@@ -66,13 +75,22 @@ function Gallery() {
         newPhoto.orientation = orientation;
         try {
           await axios.post(`${apiroutes[1].url}`, data);
-        } catch (err) {}
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
         try {
           await axios.post(`${apiroutes[0].url}`, newPhoto);
           setFile(null);
-        } catch (err) {}
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
+        setRerenderComponent(!rerenderComponent);
         // document.getElementById("input-reset").reset();
       } else {
+        setErrorMsg("The file size is too big!");
+        setIsError(true);
         setFile(null);
       }
     }
@@ -83,7 +101,7 @@ function Gallery() {
     setFile(e.target.files[0]);
     let imgOrientation = await getImageOrientation(e.target.files);
     setOrientation(imgOrientation);
-    executeScroll("end");
+    executeScroll("nearest");
   };
 
   const currentGridData = useMemo(() => {
@@ -93,7 +111,7 @@ function Gallery() {
   }, [currentPage, images]);
 
   useEffect(() => {
-    executeScroll("center");
+    executeScroll("nearest");
   }, [currentGridData]);
 
   return (
@@ -102,6 +120,8 @@ function Gallery() {
         <div className="home-bg bg-setup" id="pagination-start">
           <PageHeadLine headline={"Gallery"} />
           <SubText subtext={subtexts.gallery} />
+          {images.length && <Carousel data={images} />}
+          <div ref={myRef} />
           {user && (
             <>
               {file && (
@@ -129,6 +149,8 @@ function Gallery() {
                 <button
                   onClick={() => {
                     fileRef.current.click();
+                    setIsError(false);
+                    setErrorMsg("");
                   }}
                   className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
                 >
@@ -136,7 +158,11 @@ function Gallery() {
                 </button>
               )}
               <button
-                onClick={() => setDeleteMode(!deleteMode)}
+                onClick={() => {
+                  setDeleteMode(!deleteMode);
+                  setErrorMsg("");
+                  setIsError(false);
+                }}
                 className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
               >
                 Delete Images!
@@ -151,7 +177,14 @@ function Gallery() {
               />
             </>
           )}
-          <div ref={myRef} />
+          <ErrorMsg
+            isError={isError}
+            message={
+              errorMsg
+                ? errorMsg
+                : "Something went wrong, please try again later!"
+            }
+          />
           <Pagination
             currentPage={currentPage}
             totalCount={images.length}

@@ -129,4 +129,8 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /**/

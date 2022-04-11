@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function ImageGrid({
   currentGridData,
   address,
@@ -11,9 +13,6 @@ function ImageGrid({
     <section className="card-setup image-grid py-6 justify-center">
       {deleteMode
         ? currentGridData.map((item, index) => {
-            console.log(
-              "hallo" + images.findIndex((image) => image._id === item._id)
-            );
             return (
               <div
                 key={index}
@@ -28,15 +27,22 @@ function ImageGrid({
                   <svg
                     aria-label="delete image"
                     onClick={() => {
+                      handleDeleteImg(item._id, item.username);
+                      /*
+                      console.log(
+                        "index" +
+                          images.findIndex((image) => image._id === item._id)
+                      );
+                      console.log("test1" + JSON.stringify(images));
                       setImages(
                         images.splice(
-                          images.findIndex((image) => image._id === item._id)
-                        )
+                          images.findIndex((image) => item.id === image._id)
+                        ),
+                        1
                       );
                       handleDeleteImg(item._id, item.username);
-                      console.log("test1" + images);
 
-                      console.log(images + "test2");
+                      console.log("test2" + JSON.stringify(images));*/
                     }}
                     className="h-20 cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"

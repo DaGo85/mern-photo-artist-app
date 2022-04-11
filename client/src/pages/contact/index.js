@@ -4,6 +4,7 @@ import SubText from "../../components/elements/SubText";
 import { useState } from "react";
 import { apiroutes, subtexts } from "../../assets/data";
 import axios from "axios";
+import ErrorMsg from "../../components/elements/ErrorMsg";
 
 //todo: check functionality after setting up BE
 
@@ -93,14 +94,15 @@ function Contact() {
             </button>
           </form>
           {status === "Done" ? (
-            <p className="card-setup status-msg text-light">
+            <p className="card-setup status-msg text-slate-100">
               Thank you for your Message!
             </p>
           ) : (
             isError && (
-              <p className="card-setup status-msg text-err">
-                Something went wrong. Please try again later!
-              </p>
+              <ErrorMsg
+                isError={isError}
+                message="Something went wrong. Please try again later!"
+              />
             )
           )}
         </div>

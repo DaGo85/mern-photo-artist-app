@@ -16,9 +16,9 @@ import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 
 // todo:  modal, user, griddesign, randomimage, context/redux-toolkit,
-//         pop in animation change, why 5 pills pagination?,
+//         pop in animation change,
 //
-// for readme: on back in browser stick on same page etc.
+// for readme: on back in browser: stick on same pagination etc.
 
 function App() {
   const userData = "DG";
