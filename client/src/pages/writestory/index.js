@@ -11,7 +11,6 @@ import ErrorMsg from "../../components/elements/ErrorMsg";
 
 function WriteStory() {
   const [file, setFile] = useState(null);
-  const [errorMsg, setErrorMsg] = useState("");
   const [isError, setIsError] = useState(false);
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
@@ -32,28 +31,32 @@ function WriteStory() {
     };
 
     if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newStory.photo = filename;
-      newStory.orientation = orientation;
-      try {
-        await axios.post(apiroutes[5].url, data);
-      } catch (err) {
-        setErrorMsg("");
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+        const data = new FormData();
+        const filename = Date.now() + file.name;
+        data.append("name", filename);
+        data.append("file", file);
+        newStory.photo = filename;
+        newStory.orientation = orientation;
+        try {
+          const res = await axios.post(apiroutes[6].url, newStory);
+          navigate("/story" + res.data._id);
+        } catch (err) {
+          setIsError("standard");
+          return;
+        }
+        try {
+          await axios.post(apiroutes[5].url, data);
+        } catch (err) {
+          setIsError("standard");
+          return;
+        }
+      } else {
+        setIsError("The file size is too big!");
       }
-      try {
-        const res = await axios.post(apiroutes[6].url, newStory);
-        navigate("/story" + res.data._id);
-      } catch (err) {
-        setErrorMsg("");
-      }
-      setIsError(false);
     }
     if (!file) {
-      setErrorMsg("You didn't select a file!");
-      setIsError(true);
+      setIsError("You didn't select a file!");
     }
   };
 
@@ -142,14 +145,7 @@ function WriteStory() {
               Publish
             </button>
           </form>
-          <ErrorMsg
-            isError={isError}
-            message={
-              errorMsg
-                ? errorMsg
-                : "Something went wrong, please try again later!"
-            }
-          />
+          <ErrorMsg isError={isError} />
         </div>
       </main>
     </TransitionWrapper>

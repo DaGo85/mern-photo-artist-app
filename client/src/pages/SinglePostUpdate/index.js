@@ -23,6 +23,7 @@ function SinglePostUpdate() {
   const path = location.pathname.split("singlepostupdate")[1];
   const PF = address[1].url;
   const user = "da";
+  console.log("error-test:" + errorMsg);
 
   // Fetching singlepost from API
   useEffect(() => {
@@ -60,22 +61,24 @@ function SinglePostUpdate() {
     };
 
     if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
-      newPost.orientation = orientation;
-      //Uploading file to server
-      try {
-        await axios.post(apiroutes[3].url, data);
-      } catch (err) {
-        setErrorMsg("");
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+        const data = new FormData();
+        const filename = Date.now() + file.name;
+        data.append("name", filename);
+        data.append("file", file);
+        newPost.photo = filename;
+        newPost.orientation = orientation;
+        //Uploading file to server
+        try {
+          await axios.post(apiroutes[3].url, data);
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
+      } else {
+        setErrorMsg("The file size is too big!");
         setIsError(true);
       }
-    } else {
-      setErrorMsg("The file size is too big!");
-      setIsError(true);
     }
     //Updating post on MongoDB
     try {

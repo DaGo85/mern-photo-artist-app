@@ -1,7 +1,7 @@
 function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
   const user = "da";
   return (
-    <section className="card-setup image-grid py-6 justify-center">
+    <section className="card-setup image-grid py-6 justify-center grid-flow-row-dense">
       {deleteMode
         ? currentGridData.map((item, index) => {
             return (
@@ -47,16 +47,46 @@ function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
           })
         : currentGridData.map((item, index) => {
             return (
-              <div
-                key={index}
-                className="col-span-12 lg:col-span-6 xl:col-span-4 overflow-hidden"
-              >
-                <img
-                  className=""
-                  src={`${address.url}${item.photo}`}
-                  alt="gridimage"
-                />
-              </div>
+              <>
+                {item.orientation === 1 ? (
+                  <img
+                    key={index}
+                    className="col-span-12 lg:col-span-6 xl:col-span-6 overflow-hidden"
+                    src={`${address.url}${item.photo}`}
+                    alt="gridimage"
+                  />
+                ) : (
+                  <img
+                    key={index}
+                    className="col-span-12 lg:col-span-6 xl:col-span-3 overflow-hidden"
+                    src={`${address.url}${item.photo}`}
+                    alt="gridimage"
+                  />
+                )}
+                {/*item.orientation === 1 ? (
+                  <div
+                    key={index}
+                    className="col-span-12 lg:col-span-6 xl:col-span-8 overflow-hidden"
+                  >
+                    <img
+                      className=""
+                      src={`${address.url}${item.photo}`}
+                      alt="gridimage"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    key={index}
+                    className="col-span-12 lg:col-span-6 xl:col-span-4  overflow-hidden"
+                  >
+                    <img
+                      className=""
+                      src={`${address.url}${item.photo}`}
+                      alt="gridimage"
+                    />
+                  </div>
+                )*/}
+              </>
             );
           })}
     </section>

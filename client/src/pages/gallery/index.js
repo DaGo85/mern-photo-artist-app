@@ -11,7 +11,7 @@ import OrientedImage from "../../components/elements/OrientedImage";
 import Carousel from "../../components/elements/Carousel";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 
-const PageSize = 4;
+const PageSize = 12;
 
 function Gallery() {
   const user = "da";

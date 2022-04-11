@@ -31,26 +31,31 @@ function WritePost() {
     };
 
     if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
-      newPost.orientation = orientation;
-      try {
-        await axios.post(apiroutes[3].url, data);
-      } catch (err) {
-        setErrorMsg("");
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+        const data = new FormData();
+        const filename = Date.now() + file.name;
+        data.append("name", filename);
+        data.append("file", file);
+        newPost.photo = filename;
+        newPost.orientation = orientation;
+        try {
+          await axios.post(apiroutes[3].url, data);
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
+        try {
+          const res = await axios.post(apiroutes[2].url, newPost);
+          navigate("/" + res.data._id);
+        } catch (err) {
+          setErrorMsg("");
+          setIsError(true);
+        }
+        setIsError(false);
+      } else {
+        setIsError("The file size is too big!");
         setIsError(true);
       }
-      try {
-        const res = await axios.post(apiroutes[2].url, newPost);
-        navigate("/" + res.data._id);
-      } catch (err) {
-        setErrorMsg("");
-        setIsError(true);
-      }
-      setIsError(false);
     }
     if (!file) {
       setErrorMsg("You didn't select a file!");

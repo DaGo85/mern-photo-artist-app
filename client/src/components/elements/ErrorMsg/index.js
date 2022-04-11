@@ -1,13 +1,18 @@
 import React from "react";
 
-function ErrorMsg({ isError, message }) {
+function ErrorMsg({ isError }) {
   return (
     <>
-      {isError && (
-        <div autoFocus className="card-setup status-msg text-err">
-          {message}
-        </div>
-      )}
+      {isError &&
+        (isError === "standard" ? (
+          <div autoFocus className="card-setup status-msg text-err">
+            "Something went wrong, please try again later!"
+          </div>
+        ) : (
+          <div autoFocus className="card-setup status-msg text-err">
+            {isError}
+          </div>
+        ))}
     </>
   );
 }
