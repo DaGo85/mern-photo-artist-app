@@ -11,7 +11,9 @@ function ImageGrid({
     <section className="card-setup image-grid py-6 justify-center">
       {deleteMode
         ? currentGridData.map((item, index) => {
-            console.log(item);
+            console.log(
+              "hallo" + images.findIndex((image) => image._id === item._id)
+            );
             return (
               <div
                 key={index}
@@ -26,13 +28,14 @@ function ImageGrid({
                   <svg
                     aria-label="delete image"
                     onClick={() => {
-                      handleDeleteImg(item._id, item.username);
-                      console.log("test1" + images);
                       setImages(
                         images.splice(
                           images.findIndex((image) => image._id === item._id)
                         )
                       );
+                      handleDeleteImg(item._id, item.username);
+                      console.log("test1" + images);
+
                       console.log(images + "test2");
                     }}
                     className="h-20 cursor-pointer"

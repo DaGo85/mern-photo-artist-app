@@ -1,24 +1,32 @@
+import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
 
-function GalleryGrid({ currentGridData }) {
+function StoriesGrid({
+  stories,
+  currentGridData,
+
+  images,
+  setImages,
+}) {
   return (
     <section className="card-setup image-grid py-6 justify-center">
       {currentGridData.map((item, index) => {
         return (
-          <div
+          <Link
+            to={`/story${item._id}`}
             key={index}
             className="col-span-12 lg:col-span-6 xl:col-span-4 overflow-hidden"
           >
             <img
-              className=" "
-              src={`${address[0].url}${item.photo}`}
+              className=""
+              src={`${address[2].url}${item.photo}`}
               alt="gridimage"
             />
-          </div>
+          </Link>
         );
       })}
     </section>
   );
 }
 
-export default GalleryGrid;
+export default StoriesGrid;
