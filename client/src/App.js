@@ -15,9 +15,10 @@ import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 
-// todo:  stories, modal, user, griddesign, randomimage, context/redux-toolkit,
-//         pop in animation change, home screen bug @md, why 5 pills pagination?,
+// todo:  modal, user, griddesign, randomimage, context/redux-toolkit,
+//         pop in animation change, why 5 pills pagination?,
 //
+// for readme: on back in browser stick on same page etc.
 
 function App() {
   const userData = "DG";

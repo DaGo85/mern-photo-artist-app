@@ -4,13 +4,12 @@ import SubText from "../../components/elements/SubText";
 import { address, apiroutes, subtexts } from "../../assets/data";
 import Pagination from "../../components/Pagination";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { galleryimages } from "../../assets/mockdata";
 import ImageGrid from "../../components/elements/ImageGrid";
 import axios from "axios";
 import getImageOrientation from "../../utility/getImageOrientation";
 import OrientedImage from "../../components/elements/OrientedImage";
 
-const PageSize = 9;
+const PageSize = 3;
 
 function Gallery() {
   const user = "da";
@@ -22,8 +21,8 @@ function Gallery() {
   const [images, setImages] = useState([]);
 
   const myRef = useRef(null);
-  const executeScroll = () =>
-    myRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+  const executeScroll = (to) =>
+    myRef.current.scrollIntoView({ behavior: "smooth", block: to });
 
   // After deleting an image, this causes rerender of GalleryPagination
   // by fetching the updated imagelist ( probably better to delete item from
@@ -35,16 +34,6 @@ function Gallery() {
     };
     fetchImages();
   }, []);
-
-  const currentGridData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return images.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, images]);
-
-  useEffect(() => {
-    executeScroll();
-  }, [currentGridData]);
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username) => {
@@ -94,7 +83,18 @@ function Gallery() {
     setFile(e.target.files[0]);
     let imgOrientation = await getImageOrientation(e.target.files);
     setOrientation(imgOrientation);
+    executeScroll("end");
   };
+
+  const currentGridData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return images.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, images]);
+
+  useEffect(() => {
+    executeScroll("center");
+  }, [currentGridData]);
 
   return (
     <TransitionWrapper>
@@ -116,20 +116,6 @@ function Gallery() {
                   <h4>Don't want this image? Click me!</h4>
                 </div>
               )}
-              <button
-                onClick={() => setDeleteMode(!deleteMode)}
-                className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
-              >
-                Delete Images!
-              </button>
-              <input
-                accept="image/jpg,image/png,image/jpeg"
-                className="hidden"
-                type="file"
-                onChange={handleInput}
-                multiple={false}
-                ref={fileRef}
-              />
               {file ? (
                 <button
                   onClick={() => {
@@ -149,12 +135,26 @@ function Gallery() {
                   Select Image!
                 </button>
               )}
+              <button
+                onClick={() => setDeleteMode(!deleteMode)}
+                className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+              >
+                Delete Images!
+              </button>
+              <input
+                accept="image/jpg,image/png,image/jpeg"
+                className="hidden"
+                type="file"
+                onChange={handleInput}
+                multiple={false}
+                ref={fileRef}
+              />
             </>
           )}
           <div ref={myRef} />
           <Pagination
             currentPage={currentPage}
-            totalCount={galleryimages.length}
+            totalCount={images.length}
             pageSize={PageSize}
             onPageChange={(page) => setCurrentPage(page)}
           />
@@ -168,7 +168,7 @@ function Gallery() {
           />
           <Pagination
             currentPage={currentPage}
-            totalCount={galleryimages.length}
+            totalCount={images.length}
             pageSize={PageSize}
             onPageChange={(page) => setCurrentPage(page)}
           />
