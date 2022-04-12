@@ -1,19 +1,27 @@
 function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
   const user = "da";
   return (
-    <section className="card-setup image-grid py-6 justify-center grid-flow-row-dense">
+    <section className="card-setup image-grid py-6 justify-center ">
       {deleteMode
         ? currentGridData.map((item, index) => {
             return (
               <div
                 key={index}
-                className="col-span-12 lg:col-span-6 xl:col-span-4 overflow-hidden"
+                className="col-span-12 lg:col-span-6 xl:col-span-4"
               >
-                <img
-                  className=""
-                  src={`${address.url}${item.photo}`}
-                  alt="gridimage"
-                />
+                {item.orientation === 1 ? (
+                  <img
+                    className="h-full w-full aspect-square block  object-cover"
+                    src={`${address.url}${item.photo}`}
+                    alt="landscape grid item"
+                  />
+                ) : (
+                  <img
+                    className="h-full w-full aspect-square block  object-cover"
+                    src={`${address.url}${item.photo}`}
+                    alt="portrait grid item"
+                  />
+                )}
                 {user === item.username && (
                   <svg
                     aria-label="delete image"
@@ -47,46 +55,26 @@ function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
           })
         : currentGridData.map((item, index) => {
             return (
-              <>
-                {item.orientation === 1 ? (
-                  <img
-                    key={index}
-                    className="col-span-12 lg:col-span-6 xl:col-span-6 overflow-hidden"
-                    src={`${address.url}${item.photo}`}
-                    alt="gridimage"
-                  />
-                ) : (
-                  <img
-                    key={index}
-                    className="col-span-12 lg:col-span-6 xl:col-span-3 overflow-hidden"
-                    src={`${address.url}${item.photo}`}
-                    alt="gridimage"
-                  />
-                )}
-                {/*item.orientation === 1 ? (
-                  <div
-                    key={index}
-                    className="col-span-12 lg:col-span-6 xl:col-span-8 overflow-hidden"
-                  >
+              <div
+                key={index}
+                className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
+              >
+                <div className="w-full h-full block overflow-hidden aspect-square ">
+                  {item.orientation === 1 ? (
                     <img
-                      className=""
+                      className="w-full h-full test123 object-cover aspect-square"
                       src={`${address.url}${item.photo}`}
-                      alt="gridimage"
+                      alt="landscape grid item"
                     />
-                  </div>
-                ) : (
-                  <div
-                    key={index}
-                    className="col-span-12 lg:col-span-6 xl:col-span-4  overflow-hidden"
-                  >
+                  ) : (
                     <img
-                      className=""
+                      className="w-full h-full test123 object-cover aspect-square"
                       src={`${address.url}${item.photo}`}
-                      alt="gridimage"
+                      alt="portrait grid item"
                     />
-                  </div>
-                )*/}
-              </>
+                  )}
+                </div>
+              </div>
             );
           })}
     </section>
