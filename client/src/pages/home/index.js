@@ -7,6 +7,7 @@ import RandomImage from "../../components/elements/RandomImage";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
+import ImageModal from "../../components/ImageModal";
 
 const PageSize = 6;
 
@@ -17,6 +18,7 @@ function Home() {
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [modalState, setModalState] = useState(false);
 
   let currentGridData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -65,6 +67,12 @@ function Home() {
             </>
           )}
         </div>
+        <ImageModal
+          setModalState={setModalState}
+          modalstate={modalState}
+          images={""}
+          path={""}
+        />
       </main>
     </TransitionWrapper>
   );
