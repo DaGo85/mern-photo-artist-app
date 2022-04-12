@@ -34,8 +34,7 @@ function Contact() {
       setStatus("Done");
       document.getElementById("form-reset").reset();
     } catch (err) {
-      console.error(err);
-      setIsError(true);
+      setIsError("standard");
       setStatus("Error");
     }
   };
@@ -98,12 +97,7 @@ function Contact() {
               Thank you for your Message!
             </p>
           ) : (
-            isError && (
-              <ErrorMsg
-                isError={isError}
-                message="Something went wrong. Please try again later!"
-              />
-            )
+            <ErrorMsg isError={isError} />
           )}
         </div>
       </main>

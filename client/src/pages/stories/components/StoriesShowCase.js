@@ -3,7 +3,6 @@ import { address } from "../../../assets/data";
 import OrientedImage from "../../../components/elements/OrientedImage";
 
 function StoriesShowCase({ story }) {
-  console.log("first" + JSON.stringify(story));
   const PF = address[2].url;
   // Trimmed strings for portrait images
   // Maximum number of characters to extract

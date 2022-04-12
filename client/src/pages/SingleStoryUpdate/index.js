@@ -16,7 +16,6 @@ function SingleStoryUpdate() {
   const [story, setStory] = useState();
   const [showModal, setShowModal] = useState(false);
 
-  const [errorMsg, setErrorMsg] = useState("");
   const [isError, setIsError] = useState(false);
 
   const location = useLocation();
@@ -41,8 +40,7 @@ function SingleStoryUpdate() {
       });
       navigate("/stories");
     } catch (err) {
-      setErrorMsg("Can't delete this story.Please try again later!");
-      setIsError(true);
+      setIsError("Can't delete this story.Please try again later!");
     }
   };
 
@@ -71,12 +69,10 @@ function SingleStoryUpdate() {
         try {
           await axios.post(apiroutes[5].url, data);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
       } else {
-        setErrorMsg("The file size is too big!");
-        setIsError(true);
+        setIsError("The file size is too big!");
       }
     }
     //Updating post on MongoDB
@@ -84,8 +80,7 @@ function SingleStoryUpdate() {
       await axios.put(`${apiroutes[6].url}${story._id}`, newStory);
       navigate("/story" + story._id);
     } catch (err) {
-      setErrorMsg("");
-      setIsError(true);
+      setIsError("standard");
     }
   };
 
@@ -170,14 +165,7 @@ function SingleStoryUpdate() {
                   Update Story!
                 </button>
               </form>
-              <ErrorMsg
-                isError={isError}
-                message={
-                  errorMsg
-                    ? errorMsg
-                    : "Something went wrong, please try again later!"
-                }
-              />
+              <ErrorMsg isError={isError} />
               <button
                 onClick={() => setShowModal(true)}
                 className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"

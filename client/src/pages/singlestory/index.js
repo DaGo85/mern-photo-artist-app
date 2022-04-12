@@ -24,7 +24,6 @@ function SingleStory() {
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState([]);
 
-  const [errorMsg, setErrorMsg] = useState("");
   const [isError, setIsError] = useState(false);
 
   const location = useLocation();
@@ -76,21 +75,18 @@ function SingleStory() {
         try {
           await axios.post(apiroutes[5].url, data);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
         //Posting  on MongoDB
         try {
           await axios.post(apiroutes[4].url, newStoryPhoto);
           setFile(null);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
         // document.getElementById("form-reset").reset();
       } else {
-        setErrorMsg("The file size is too big!");
-        setIsError(true);
+        setIsError("The file size is too big!");
         setFile(null);
       }
     }
@@ -186,14 +182,7 @@ function SingleStory() {
               )}
             </>
           )}
-          <ErrorMsg
-            isError={isError}
-            message={
-              errorMsg
-                ? errorMsg
-                : "Something went wrong, please try again later!"
-            }
-          />
+          <ErrorMsg isError={isError} />
           <div ref={myRef} />
           {story && (
             <>

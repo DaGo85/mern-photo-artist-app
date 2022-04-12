@@ -22,7 +22,6 @@ function Gallery() {
   const [orientation, setOrientation] = useState([]);
   const [images, setImages] = useState([]);
   const [isError, setIsError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
   const [rerenderComponent, setRerenderComponent] = useState(false);
 
@@ -49,8 +48,7 @@ function Gallery() {
           data: { username: username },
         });
       } catch (err) {
-        setErrorMsg("Can't delete this image now. Please try again later!");
-        setIsError(true);
+        setIsError("Can't delete this image now. Please try again later!");
       }
       setRerenderComponent(!rerenderComponent);
     }
@@ -76,21 +74,18 @@ function Gallery() {
         try {
           await axios.post(`${apiroutes[1].url}`, data);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
         try {
           await axios.post(`${apiroutes[0].url}`, newPhoto);
           setFile(null);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
         setRerenderComponent(!rerenderComponent);
         // document.getElementById("input-reset").reset();
       } else {
-        setErrorMsg("The file size is too big!");
-        setIsError(true);
+        setIsError("The file size is too big!");
         setFile(null);
       }
     }
@@ -150,7 +145,6 @@ function Gallery() {
                   onClick={() => {
                     fileRef.current.click();
                     setIsError(false);
-                    setErrorMsg("");
                   }}
                   className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
                 >
@@ -160,7 +154,6 @@ function Gallery() {
               <button
                 onClick={() => {
                   setDeleteMode(!deleteMode);
-                  setErrorMsg("");
                   setIsError(false);
                 }}
                 className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
@@ -177,14 +170,7 @@ function Gallery() {
               />
             </>
           )}
-          <ErrorMsg
-            isError={isError}
-            message={
-              errorMsg
-                ? errorMsg
-                : "Something went wrong, please try again later!"
-            }
-          />
+          <ErrorMsg isError={isError} />
           <Pagination
             currentPage={currentPage}
             totalCount={images.length}

@@ -16,14 +16,12 @@ function SinglePostUpdate() {
   const [orientation, setOrientation] = useState(1);
   const [post, setPost] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
   const [isError, setIsError] = useState(false);
 
   const location = useLocation();
   const path = location.pathname.split("singlepostupdate")[1];
   const PF = address[1].url;
   const user = "da";
-  console.log("error-test:" + errorMsg);
 
   // Fetching singlepost from API
   useEffect(() => {
@@ -42,8 +40,7 @@ function SinglePostUpdate() {
       });
       navigate("/");
     } catch (err) {
-      setErrorMsg("Can't delete this post.Please try again later!");
-      setIsError(true);
+      setIsError("Can't delete this post.Please try again later!");
     }
   };
 
@@ -72,12 +69,10 @@ function SinglePostUpdate() {
         try {
           await axios.post(apiroutes[3].url, data);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
       } else {
-        setErrorMsg("The file size is too big!");
-        setIsError(true);
+        setIsError("The file size is too big!");
       }
     }
     //Updating post on MongoDB
@@ -85,8 +80,7 @@ function SinglePostUpdate() {
       await axios.put(`${apiroutes[2].url}${post._id}`, newPost);
       navigate("/" + post._id);
     } catch (err) {
-      setErrorMsg("");
-      setIsError(true);
+      setIsError("standard");
     }
   };
 
@@ -173,14 +167,7 @@ function SinglePostUpdate() {
                   Update Post!
                 </button>
               </form>
-              <ErrorMsg
-                isError={isError}
-                message={
-                  errorMsg
-                    ? errorMsg
-                    : "Something went wrong, please try again later!"
-                }
-              />
+              <ErrorMsg isError={isError} />
               <button
                 onClick={() => setShowModal(true)}
                 className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"

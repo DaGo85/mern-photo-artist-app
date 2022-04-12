@@ -14,7 +14,6 @@ function WritePost() {
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
   const navigate = useNavigate();
-  const [errorMsg, setErrorMsg] = useState("");
   const [isError, setIsError] = useState(false);
   const user = "da";
 
@@ -41,15 +40,13 @@ function WritePost() {
         try {
           await axios.post(apiroutes[3].url, data);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
         try {
           const res = await axios.post(apiroutes[2].url, newPost);
           navigate("/" + res.data._id);
         } catch (err) {
-          setErrorMsg("");
-          setIsError(true);
+          setIsError("standard");
         }
         setIsError(false);
       } else {
@@ -58,8 +55,7 @@ function WritePost() {
       }
     }
     if (!file) {
-      setErrorMsg("You didn't select a file!");
-      setIsError(true);
+      setIsError("You didn't select a file!");
     }
   };
 
@@ -148,14 +144,7 @@ function WritePost() {
               Publish
             </button>
           </form>
-          <ErrorMsg
-            isError={isError}
-            message={
-              errorMsg
-                ? errorMsg
-                : "Something went wrong, please try again later!"
-            }
-          />
+          <ErrorMsg isError={isError} />
         </div>
       </main>
     </TransitionWrapper>
