@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
 
 function ImageGrid({
@@ -8,14 +9,14 @@ function ImageGrid({
   images,
 }) {
   const { setIsOpen, setImageData } = useModalContext();
-  const user = "DG";
+  const user = "da";
   return (
     <section className="card-setup image-grid py-6 justify-center ">
       {deleteMode
-        ? currentGridData.map((item, index) => {
+        ? currentGridData.map((item) => {
             return (
               <div
-                key={index}
+                key={item.photo}
                 className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
               >
                 <div className="w-full h-full block overflow-hidden aspect-square ">
@@ -51,36 +52,44 @@ function ImageGrid({
               </div>
             );
           })
-        : currentGridData.map((item, index) => {
+        : currentGridData.map((item) => {
             return (
-              <div
-                onClick={() => {
-                  setImageData({
-                    images: images,
-                    currentimage: item,
-                    path: address,
-                  });
-                  setIsOpen(true);
-                }}
-                key={index}
-                className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
-              >
-                <div className="w-full h-full block overflow-hidden aspect-square ">
-                  {item.orientation === 1 ? (
-                    <img
-                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                      src={`${address.url}${item.photo}`}
-                      alt="landscape grid item"
-                    />
-                  ) : (
-                    <img
-                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                      src={`${address.url}${item.photo}`}
-                      alt="portrait grid item"
-                    />
-                  )}
+              <AnimatePresence>
+                <div
+                  onClick={() => {
+                    setImageData({
+                      images: images,
+                      currentimage: item,
+                      path: address,
+                    });
+                    setIsOpen(true);
+                  }}
+                  key={item.photo}
+                  className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
+                >
+                  <div className="w-full h-full block overflow-hidden aspect-square ">
+                    {item.orientation === 1 ? (
+                      <motion.img
+                        className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
+                        src={`${address.url}${item.photo}`}
+                        alt="landscape grid item"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 50 }}
+                      />
+                    ) : (
+                      <motion.img
+                        className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
+                        src={`${address.url}${item.photo}`}
+                        alt="portrait grid item"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 50 }}
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
+              </AnimatePresence>
             );
           })}
     </section>
