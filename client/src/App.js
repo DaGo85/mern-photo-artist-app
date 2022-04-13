@@ -16,7 +16,7 @@ import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 
 // todo:  modal, user, griddesign, context/redux-toolkit,
-//         pop in animation change
+//         pop in animation change, helpertext for using page features
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.
 
