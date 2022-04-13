@@ -76,6 +76,8 @@ function ImageGrid({
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 50 }}
+                        whileInView="visible"
+                        viewport={{ once: true }}
                       />
                     ) : (
                       <motion.img
@@ -85,6 +87,8 @@ function ImageGrid({
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 50 }}
+                        whileInView="visible"
+                        viewport={{ once: true }}
                       />
                     )}
                   </div>

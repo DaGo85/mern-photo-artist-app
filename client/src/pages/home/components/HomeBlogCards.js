@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
 import OrientedImage from "../../../components/elements/OrientedImage";
@@ -8,6 +7,21 @@ function HomeBlogCards({ currentGridData }) {
   return (
     <section className="flex flex-col gap-form max-w-7xl">
       {currentGridData.map((post, index) => {
+        const cardVariants = {
+          offscreen: {
+            scale: 0,
+            opacity: 0,
+          },
+          onscreen: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              type: "spring",
+              bounce: 0.4,
+              duration: 0.8,
+            },
+          },
+        };
         // Trimmed strings for portrait images
         // Maximum number of characters to extract
 
@@ -70,14 +84,12 @@ function HomeBlogCards({ currentGridData }) {
             }`}
             key={post.title}
           >
-            <div className="max-w-[75%]">
-              <OrientedImage
-                orientation={post.orientation}
-                image={post.photo}
-                path={PF}
-                alt="Single blog post with portrait"
-              />
-            </div>
+            <OrientedImage
+              orientation={post.orientation}
+              image={post.photo}
+              path={PF}
+              alt="Single blog post with portrait"
+            />
             <div className="flex flex-col md:max-w-[50%]">
               <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
               <h5>Author: {post.username}</h5>
