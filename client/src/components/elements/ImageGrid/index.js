@@ -1,4 +1,13 @@
-function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
+import { useModalContext } from "../../../utility/ImageModalWrapper";
+
+function ImageGrid({
+  currentGridData,
+  address,
+  handleDeleteImg,
+  deleteMode,
+  images,
+}) {
+  const { setIsOpen, setImageData } = useModalContext();
   const user = "DG";
   return (
     <section className="card-setup image-grid py-6 justify-center ">
@@ -45,6 +54,14 @@ function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
         : currentGridData.map((item, index) => {
             return (
               <div
+                onClick={() => {
+                  setImageData({
+                    images: images,
+                    currentimage: item,
+                    path: address,
+                  });
+                  setIsOpen(true);
+                }}
                 key={index}
                 className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
               >

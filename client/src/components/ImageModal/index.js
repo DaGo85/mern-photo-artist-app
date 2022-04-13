@@ -1,12 +1,63 @@
 import React from "react";
+import { useModalContext } from "../../utility/ImageModalWrapper";
+import OrientedImage from "../elements/OrientedImage";
 
 // Used in: singlepost, gallerygrid, singlestory? and singlestorygrid,
 
-function ImageModal({ images, path, modalState, setModalState }) {
+function ImageModal() {
+  const { imageData, isOpen, setIsOpen } = useModalContext();
+  console.log("cont" + isOpen);
   return (
     <>
-      {modalState && (
-        <div className="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"></div>
+      {isOpen && imageData.images.length > 0 ? (
+        <div className="bg-slate-600/80 top-36 left-0 fixed w-full h-[83vh] inset-0 flex justify-center items-center">
+          <button className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-20"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            <span className="sr-only">Prev</span>
+          </button>
+          <OrientedImage
+            image={imageData.images[0].photo}
+            path={imageData.path.url}
+            alt="opened in modal"
+            orientation={imageData.orientation}
+          />
+          <button
+            className="hover:bg-blue-900/75 text-white w-10 h-full text-center 
+		  opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10
+		   p-0 m-0 transition-all ease-in-out duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-20"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            <span className="sr-only">Next</span>
+          </button>
+        </div>
+      ) : (
+        <div></div>
       )}
     </>
   );

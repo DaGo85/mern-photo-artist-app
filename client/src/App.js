@@ -14,11 +14,13 @@ import SingleStory from "./pages/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate";
+import ImageModal from "./components/ImageModal";
 
-// todo:  modal, user, griddesign, context/redux-toolkit,
+// todo:  modal, user, context/redux-toolkit,
 //         pop in animation change, helpertext for using page features
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.
+// bg images optimation, field test image number and proportion for all grids
 
 function App() {
   const userData = "DG";
@@ -53,6 +55,7 @@ function App() {
             />
           )}
         </Routes>
+        <ImageModal />
       </AnimatePresence>
     </>
   );

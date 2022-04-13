@@ -67,12 +67,6 @@ function Home() {
             </>
           )}
         </div>
-        <ImageModal
-          setModalState={setModalState}
-          modalstate={modalState}
-          images={""}
-          path={""}
-        />
       </main>
     </TransitionWrapper>
   );

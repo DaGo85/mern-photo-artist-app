@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-black p-0 m-0;
+    @apply bg-black p-0 m-0 relative;
   }
 
   main {
