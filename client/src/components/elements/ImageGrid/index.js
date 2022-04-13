@@ -1,5 +1,5 @@
 function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
-  const user = "da";
+  const user = "DG";
   return (
     <section className="card-setup image-grid py-6 justify-center ">
       {deleteMode

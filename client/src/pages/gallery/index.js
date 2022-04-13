@@ -182,8 +182,6 @@ function Gallery() {
             handleDeleteImg={handleDeleteImg}
             currentGridData={currentGridData}
             address={address[0]}
-            images={images}
-            setImages={setImages}
           />
           <Pagination
             currentPage={currentPage}

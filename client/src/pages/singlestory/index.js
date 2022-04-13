@@ -23,6 +23,8 @@ function SingleStory() {
   const [storyImages, setStoryImages] = useState([]);
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState([]);
+  const [deleteMode, setDeleteMode] = useState(false);
+  const [rerenderComponent, setRerenderComponent] = useState(false);
 
   const [isError, setIsError] = useState(false);
 
@@ -41,19 +43,23 @@ function SingleStory() {
   }, [currentPage, storyImages]);
 
   // Fetching singlestory from the API
-  // Fetches and filters all story gallery images
+
   useEffect(() => {
     const getStory = async () => {
       const res = await axios.get(`${apiroutes[6].url}${path}`);
       setStory(res.data);
     };
+    getStory();
+  }, []);
+
+  // Fetches and filters all story gallery images todo: let BE filter
+  useEffect(() => {
     const fetchStoryImages = async () => {
       const res = await axios.get(apiroutes[4].url);
       setStoryImages(res.data.filter((i) => i.story === path));
     };
     fetchStoryImages();
-    getStory();
-  }, []);
+  }, [rerenderComponent]);
 
   //Handler for submitting a photo for singlestory
   const handleSubmit = async () => {
@@ -105,6 +111,20 @@ function SingleStory() {
       executeScroll("center");
     }
   }, [currentGridData, currentPage]);
+
+  // Handler for deleting image
+  const handleDeleteImg = async (imageid, username) => {
+    if (username === user) {
+      try {
+        await axios.delete(`${apiroutes[4].url}${imageid}`, {
+          data: { username: username },
+        });
+      } catch (err) {
+        setIsError("Can't delete this image now. Please try again later!");
+      }
+      setRerenderComponent(!rerenderComponent);
+    }
+  };
 
   return (
     <TransitionWrapper>
@@ -184,6 +204,15 @@ function SingleStory() {
           )}
           <ErrorMsg isError={isError} />
           <div ref={myRef} />
+          <button
+            onClick={() => {
+              setDeleteMode(!deleteMode);
+              setIsError(false);
+            }}
+            className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+          >
+            Delete Images!
+          </button>
           {story && (
             <>
               <Pagination
@@ -195,6 +224,8 @@ function SingleStory() {
               <ImageGrid
                 currentGridData={currentGridData}
                 address={address[2]}
+                handleDeleteImg={handleDeleteImg}
+                deleteMode={deleteMode}
               />
               <Pagination
                 currentPage={currentPage}
