@@ -90,6 +90,7 @@ function SingleStory() {
         } catch (err) {
           setIsError("standard");
         }
+        setRerenderComponent(!rerenderComponent);
         // document.getElementById("form-reset").reset();
       } else {
         setIsError("The file size is too big!");

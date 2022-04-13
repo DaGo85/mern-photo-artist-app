@@ -25,13 +25,13 @@ function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
                   )}
                 </div>
                 {user === item.username && (
-                  <div className="cursor-pointer w-full h-full absolute top-0 left-0 items-center justify-center flex bg-slate-900/70">
+                  <div className="w-full h-full absolute top-0 left-0 items-center justify-center flex bg-slate-900/70">
                     <svg
                       aria-label="delete image"
                       onClick={() => {
                         handleDeleteImg(item._id, item.username);
                       }}
-                      className="h-1/3 opacity-70 fill-slate-100 hover:opacity-100 hover:fill-red-400 transition-color duration-300"
+                      className="cursor-pointer h-1/3 opacity-70 fill-slate-100 hover:opacity-100 hover:fill-red-400 transition-color duration-300"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 448 512"
                     >
