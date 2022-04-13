@@ -130,12 +130,14 @@
 }
 
 @keyframes MoveUpDown {
-  0%,
-  100% {
-    transform: translateX(0);
+  0% {
+    object-position: center center;
   }
   50% {
-    transform: translateX(-20px);
+    object-position: left top;
+  }
+  100% {
+    object-position: right bottom;
   }
 }
 
@@ -145,7 +147,7 @@
   bottom: 0;
 }
 
-.test123 {
-  animation: MoveUpDown 8s linear infinite;
+.test123:hover {
+  animation: MoveUpDown 20s linear infinite;
 }
 /**/

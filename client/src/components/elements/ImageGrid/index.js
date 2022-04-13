@@ -62,13 +62,13 @@ function ImageGrid({ currentGridData, address, handleDeleteImg, deleteMode }) {
                 <div className="w-full h-full block overflow-hidden aspect-square ">
                   {item.orientation === 1 ? (
                     <img
-                      className="w-full h-full test123 object-cover aspect-square"
+                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
                       src={`${address.url}${item.photo}`}
                       alt="landscape grid item"
                     />
                   ) : (
                     <img
-                      className="w-full h-full test123 object-cover aspect-square"
+                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
                       src={`${address.url}${item.photo}`}
                       alt="portrait grid item"
                     />
