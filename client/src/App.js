@@ -16,7 +16,7 @@ import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 import ImageModal from "./components/ImageModal";
 
-// todo:  modal, user, context, loading spinner?, IntersectionObserver?
+// todo: user, context, loading spinner?, IntersectionObserver?
 // button styles, pop in animation change, helpertext for using page features
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.

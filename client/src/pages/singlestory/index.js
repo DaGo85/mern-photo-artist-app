@@ -227,6 +227,7 @@ function SingleStory() {
                 address={address[2]}
                 handleDeleteImg={handleDeleteImg}
                 deleteMode={deleteMode}
+                images={storyImages}
               />
               <Pagination
                 currentPage={currentPage}
