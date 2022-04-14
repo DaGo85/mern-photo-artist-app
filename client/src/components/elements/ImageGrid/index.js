@@ -10,6 +10,7 @@ function ImageGrid({
 }) {
   const { setIsOpen, setImageData } = useModalContext();
   const user = "da";
+
   return (
     <section className="card-setup image-grid py-6 justify-center ">
       {deleteMode
@@ -65,9 +66,9 @@ function ImageGrid({
                     setIsOpen(true);
                   }}
                   key={item.photo}
-                  className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
+                  className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative"
                 >
-                  <div className="w-full h-full block overflow-hidden aspect-square ">
+                  <div className="w-full h-full block overflow-hidden aspect-square">
                     {item.orientation === 1 ? (
                       <motion.img
                         className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
