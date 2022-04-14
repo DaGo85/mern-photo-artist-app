@@ -15,6 +15,10 @@ import SinglePostUpdate from "./pages/SinglePostUpdate";
 import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 import ImageModal from "./components/ImageModal";
+import Login from "./pages/Login";
+import { useEffect } from "react";
+import { useAuthContext } from "./utility/AuthContextProvider";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // todo: user, context, loading spinner?, IntersectionObserver?
 // button styles, pop in animation change, helpertext for using page features
@@ -23,9 +27,24 @@ import ImageModal from "./components/ImageModal";
 // bg images optimation, field test image number and proportion for all grids
 
 function App() {
-  const userData = "DG";
   const location = useLocation();
   useScrollToTop();
+  const auth = getAuth();
+  const { userData, setUserData } = useAuthContext();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const email = user.email;
+
+        const newUser = { email };
+
+        setUserData(newUser);
+      }
+    });
+  }, [auth]);
 
   return (
     <>
@@ -37,6 +56,7 @@ function App() {
           <Route path="/stories" element={<Stories />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/impressum" element={<Impressum />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/:postId" element={<SinglePost />} />
           <Route path={`/story:storyId`} element={<SingleStory />} />
           {userData && <Route path="/write" element={<Write />} />}

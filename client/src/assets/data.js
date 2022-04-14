@@ -51,6 +51,7 @@ export const subtexts = {
   write: "The right place to choose a good direction for your creativity!",
   writepost: "Write an article for your blog!",
   writestory: "Create a new story and show everyone your pictures!",
+  login: "Please enter your login credentials!",
 };
 
 // Data for the cards
