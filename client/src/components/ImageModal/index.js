@@ -10,24 +10,24 @@ function ImageModal() {
   return (
     <>
       {isOpen && imageData.images.length > 0 ? (
-        <div className="bg-slate-600/80 top-36 left-0 fixed w-full h-[75vh] inset-0 flex justify-center items-center">
+        <div className="bg-slate-600/80 top-0 left-0 fixed w-full h-full inset-0 flex justify-center items-center z-50">
           <button
             onClick={() => {
               setIsOpen(false);
             }}
             type="button"
-            className="text-d bg-transparent hover:bg-b hover:text-slate-100 rounded-2xl p-1.5 ml-auto inline-flex items-center absolute right-10 top-10"
+            className="animate-buttonPulse bg-transparent hover:bg-blue-900/75 rounded-2xl p-1.5 ml-auto inline-flex items-center absolute right-16 top-16"
           >
             <svg
-              className="w-5 h-5"
-              fill="currentColor"
+              stroke="currentColor"
+              className="w-10 h-10"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path>
             </svg>
           </button>
-          <button className="hover:bg-blue-900/75 text-white w-12 h-full opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300 absolute left-0">
+          <button className="hover:bg-blue-900/75 animate-buttonPulse w-12 h-full opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300 absolute left-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-12 w-12"
@@ -50,7 +50,7 @@ function ImageModal() {
             orientation={imageData.orientation}
           />
           <button
-            className="hover:bg-blue-900/75 text-white w-12 h-full absolute 
+            className="hover:bg-blue-900/75 animate-buttonPulse w-12 h-full absolute 
 		  opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10
 		   p-0 m-0 transition-all ease-in-out duration-300 right-0"
           >
