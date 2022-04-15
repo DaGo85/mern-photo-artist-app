@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
 import OrientedImage from "../../../components/elements/OrientedImage";
-
+//todo:rework
 function StoriesShowCase({ story }) {
   const PF = address[2].url;
   // Trimmed strings for portrait images

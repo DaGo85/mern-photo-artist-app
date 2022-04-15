@@ -43,7 +43,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 label="password"
-                type="text"
+                type="password"
                 className="peer"
                 autoComplete="password"
                 required
@@ -53,7 +53,7 @@ function Login() {
             </div>
             <button
               onClick={() => handleLogin()}
-              className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+              className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-light font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
             >
               Login
             </button>
@@ -62,8 +62,9 @@ function Login() {
                 onClick={() => {
                   logout();
                   setUserData(null);
+                  navigate("/");
                 }}
-                className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                className="py-3 px-6 bg-gradient-to-r from-serror to-red-900 text-light font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
               >
                 Logout
               </button>

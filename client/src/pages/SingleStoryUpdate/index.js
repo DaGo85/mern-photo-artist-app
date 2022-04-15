@@ -161,7 +161,7 @@ function SingleStoryUpdate() {
                 </div>
                 <button
                   type="submit"
-                  className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                  className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
                 >
                   Update Story!
                 </button>
@@ -169,7 +169,7 @@ function SingleStoryUpdate() {
               <ErrorMsg isError={isError} />
               <button
                 onClick={() => setShowModal(true)}
-                className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                className="py-3 px-6 bg-gradient-to-r from-serror to-red-900 text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
               >
                 Delete Story!
               </button>

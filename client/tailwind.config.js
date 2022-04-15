@@ -7,6 +7,10 @@ module.exports = {
         b: "#345B63",
         c: "#152D35",
         d: "#112031",
+        sselect: "#15B7B9",
+        ssuccess: "#45EBA5",
+        serror: "#F57170",
+        shover: "#F0FFF3",
       },
       keyframes: {
         sliderImage: {

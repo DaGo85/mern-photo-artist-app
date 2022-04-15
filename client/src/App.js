@@ -22,7 +22,7 @@ import { useAuthContext } from "./utility/AuthContextProvider";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "./utility/firebase";
 
-// todo: user, context, loading spinner?, IntersectionObserver?
+// todo: loading spinner?, IntersectionObserver?, icons for buttons
 // button styles, pop in animation change, helpertext for using page features
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.

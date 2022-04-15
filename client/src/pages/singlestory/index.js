@@ -156,7 +156,7 @@ function SingleStory() {
               {userCreds?.name === story.username && (
                 <>
                   <Link to={`/singlestoryupdate${story._id}`}>
-                    <button className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300">
+                    <button className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300">
                       Update Story
                     </button>
                   </Link>
@@ -185,7 +185,7 @@ function SingleStory() {
                       onClick={() => {
                         handleSubmit();
                       }}
-                      className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                      className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
                     >
                       Upload Image!
                     </button>
@@ -194,7 +194,7 @@ function SingleStory() {
                       onClick={() => {
                         fileRef.current.click();
                       }}
-                      className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+                      className="py-3 px-6 bg-gradient-to-r from-sselect to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
                     >
                       Select File!
                     </button>
@@ -205,15 +205,17 @@ function SingleStory() {
           )}
           <ErrorMsg isError={isError} />
           <div ref={myRef} />
-          <button
-            onClick={() => {
-              setDeleteMode(!deleteMode);
-              setIsError(false);
-            }}
-            className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
-          >
-            Delete Images!
-          </button>
+          {userCreds?.name && (
+            <button
+              onClick={() => {
+                setDeleteMode(!deleteMode);
+                setIsError(false);
+              }}
+              className="py-3 px-6 bg-gradient-to-r from-serror to-red-900 text-light font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
+            >
+              Delete Images!
+            </button>
+          )}
           {story && (
             <>
               <Pagination
