@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
+import { useAuthContext } from "../../../utility/AuthContextProvider";
 
 function ImageGrid({
   currentGridData,
@@ -9,8 +10,7 @@ function ImageGrid({
   images,
 }) {
   const { setIsOpen, setImageData } = useModalContext();
-  const user = "da";
-
+  const { userData } = useAuthContext();
   return (
     <section className="card-setup image-grid py-6 justify-center ">
       {deleteMode
@@ -35,7 +35,7 @@ function ImageGrid({
                     />
                   )}
                 </div>
-                {user === item.username && (
+                {userData.name === item.username && (
                   <div className="w-full h-full absolute top-0 left-0 items-center justify-center flex bg-slate-900/70">
                     <svg
                       aria-label="delete image"

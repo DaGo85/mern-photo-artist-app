@@ -17,8 +17,10 @@ import SingleStoryUpdate from "./pages/SingleStoryUpdate";
 import ImageModal from "./components/ImageModal";
 import Login from "./pages/Login";
 import { useEffect } from "react";
+import { query, collection, getDocs, where } from "firebase/firestore";
 import { useAuthContext } from "./utility/AuthContextProvider";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "./utility/firebase";
 
 // todo: user, context, loading spinner?, IntersectionObserver?
 // button styles, pop in animation change, helpertext for using page features
@@ -30,21 +32,42 @@ function App() {
   const location = useLocation();
   useScrollToTop();
   const auth = getAuth();
-  const { userData, setUserData } = useAuthContext();
+  const { userData, setUserData, setUserCreds } = useAuthContext();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
         const email = user.email;
 
-        const newUser = { email };
+        const newUser = { uid, email };
 
         setUserData(newUser);
       }
     });
   }, [auth]);
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      if (userData) {
+        try {
+          const q = query(
+            collection(db, "users"),
+            where("uid", "==", userData.uid)
+          );
+          const doc = await getDocs(q);
+          const data = doc.docs[0].data();
+          setUserCreds({ name: data.name });
+        } catch (err) {
+          console.error(err);
+          alert("An error occured while fetching user data");
+        }
+      }
+    };
+    fetchUserName();
+  }, [userData]);
 
   return (
     <>

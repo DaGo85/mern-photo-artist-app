@@ -2,14 +2,17 @@ import TransitionWrapper from "../../utility/TransitionWrapper";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";
 import { subtexts } from "../../assets/data";
-import { logInWithEmailAndPassword } from "../../utility/firebase";
+import { logInWithEmailAndPassword, logout } from "../../utility/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { userData, setUserData } = useAuthContext();
 
   const handleLogin = () => {
     logInWithEmailAndPassword(email, password);
@@ -21,11 +24,7 @@ function Login() {
         <div className="home-bg bg-setup">
           <PageHeadLine headline={"Login"} />
           <SubText subtext={subtexts.login} />
-          <form
-            id="form-reset"
-            onSubmit={handleLogin}
-            className="card-setup md:w-[600px] py-form gap-form"
-          >
+          <div className="card-setup md:w-[600px] py-form gap-form">
             <div className="w-full relative">
               <input
                 onChange={(e) => setEmail(e.target.value)}
@@ -53,12 +52,23 @@ function Login() {
               <label htmlFor="password">Please enter your password</label>
             </div>
             <button
-              type="submit"
+              onClick={() => handleLogin()}
               className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
             >
               Login
             </button>
-          </form>
+            {userData && (
+              <button
+                onClick={() => {
+                  logout();
+                  setUserData(null);
+                }}
+                className="py-3 px-6 bg-d text-light font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300"
+              >
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </main>
     </TransitionWrapper>

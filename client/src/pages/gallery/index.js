@@ -10,11 +10,12 @@ import getImageOrientation from "../../utility/getImageOrientation";
 import OrientedImage from "../../components/elements/OrientedImage";
 import Carousel from "../../components/elements/Carousel";
 import ErrorMsg from "../../components/elements/ErrorMsg";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 
 const PageSize = 9;
 
 function Gallery() {
-  const user = "da";
+  const { userData } = useAuthContext();
   const fileRef = useRef();
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteMode, setDeleteMode] = useState(false);
@@ -42,10 +43,10 @@ function Gallery() {
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username) => {
-    if (username === user) {
+    if (username === userData.name) {
       try {
         await axios.delete(`${apiroutes[0].url}${imageid}`, {
-          data: { username: username },
+          data: { username: userData.name },
         });
       } catch (err) {
         setIsError("Can't delete this image now. Please try again later!");
@@ -58,7 +59,7 @@ function Gallery() {
   //todo: uploadorder
   const handleSubmit = async () => {
     const newPhoto = {
-      username: user,
+      username: userData.name,
     };
 
     // Restriction for files: jpeg,jpg and png only, also the size has to be
@@ -117,7 +118,7 @@ function Gallery() {
           <SubText subtext={subtexts.gallery} />
           {images.length && <Carousel data={images} />}
           <div ref={myRef} />
-          {user && (
+          {userData.name && (
             <>
               {file && (
                 <div

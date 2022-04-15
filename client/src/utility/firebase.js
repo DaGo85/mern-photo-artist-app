@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -30,4 +30,8 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-export { auth, db, logInWithEmailAndPassword };
+const logout = () => {
+  signOut(auth);
+};
+
+export { auth, db, logInWithEmailAndPassword, logout };
