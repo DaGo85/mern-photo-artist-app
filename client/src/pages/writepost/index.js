@@ -8,14 +8,15 @@ import getImageOrientation from "../../utility/getImageOrientation";
 import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 
 function WritePost() {
+  const { userCreds } = useAuthContext();
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
-  const user = "da";
 
   //Handler for submitting a new post
   const handleSubmit = async (e) => {
@@ -24,7 +25,7 @@ function WritePost() {
     const { title, message } = e.target.elements;
 
     const newPost = {
-      username: user,
+      username: userCreds.name,
       title: title.value,
       desc: message.value,
     };

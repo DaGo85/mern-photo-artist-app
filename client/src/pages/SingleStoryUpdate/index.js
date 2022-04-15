@@ -5,10 +5,12 @@ import { address, apiroutes } from "../../assets/data";
 import DeleteModal from "../../components/elements/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import OrientedImage from "../../components/elements/OrientedImage";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
 function SingleStoryUpdate() {
+  const { userCreds } = useAuthContext();
   const fileRef = useRef();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
@@ -21,7 +23,6 @@ function SingleStoryUpdate() {
   const location = useLocation();
   const path = location.pathname.split("singlestoryupdate")[1];
   const PF = address[2].url;
-  const user = "DG";
 
   // Fetching singlepost from API
   useEffect(() => {
@@ -36,7 +37,7 @@ function SingleStoryUpdate() {
   const handleDelete = async () => {
     try {
       await axios.delete(`${apiroutes[6].url}${story._id}`, {
-        data: { username: user },
+        data: { username: userCreds.name },
       });
       navigate("/stories");
     } catch (err) {
@@ -51,7 +52,7 @@ function SingleStoryUpdate() {
     const { storyName, desc } = e.target.elements;
 
     const newStory = {
-      username: user,
+      username: userCreds.name,
       story: storyName.value,
       desc: desc.value,
       photo: story.photo,

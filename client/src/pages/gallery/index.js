@@ -15,7 +15,7 @@ import { useAuthContext } from "../../utility/AuthContextProvider";
 const PageSize = 9;
 
 function Gallery() {
-  const { userData } = useAuthContext();
+  const { userCreds } = useAuthContext();
   const fileRef = useRef();
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteMode, setDeleteMode] = useState(false);
@@ -43,10 +43,11 @@ function Gallery() {
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username) => {
-    if (username === userData.name) {
+    console.log(userCreds.name);
+    if (username === userCreds.name) {
       try {
         await axios.delete(`${apiroutes[0].url}${imageid}`, {
-          data: { username: userData.name },
+          data: { username: userCreds.name },
         });
       } catch (err) {
         setIsError("Can't delete this image now. Please try again later!");
@@ -59,7 +60,7 @@ function Gallery() {
   //todo: uploadorder
   const handleSubmit = async () => {
     const newPhoto = {
-      username: userData.name,
+      username: userCreds.name,
     };
 
     // Restriction for files: jpeg,jpg and png only, also the size has to be
@@ -118,7 +119,7 @@ function Gallery() {
           <SubText subtext={subtexts.gallery} />
           {images.length && <Carousel data={images} />}
           <div ref={myRef} />
-          {userData.name && (
+          {userCreds?.name && (
             <>
               {file && (
                 <div

@@ -19,8 +19,6 @@ function RandomImage() {
     fetchImages();
   }, []);
 
-  console.log("images" + JSON.stringify(images));
-
   return (
     <div className="card-setup py-form">
       {images.length > 0 && (

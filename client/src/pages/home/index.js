@@ -18,7 +18,6 @@ function Home() {
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [modalState, setModalState] = useState(false);
 
   let currentGridData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;

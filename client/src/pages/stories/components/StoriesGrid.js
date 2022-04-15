@@ -2,13 +2,7 @@ import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
 import { motion, AnimatePresence } from "framer-motion";
 
-function StoriesGrid({
-  stories,
-  currentGridData,
-
-  images,
-  setImages,
-}) {
+function StoriesGrid({ currentGridData }) {
   return (
     <section className="card-setup image-grid py-6 justify-center">
       {currentGridData.map((item) => {
@@ -33,10 +27,9 @@ function StoriesGrid({
         );
 
         return (
-          <AnimatePresence>
+          <AnimatePresence key={item.photo}>
             <Link
               to={`/story${item._id}`}
-              key={item.photo}
               className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative"
             >
               <div className="w-full h-full block overflow-hidden aspect-square absolute">

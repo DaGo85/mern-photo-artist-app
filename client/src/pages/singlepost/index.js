@@ -5,16 +5,17 @@ import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
 import OrientedImage from "../../components/elements/OrientedImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
 function SinglePost() {
   const [post, setPost] = useState();
 
+  const { userCreds } = useAuthContext();
+
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const PF = address[1].url;
-
-  const user = "da";
 
   // Fetching singlepost from the API
   useEffect(() => {
@@ -53,7 +54,7 @@ function SinglePost() {
                   <p className="whitespace-pre-line">{post.desc}</p>
                 </pre>
               </div>
-              {user === post.username && post && (
+              {userCreds?.name === post.username && post && (
                 <Link to={`/singlepostupdate${post._id}`}>
                   <button className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300">
                     Update Post!

@@ -8,15 +8,15 @@ import getImageOrientation from "../../utility/getImageOrientation";
 import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 
 function WriteStory() {
+  const { userCreds } = useAuthContext();
   const [file, setFile] = useState(null);
   const [isError, setIsError] = useState(false);
   const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
   const navigate = useNavigate();
-
-  const user = "DG";
 
   //Handler for submitting a new story
   const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ function WriteStory() {
     const { title, story } = e.target.elements;
 
     const newStory = {
-      username: user,
+      username: userCreds.name,
       story: title.value,
       desc: story.value,
     };

@@ -8,6 +8,7 @@ import OrientedImage from "../../components/elements/OrientedImage";
 import getImageOrientation from "../../utility/getImageOrientation";
 import DeleteModal from "../../components/elements/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 
 function SinglePostUpdate() {
   const fileRef = useRef();
@@ -18,10 +19,11 @@ function SinglePostUpdate() {
   const [showModal, setShowModal] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const { userCreds } = useAuthContext();
+
   const location = useLocation();
   const path = location.pathname.split("singlepostupdate")[1];
   const PF = address[1].url;
-  const user = "da";
 
   // Fetching singlepost from API
   useEffect(() => {
@@ -36,7 +38,7 @@ function SinglePostUpdate() {
   const handleDelete = async () => {
     try {
       await axios.delete(`${apiroutes[2].url}${post._id}`, {
-        data: { username: user },
+        data: { username: userCreds.name },
       });
       navigate("/");
     } catch (err) {
@@ -51,7 +53,7 @@ function SinglePostUpdate() {
     const { title, desc } = e.target.elements;
 
     const newPost = {
-      username: user,
+      username: userCreds.name,
       title: title.value,
       desc: desc.value,
       photo: post.photo,

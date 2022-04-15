@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { navLinks } from "../../../assets/data";
+import { useAuthContext } from "../../../utility/AuthContextProvider";
 
 function NavBarLinks({ toggleNav }) {
+  const { userCreds } = useAuthContext();
   return (
     <>
       {navLinks.map((item) => {
@@ -25,18 +27,20 @@ function NavBarLinks({ toggleNav }) {
           </Link>
         );
       })}
-      <Link to="/write">
-        <li
-          onClick={() => {
-            if (toggleNav) {
-              toggleNav();
-            }
-          }}
-          className="text-2xl text-white hover:text-d"
-        >
-          Write
-        </li>
-      </Link>
+      {userCreds && (
+        <Link to="/write">
+          <li
+            onClick={() => {
+              if (toggleNav) {
+                toggleNav();
+              }
+            }}
+            className="text-2xl text-white hover:text-d"
+          >
+            Write
+          </li>
+        </Link>
+      )}
     </>
   );
 }

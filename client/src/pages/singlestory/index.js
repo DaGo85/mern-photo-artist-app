@@ -8,12 +8,14 @@ import ImageGrid from "../../components/elements/ImageGrid";
 import OrientedImage from "../../components/elements/OrientedImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import Pagination from "../../components/Pagination";
+import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
 const PageSize = 3;
 
 function SingleStory() {
+  const { userCreds } = useAuthContext();
   const fileRef = useRef();
   const myRef = useRef(null);
   const executeScroll = (to) =>
@@ -31,8 +33,6 @@ function SingleStory() {
   const location = useLocation();
   const path = location.pathname.split("story")[1];
   const PF = address[2].url;
-
-  const user = "DG";
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -64,7 +64,7 @@ function SingleStory() {
   //Handler for submitting a photo for singlestory
   const handleSubmit = async () => {
     const newStoryPhoto = {
-      username: user,
+      username: userCreds.name,
       story: story._id,
     };
     // Restriction for files: jpeg,jpg and png only, also the size has to be
@@ -115,7 +115,7 @@ function SingleStory() {
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username) => {
-    if (username === user) {
+    if (username === userCreds.name) {
       try {
         await axios.delete(`${apiroutes[4].url}${imageid}`, {
           data: { username: username },
@@ -153,7 +153,7 @@ function SingleStory() {
                   <p className="whitespace-pre-line">{story.desc}</p>
                 </pre>
               </div>
-              {user === story.username && (
+              {userCreds?.name === story.username && (
                 <>
                   <Link to={`/singlestoryupdate${story._id}`}>
                     <button className="py-3 px-6 bg-d text-white font-medium rounded hover:bg-a hover:text-d cursor-pointer ease-in-out duration-300">

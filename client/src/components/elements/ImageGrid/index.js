@@ -10,7 +10,7 @@ function ImageGrid({
   images,
 }) {
   const { setIsOpen, setImageData } = useModalContext();
-  const { userData } = useAuthContext();
+  const { userCreds } = useAuthContext();
   return (
     <section className="card-setup image-grid py-6 justify-center ">
       {deleteMode
@@ -35,7 +35,7 @@ function ImageGrid({
                     />
                   )}
                 </div>
-                {userData.name === item.username && (
+                {userCreds.name === item.username && (
                   <div className="w-full h-full absolute top-0 left-0 items-center justify-center flex bg-slate-900/70">
                     <svg
                       aria-label="delete image"
@@ -55,7 +55,7 @@ function ImageGrid({
           })
         : currentGridData.map((item) => {
             return (
-              <AnimatePresence>
+              <AnimatePresence key={item.photo}>
                 <div
                   onClick={() => {
                     setImageData({
@@ -65,7 +65,6 @@ function ImageGrid({
                     });
                     setIsOpen(true);
                   }}
-                  key={item.photo}
                   className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative hover:cursor-pointer"
                 >
                   <div className="w-full h-full block overflow-hidden aspect-square">
