@@ -11,7 +11,7 @@ function NavBar() {
     setIsOpen(!isOpen);
   };
   return (
-    <header className="z-30 w-full py-2 fixed flex flex-col items-center justify-between bg-b/50">
+    <header className="z-30 w-full py-2 fixed flex flex-col items-center justify-between bg-b/75">
       <span className="flex flex-row justify-between items-center w-full px-2">
         <NavBarLogo />
         <NavBarSocialIcons />

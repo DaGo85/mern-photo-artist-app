@@ -71,7 +71,7 @@ function WritePost() {
     <TransitionWrapper>
       <main>
         <div className="home-bg bg-setup">
-          <PageHeadLine headline={"Blog Section"} />
+          <PageHeadLine headline={"Blog-Eintrag"} />
           <SubText subtext={subtexts.writepost} />
           <div className="card-setup py-4 md:py-10 max-w-7xl">
             {file ? (

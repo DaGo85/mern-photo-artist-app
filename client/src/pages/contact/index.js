@@ -87,7 +87,7 @@ function Contact() {
             <button
               disabled={isError}
               type="submit"
-              className="py-3 px-6 bg-gradient-to-r from-sselect to-shover disabled:from-serror  font-medium rounded hover:to-b hover:text-slate-100 cursor-pointer ease-in-out duration-300"
+              className="py-3 px-6 bg-gradient-to-r from-ssuccess to-shover disabled:from-serror  font-medium rounded hover:to-b hover:text-slate-100 cursor-pointer ease-in-out duration-300"
             >
               {status}
             </button>

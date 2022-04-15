@@ -37,7 +37,7 @@ function NavBarLinks({ toggleNav }) {
             }}
             className="text-2xl text-white hover:text-d"
           >
-            Write
+            Hinzufügen
           </li>
         </Link>
       )}

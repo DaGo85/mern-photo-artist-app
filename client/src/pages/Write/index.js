@@ -9,7 +9,7 @@ function Write() {
     <TransitionWrapper>
       <main>
         <div className="home-bg bg-setup">
-          <PageHeadLine headline={"Write"} />
+          <PageHeadLine headline={"Hinzufügen"} />
           <SubText subtext={subtexts.write} />
           <WriteCards />
         </div>

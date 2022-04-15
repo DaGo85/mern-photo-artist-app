@@ -43,8 +43,8 @@ function Home() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
-          <PageHeadLine headline={"Home"} />
+        <div className="bg-[#f5f5f7] bg-setup">
+          <PageHeadLine headline={"Herzlich Willkommen"} />
           <SubText subtext={subtexts.home} />
           <RandomImage />
           <div ref={myRef} />

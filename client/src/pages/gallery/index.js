@@ -117,7 +117,6 @@ function Gallery() {
         <div className="home-bg bg-setup" id="pagination-start">
           <PageHeadLine headline={"Gallery"} />
           <SubText subtext={subtexts.gallery} />
-          {images.length && <Carousel data={images} />}
           <div ref={myRef} />
           {userCreds?.name && (
             <>

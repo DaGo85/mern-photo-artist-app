@@ -3,10 +3,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        a: "#D4ECDD",
-        b: "#345B63",
-        c: "#152D35",
-        d: "#112031",
+        a: "#ECB365",
+        b: "#1D1D1F",
+        c: "#064663",
+        d: "#1D1D1F",
         sselect: "#15B7B9",
         ssuccess: "#45EBA5",
         serror: "#F57170",

@@ -3,9 +3,9 @@ import writestoryimage from "./images/writestoryimage.svg";
 
 export const navLinks = [
   { name: "Home", link: "/" },
-  { name: "Gallery", link: "/gallery" },
+  { name: "Gallerie", link: "/gallery" },
   { name: "Stories", link: "/stories" },
-  { name: "Contact", link: "/contact" },
+  { name: "Kontakt", link: "/contact" },
   { name: "Impressum", link: "/impressum" },
 ];
 
@@ -42,16 +42,17 @@ export const socialIconsList = [
 
 // Data for subtexts on pages
 export const subtexts = {
-  contact: "You want to get in touch? Write me!",
-  impressum:
-    "Contact-Data of the possessor and any legal questions are answered here!",
-  gallery: "Fine Art presented in unique Photos in this Gallery!",
-  home: "Welcome to my Page, please stay a while and enjoy the content!",
-  stories: "Themed collections of photos!",
-  write: "The right place to choose a good direction for your creativity!",
-  writepost: "Write an article for your blog!",
-  writestory: "Create a new story and show everyone your pictures!",
-  login: "Please enter your login credentials!",
+  contact: "Wir helfen dir gerne weiter, schreib uns!",
+  impressum: "Rechtliche Informationen und Hinweise",
+  gallery:
+    '"There is one thing the photograph must contain, the humanity of the moment.” - Robert Frank',
+  home: "“Photography is a way of feeling, of touching, of loving. What you have caught on film is captured forever… It remembers little things, long after you have forgotten everything.” — Aaron Siskind",
+  stories:
+    "“If I could tell the story in words, I wouldn’t need to lug around a camera.” — Lewis Hine",
+  write: "Der richtige Ort um deine Kreativität auszuleben",
+  writepost: "Erstell einen neuen Blog-Eintrag",
+  writestory: "Erstell eine neue Story",
+  login: "Willkommen zurück!",
 };
 
 // Data for the cards
@@ -60,15 +61,15 @@ export const write = [
   {
     id: 1,
     url: "/writepost",
-    title: "Blog-Section",
-    text: "Find your way to the Blog and create news for the world!",
+    title: "Blog-Eintrag",
+    text: "Füge ein Bild mit Titel und Text zum Blog hinzu.",
     icon: writepostimage,
   },
   {
     id: 2,
     url: "/writestory",
-    title: "Story-Section",
-    text: "Find your way to the storyboard and create an album for the world!",
+    title: "Story",
+    text: "Erstell eine neue Story mit Titelbild und einem Album.",
     icon: writestoryimage,
   },
 ];

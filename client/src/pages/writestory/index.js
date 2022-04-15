@@ -71,7 +71,7 @@ function WriteStory() {
     <TransitionWrapper>
       <main>
         <div className="impressum-bg bg-setup">
-          <PageHeadLine headline={"Story Section"} />
+          <PageHeadLine headline={"Story"} />
           <SubText subtext={subtexts.writestory} />
           <div className="card-setup py-4 md:py-10">
             {file ? (

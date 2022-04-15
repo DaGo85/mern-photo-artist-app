@@ -21,7 +21,7 @@
   }
 
   h3 {
-    @apply text-4xl text-center text-d;
+    @apply text-4xl text-center text-d/80;
   }
 
   h4 {
@@ -53,9 +53,10 @@
   }
 
   .bg-setup {
-    @apply bg-fixed bg-center bg-cover py-40 md:py-48 lg:py-60
+    @apply bg-fixed bg-center bg-cover py-40 md:py-48 lg:py-48
     w-full flex flex-col items-center justify-start gap-6 md:gap-12;
   }
+
   [type="password"],
   [type="text"],
   [type="email"],
@@ -128,26 +129,3 @@
     md:px-4 md:py-6;
   }
 }
-
-@keyframes MoveUpDown {
-  0% {
-    object-position: center center;
-  }
-  50% {
-    object-position: left top;
-  }
-  100% {
-    object-position: right bottom;
-  }
-}
-
-.test-con {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-
-.test123:hover {
-  animation: MoveUpDown 20s linear infinite;
-}
-/**/
