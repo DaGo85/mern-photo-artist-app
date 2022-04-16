@@ -5,6 +5,7 @@ import { address, apiroutes } from "../../assets/data";
 import DeleteModal from "../../components/elements/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import OrientedImage from "../../components/elements/OrientedImage";
+import UniversalButton from "../../components/elements/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
@@ -92,6 +93,8 @@ function SingleStoryUpdate() {
     setOrientation(imgOrientation);
   };
 
+  const deleteHandler = () => setShowModal(true);
+
   return (
     <TransitionWrapper>
       <main>
@@ -159,17 +162,21 @@ function SingleStoryUpdate() {
                     required
                   />
                 </div>
-                <button type="submit" className="button-setup button-success">
-                  Update Story!
-                </button>
+                <UniversalButton
+                  text="Update Story!"
+                  modell="success"
+                  type="submit"
+                  icon="send"
+                />
               </form>
               <ErrorMsg isError={isError} />
-              <button
-                onClick={() => setShowModal(true)}
-                className="button-setup button-delete"
-              >
-                Delete Story!
-              </button>
+              <UniversalButton
+                text="Delete Story!"
+                handler={deleteHandler}
+                modell="delete"
+                type="button"
+                icon="trash"
+              />
               <DeleteModal
                 handleDelete={handleDelete}
                 showModal={showModal}

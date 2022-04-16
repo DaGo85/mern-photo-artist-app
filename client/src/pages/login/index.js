@@ -6,6 +6,7 @@ import { logInWithEmailAndPassword, logout } from "../../utility/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../utility/AuthContextProvider";
+import UniversalButton from "../../components/elements/UniversalButton";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -18,6 +19,13 @@ function Login() {
     logInWithEmailAndPassword(email, password);
     navigate("/");
   };
+
+  const logoutHandler = () => {
+    logout();
+    setUserData(null);
+    navigate("/");
+  };
+
   return (
     <TransitionWrapper>
       <main>
@@ -51,23 +59,19 @@ function Login() {
               />
               <label htmlFor="password">Please enter your password</label>
             </div>
-            <button
-              onClick={() => handleLogin()}
-              className="button-setup button-success"
-            >
-              Login
-            </button>
+            <UniversalButton
+              text="Login"
+              handler={handleLogin}
+              modell="success"
+              type="button"
+            />
             {userData && (
-              <button
-                onClick={() => {
-                  logout();
-                  setUserData(null);
-                  navigate("/");
-                }}
-                className="button-setup button-delete"
-              >
-                Logout
-              </button>
+              <UniversalButton
+                text="Logout"
+                handler={logoutHandler}
+                modell="delete"
+                type="button"
+              />
             )}
           </div>
         </div>

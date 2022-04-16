@@ -9,6 +9,7 @@ import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
+import UniversalButton from "../../components/elements/UniversalButton";
 
 function WritePost() {
   const { userCreds } = useAuthContext();
@@ -138,9 +139,12 @@ function WritePost() {
               />
               <label htmlFor="message">Please enter your message</label>
             </div>
-            <button type="submit" className="button-setup button-success">
-              Publish
-            </button>
+            <UniversalButton
+              text="Publish"
+              type="submit"
+              modell="success"
+              icon="send"
+            />
           </form>
           <ErrorMsg isError={isError} />
         </div>

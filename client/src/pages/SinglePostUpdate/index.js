@@ -9,6 +9,7 @@ import getImageOrientation from "../../utility/getImageOrientation";
 import DeleteModal from "../../components/elements/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
+import UniversalButton from "../../components/elements/UniversalButton";
 
 function SinglePostUpdate() {
   const fileRef = useRef();
@@ -93,6 +94,8 @@ function SinglePostUpdate() {
     setOrientation(imgOrientation);
   };
 
+  const deleteHandler = () => setShowModal(true);
+
   return (
     <TransitionWrapper>
       <main>
@@ -162,17 +165,21 @@ function SinglePostUpdate() {
                   />
                   <label htmlFor="desc">Please enter a Message</label>
                 </div>
-                <button type="submit" className="button-setup button-success">
-                  Update Post!
-                </button>
+                <UniversalButton
+                  text="Update Post!"
+                  modell="success"
+                  type="submit"
+                  icon="send"
+                />
               </form>
               <ErrorMsg isError={isError} />
-              <button
-                onClick={() => setShowModal(true)}
-                className="button-setup button-delete"
-              >
-                Delete Post!
-              </button>
+              <UniversalButton
+                text="Delete Post!"
+                handler={deleteHandler}
+                modell="delete"
+                type="button"
+                icon="trash"
+              />
               <DeleteModal
                 handleDelete={handleDelete}
                 showModal={showModal}

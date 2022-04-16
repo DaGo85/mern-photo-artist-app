@@ -1,5 +1,5 @@
 import React from "react";
-
+//todo buttons
 function DeleteModal({ handleDelete, showModal, setShowModal, deleteType }) {
   return (
     <div

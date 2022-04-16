@@ -7,6 +7,7 @@ import ErrorMsg from "../../components/elements/ErrorMsg";
 import ImageGrid from "../../components/elements/ImageGrid";
 import OrientedImage from "../../components/elements/OrientedImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
+import UniversalButton from "../../components/elements/UniversalButton";
 import Pagination from "../../components/Pagination";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
@@ -127,6 +128,12 @@ function SingleStory() {
     }
   };
 
+  const handleSelectFile = () => fileRef.current.click();
+  const handleDeleteMode = () => {
+    setDeleteMode(!deleteMode);
+    setIsError(false);
+  };
+
   return (
     <TransitionWrapper>
       <main>
@@ -156,9 +163,12 @@ function SingleStory() {
               {userCreds?.name === story.username && (
                 <>
                   <Link to={`/singlestoryupdate${story._id}`}>
-                    <button className="button-setup button-success">
-                      Update Story
-                    </button>
+                    <UniversalButton
+                      text="Update Story"
+                      type="button"
+                      modell="success"
+                      icon="update"
+                    />
                   </Link>
                   <input
                     accept="image/jpg,image/png,image/jpeg"
@@ -181,23 +191,21 @@ function SingleStory() {
                     </div>
                   )}
                   {file ? (
-                    <button
-                      onClick={() => {
-                        handleSubmit();
-                      }}
-                      className="button-setup button-success"
-                    >
-                      Upload Image!
-                    </button>
+                    <UniversalButton
+                      text="Upload Image!"
+                      type="button"
+                      modell="success"
+                      handler={handleSubmit}
+                      icon="upload"
+                    />
                   ) : (
-                    <button
-                      onClick={() => {
-                        fileRef.current.click();
-                      }}
-                      className="button-setup button-select"
-                    >
-                      Select File!
-                    </button>
+                    <UniversalButton
+                      text="Select File!"
+                      type="button"
+                      modell="select"
+                      handler={handleSelectFile}
+                      icon="selectImage"
+                    />
                   )}
                 </>
               )}
@@ -206,15 +214,13 @@ function SingleStory() {
           <ErrorMsg isError={isError} />
           <div ref={myRef} />
           {userCreds?.name && (
-            <button
-              onClick={() => {
-                setDeleteMode(!deleteMode);
-                setIsError(false);
-              }}
-              className="button-setup button-delete"
-            >
-              Delete Images!
-            </button>
+            <UniversalButton
+              text="Delete Images!"
+              type="button"
+              modell="delete"
+              handler={handleDeleteMode}
+              icon="trash"
+            />
           )}
           {story && (
             <>

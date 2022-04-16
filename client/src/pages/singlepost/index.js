@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
 import OrientedImage from "../../components/elements/OrientedImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
+import UniversalButton from "../../components/elements/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
@@ -56,9 +57,11 @@ function SinglePost() {
               </div>
               {userCreds?.name === post.username && post && (
                 <Link to={`/singlepostupdate${post._id}`}>
-                  <button className="button-setup button-select">
-                    Update Post!
-                  </button>
+                  <UniversalButton
+                    text="Update Post!"
+                    modell="select"
+                    type="button"
+                  />
                 </Link>
               )}
             </>

@@ -10,6 +10,7 @@ import getImageOrientation from "../../utility/getImageOrientation";
 import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
+import UniversalButton from "../../components/elements/UniversalButton";
 
 const PageSize = 9;
 
@@ -110,6 +111,16 @@ function Gallery() {
     executeScroll("nearest");
   }, [currentGridData]);
 
+  const handleSelectFile = () => {
+    fileRef.current.click();
+    setIsError(false);
+  };
+
+  const handleDelete = () => {
+    setDeleteMode(!deleteMode);
+    setIsError(false);
+  };
+
   return (
     <TransitionWrapper>
       <main>
@@ -132,35 +143,29 @@ function Gallery() {
                 </div>
               )}
               {file ? (
-                <button
-                  onClick={() => {
-                    handleSubmit();
-                  }}
-                  className="button-setup button-success"
-                >
-                  Upload Image!
-                </button>
+                <UniversalButton
+                  text="Upload Image!"
+                  handler={handleSubmit}
+                  modell="success"
+                  type="button"
+                  icon="upload"
+                />
               ) : (
-                <button
-                  onClick={() => {
-                    fileRef.current.click();
-                    setIsError(false);
-                  }}
-                  className="button-setup button-select"
-                >
-                  Select Image!
-                </button>
+                <UniversalButton
+                  text="Select Image!"
+                  handler={handleSelectFile}
+                  modell="select"
+                  type="button"
+                  icon="selectImage"
+                />
               )}
-
-              <button
-                onClick={() => {
-                  setDeleteMode(!deleteMode);
-                  setIsError(false);
-                }}
-                className="button-setup button-delete"
-              >
-                Delete Images!
-              </button>
+              <UniversalButton
+                text="Delete Images!"
+                handler={handleDelete}
+                modell="delete"
+                type="button"
+                icon="trash"
+              />
               <input
                 accept="image/jpg,image/png,image/jpeg"
                 className="hidden"

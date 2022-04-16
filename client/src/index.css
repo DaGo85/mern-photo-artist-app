@@ -114,21 +114,21 @@
   }
 
   .button-setup {
-    @apply py-3 px-6 bg-gradient-to-r  text-light font-medium rounded 
-     cursor-pointer 
-    ease-in-out duration-300;
+    @apply flex flex-row py-3 px-6 gap-6 justify-center items-center bg-gradient-to-r text-light
+    font-medium rounded cursor-pointer ease-in-out duration-300;
   }
 
+  /*rework unique buttons */
   .button-delete {
     @apply from-serror to-red-900 hover:to-shover hover:text-d;
   }
 
-  .button-select {
-    @apply from-sselect to-b text-white  hover:to-shover hover:text-d;
-  }
-
   .button-success {
     @apply from-ssuccess to-b text-white  hover:to-shover hover:text-d;
+  }
+
+  .button-select {
+    @apply from-b via-b to-sselect text-white  hover:to-shover hover:text-basic hover:shadow-md hover:shadow-basic;
   }
 
   .pagination-item {
