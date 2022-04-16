@@ -27,6 +27,7 @@ import { db } from "./utility/firebase";
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.
 // bg images optimation, field test image number and proportion for all grids
+//button blue : #0070c9
 
 function App() {
   const location = useLocation();

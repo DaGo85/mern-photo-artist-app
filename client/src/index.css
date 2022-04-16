@@ -113,6 +113,24 @@
     @apply py-6 my-8 text-center text-2xl;
   }
 
+  .button-setup {
+    @apply py-3 px-6 bg-gradient-to-r  text-light font-medium rounded 
+     cursor-pointer 
+    ease-in-out duration-300;
+  }
+
+  .button-delete {
+    @apply from-serror to-red-900 hover:to-shover hover:text-d;
+  }
+
+  .button-select {
+    @apply from-sselect to-b text-white  hover:to-shover hover:text-d;
+  }
+
+  .button-success {
+    @apply from-ssuccess to-b text-white  hover:to-shover hover:text-d;
+  }
+
   .pagination-item {
     @apply flex items-center box-border h-8 text-center mx-auto my-1 
     tracking-wide rounded-2xl leading-normal text-lg 

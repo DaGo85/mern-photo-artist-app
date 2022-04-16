@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../../assets/images/logo.jfif";
+import logo3 from "../../../assets/images/logo3.jpeg";
 
 function NavBarLogo() {
   return (
     <Link to="/">
-      <img src={logo} alt="app-owner-logo" />
+      <img className="max-h-20" src={logo3} alt="app-owner-logo" />
     </Link>
   );
 }

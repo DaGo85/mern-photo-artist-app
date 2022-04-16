@@ -11,6 +11,7 @@ module.exports = {
         ssuccess: "#45EBA5",
         serror: "#F57170",
         shover: "#F0FFF3",
+        linkhover: "#06c",
       },
       keyframes: {
         sliderImage: {

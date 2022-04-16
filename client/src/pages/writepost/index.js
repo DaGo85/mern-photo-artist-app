@@ -138,10 +138,7 @@ function WritePost() {
               />
               <label htmlFor="message">Please enter your message</label>
             </div>
-            <button
-              type="submit"
-              className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
-            >
+            <button type="submit" className="button-setup button-success">
               Publish
             </button>
           </form>

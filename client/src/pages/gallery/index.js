@@ -8,7 +8,6 @@ import ImageGrid from "../../components/elements/ImageGrid";
 import axios from "axios";
 import getImageOrientation from "../../utility/getImageOrientation";
 import OrientedImage from "../../components/elements/OrientedImage";
-import Carousel from "../../components/elements/Carousel";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 
@@ -137,7 +136,7 @@ function Gallery() {
                   onClick={() => {
                     handleSubmit();
                   }}
-                  className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
+                  className="button-setup button-success"
                 >
                   Upload Image!
                 </button>
@@ -147,17 +146,18 @@ function Gallery() {
                     fileRef.current.click();
                     setIsError(false);
                   }}
-                  className="py-3 px-6 bg-gradient-to-r from-sselect to-b text-white font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
+                  className="button-setup button-select"
                 >
                   Select Image!
                 </button>
               )}
+
               <button
                 onClick={() => {
                   setDeleteMode(!deleteMode);
                   setIsError(false);
                 }}
-                className="py-3 px-6 bg-gradient-to-r from-serror to-red-900 text-light font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
+                className="button-setup button-delete"
               >
                 Delete Images!
               </button>

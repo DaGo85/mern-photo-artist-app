@@ -53,7 +53,7 @@ function Login() {
             </div>
             <button
               onClick={() => handleLogin()}
-              className="py-3 px-6 bg-gradient-to-r from-ssuccess to-b text-light font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
+              className="button-setup button-success"
             >
               Login
             </button>
@@ -64,7 +64,7 @@ function Login() {
                   setUserData(null);
                   navigate("/");
                 }}
-                className="py-3 px-6 bg-gradient-to-r from-serror to-red-900 text-light font-medium rounded hover:to-shover hover:text-d cursor-pointer ease-in-out duration-300"
+                className="button-setup button-delete"
               >
                 Logout
               </button>
