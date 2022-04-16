@@ -13,7 +13,7 @@ import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
-const PageSize = 3;
+const PageSize = 9;
 
 function SingleStory() {
   const { userCreds } = useAuthContext();

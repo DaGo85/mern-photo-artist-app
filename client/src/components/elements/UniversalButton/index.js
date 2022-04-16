@@ -5,7 +5,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     trash: (
       <svg
         aria-label="delete image"
-        className="cursor-pointer h-1/3 opacity-70 fill-slate-100 hover:opacity-100 hover:fill-red-400 transition-color duration-300"
+        className="svg-setup cursor-pointer h-1/3 opacity-70 fill-slate-100 hover:opacity-100 hover:fill-red-400 transition-color duration-300"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
       >
@@ -13,23 +13,35 @@ function UniversalButton({ text, type, handler, modell, icon }) {
       </svg>
     ),
     upload: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <svg
+        className="svg-setup"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 384 512"
+      >
         <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM288.1 344.1C284.3 349.7 278.2 352 272 352s-12.28-2.344-16.97-7.031L216 305.9V408c0 13.25-10.75 24-24 24s-24-10.75-24-24V305.9l-39.03 39.03c-9.375 9.375-24.56 9.375-33.94 0s-9.375-24.56 0-33.94l80-80c9.375-9.375 24.56-9.375 33.94 0l80 80C298.3 320.4 298.3 335.6 288.1 344.1z" />
       </svg>
     ),
     selectImage: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <svg
+        className="svg-setup"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 384 512"
+      >
         <path d="M224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM96 224c17.67 0 32 14.33 32 32S113.7 288 96 288S64 273.7 64 256S78.33 224 96 224zM318.1 439.5C315.3 444.8 309.9 448 304 448h-224c-5.9 0-11.32-3.248-14.11-8.451c-2.783-5.201-2.479-11.52 .7949-16.42l53.33-80C122.1 338.7 127.1 336 133.3 336s10.35 2.674 13.31 7.125L160 363.2l45.35-68.03C208.3 290.7 213.3 288 218.7 288s10.35 2.674 13.31 7.125l85.33 128C320.6 428 320.9 434.3 318.1 439.5zM256 0v128h128L256 0z" />
       </svg>
     ),
     update: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <svg
+        className="svg-setup"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 576 512"
+      >
         <path d="M0 64C0 28.65 28.65 0 64 0H224V128C224 145.7 238.3 160 256 160H384V299.6L289.3 394.3C281.1 402.5 275.3 412.8 272.5 424.1L257.4 484.2C255.1 493.6 255.7 503.2 258.8 512H64C28.65 512 0 483.3 0 448V64zM256 128V0L384 128H256zM564.1 250.1C579.8 265.7 579.8 291 564.1 306.7L534.7 336.1L463.8 265.1L493.2 235.7C508.8 220.1 534.1 220.1 549.8 235.7L564.1 250.1zM311.9 416.1L441.1 287.8L512.1 358.7L382.9 487.9C378.8 492 373.6 494.9 368 496.3L307.9 511.4C302.4 512.7 296.7 511.1 292.7 507.2C288.7 503.2 287.1 497.4 288.5 491.1L303.5 431.8C304.9 426.2 307.8 421.1 311.9 416.1V416.1z" />
       </svg>
     ),
     send: (
       <svg
-        className="w-10"
+        className="svg-setup"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
       >
@@ -51,7 +63,8 @@ function UniversalButton({ text, type, handler, modell, icon }) {
       type={type}
       onClick={handler && (() => handler())}
     >
-      {icon && icons[icon]}
+      <span class="strikediag withpadding">{icon && icons[icon]}</span>
+      <span className="strikethrough">{icon && icons[icon]}</span>
       {text}
     </button>
   );

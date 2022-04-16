@@ -9,16 +9,23 @@ function StoriesGrid({ currentGridData }) {
         // Trimmed strings for stories
         // Maximum number of characters to extract
 
-        const maxLength = 300;
+        const maxLength = 330;
+        const medLength = 230;
         const minLength = 100;
 
         // Trim the string to the maximum length
         let trimmedString = item.desc.substr(0, maxLength);
+        let trimmedStringMed = item.desc.substr(0, medLength);
         let trimmedStringMin = item.desc.substr(0, minLength);
         // Re-trim if it ended in the middle of a word
         trimmedString = trimmedString.substr(
           0,
           Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
+        );
+
+        trimmedStringMed = trimmedStringMed.substr(
+          0,
+          Math.min(trimmedStringMed.length, trimmedStringMed.lastIndexOf(" "))
         );
 
         trimmedStringMin = trimmedStringMin.substr(
@@ -42,10 +49,13 @@ function StoriesGrid({ currentGridData }) {
                   </h6>
                   <hr className="w-full" />
                   <pre>
-                    <p className="whitespace-pre-line hidden md:block">
+                    <p className="whitespace-pre-line hidden lg:block">
                       {trimmedString}
                     </p>
-                    <p className="whitespace-pre-line  md:hidden">
+                    <p className="whitespace-pre-line hidden md:block lg:hidden">
+                      {trimmedStringMed}
+                    </p>
+                    <p className="whitespace-pre-line md:hidden">
                       {trimmedStringMin}
                     </p>
                   </pre>

@@ -119,6 +119,10 @@
     font-medium rounded cursor-pointer ease-in-out duration-300;
   }
 
+  .svg-setup {
+    @apply w-6;
+  }
+
   /*rework unique buttons */
   .button-delete {
     @apply from-serror to-red-900 hover:to-shover hover:text-d;
@@ -147,4 +151,45 @@
     @apply flex items-center h-8 text-center mx-auto my-1 text-d cursor-pointer
     md:px-4 md:py-6;
   }
+
+  .navhover:hover {
+    text-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 32px #fff;
+  }
+
+  .navsvghover:hover {
+    filter: drop-shadow(0.5px 0.5px 12px rgb(255 255 255 / 1));
+  }
+}
+
+.strikethrough {
+  position: relative;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 2px solid;
+  border-color: black;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.strikediag {
+  background: linear-gradient(
+    to left top,
+    transparent 47.75%,
+    currentColor 49.5%,
+    currentColor 50.5%,
+    transparent 52.25%
+  );
+}
+
+.withpadding {
+  padding: 0 0.15em;
 }

@@ -8,7 +8,7 @@ import axios from "axios";
 import StoriesGrid from "./components/StoriesGrid";
 import Pagination from "../../components/Pagination";
 
-const PageSize = 2;
+const PageSize = 9;
 
 function Stories() {
   const [stories, setStories] = useState([]);

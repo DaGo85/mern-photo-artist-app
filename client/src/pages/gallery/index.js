@@ -11,6 +11,7 @@ import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import UniversalButton from "../../components/elements/UniversalButton";
+import Carousel from "../../components/elements/Carousel";
 
 const PageSize = 9;
 
@@ -127,6 +128,7 @@ function Gallery() {
         <div className="home-bg bg-setup" id="pagination-start">
           <PageHeadLine headline={"Gallery"} />
           <SubText subtext={subtexts.gallery} />
+          {images && <Carousel data={images} />}
           <div ref={myRef} />
           {userCreds?.name && (
             <>

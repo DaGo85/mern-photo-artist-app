@@ -20,7 +20,7 @@ function NavBarLinks({ toggleNav }) {
                   toggleNav();
                 }
               }}
-              className="text-2xl text-white hover:text-d"
+              className="text-2xl text-white navhover"
             >
               {item.name}
             </li>
@@ -35,7 +35,7 @@ function NavBarLinks({ toggleNav }) {
                 toggleNav();
               }
             }}
-            className="text-2xl text-white hover:text-d"
+            className="navhover text-2xl text-basic"
           >
             Hinzufügen
           </li>
