@@ -73,7 +73,9 @@ function HomeBlogCards({ currentGridData }) {
             <h6>Last Update: {new Date(post.updatedAt).toDateString()}</h6>
             <hr className="w-full" />
             <pre>
-              <p className="whitespace-pre-line">{trimmedStringLandscape}</p>
+              <p className="whitespace-pre-line font-sans">
+                {trimmedStringLandscape}
+              </p>
             </pre>
           </Link>
         ) : (
@@ -98,7 +100,9 @@ function HomeBlogCards({ currentGridData }) {
               <h6>Last Update: {new Date(post.updatedAt).toDateString()}</h6>
               <hr className="w-full" />
               <pre>
-                <p className="whitespace-pre-line">{trimmedStringPortrait}</p>
+                <p className="whitespace-pre-line font-sans">
+                  {trimmedStringPortrait}
+                </p>
               </pre>
             </div>
           </Link>

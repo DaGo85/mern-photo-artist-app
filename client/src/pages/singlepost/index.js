@@ -61,6 +61,7 @@ function SinglePost() {
                     text="Update Post!"
                     modell="select"
                     type="button"
+                    icon="update"
                   />
                 </Link>
               )}
