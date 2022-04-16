@@ -41,7 +41,7 @@ function Stories() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
+        <div className="bg-setup">
           <PageHeadLine headline={"Stories"} />
           <SubText subtext={subtexts.stories} />
           {stories.length && <StoriesShowCase story={stories[0]} />}

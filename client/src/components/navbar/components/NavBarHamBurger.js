@@ -5,7 +5,7 @@ function NavBarHamBurger({ isOpen, setIsOpen }) {
   return (
     <button
       aria-label="Navbar hamburger"
-      className="md:hidden flex flex-col h-12 w-12 border-2 border-white rounded justify-center items-center group"
+      className="navsvghover md:hidden flex flex-col h-12 w-12 border-2 border-white rounded justify-center items-center group"
       onClick={() => setIsOpen(!isOpen)}
     >
       <div

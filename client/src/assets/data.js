@@ -45,10 +45,10 @@ export const subtexts = {
   contact: "Wir helfen dir gerne weiter, schreib uns!",
   impressum: "Rechtliche Informationen und Hinweise",
   gallery:
-    '"There is one thing the photograph must contain, the humanity of the moment.” - Robert Frank',
-  home: "“Photography is a way of feeling, of touching, of loving. What you have caught on film is captured forever… It remembers little things, long after you have forgotten everything.” — Aaron Siskind",
+    '"Mach sichtbar, was vielleicht ohne dich nie wahrgenommen worden wäre." - Robert Bresson',
+  home: '"Bilder, welche Du gemacht hast haben Einfluss auf die, welche du machen wirst. So ist das Leben!" – John Sexton',
   stories:
-    "“If I could tell the story in words, I wouldn’t need to lug around a camera.” — Lewis Hine",
+    "“If I could tell the story in words, I wouldn’t need to lug around a camera.” - Lewis Hine",
   write: "Der richtige Ort um deine Kreativität auszuleben",
   writepost: "Erstell einen neuen Blog-Eintrag",
   writestory: "Erstell eine neue Story",

@@ -20,7 +20,7 @@ function NavBarLinks({ toggleNav }) {
                   toggleNav();
                 }
               }}
-              className="text-2xl text-white navhover"
+              className="text-2xl text-white navhover transition-all duration-300"
             >
               {item.name}
             </li>

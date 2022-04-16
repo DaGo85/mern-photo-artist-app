@@ -10,13 +10,13 @@ import ErrorMsg from "../../components/elements/ErrorMsg";
 // rework button
 
 function Contact() {
-  const [status, setStatus] = useState("Send");
+  const [status, setStatus] = useState("Senden");
   const [isError, setIsError] = useState("");
 
   // Handler for submitting data to the server
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Am Senden...");
     const { name, email, message } = e.target.elements;
 
     const details = {
@@ -32,11 +32,11 @@ function Contact() {
         data: JSON.stringify(details), // data or body
         headers: { "Content-Type": "application/json;charset=utf-8" },
       });
-      setStatus("Done");
+      setStatus("Erledigt");
       document.getElementById("form-reset").reset();
     } catch (err) {
       setIsError("standard");
-      setStatus("Error");
+      setStatus("Fehler");
     }
   };
 
@@ -59,9 +59,9 @@ function Contact() {
                 className="peer"
                 autoComplete="name"
                 required
-                placeholder="Please enter your name"
+                placeholder="Bitte gib deinen Namen ein"
               />
-              <label htmlFor="name">Please enter your name</label>
+              <label htmlFor="name">Bitte gib deinen Namen ein</label>
             </div>
             <div className="w-full relative">
               <input
@@ -71,9 +71,9 @@ function Contact() {
                 className="peer"
                 autoComplete="email"
                 required
-                placeholder="Please enter your email"
+                placeholder="Bitte gib deine Email ein"
               />
-              <label htmlFor="email">Please enter your email</label>
+              <label htmlFor="email">Bitte gib deine Email ein</label>
             </div>
             <div className="w-full relative">
               <textarea
@@ -81,9 +81,9 @@ function Contact() {
                 label="Message"
                 className="peer h-96 pt-2 "
                 required
-                placeholder="Please enter your message"
+                placeholder="Bitte gib deine Nachricht ein"
               />
-              <label htmlFor="message">Please enter your message</label>
+              <label htmlFor="message">Bitte gib deine Nachricht ein</label>
             </div>
             <button
               disabled={isError}
@@ -102,7 +102,7 @@ function Contact() {
           </form>
           {status === "Done" ? (
             <p className="card-setup status-msg text-slate-100">
-              Thank you for your Message!
+              Vielen Dank für deine Nachricht!
             </p>
           ) : (
             <ErrorMsg isError={isError} />

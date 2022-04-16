@@ -11,7 +11,6 @@ import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import UniversalButton from "../../components/elements/UniversalButton";
-import Carousel from "../../components/elements/Carousel";
 
 const PageSize = 9;
 
@@ -51,7 +50,9 @@ function Gallery() {
           data: { username: userCreds.name },
         });
       } catch (err) {
-        setIsError("Can't delete this image now. Please try again later!");
+        setIsError(
+          "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
+        );
       }
       setRerenderComponent(!rerenderComponent);
     }
@@ -88,7 +89,7 @@ function Gallery() {
         setRerenderComponent(!rerenderComponent);
         // document.getElementById("input-reset").reset();
       } else {
-        setIsError("The file size is too big!");
+        setIsError("Die Datei ist zu gross!");
         setFile(null);
       }
     }
@@ -126,9 +127,8 @@ function Gallery() {
     <TransitionWrapper>
       <main>
         <div className="home-bg bg-setup" id="pagination-start">
-          <PageHeadLine headline={"Gallery"} />
+          <PageHeadLine headline={"Gallerie"} />
           <SubText subtext={subtexts.gallery} />
-          {images && <Carousel data={images} />}
           <div ref={myRef} />
           {userCreds?.name && (
             <>
@@ -141,12 +141,12 @@ function Gallery() {
                   }}
                 >
                   <OrientedImage orientation={orientation} file={file} />
-                  <h4>Don't want this image? Click me!</h4>
+                  <h4>Klick hier, wenn du ein anderes Bild wählen möchtest!</h4>
                 </div>
               )}
               {file ? (
                 <UniversalButton
-                  text="Upload Image!"
+                  text="Bild hochladen!"
                   handler={handleSubmit}
                   modell="success"
                   type="button"
@@ -154,7 +154,7 @@ function Gallery() {
                 />
               ) : (
                 <UniversalButton
-                  text="Select Image!"
+                  text="Bild auswählen!"
                   handler={handleSelectFile}
                   modell="select"
                   type="button"
@@ -162,7 +162,7 @@ function Gallery() {
                 />
               )}
               <UniversalButton
-                text="Delete Images!"
+                text="Löschmodus!"
                 handler={handleDelete}
                 modell="delete"
                 type="button"

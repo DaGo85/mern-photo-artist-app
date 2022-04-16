@@ -43,7 +43,9 @@ function SinglePostUpdate() {
       });
       navigate("/");
     } catch (err) {
-      setIsError("Can't delete this post.Please try again later!");
+      setIsError(
+        "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
+      );
     }
   };
 
@@ -75,7 +77,7 @@ function SinglePostUpdate() {
           setIsError("standard");
         }
       } else {
-        setIsError("The file size is too big!");
+        setIsError("Die Datei ist zu gross!");
       }
     }
     //Updating post on MongoDB
@@ -113,7 +115,7 @@ function SinglePostUpdate() {
                   >
                     <OrientedImage orientation={orientation} file={file} />
                     <h4>
-                      Do you want your previous image or another one? Click me!
+                      Klick hier, wenn du ein anderes Bild wählen möchtest!
                     </h4>
                   </div>
                 ) : (
@@ -130,7 +132,7 @@ function SinglePostUpdate() {
                       alt="post photo"
                       path={PF}
                     />
-                    <h4>Click me for changing title image!</h4>
+                    <h4>Klick hier, wenn du das Titel Bild ändern möchtest!</h4>
                   </div>
                 )}
                 <input
@@ -154,7 +156,7 @@ function SinglePostUpdate() {
                     type="text"
                     required
                   />
-                  <label htmlFor="title">Please enter a title</label>
+                  <label htmlFor="title">Bitte gib einen Titel ein</label>
                 </div>
                 <div className="w-full relative">
                   <textarea
@@ -163,7 +165,7 @@ function SinglePostUpdate() {
                     className="h-96 pt-2"
                     required
                   />
-                  <label htmlFor="desc">Please enter a Message</label>
+                  <label htmlFor="desc">Bitte gib eine Nachricht ein</label>
                 </div>
                 <UniversalButton
                   text="Update Post!"
@@ -174,7 +176,7 @@ function SinglePostUpdate() {
               </form>
               <ErrorMsg isError={isError} />
               <UniversalButton
-                text="Delete Post!"
+                text="Post löschen!"
                 handler={deleteHandler}
                 modell="delete"
                 type="button"

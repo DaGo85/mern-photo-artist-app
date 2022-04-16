@@ -43,7 +43,7 @@ function DeleteModal({ handleDelete, showModal, setShowModal, deleteType }) {
               />
             </svg>
             <h3 className="mb-5 text-lg font-normal text-d">
-              Are you sure you want to delete this {deleteType}?
+              Bist du sicher das du diesen Beitrag löschen willst?
             </h3>
             <button
               onClick={() => {
@@ -53,7 +53,7 @@ function DeleteModal({ handleDelete, showModal, setShowModal, deleteType }) {
               type="button"
               className="text-white bg-serror/80 hover:bg-serror focus:ring-4 focus:outline-none focus:ring-serror/60 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
             >
-              Yes, I'm sure
+              Ja, ich bin sicher
             </button>
             <button
               onClick={() => {
@@ -62,7 +62,7 @@ function DeleteModal({ handleDelete, showModal, setShowModal, deleteType }) {
               type="button"
               className="text-d bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
             >
-              No, cancel
+              Nein, abbrechen
             </button>
           </div>
         </div>

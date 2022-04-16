@@ -45,7 +45,7 @@ function StoriesGrid({ currentGridData }) {
                   <h5>Author: {item.username}</h5>
                   <hr className="w-full" />
                   <h6>
-                    Last Update: {new Date(item.updatedAt).toDateString()}
+                    Letztes Update: {new Date(item.updatedAt).toDateString()}
                   </h6>
                   <hr className="w-full" />
                   <pre>

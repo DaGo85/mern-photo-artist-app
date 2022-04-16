@@ -18,15 +18,12 @@ function ImageModal() {
     }
   }, [imageData]);
 
-  console.log("cont" + isOpen);
   return (
     <AnimatePresence>
       {isOpen && imageData.images.length > 0 && (
         <div className="bg-slate-600/80 top-0 left-0 fixed w-full h-full inset-0 flex justify-center items-center z-50">
           <button
-            onClick={() => {
-              setIsOpen(false);
-            }}
+            onClick={() => setIsOpen(false)}
             type="button"
             className="animate-buttonPulse bg-transparent hover:bg-blue-900/75 rounded-2xl p-1.5 ml-auto inline-flex items-center absolute right-16 top-16"
           >

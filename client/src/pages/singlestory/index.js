@@ -94,7 +94,7 @@ function SingleStory() {
         setRerenderComponent(!rerenderComponent);
         // document.getElementById("form-reset").reset();
       } else {
-        setIsError("The file size is too big!");
+        setIsError("Die Datei ist zu gross!");
         setFile(null);
       }
     }
@@ -122,7 +122,9 @@ function SingleStory() {
           data: { username: username },
         });
       } catch (err) {
-        setIsError("Can't delete this image now. Please try again later!");
+        setIsError(
+          "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
+        );
       }
       setRerenderComponent(!rerenderComponent);
     }
@@ -152,8 +154,10 @@ function SingleStory() {
               <div className="card-setup text-setup py-4 md:py-10">
                 <h5>Author: {story.username}</h5>
                 <hr className="w-full" />
-                <h6>Created: {new Date(story.createdAt).toDateString()}</h6>
-                <h6>Last Update: {new Date(story.updatedAt).toDateString()}</h6>
+                <h6>Erstellt am: {new Date(story.createdAt).toDateString()}</h6>
+                <h6>
+                  Letztes Update: {new Date(story.updatedAt).toDateString()}
+                </h6>
               </div>
               <div className="card-setup text-setup py-4 md:py-10">
                 <pre>
@@ -187,12 +191,14 @@ function SingleStory() {
                       }}
                     >
                       <OrientedImage orientation={orientation} file={file} />
-                      <h4>Don't want this image? Click me!</h4>
+                      <h4>
+                        Klick hier, wenn du ein anderes Bild wählen möchtest!
+                      </h4>
                     </div>
                   )}
                   {file ? (
                     <UniversalButton
-                      text="Upload Image!"
+                      text="Bild hochladen!"
                       type="button"
                       modell="success"
                       handler={handleSubmit}
@@ -200,7 +206,7 @@ function SingleStory() {
                     />
                   ) : (
                     <UniversalButton
-                      text="Select File!"
+                      text="Bild aussuchen!"
                       type="button"
                       modell="select"
                       handler={handleSelectFile}
@@ -215,7 +221,7 @@ function SingleStory() {
           <div ref={myRef} />
           {userCreds?.name && (
             <UniversalButton
-              text="Delete Images!"
+              text="Löschmodus!"
               type="button"
               modell="delete"
               handler={handleDeleteMode}

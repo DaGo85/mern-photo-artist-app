@@ -6,7 +6,7 @@ function ErrorMsg({ isError }) {
       {isError &&
         (isError === "standard" ? (
           <div autoFocus className="card-setup status-msg text-err">
-            "Something went wrong, please try again later!"
+            "Da ist etwas schief gelaufen, versuch es bitte später noch einmal!"
           </div>
         ) : (
           <div autoFocus className="card-setup status-msg text-err">

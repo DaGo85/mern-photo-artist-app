@@ -27,8 +27,6 @@ function SinglePost() {
     getPost();
   }, []);
 
-  console.log("test1" + JSON.stringify(post));
-
   return (
     <TransitionWrapper>
       <main>
@@ -47,8 +45,10 @@ function SinglePost() {
               <div className="card-setup text-setup py-4 md:py-10">
                 <h5>Author: {post.username}</h5>
                 <hr className="w-full" />
-                <h6>Created: {new Date(post.createdAt).toDateString()}</h6>
-                <h6>Last Update: {new Date(post.updatedAt).toDateString()}</h6>
+                <h6>Erstellt am: {new Date(post.createdAt).toDateString()}</h6>
+                <h6>
+                  Letztes Update: {new Date(post.updatedAt).toDateString()}
+                </h6>
               </div>
               <div className="card-setup text-setup py-4 md:py-10">
                 <pre>
@@ -58,7 +58,7 @@ function SinglePost() {
               {userCreds?.name === post.username && post && (
                 <Link to={`/singlepostupdate${post._id}`}>
                   <UniversalButton
-                    text="Update Post!"
+                    text="Update Blog Post!"
                     modell="select"
                     type="button"
                     icon="update"

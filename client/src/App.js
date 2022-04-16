@@ -22,13 +22,13 @@ import { useAuthContext } from "./utility/AuthContextProvider";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "./utility/firebase";
 
-// todo: loading spinner?, IntersectionObserver?
-// button styles, pop in animation change, helpertext for using page features
+// todo: loading spinner?, IntersectionObserver?, Carousel?, in Modal show creator?,
+// button styles, helpertext for using page features
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.
 // bg images optimation, field test image number and proportion for all grids
 // button blue : #0070c9 navgrey: #424245 hover?: #06c
-// delete mode button
+// delete mode button, translate img alts?
 
 function App() {
   const location = useLocation();

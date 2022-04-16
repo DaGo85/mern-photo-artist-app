@@ -5,7 +5,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     trash: (
       <svg
         aria-label="delete image"
-        className="svg-setup cursor-pointer h-1/3 opacity-70 fill-slate-100 hover:opacity-100 hover:fill-red-400 transition-color duration-300"
+        className="svg-setup"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
       >
@@ -64,7 +64,6 @@ function UniversalButton({ text, type, handler, modell, icon }) {
       onClick={handler && (() => handler())}
     >
       <span class="strikediag withpadding">{icon && icons[icon]}</span>
-      <span className="strikethrough">{icon && icons[icon]}</span>
       {text}
     </button>
   );

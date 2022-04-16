@@ -4,7 +4,7 @@ import SubText from "../../components/elements/SubText";
 import { subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
 import ImpressumSocialIcons from "./components/ImpressumSocialIcons";
-
+// todo übersetzen
 function Impressum() {
   return (
     <TransitionWrapper>
@@ -16,7 +16,7 @@ function Impressum() {
           <section className="card-setup gap-6 py-6">
             <h4>AGO Photography</h4>
             <span className="flex flex-col gap-4 w-full px-6">
-              <h5>According to § 5 TMG:</h5>
+              <h5>Gemäß zu § 5 TMG:</h5>
               <hr />
               <p>
                 D. Goergens
@@ -27,7 +27,7 @@ function Impressum() {
               </p>
             </span>
             <span className="flex flex-col gap-4 w-full px-6">
-              <h5>Contact:</h5>
+              <h5>Kontakt:</h5>
               <hr />
               <p>
                 Tel. Nr.: +49 (0) 177 1234567

@@ -42,9 +42,9 @@ function Login() {
                 className="peer"
                 autoComplete="email"
                 required
-                placeholder="Please enter your email"
+                placeholder="Bitte gib deine Email ein"
               />
-              <label htmlFor="email">Please enter your email</label>
+              <label htmlFor="email">Bitte gib deine Email ein</label>
             </div>
             <div className="w-full relative">
               <input
@@ -55,9 +55,9 @@ function Login() {
                 className="peer"
                 autoComplete="password"
                 required
-                placeholder="Please enter your password"
+                placeholder="Bitte gib dein Passwort ein"
               />
-              <label htmlFor="password">Please enter your password</label>
+              <label htmlFor="password">Bitte gib dein Passwort ein</label>
             </div>
             <UniversalButton
               text="Login"

@@ -7,7 +7,6 @@ import RandomImage from "../../components/elements/RandomImage";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
-import ImageModal from "../../components/ImageModal";
 
 const PageSize = 6;
 
@@ -43,7 +42,7 @@ function Home() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="bg-[#f5f5f7] bg-setup">
+        <div className="bg-basic bg-setup">
           <PageHeadLine headline={"Herzlich Willkommen"} />
           <SubText subtext={subtexts.home} />
           <RandomImage />

@@ -42,7 +42,9 @@ function SingleStoryUpdate() {
       });
       navigate("/stories");
     } catch (err) {
-      setIsError("Can't delete this story.Please try again later!");
+      setIsError(
+        "Diese Story kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
+      );
     }
   };
 
@@ -74,7 +76,7 @@ function SingleStoryUpdate() {
           setIsError("standard");
         }
       } else {
-        setIsError("The file size is too big!");
+        setIsError("Die Datei ist zu gross!");
       }
     }
     //Updating post on MongoDB
@@ -112,7 +114,8 @@ function SingleStoryUpdate() {
                   >
                     <OrientedImage orientation={orientation} file={file} />
                     <h4>
-                      Do you want your previous image or an other one? Click me!
+                      Klick hier, wenn du das vorherige oder ein anderes Bild
+                      möchtest!
                     </h4>
                   </div>
                 ) : (
@@ -128,7 +131,7 @@ function SingleStoryUpdate() {
                       alt="story photo"
                       path={PF}
                     />
-                    <h4>Click me for changing title image!</h4>
+                    <h4>Klick hier, wenn du das Titel Bild ändern möchtest!</h4>
                   </div>
                 )}
                 <input
@@ -152,7 +155,9 @@ function SingleStoryUpdate() {
                     type="text"
                     required
                   />
-                  <label htmlFor="storyName">Please enter a story title</label>
+                  <label htmlFor="storyName">
+                    Bitte gib einen Story Titel ein
+                  </label>
                 </div>
                 <div className="w-full relative">
                   <textarea
@@ -163,7 +168,7 @@ function SingleStoryUpdate() {
                   />
                 </div>
                 <UniversalButton
-                  text="Update Story!"
+                  text="Story updaten!"
                   modell="success"
                   type="submit"
                   icon="send"
@@ -171,7 +176,7 @@ function SingleStoryUpdate() {
               </form>
               <ErrorMsg isError={isError} />
               <UniversalButton
-                text="Delete Story!"
+                text="Story löschen!"
                 handler={deleteHandler}
                 modell="delete"
                 type="button"

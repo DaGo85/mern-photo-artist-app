@@ -50,8 +50,8 @@ function StoriesShowCase({ story }) {
       <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
       <h5>Author: {story.username}</h5>
       <hr className="w-full" />
-      <h6>Created: {new Date(story.createdAt).toDateString()}</h6>
-      <h6>Last Update: {new Date(story.updatedAt).toDateString()}</h6>
+      <h6>Erstellt am: {new Date(story.createdAt).toDateString()}</h6>
+      <h6>Letztes Update: {new Date(story.updatedAt).toDateString()}</h6>
       <hr className="w-full" />
       <pre>
         <p className="whitespace-pre-line">{trimmedStringLandscape}</p>
@@ -73,8 +73,8 @@ function StoriesShowCase({ story }) {
         <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
         <h5>Author: {story.username}</h5>
         <hr className="w-full" />
-        <h6>Created: {new Date(story.createdAt).toDateString()}</h6>
-        <h6>Last Update: {new Date(story.updatedAt).toDateString()}</h6>
+        <h6>Erstellt am: {new Date(story.createdAt).toDateString()}</h6>
+        <h6>Letztes Update: {new Date(story.updatedAt).toDateString()}</h6>
         <hr className="w-full" />
         <pre>
           <p className="whitespace-pre-line">{trimmedStringPortrait}</p>
