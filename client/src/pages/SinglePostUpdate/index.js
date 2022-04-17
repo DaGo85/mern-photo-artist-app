@@ -129,7 +129,7 @@ function SinglePostUpdate() {
                     <OrientedImage
                       orientation={post.orientation}
                       image={post.photo}
-                      alt="post photo"
+                      alt="Blog Post Bild"
                       path={PF}
                     />
                     <h4>Klick hier, wenn du das Titel Bild ändern möchtest!</h4>

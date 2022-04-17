@@ -65,7 +65,7 @@ function StoriesGrid({ currentGridData }) {
                 <motion.img
                   className="w-full h-full object-cover aspect-square"
                   src={`${address[2].url}${item.photo}`}
-                  alt="landscape story grid title item"
+                  alt="Landschafts Story Bilderraster Titel Bild"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 50 }}
@@ -74,7 +74,7 @@ function StoriesGrid({ currentGridData }) {
                 <motion.img
                   className="w-full h-full object-cover aspect-square"
                   src={`${address[2].url}${item.photo}`}
-                  alt="portrait story grid title item"
+                  alt="Potrait Story Bilderraster Titel Bild"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 50 }}

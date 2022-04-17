@@ -64,7 +64,7 @@ function HomeBlogCards({ currentGridData }) {
               orientation={post.orientation}
               image={post.photo}
               path={PF}
-              alt="Single blog post with landscape"
+              alt="Einzelner blog Post mit Landschaftsbild"
             />
             <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
             <h5>Author: {post.username}</h5>
@@ -90,7 +90,7 @@ function HomeBlogCards({ currentGridData }) {
               orientation={post.orientation}
               image={post.photo}
               path={PF}
-              alt="Single blog post with portrait"
+              alt="Einzelner blog Post mit Portraitbild"
             />
             <div className="flex flex-col md:max-w-[50%]">
               <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>

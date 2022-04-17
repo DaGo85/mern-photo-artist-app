@@ -128,7 +128,7 @@ function SingleStoryUpdate() {
                     <OrientedImage
                       orientation={story.orientation}
                       image={story.photo}
-                      alt="story photo"
+                      alt="Story Bild"
                       path={PF}
                     />
                     <h4>Klick hier, wenn du das Titel Bild ändern möchtest!</h4>

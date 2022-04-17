@@ -148,7 +148,7 @@ function SingleStory() {
                   orientation={story.orientation}
                   image={story.photo}
                   path={PF}
-                  alt="Single story"
+                  alt="Einzelnes Story Bild"
                 />
               </div>
               <div className="card-setup text-setup py-4 md:py-10">

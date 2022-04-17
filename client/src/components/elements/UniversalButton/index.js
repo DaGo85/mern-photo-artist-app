@@ -63,7 +63,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
       type={type}
       onClick={handler && (() => handler())}
     >
-      <span class="strikediag withpadding">{icon && icons[icon]}</span>
+      <span className="strikediag withpadding">{icon && icons[icon]}</span>
       {text}
     </button>
   );

@@ -25,13 +25,13 @@ function ImageGrid({
                     <img
                       className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
                       src={`${address.url}${item.photo}`}
-                      alt="landscape grid item"
+                      alt="Landschafts Bilderraster Inhalt"
                     />
                   ) : (
                     <img
                       className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
                       src={`${address.url}${item.photo}`}
-                      alt="portrait grid item"
+                      alt="Potrait Bilderraster Inhalt"
                     />
                   )}
                 </div>
@@ -72,7 +72,7 @@ function ImageGrid({
                       <motion.img
                         className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
                         src={`${address.url}${item.photo}`}
-                        alt="landscape grid item"
+                        alt="Landschafts Bilderraster Inhalt"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 50 }}
@@ -83,7 +83,7 @@ function ImageGrid({
                       <motion.img
                         className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
                         src={`${address.url}${item.photo}`}
-                        alt="portrait grid item"
+                        alt="Portrait Bilderraster Inhalt"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", stiffness: 50 }}

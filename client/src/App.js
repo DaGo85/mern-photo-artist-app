@@ -22,7 +22,7 @@ import { useAuthContext } from "./utility/AuthContextProvider";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "./utility/firebase";
 
-// todo: loading spinner?, IntersectionObserver?, Carousel?, in Modal show creator?,
+// todo: loading spinner?, IntersectionObserver?, Carousel?
 // button styles, helpertext for using page features
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.

@@ -69,7 +69,7 @@ function ImageModal() {
             <OrientedImage
               image={imageData.images[idx].photo}
               path={imageData.path.url}
-              alt="opened in modal"
+              alt="geöffnet in der Detailansicht"
               orientation={imageData.orientation}
             />
           </motion.div>

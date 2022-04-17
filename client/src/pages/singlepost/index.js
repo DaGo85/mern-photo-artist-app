@@ -39,7 +39,7 @@ function SinglePost() {
                   orientation={post.orientation}
                   image={post.photo}
                   path={PF}
-                  alt="Single blog post"
+                  alt="Einzelner blog Post"
                 />
               </div>
               <div className="card-setup text-setup py-4 md:py-10">

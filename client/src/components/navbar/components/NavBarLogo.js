@@ -8,7 +8,7 @@ function NavBarLogo() {
       <img
         className="max-h-20 min-w-[12] navsvghover"
         src={logo3}
-        alt="app-owner-logo"
+        alt="Logo des Betreibers der Seite"
       />
     </Link>
   );

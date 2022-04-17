@@ -7,11 +7,11 @@ function OrientedImage({ image, path, alt, file, orientation }) {
         orientation === 1 ? (
           <img
             className=""
-            alt="New landscape"
+            alt="Neues Landschaftsbild"
             src={URL.createObjectURL(file)}
           />
         ) : (
-          <img alt="New portrait" src={URL.createObjectURL(file)} />
+          <img alt="Neues Portraitbild" src={URL.createObjectURL(file)} />
         )
       ) : orientation === 1 ? (
         <img

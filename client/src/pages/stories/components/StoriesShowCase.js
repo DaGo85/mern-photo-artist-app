@@ -45,7 +45,7 @@ function StoriesShowCase({ story }) {
         orientation={story.orientation}
         image={story.photo}
         path={PF}
-        alt="Single story post"
+        alt="Einzelner Story Post"
       />
       <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
       <h5>Author: {story.username}</h5>
@@ -67,7 +67,7 @@ function StoriesShowCase({ story }) {
         orientation={story.orientation}
         image={story.photo}
         path={PF}
-        alt="Single story post"
+        alt="Einzelner Story Post"
       />
       <div className="flex flex-col">
         <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
