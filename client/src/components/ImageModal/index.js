@@ -97,6 +97,13 @@ function ImageModal() {
               />
             </svg>
           </button>
+          <span className="absolute bottom-20 left-20">
+            <p className="animate-buttonPulse">
+              von: {imageData.images[idx].username}
+              <br />
+              am: {new Date(imageData.images[idx].createdAt).toDateString()}
+            </p>
+          </span>
         </div>
       )}
     </AnimatePresence>
