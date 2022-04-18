@@ -164,12 +164,15 @@ router.get("/photos/:id", async (req, res) => {
 });
 
 //Read all storygallery images at MongoDB
-router.get("/photos", async (req, res) => {
+router.post("/photos/storyphotoq", async (req, res) => {
   try {
-    const storyPhotos = await StoryPhoto.find();
-    console.log(storyPhotos);
-    storyPhotos.reverse();
-    res.status(200).json(storyPhotos);
+    let storyPhotoQ = StoryPhoto.aggregate();
+    console.log(req.body);
+    if (req.body.storyPhotoQuery)
+      storyPhotoQ.match({ story: req.body.storyPhotoQuery });
+    let result = await storyPhotoQ.exec();
+    result.reverse();
+    res.status(200).json(result);
   } catch (err) {
     console.log(err.message);
     res.status(500).json(err);

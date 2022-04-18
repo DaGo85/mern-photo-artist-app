@@ -54,10 +54,13 @@ function SingleStory() {
   }, []);
 
   // Fetches and filters all story gallery images todo: let BE filter
+
   useEffect(() => {
     const fetchStoryImages = async () => {
-      const res = await axios.get(apiroutes[4].url);
-      setStoryImages(res.data.filter((i) => i.story === path));
+      const res = await axios.post(apiroutes[4].url + "storyphotoq", {
+        storyPhotoQuery: path,
+      });
+      setStoryImages(res.data);
     };
     fetchStoryImages();
   }, [rerenderComponent]);
