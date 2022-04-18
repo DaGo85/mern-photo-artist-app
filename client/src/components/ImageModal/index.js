@@ -21,7 +21,7 @@ function ImageModal() {
   return (
     <AnimatePresence>
       {isOpen && imageData.images.length > 0 && (
-        <div className="bg-slate-600/80 top-0 left-0 fixed w-full h-full inset-0 flex justify-center items-center z-50">
+        <div className="bg-black/70 top-0 left-0 fixed w-full h-full inset-0 flex justify-center items-center z-50">
           <button
             onClick={() => setIsOpen(false)}
             type="button"

@@ -116,7 +116,7 @@
   }
 
   .button-setup {
-    @apply flex flex-row py-3 px-6 gap-6 justify-center items-center bg-gradient-to-r text-light
+    @apply flex flex-row py-3 px-6 gap-6 justify-center items-center text-light
     font-medium rounded cursor-pointer ease-in-out duration-300;
   }
 

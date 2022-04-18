@@ -1,5 +1,6 @@
-import React from "react";
-//todo buttons
+// DeleteModal for conformation to delete a SingleStory or SinglePost
+// todo buttons
+
 function DeleteModal({ handleDelete, showModal, setShowModal, deleteType }) {
   return (
     <div

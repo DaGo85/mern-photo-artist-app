@@ -1,3 +1,5 @@
+// Imagegrid for Gallery and SingleStory, also handles deleteMode
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
 import { useAuthContext } from "../../../utility/AuthContextProvider";
@@ -11,8 +13,10 @@ function ImageGrid({
 }) {
   const { setIsOpen, setImageData } = useModalContext();
   const { userCreds } = useAuthContext();
+
   return (
     <section className="card-setup image-grid py-6 justify-center ">
+      {/* Displays ImageGrid with or without delete buttons */}
       {deleteMode
         ? currentGridData.map((item) => {
             return (

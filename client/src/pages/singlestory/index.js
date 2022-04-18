@@ -216,21 +216,19 @@ function SingleStory() {
                       icon="selectImage"
                     />
                   )}
+                  <UniversalButton
+                    text="Löschmodus!"
+                    type="button"
+                    modell="delete"
+                    handler={handleDeleteMode}
+                    icon="trash"
+                  />
                 </>
               )}
             </>
           )}
           <ErrorMsg isError={isError} />
           <div ref={myRef} />
-          {userCreds?.name && (
-            <UniversalButton
-              text="Löschmodus!"
-              type="button"
-              modell="delete"
-              handler={handleDeleteMode}
-              icon="trash"
-            />
-          )}
           {story && (
             <>
               <Pagination

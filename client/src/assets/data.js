@@ -1,6 +1,8 @@
 import writepostimage from "./images/writepostimage.svg";
 import writestoryimage from "./images/writestoryimage.svg";
 
+// Route-links for NavBar
+
 export const navLinks = [
   { name: "Home", link: "/" },
   { name: "Gallerie", link: "/gallery" },
@@ -8,6 +10,8 @@ export const navLinks = [
   { name: "Kontakt", link: "/contact" },
   { name: "Impressum", link: "/impressum" },
 ];
+
+// Social-icon list for NavBar and Impressum
 
 export const socialIconsList = [
   {
@@ -40,7 +44,8 @@ export const socialIconsList = [
   },
 ];
 
-// Data for subtexts on pages
+// Data for SubTexts
+
 export const subtexts = {
   contact: "Wir helfen dir gerne weiter, schreib uns!",
   impressum: "Rechtliche Informationen und Hinweise",
@@ -55,8 +60,8 @@ export const subtexts = {
   login: "Willkommen zurück!",
 };
 
-// Data for the cards
-// used in: Write
+// Data for WriteCards in Write
+
 export const write = [
   {
     id: 1,
@@ -75,10 +80,12 @@ export const write = [
 ];
 
 // Backend server address
+
 const server = "http://192.168.178.47:5000/";
 
 // Server side addresslist for photo requests
 // [0] = Gallery photo storage, [1] = Post photo storage, [2] = Story photo storage
+
 export const address = [
   {
     id: 0,
@@ -102,6 +109,7 @@ export const address = [
 // [4] = Singlestory photo route (/ = get, post)
 // [5] = Singlestory upload photo route (/ = post)
 // [6] = Singlestory route (/ = get, /:id = get, delete)
+
 export const apiroutes = [
   {
     id: 0,

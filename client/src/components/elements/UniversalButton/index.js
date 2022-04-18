@@ -51,10 +51,10 @@ function UniversalButton({ text, type, handler, modell, icon }) {
   };
 
   const buttonStyles = {
-    delete: "from-serror to-red-900 hover:to-shover hover:text-d",
-    success: "from-ssuccess to-b text-white  hover:to-shover hover:text-d",
+    delete: "bg-serror to-red-900 hover:to-shover hover:text-d",
+    success: "bg-ssuccess to-b text-white  hover:to-shover hover:text-d",
     select:
-      "from-b via-b to-sselect text-white  hover:to-shover hover:text-basic hover:shadow-md hover:shadow-basic",
+      "bg-sselect via-b to-sselect text-white  hover:to-shover hover:text-basic hover:shadow-md hover:shadow-basic",
   };
 
   return (

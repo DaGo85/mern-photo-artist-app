@@ -1,4 +1,4 @@
-import React from "react";
+// Error message component
 
 function ErrorMsg({ isError }) {
   return (
