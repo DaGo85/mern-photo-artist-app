@@ -7,25 +7,10 @@ function HomeBlogCards({ currentGridData }) {
   return (
     <section className="flex flex-col gap-form max-w-7xl">
       {currentGridData.map((post, index) => {
-        const cardVariants = {
-          offscreen: {
-            scale: 0,
-            opacity: 0,
-          },
-          onscreen: {
-            scale: 1,
-            opacity: 1,
-            transition: {
-              type: "spring",
-              bounce: 0.4,
-              duration: 0.8,
-            },
-          },
-        };
         // Trimmed strings for portrait images
         // Maximum number of characters to extract
 
-        const maxLengthPortrait = 600;
+        const maxLengthPortrait = 450;
 
         // Trim the string to the maximum length
         let trimmedStringPortrait = post.desc.substr(0, maxLengthPortrait);
@@ -57,13 +42,12 @@ function HomeBlogCards({ currentGridData }) {
         return post.orientation === 1 ? (
           <Link
             to={`/${post._id}`}
-            className="card-setup gap-form py-form"
+            className="card-setup gap-form py-form "
             key={post.title}
           >
-            <OrientedImage
-              orientation={post.orientation}
-              image={post.photo}
-              path={PF}
+            <img
+              className="object-cover "
+              src={PF + post.photo}
               alt="Einzelner blog Post mit Landschaftsbild"
             />
             <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
@@ -74,25 +58,26 @@ function HomeBlogCards({ currentGridData }) {
             <hr className="w-full" />
             <pre>
               <p className="whitespace-pre-line font-sans">
-                {trimmedStringLandscape}
+                {trimmedStringLandscape}...
               </p>
             </pre>
           </Link>
         ) : (
           <Link
             to={`/${post._id}`}
-            className={`card-setup gap-form py-form ${
+            className={`card-setup gap-form py-form justify-between w-full md:max-h-[60vh] ${
               index % 2 ? "md:flex-row" : "md:flex-row-reverse"
             }`}
             key={post.title}
           >
-            <OrientedImage
-              orientation={post.orientation}
-              image={post.photo}
-              path={PF}
-              alt="Einzelner blog Post mit Portraitbild"
-            />
-            <div className="flex flex-col md:max-w-[50%]">
+            <div className="md:max-w-[50%] flex justify-center w-full">
+              <img
+                className="object-cover md:max-h-[55vh] overflow-hidden"
+                src={PF + post.photo}
+                alt="Einzelner blog Post mit Portraitbild"
+              />
+            </div>
+            <div className="flex flex-col md:max-w-[50%] grow md:max-h-[55vh] overflow-hidden">
               <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
               <h5>Author: {post.username}</h5>
               <hr className="w-full" />
@@ -101,7 +86,7 @@ function HomeBlogCards({ currentGridData }) {
               <hr className="w-full" />
               <pre>
                 <p className="whitespace-pre-line font-sans">
-                  {trimmedStringPortrait}
+                  {trimmedStringPortrait}...
                 </p>
               </pre>
             </div>

@@ -22,9 +22,9 @@ function ImageGrid({
             return (
               <div
                 key={item.photo}
-                className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative "
+                className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative"
               >
-                <div className="w-full h-full block overflow-hidden aspect-square ">
+                <div className="w-full h-full block overflow-hidden aspect-square">
                   {item.orientation === 1 ? (
                     <img
                       className="w-full h-full hover:animate-sliderImage object-cover aspect-square"

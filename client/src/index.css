@@ -127,6 +127,7 @@
   }
 
   /*rework unique buttons */
+
   .button-delete {
     @apply from-serror to-red-900 hover:to-shover hover:text-d;
   }
