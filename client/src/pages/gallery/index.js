@@ -161,13 +161,23 @@ function Gallery() {
                   icon="selectImage"
                 />
               )}
-              <UniversalButton
-                text="Löschmodus!"
-                handler={handleDelete}
-                modell="delete"
-                type="button"
-                icon="trash"
-              />
+              {deleteMode ? (
+                <UniversalButton
+                  text="Modus deaktivieren!"
+                  handler={handleDelete}
+                  modell="delete"
+                  type="button"
+                  icon="trashStrike"
+                />
+              ) : (
+                <UniversalButton
+                  text="Löschmodus!"
+                  handler={handleDelete}
+                  modell="delete"
+                  type="button"
+                  icon="trash"
+                />
+              )}
               <input
                 accept="image/jpg,image/png,image/jpeg"
                 className="hidden"

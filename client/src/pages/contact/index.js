@@ -88,10 +88,10 @@ function Contact() {
             <button
               disabled={isError}
               type="submit"
-              className="button-setup button-success"
+              className="button-setup button-success button-effect-success"
             >
               <svg
-                className="w-6"
+                className="w-6 fill-white"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >

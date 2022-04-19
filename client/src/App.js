@@ -29,6 +29,7 @@ import { db } from "./utility/firebase";
 // bg images optimation, field test image number and proportion for all grids
 // button blue : #0070c9 navgrey: #424245 hover?: #06c
 // delete mode button, homecards, orientation, firebase BE
+// add glow hover effect to pagination?
 
 function App() {
   const location = useLocation();

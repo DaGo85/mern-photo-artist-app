@@ -216,13 +216,23 @@ function SingleStory() {
                       icon="selectImage"
                     />
                   )}
-                  <UniversalButton
-                    text="Löschmodus!"
-                    type="button"
-                    modell="delete"
-                    handler={handleDeleteMode}
-                    icon="trash"
-                  />
+                  {deleteMode ? (
+                    <UniversalButton
+                      text="Modus deaktivieren!"
+                      handler={handleDeleteMode}
+                      modell="delete"
+                      type="button"
+                      icon="trashStrike"
+                    />
+                  ) : (
+                    <UniversalButton
+                      text="Löschmodus!"
+                      handler={handleDeleteMode}
+                      modell="delete"
+                      type="button"
+                      icon="trash"
+                    />
+                  )}
                 </>
               )}
             </>

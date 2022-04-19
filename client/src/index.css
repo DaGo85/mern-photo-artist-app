@@ -128,16 +128,8 @@
 
   /*rework unique buttons */
 
-  .button-delete {
-    @apply from-serror to-red-900 hover:to-shover hover:text-d;
-  }
-
   .button-success {
-    @apply from-ssuccess to-b text-white  hover:to-shover hover:text-d;
-  }
-
-  .button-select {
-    @apply from-b via-b to-sselect text-white  hover:to-shover hover:text-basic hover:shadow-md hover:shadow-basic;
+    @apply bg-ssuccess text-white hover:text-d;
   }
 
   .pagination-item {
@@ -163,18 +155,37 @@
   .navsvghover:hover {
     filter: drop-shadow(0.5px 0.5px 12px rgb(255 255 255 / 1));
   }
-}
 
-.strikediag {
-  background: linear-gradient(
-    to left top,
-    transparent 47.75%,
-    currentColor 49.5%,
-    currentColor 50.5%,
-    transparent 52.25%
-  );
-}
+  .button-effect-success:hover {
+    filter: drop-shadow(1px 1px 24px rgb(101 193 140 / 2));
+  }
 
-.withpadding {
-  padding: 0 0.15em;
+  .button-effect-select:hover {
+    filter: drop-shadow(1px 1px 24px rgb(0 102 204 / 2));
+  }
+
+  .button-effect-error:hover {
+    filter: drop-shadow(1px 1px 24px rgb(245 113 112 / 2));
+  }
+
+  .strikediag {
+    padding: 0 0.15em;
+    background: linear-gradient(
+      to left top,
+      transparent 47%,
+      white 47%,
+      white 52%,
+      transparent 52%
+    );
+  }
+
+  .strikediag:hover {
+    background: linear-gradient(
+      to left top,
+      transparent 47%,
+      #1d1d1f 47%,
+      #1d1d1f 52%,
+      transparent 52%
+    );
+  }
 }
