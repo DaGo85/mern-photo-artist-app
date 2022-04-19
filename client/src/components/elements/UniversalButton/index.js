@@ -13,7 +13,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     trashStrike: (
       <span className="strikediag">
         <svg
-          aria-label="delete image"
+          aria-label="delete image with striketrough"
           className="svg-setup hover:fill-d"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
@@ -24,6 +24,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     ),
     upload: (
       <svg
+        aria-label="upload icon"
         className="svg-setup"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 384 512"
@@ -33,6 +34,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     ),
     selectImage: (
       <svg
+        aria-label="select image icon"
         className="svg-setup"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 384 512"
@@ -42,6 +44,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     ),
     update: (
       <svg
+        aria-label="update icon"
         className="svg-setup"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
@@ -51,6 +54,7 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     ),
     send: (
       <svg
+        aria-label="send icon"
         className="svg-setup"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"

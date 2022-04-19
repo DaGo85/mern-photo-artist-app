@@ -44,8 +44,8 @@ const Pagination = ({
         }}
       >
         <svg
-          className={`h-8 md:h-12 transition-colors duration-500 ease-in-out ${
-            currentPage !== 1 && "hover:fill-linkhover"
+          className={`h-8 md:h-12 transition-all duration-500 ease-in-out ${
+            currentPage !== 1 && "hover:fill-linkhover button-effect-select"
           }`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -68,8 +68,10 @@ const Pagination = ({
         return (
           <li
             key={index}
-            className={`pagination-item text-slate-100  hover:bg-linkhover transition-colors duration-500 ease-in-out ${
-              pageNumber === currentPage ? "bg-linkhover" : "bg-b"
+            className={`pagination-item text-slate-100  hover:bg-linkhover transition-all duration-500 ease-in-out ${
+              pageNumber === currentPage
+                ? "bg-linkhover"
+                : "bg-b button-effect-select"
             }`}
             onClick={() => {
               onPageChange(pageNumber);
@@ -90,8 +92,9 @@ const Pagination = ({
         }}
       >
         <svg
-          className={`h-8 md:h-12 transition-colors duration-500 ease-in-out ${
-            currentPage !== lastPage && "hover:fill-[#06c]"
+          className={`h-8 md:h-12 transition-all duration-500 ease-in-out ${
+            currentPage !== lastPage &&
+            "hover:fill-linkhover button-effect-select"
           }`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
