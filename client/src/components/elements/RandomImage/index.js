@@ -1,3 +1,5 @@
+// Generates random image for Home and Impressum
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { address, apiroutes } from "../../../assets/data";

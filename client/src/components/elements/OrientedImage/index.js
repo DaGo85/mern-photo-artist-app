@@ -1,4 +1,4 @@
-import React from "react";
+// rework or remove
 
 function OrientedImage({ image, path, alt, file, orientation }) {
   return (

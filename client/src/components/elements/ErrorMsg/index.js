@@ -1,4 +1,4 @@
-// Error message component
+// Error message element
 
 function ErrorMsg({ isError }) {
   return (

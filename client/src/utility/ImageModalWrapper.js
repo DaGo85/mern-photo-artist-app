@@ -1,3 +1,5 @@
+// Context for ModalImage
+
 import { useContext, useState, createContext } from "react";
 
 // Creates Context

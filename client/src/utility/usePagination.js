@@ -1,3 +1,5 @@
+// Custom hook for pagination controll
+
 import { useMemo } from "react";
 
 export const DOTS = "...";

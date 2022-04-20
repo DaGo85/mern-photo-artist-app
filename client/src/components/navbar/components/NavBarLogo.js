@@ -1,4 +1,4 @@
-import React from "react";
+// Logo component for NavBar
 import { Link } from "react-router-dom";
 import logo3 from "../../../assets/images/testu.png";
 

@@ -1,3 +1,5 @@
+// Home page
+
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import axios from "axios";
 import PageHeadLine from "../../components/elements/PageHeadline";

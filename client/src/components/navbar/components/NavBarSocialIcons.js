@@ -1,3 +1,5 @@
+// Social icons component for NavBar
+
 import { socialIconsList } from "../../../assets/data";
 
 function NavBarSocialIcons() {

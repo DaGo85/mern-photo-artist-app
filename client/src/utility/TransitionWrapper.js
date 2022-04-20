@@ -1,4 +1,5 @@
-import React from "react";
+// Wrapper for transition between pages
+
 import { motion } from "framer-motion";
 
 function TransitionWrapper({ children }) {

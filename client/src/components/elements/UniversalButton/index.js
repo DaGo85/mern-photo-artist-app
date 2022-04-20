@@ -1,3 +1,5 @@
+// Button element for userinterface
+
 function UniversalButton({ text, type, handler, modell, icon }) {
   const icons = {
     trash: (

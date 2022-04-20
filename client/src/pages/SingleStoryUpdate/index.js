@@ -1,5 +1,7 @@
+// Update page for a single story
+
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
 import DeleteModal from "../../components/elements/DeleteModal";

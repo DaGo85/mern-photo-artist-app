@@ -1,4 +1,5 @@
-import React from "react";
+// Route link component for NavBar
+
 import { Link } from "react-router-dom";
 import { navLinks } from "../../../assets/data";
 import { useAuthContext } from "../../../utility/AuthContextProvider";

@@ -1,4 +1,4 @@
-import React from "react";
+// Pagination element for Home, Gallery, Stories and SingleStory
 
 import "../../index.css";
 import { usePagination, DOTS } from "../../utility/usePagination";

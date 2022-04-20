@@ -1,6 +1,7 @@
+// HomeBlogCard component for Home
+
 import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
-import OrientedImage from "../../../components/elements/OrientedImage";
 
 function HomeBlogCards({ currentGridData }) {
   const PF = address[1].url;

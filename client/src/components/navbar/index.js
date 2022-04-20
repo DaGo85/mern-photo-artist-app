@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// NavBar element
+
+import { useState } from "react";
 import NavBarHamBurger from "./components/NavBarHamBurger";
 import NavBarLinks from "./components/NavBarLinks";
 import NavBarLogo from "./components/NavBarLogo";

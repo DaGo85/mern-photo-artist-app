@@ -1,13 +1,15 @@
+// Imagemodal element with slider. Gets states from a context
+// Used in:  ImageGrid, StoriesGrid, RandomImage
+
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useModalContext } from "../../utility/ImageModalWrapper";
 import OrientedImage from "../elements/OrientedImage";
-
-// Used in: singlepost, gallerygrid, singlestory? and singlestorygrid,
 
 function ImageModal() {
   const { imageData, isOpen, setIsOpen } = useModalContext();
   const [idx, setIdx] = useState(0);
+
   useEffect(() => {
     if (imageData.images) {
       setIdx(

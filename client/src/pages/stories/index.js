@@ -1,3 +1,5 @@
+// Stories page
+
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import SubText from "../../components/elements/SubText";

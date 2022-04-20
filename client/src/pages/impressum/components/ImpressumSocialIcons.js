@@ -1,3 +1,5 @@
+// Social icons component for Impressum
+
 import { socialIconsList } from "../../../assets/data";
 
 function ImpressumSocialIcons() {

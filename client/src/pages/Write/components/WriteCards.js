@@ -1,4 +1,5 @@
-import React from "react";
+// WriteCards component for Write
+
 import { Link } from "react-router-dom";
 import { write } from "../../../assets/data";
 
