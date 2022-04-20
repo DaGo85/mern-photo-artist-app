@@ -46,8 +46,24 @@
 @tailwind components;
 
 @layer components {
-  .home-bg {
-    background-image: url("/public/5552w.jpg");
+  .bg-1 {
+    background-image: url("/public/bg1.jpg");
+  }
+
+  .bg-2 {
+    background-image: url("/public/bg2.jpg");
+  }
+
+  .bg-3 {
+    background-image: url("/public/bg3.jpg");
+  }
+
+  .bg-4 {
+    background-image: url("/public/bg4.jpg");
+  }
+
+  .bg-5 {
+    background-image: url("/public/bg5.jpg");
   }
 
   .impressum-bg {

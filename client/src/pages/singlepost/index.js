@@ -8,14 +8,16 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import UniversalButton from "../../components/elements/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
+import useGetBackGround from "../../utility/useGetBackGround";
 
 function SinglePost() {
   const [post, setPost] = useState();
+  const bg = useGetBackGround();
 
   const { userCreds } = useAuthContext();
 
   const location = useLocation();
-  const path = location.pathname.split("/")[1];
+  const path = location.pathname.split("/post")[1];
   const PF = address[1].url;
 
   // Fetching singlepost from the API
@@ -30,7 +32,7 @@ function SinglePost() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
+        <div className={`bg-setup ${bg}`}>
           {post && (
             <>
               <PageHeadLine headline={post.title} />

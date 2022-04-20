@@ -11,6 +11,7 @@ import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import UniversalButton from "../../components/elements/UniversalButton";
+import useGetBackGround from "../../utility/useGetBackGround";
 
 const PageSize = 9;
 
@@ -23,6 +24,7 @@ function Gallery() {
   const [orientation, setOrientation] = useState([]);
   const [images, setImages] = useState([]);
   const [isError, setIsError] = useState(false);
+  const bg = useGetBackGround();
 
   const [rerenderComponent, setRerenderComponent] = useState(false);
 
@@ -126,7 +128,7 @@ function Gallery() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup" id="pagination-start">
+        <div className={`bg-setup ${bg}`} id="pagination-start">
           <PageHeadLine headline={"Gallerie"} />
           <SubText subtext={subtexts.gallery} />
           <div ref={myRef} />

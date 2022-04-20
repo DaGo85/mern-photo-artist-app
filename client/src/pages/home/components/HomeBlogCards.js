@@ -64,7 +64,7 @@ function HomeBlogCards({ currentGridData }) {
           </Link>
         ) : (
           <Link
-            to={`/${post._id}`}
+            to={`/post${post._id}`}
             className={`card-setup gap-form py-form justify-between w-full md:max-h-[60vh] ${
               index % 2 ? "md:flex-row" : "md:flex-row-reverse"
             }`}

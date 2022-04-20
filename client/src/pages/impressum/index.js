@@ -4,12 +4,14 @@ import SubText from "../../components/elements/SubText";
 import { subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
 import ImpressumSocialIcons from "./components/ImpressumSocialIcons";
+import useGetBackGround from "../../utility/useGetBackGround";
 // todo übersetzen
 function Impressum() {
+  const bg = useGetBackGround();
   return (
     <TransitionWrapper>
       <main>
-        <div className="impressum-bg bg-setup">
+        <div className={`bg-setup ${bg}`}>
           <PageHeadLine headline={"Impressum"} />
           <SubText subtext={subtexts.impressum} />
           <RandomImage />

@@ -6,12 +6,15 @@ import { apiroutes, subtexts } from "../../assets/data";
 import axios from "axios";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 
+import useGetBackGround from "../../utility/useGetBackGround";
+
 //todo: check functionality after setting up BE
 // rework button
 
 function Contact() {
   const [status, setStatus] = useState("Senden");
   const [isError, setIsError] = useState("");
+  const bg = useGetBackGround();
 
   // Handler for submitting data to the server
   const handleSubmit = async (e) => {
@@ -43,7 +46,7 @@ function Contact() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
+        <div className={`bg-setup ${bg}`}>
           <PageHeadLine headline={"Contact"} />
           <SubText subtext={subtexts.contact} />
           <form

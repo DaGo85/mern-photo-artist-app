@@ -12,6 +12,7 @@ import Pagination from "../../components/Pagination";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
+import useGetBackGround from "../../utility/useGetBackGround";
 
 const PageSize = 9;
 
@@ -28,6 +29,7 @@ function SingleStory() {
   const [orientation, setOrientation] = useState([]);
   const [deleteMode, setDeleteMode] = useState(false);
   const [rerenderComponent, setRerenderComponent] = useState(false);
+  const bg = useGetBackGround();
 
   const [isError, setIsError] = useState(false);
 
@@ -142,7 +144,7 @@ function SingleStory() {
   return (
     <TransitionWrapper>
       <main>
-        <div className="home-bg bg-setup">
+        <div className={`bg-setup ${bg}`}>
           {story && (
             <>
               <PageHeadLine headline={story.story} />
