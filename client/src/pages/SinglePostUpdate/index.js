@@ -85,7 +85,7 @@ function SinglePostUpdate() {
     //Updating post on MongoDB
     try {
       await axios.put(`${apiroutes[2].url}${post._id}`, newPost);
-      navigate("/" + post._id);
+      navigate("/post" + post._id);
     } catch (err) {
       setIsError("standard");
     }
