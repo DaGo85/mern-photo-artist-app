@@ -33,6 +33,7 @@ import { db } from "./utility/firebase";
 // delete mode button, homecards, orientation, firebase BE
 // Singlepost does not work sometimes, image with ingo
 // after updating some, the same error occurs
+// unsubscribe?
 
 function App() {
   const location = useLocation();

@@ -16,8 +16,7 @@ router.post("/", async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
-  }
-  return res.status(403).send("Not authorized");
+  } else res.status(403).send("Not authorized");
 });
 
 //Update post from MongoDB and delete old image from server
