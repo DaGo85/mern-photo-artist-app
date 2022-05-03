@@ -5,13 +5,19 @@ const fs = require("fs");
 
 //Create post at MongoDB
 router.post("/", async (req, res) => {
-  const newPost = new Post(req.body);
-  try {
-    const savedPost = await newPost.save();
-    res.status(200).json(savedPost);
-  } catch (err) {
-    res.status(500).json(err);
+  const auth = req.currentUser;
+  console.log(req.currentUser);
+  if (auth) {
+    console.log("authenticated!", auth);
+    const newPost = new Post(req.body);
+    try {
+      const savedPost = await newPost.save();
+      res.status(200).json(savedPost);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
+  return res.status(403).send("Not authorized");
 });
 
 //Update post from MongoDB and delete old image from server

@@ -33,6 +33,11 @@ function WritePost() {
       desc: message.value,
     };
 
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
         const data = new FormData();
@@ -47,8 +52,10 @@ function WritePost() {
           setIsError("standard");
         }
         try {
-          const res = await axios.post(apiroutes[2].url, newPost);
-          navigate("/" + res.data._id);
+          const res = await axios.post(apiroutes[2].url, newPost, {
+            headers: headers,
+          });
+          navigate("/post" + res.data._id);
         } catch (err) {
           setIsError("standard");
         }

@@ -12,10 +12,12 @@ const galleryRoute = require("./routes/gallery");
 const storyRoute = require("./routes/story");
 const postRoute = require("./routes/posts");
 const contactRoute = require("./routes/contact");
+const decodeIDToken = require("./utility/authenticateToken");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(decodeIDToken);
 
 //Connect to MongoDB
 mongoose

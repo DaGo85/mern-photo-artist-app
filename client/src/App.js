@@ -46,6 +46,12 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        user.getIdToken(true).then((token) => {
+          setUserCreds((prevState) => {
+            return { ...prevState, token };
+          });
+          console.log("token" + token);
+        });
         const uid = user.uid;
         const email = user.email;
 
@@ -66,7 +72,9 @@ function App() {
           );
           const doc = await getDocs(q);
           const data = doc.docs[0].data();
-          setUserCreds({ name: data.name });
+          setUserCreds((prevState) => {
+            return { ...prevState, name: data.name };
+          });
         } catch (err) {
           console.error(err);
           alert("An error occured while fetching user data");
