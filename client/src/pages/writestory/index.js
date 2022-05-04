@@ -53,7 +53,9 @@ function WriteStory() {
           return;
         }
         try {
-          await axios.post(apiroutes[5].url, data);
+          await axios.post(apiroutes[5].url, data, {
+            headers: headers,
+          });
         } catch (err) {
           setIsError("standard");
           return;

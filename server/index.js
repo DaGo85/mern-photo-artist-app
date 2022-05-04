@@ -98,8 +98,13 @@ const storagepostimg = multer.diskStorage({
 });
 
 //Multer image upload settings for all routes
-const fileSizeLimitErrorHandler = (err, req, res, next) => {
+const authAndLimitErrorHandler = (err, req, res, next) => {
   if (err) {
+    console.log(err.message);
+    res.sendStatus(413);
+  }
+  const auth = req.currentUser;
+  if (!auth) {
     console.log(err.message);
     res.sendStatus(413);
   } else {
@@ -139,7 +144,7 @@ const uploadpost = multer({
 app.post(
   "/api/uploadgallery/",
   uploadgallery.single("file"),
-  fileSizeLimitErrorHandler,
+  authAndLimitErrorHandler,
   (req, res) => {
     res.status(200).json("Data uploaded!");
   }
@@ -149,7 +154,7 @@ app.post(
 app.post(
   "/api/uploadstory/",
   uploadstory.single("file"),
-  fileSizeLimitErrorHandler,
+  authAndLimitErrorHandler,
   (req, res) => {
     res.status(200).json("Data uploaded!");
   }
@@ -159,7 +164,7 @@ app.post(
 app.post(
   "/api/uploadpost/",
   uploadpost.single("file"),
-  fileSizeLimitErrorHandler,
+  authAndLimitErrorHandler,
   (req, res) => {
     res.status(200).json("Data uploaded!");
   }

@@ -85,7 +85,9 @@ function SinglePostUpdate() {
         newPost.orientation = orientation;
         //Uploading file to server
         try {
-          await axios.post(apiroutes[3].url, data);
+          await axios.post(apiroutes[3].url, data, {
+            headers: headers,
+          });
         } catch (err) {
           setIsError("standard");
         }

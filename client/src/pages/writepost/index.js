@@ -47,7 +47,9 @@ function WritePost() {
         newPost.photo = filename;
         newPost.orientation = orientation;
         try {
-          await axios.post(apiroutes[3].url, data);
+          await axios.post(apiroutes[3].url, data, {
+            headers: headers,
+          });
         } catch (err) {
           setIsError("standard");
         }

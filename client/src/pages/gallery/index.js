@@ -87,7 +87,9 @@ function Gallery() {
         data.append("file", file);
         newPhoto.photo = filename;
         try {
-          await axios.post(`${apiroutes[1].url}`, data);
+          await axios.post(`${apiroutes[1].url}`, data, {
+            headers: headers,
+          });
         } catch (err) {
           setIsError("standard");
         }
