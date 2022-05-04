@@ -46,7 +46,6 @@ function SingleStory() {
   }, [currentPage, storyImages]);
 
   // Fetching singlestory from the API
-
   useEffect(() => {
     const getStory = async () => {
       const res = await axios.get(`${apiroutes[6].url}${path}`);
@@ -56,7 +55,6 @@ function SingleStory() {
   }, []);
 
   // Fetches filtered story gallery images
-
   useEffect(() => {
     const fetchStoryImages = async () => {
       const res = await axios.post(apiroutes[4].url + "storyphotoq", {
@@ -73,6 +71,12 @@ function SingleStory() {
       username: userCreds.name,
       story: story._id,
     };
+
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
     if (file) {
@@ -90,7 +94,9 @@ function SingleStory() {
         }
         //Posting  on MongoDB
         try {
-          await axios.post(apiroutes[4].url, newStoryPhoto);
+          await axios.post(apiroutes[4].url, newStoryPhoto, {
+            headers: headers,
+          });
           setFile(null);
         } catch (err) {
           setIsError("standard");
@@ -116,12 +122,18 @@ function SingleStory() {
     }
   }, [currentGridData, currentPage]);
 
-  // Handler for deleting image
+  // Handler for deleting storygalleryimage
   const handleDeleteImg = async (imageid, username) => {
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     if (username === userCreds.name) {
       try {
         await axios.delete(`${apiroutes[4].url}${imageid}`, {
           data: { username: username },
+          headers: headers,
         });
       } catch (err) {
         setIsError(

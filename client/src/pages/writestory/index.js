@@ -31,6 +31,11 @@ function WriteStory() {
       desc: story.value,
     };
 
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
         const data = new FormData();
@@ -39,7 +44,9 @@ function WriteStory() {
         data.append("file", file);
         newStory.photo = filename;
         try {
-          const res = await axios.post(apiroutes[6].url, newStory);
+          const res = await axios.post(apiroutes[6].url, newStory, {
+            headers: headers,
+          });
           navigate("/story" + res.data._id);
         } catch (err) {
           setIsError("standard");

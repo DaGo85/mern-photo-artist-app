@@ -25,7 +25,7 @@ function SingleStoryUpdate() {
   const path = location.pathname.split("singlestoryupdate")[1];
   const PF = address[2].url;
 
-  // Fetching singlepost from API
+  // Fetching singlestory from API
   useEffect(() => {
     const getStory = async () => {
       const res = await axios.get(`${apiroutes[6].url}${path}`);
@@ -34,11 +34,17 @@ function SingleStoryUpdate() {
     getStory();
   }, []);
 
-  //Handler for deleting singlepost from the API
+  //Handler for deleting singlestory
   const handleDelete = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     try {
       await axios.delete(`${apiroutes[6].url}${story._id}`, {
         data: { username: userCreds.name },
+        headers: headers,
       });
       navigate("/stories");
     } catch (err) {
@@ -61,6 +67,11 @@ function SingleStoryUpdate() {
       photo: story.photo,
     };
 
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
         const data = new FormData();
@@ -81,7 +92,9 @@ function SingleStoryUpdate() {
     }
     //Updating post on MongoDB
     try {
-      await axios.put(`${apiroutes[6].url}${story._id}`, newStory);
+      await axios.put(`${apiroutes[6].url}${story._id}`, newStory, {
+        headers: headers,
+      });
       navigate("/story" + story._id);
     } catch (err) {
       setIsError("standard");
