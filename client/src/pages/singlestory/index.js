@@ -12,7 +12,6 @@ import PageHeadLine from "../../components/elements/PageHeadline";
 import UniversalButton from "../../components/elements/UniversalButton";
 import Pagination from "../../components/Pagination";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import useGetBackGround from "../../utility/useGetBackGround";
 
@@ -28,7 +27,6 @@ function SingleStory() {
   const [story, setStory] = useState();
   const [storyImages, setStoryImages] = useState([]);
   const [file, setFile] = useState(null);
-  const [orientation, setOrientation] = useState([]);
   const [deleteMode, setDeleteMode] = useState(false);
   const [rerenderComponent, setRerenderComponent] = useState(false);
   const bg = useGetBackGround();
@@ -84,7 +82,6 @@ function SingleStory() {
         data.append("name", filename);
         data.append("file", file);
         newStoryPhoto.photo = filename;
-        newStoryPhoto.orientation = orientation;
         //Uploading file to server
         try {
           await axios.post(apiroutes[5].url, data);
@@ -107,11 +104,9 @@ function SingleStory() {
     }
   };
 
-  // Handler for getting image orientation
+  // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
-    let imgOrientation = await getImageOrientation(e.target.files);
-    setOrientation(imgOrientation);
     executeScroll("end");
   };
 
@@ -152,7 +147,6 @@ function SingleStory() {
               <PageHeadLine headline={story.story} />
               <div className="card-setup py-4 md:py-10">
                 <OrientedImage
-                  orientation={story.orientation}
                   image={story.photo}
                   path={PF}
                   alt="Einzelnes Story Bild"
@@ -197,7 +191,7 @@ function SingleStory() {
                         fileRef.current.value = null;
                       }}
                     >
-                      <OrientedImage orientation={orientation} file={file} />
+                      <OrientedImage file={file} />
                       <h4>
                         Klick hier, wenn du ein anderes Bild wählen möchtest!
                       </h4>

@@ -35,18 +35,14 @@ function StoriesShowCase({ story }) {
       trimmedStringLandscape.lastIndexOf(" ")
     )
   );
-  return story.orientation === 1 ? (
+
+  return (
     <Link
       to={`/story${story._id}`}
       className="card-setup gap-form py-form"
       key={story.story}
     >
-      <OrientedImage
-        orientation={story.orientation}
-        image={story.photo}
-        path={PF}
-        alt="Einzelner Story Post"
-      />
+      <OrientedImage image={story.photo} path={PF} alt="Einzelner Story Post" />
       <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
       <h5>Author: {story.username}</h5>
       <hr className="w-full" />
@@ -56,30 +52,6 @@ function StoriesShowCase({ story }) {
       <pre>
         <p className="whitespace-pre-line">{trimmedStringLandscape}</p>
       </pre>
-    </Link>
-  ) : (
-    <Link
-      to={`/${story._id}`}
-      className="card-setup gap-form py-form"
-      key={story.story}
-    >
-      <OrientedImage
-        orientation={story.orientation}
-        image={story.photo}
-        path={PF}
-        alt="Einzelner Story Post"
-      />
-      <div className="flex flex-col">
-        <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
-        <h5>Author: {story.username}</h5>
-        <hr className="w-full" />
-        <h6>Erstellt am: {new Date(story.createdAt).toDateString()}</h6>
-        <h6>Letztes Update: {new Date(story.updatedAt).toDateString()}</h6>
-        <hr className="w-full" />
-        <pre>
-          <p className="whitespace-pre-line">{trimmedStringPortrait}</p>
-        </pre>
-      </div>
     </Link>
   );
 }

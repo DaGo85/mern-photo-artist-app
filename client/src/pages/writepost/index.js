@@ -94,7 +94,7 @@ function WritePost() {
                   fileRef.current.click();
                 }}
               >
-                <OrientedImage orientation={orientation} file={file} />
+                <OrientedImage file={file} />
                 <h4>Klick hier, wenn du ein anderes Bild wählen möchtest!</h4>
               </div>
             ) : (

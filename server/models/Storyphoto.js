@@ -12,10 +12,6 @@ const StoryphotoSchema = mongoose.Schema(
       required: true,
     },
     story: { type: String, required: true },
-    orientation: {
-      type: Number,
-      required: false,
-    },
   },
   { timestamps: true }
 );

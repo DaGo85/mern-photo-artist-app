@@ -9,7 +9,6 @@ import ErrorMsg from "../../components/elements/ErrorMsg";
 import OrientedImage from "../../components/elements/OrientedImage";
 import UniversalButton from "../../components/elements/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import getImageOrientation from "../../utility/getImageOrientation";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
 function SingleStoryUpdate() {
@@ -17,7 +16,6 @@ function SingleStoryUpdate() {
   const fileRef = useRef();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
-  const [orientation, setOrientation] = useState(1);
   const [story, setStory] = useState();
   const [showModal, setShowModal] = useState(false);
 
@@ -70,7 +68,7 @@ function SingleStoryUpdate() {
         data.append("name", filename);
         data.append("file", file);
         newStory.photo = filename;
-        newStory.orientation = orientation;
+
         //Uploading file to server
         try {
           await axios.post(apiroutes[5].url, data);
@@ -90,11 +88,9 @@ function SingleStoryUpdate() {
     }
   };
 
-  // Handler for getting image orientation
+  // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
-    let imgOrientation = await getImageOrientation(e.target.files);
-    setOrientation(imgOrientation);
   };
 
   const deleteHandler = () => setShowModal(true);
@@ -114,7 +110,7 @@ function SingleStoryUpdate() {
                       fileRef.current.value = null;
                     }}
                   >
-                    <OrientedImage orientation={orientation} file={file} />
+                    <OrientedImage file={file} />
                     <h4>
                       Klick hier, wenn du das vorherige oder ein anderes Bild
                       möchtest!
@@ -128,7 +124,6 @@ function SingleStoryUpdate() {
                     }}
                   >
                     <OrientedImage
-                      orientation={story.orientation}
                       image={story.photo}
                       alt="Story Bild"
                       path={PF}

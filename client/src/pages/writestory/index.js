@@ -6,7 +6,6 @@ import SubText from "../../components/elements/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import getImageOrientation from "../../utility/getImageOrientation";
 import axios from "axios";
 import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
@@ -17,7 +16,6 @@ function WriteStory() {
   const { userCreds } = useAuthContext();
   const [file, setFile] = useState(null);
   const [isError, setIsError] = useState(false);
-  const [orientation, setOrientation] = useState(1);
   const fileRef = useRef();
   const navigate = useNavigate();
 
@@ -40,7 +38,6 @@ function WriteStory() {
         data.append("name", filename);
         data.append("file", file);
         newStory.photo = filename;
-        newStory.orientation = orientation;
         try {
           const res = await axios.post(apiroutes[6].url, newStory);
           navigate("/story" + res.data._id);
@@ -63,11 +60,9 @@ function WriteStory() {
     }
   };
 
-  // Handler for getting image orientation
+  // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
-    let imgOrientation = await getImageOrientation(e.target.files);
-    setOrientation(imgOrientation);
   };
 
   return (
@@ -87,7 +82,7 @@ function WriteStory() {
                   fileRef.current.click();
                 }}
               >
-                <OrientedImage orientation={orientation} file={file} />
+                <OrientedImage file={file} />
                 <h4>Klick hier, wenn du ein anderes Bild wählen möchtest!</h4>
               </div>
             ) : (

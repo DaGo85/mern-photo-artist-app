@@ -1,24 +1,10 @@
 // rework or remove
 
-function OrientedImage({ image, path, alt, file, orientation = 1 }) {
+function OrientedImage({ image, path, alt, file }) {
   return (
     <>
       {file ? (
-        orientation === 1 ? (
-          <img
-            className=""
-            alt="Neues Landschaftsbild"
-            src={URL.createObjectURL(file)}
-          />
-        ) : (
-          <img alt="Neues Portraitbild" src={URL.createObjectURL(file)} />
-        )
-      ) : orientation === 1 ? (
-        <img
-          className="max-h-[85vh] object-cover"
-          alt={alt}
-          src={path + image}
-        />
+        <img alt="Neues Portraitbild" src={URL.createObjectURL(file)} />
       ) : (
         <img
           className="max-h-[85vh] object-cover"

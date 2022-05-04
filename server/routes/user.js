@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../models/User");
 const { auth } = require("../middleware/auth");
-
+// todo: remove
 // related to sending password reset email
 const config = require("../config/key");
 const crypto = require("crypto");

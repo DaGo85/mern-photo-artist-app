@@ -20,10 +20,6 @@ const StorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    orientation: {
-      type: Number,
-      required: false,
-    },
   },
   { timestamps: true }
 );

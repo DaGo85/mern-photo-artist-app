@@ -40,7 +40,6 @@ function SinglePost() {
               <PageHeadLine headline={post.title} />
               <div className="card-setup py-4 md:py-10">
                 <OrientedImage
-                  orientation={post.orientation}
                   image={post.photo}
                   path={PF}
                   alt="Einzelner blog Post"

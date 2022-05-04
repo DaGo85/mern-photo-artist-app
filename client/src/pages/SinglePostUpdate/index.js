@@ -115,7 +115,7 @@ function SinglePostUpdate() {
                       fileRef.current.value = null;
                     }}
                   >
-                    <OrientedImage orientation={orientation} file={file} />
+                    <OrientedImage file={file} />
                     <h4>
                       Klick hier, wenn du ein anderes Bild wählen möchtest!
                     </h4>
@@ -129,7 +129,6 @@ function SinglePostUpdate() {
                     }}
                   >
                     <OrientedImage
-                      orientation={post.orientation}
                       image={post.photo}
                       alt="Blog Post Bild"
                       path={PF}
