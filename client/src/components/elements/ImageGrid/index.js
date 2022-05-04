@@ -25,19 +25,11 @@ function ImageGrid({
                 className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative"
               >
                 <div className="w-full h-full block overflow-hidden aspect-square">
-                  {item.orientation === 1 ? (
-                    <img
-                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                      src={`${address.url}${item.photo}`}
-                      alt="Landschafts Bilderraster Inhalt"
-                    />
-                  ) : (
-                    <img
-                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                      src={`${address.url}${item.photo}`}
-                      alt="Potrait Bilderraster Inhalt"
-                    />
-                  )}
+                  <img
+                    className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
+                    src={`${address.url}${item.photo}`}
+                    alt="Potrait Bilderraster Inhalt"
+                  />
                 </div>
                 {userCreds.name === item.username && (
                   <div className="w-full h-full absolute top-0 left-0 items-center justify-center flex bg-slate-900/70">
@@ -72,29 +64,16 @@ function ImageGrid({
                   className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative hover:cursor-pointer"
                 >
                   <div className="w-full h-full block overflow-hidden aspect-square">
-                    {item.orientation === 1 ? (
-                      <motion.img
-                        className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                        src={`${address.url}${item.photo}`}
-                        alt="Landschafts Bilderraster Inhalt"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 50 }}
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      />
-                    ) : (
-                      <motion.img
-                        className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                        src={`${address.url}${item.photo}`}
-                        alt="Portrait Bilderraster Inhalt"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", stiffness: 50 }}
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                      />
-                    )}
+                    <motion.img
+                      className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
+                      src={`${address.url}${item.photo}`}
+                      alt="Bilderraster Inhalt"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 50 }}
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    />
                   </div>
                 </div>
               </AnimatePresence>

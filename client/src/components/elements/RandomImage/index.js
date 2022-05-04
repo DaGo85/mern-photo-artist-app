@@ -37,7 +37,6 @@ function RandomImage() {
           <OrientedImage
             image={images[0].photo}
             path={PF}
-            orientation={images[0].orientation}
             alt="Zufälliges Bild aus der Gallerie"
           />
         </div>

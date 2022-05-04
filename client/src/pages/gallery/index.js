@@ -8,7 +8,6 @@ import Pagination from "../../components/Pagination";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ImageGrid from "../../components/elements/ImageGrid";
 import axios from "axios";
-import getImageOrientation from "../../utility/getImageOrientation";
 import OrientedImage from "../../components/elements/OrientedImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
@@ -23,7 +22,6 @@ function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteMode, setDeleteMode] = useState(false);
   const [file, setFile] = useState();
-  const [orientation, setOrientation] = useState([]);
   const [images, setImages] = useState([]);
   const [isError, setIsError] = useState(false);
   const bg = useGetBackGround();
@@ -78,7 +76,6 @@ function Gallery() {
         data.append("name", filename);
         data.append("file", file);
         newPhoto.photo = filename;
-        newPhoto.orientation = orientation;
         try {
           await axios.post(`${apiroutes[1].url}`, data);
         } catch (err) {
@@ -99,11 +96,9 @@ function Gallery() {
     }
   };
 
-  // Handler for getting image orientation
+  // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
-    let imgOrientation = await getImageOrientation(e.target.files);
-    setOrientation(imgOrientation);
     executeScroll("nearest");
   };
 
@@ -144,7 +139,7 @@ function Gallery() {
                     fileRef.current.value = null;
                   }}
                 >
-                  <OrientedImage orientation={orientation} file={file} />
+                  <OrientedImage file={file} />
                   <h4>Klick hier, wenn du ein anderes Bild wählen möchtest!</h4>
                 </div>
               )}

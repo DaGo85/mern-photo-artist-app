@@ -72,7 +72,6 @@ function ImageModal() {
               image={imageData.images[idx].photo}
               path={imageData.path.url}
               alt="geöffnet in der Detailansicht"
-              orientation={imageData.orientation}
             />
           </motion.div>
           <button

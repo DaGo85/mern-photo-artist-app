@@ -1,6 +1,6 @@
 // rework or remove
 
-function OrientedImage({ image, path, alt, file, orientation }) {
+function OrientedImage({ image, path, alt, file, orientation = 1 }) {
   return (
     <>
       {file ? (
