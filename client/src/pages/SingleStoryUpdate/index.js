@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
 import DeleteModal from "../../components/elements/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg";
-import OrientedImage from "../../components/elements/OrientedImage";
+import BasicImage from "../../components/elements/BasicImage";
 import UniversalButton from "../../components/elements/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
@@ -110,7 +110,7 @@ function SingleStoryUpdate() {
                       fileRef.current.value = null;
                     }}
                   >
-                    <OrientedImage file={file} />
+                    <BasicImage file={file} />
                     <h4>
                       Klick hier, wenn du das vorherige oder ein anderes Bild
                       möchtest!
@@ -123,7 +123,7 @@ function SingleStoryUpdate() {
                       fileRef.current.click();
                     }}
                   >
-                    <OrientedImage
+                    <BasicImage
                       image={story.photo}
                       alt="Story Bild"
                       path={PF}

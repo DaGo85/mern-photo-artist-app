@@ -4,7 +4,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useModalContext } from "../../utility/ImageModalWrapper";
-import OrientedImage from "../elements/OrientedImage";
+import BasicImage from "../elements/BasicImage";
 
 function ImageModal() {
   const { imageData, isOpen, setIsOpen } = useModalContext();
@@ -68,7 +68,7 @@ function ImageModal() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <OrientedImage
+            <BasicImage
               image={imageData.images[idx].photo}
               path={imageData.path.url}
               alt="geöffnet in der Detailansicht"

@@ -8,7 +8,7 @@ import Pagination from "../../components/Pagination";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ImageGrid from "../../components/elements/ImageGrid";
 import axios from "axios";
-import OrientedImage from "../../components/elements/OrientedImage";
+import BasicImage from "../../components/elements/BasicImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import UniversalButton from "../../components/elements/UniversalButton";
@@ -139,7 +139,7 @@ function Gallery() {
                     fileRef.current.value = null;
                   }}
                 >
-                  <OrientedImage file={file} />
+                  <BasicImage file={file} />
                   <h4>Klick hier, wenn du ein anderes Bild wählen möchtest!</h4>
                 </div>
               )}

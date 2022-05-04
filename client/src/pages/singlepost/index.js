@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
-import OrientedImage from "../../components/elements/OrientedImage";
+import BasicImage from "../../components/elements/BasicImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import UniversalButton from "../../components/elements/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
@@ -39,7 +39,7 @@ function SinglePost() {
             <>
               <PageHeadLine headline={post.title} />
               <div className="card-setup py-4 md:py-10">
-                <OrientedImage
+                <BasicImage
                   image={post.photo}
                   path={PF}
                   alt="Einzelner blog Post"

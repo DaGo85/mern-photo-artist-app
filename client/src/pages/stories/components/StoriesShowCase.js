@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
-import OrientedImage from "../../../components/elements/OrientedImage";
+import BasicImage from "../../../components/elements/BasicImage";
 //todo:rework
 function StoriesShowCase({ story }) {
   const PF = address[2].url;
@@ -42,7 +42,7 @@ function StoriesShowCase({ story }) {
       className="card-setup gap-form py-form"
       key={story.story}
     >
-      <OrientedImage image={story.photo} path={PF} alt="Einzelner Story Post" />
+      <BasicImage image={story.photo} path={PF} alt="Einzelner Story Post" />
       <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
       <h5>Author: {story.username}</h5>
       <hr className="w-full" />

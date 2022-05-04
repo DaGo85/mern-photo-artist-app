@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { address, apiroutes } from "../../../assets/data";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
-import OrientedImage from "../OrientedImage";
+import BasicImage from "../BasicImage";
 
 function RandomImage() {
   const [images, setImages] = useState([]);
@@ -34,7 +34,7 @@ function RandomImage() {
             setIsOpen(true);
           }}
         >
-          <OrientedImage
+          <BasicImage
             image={images[0].photo}
             path={PF}
             alt="Zufälliges Bild aus der Gallerie"

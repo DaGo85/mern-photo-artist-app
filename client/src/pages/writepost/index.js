@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import getImageOrientation from "../../utility/getImageOrientation";
 import axios from "axios";
-import OrientedImage from "../../components/elements/OrientedImage";
+import BasicImage from "../../components/elements/BasicImage";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import UniversalButton from "../../components/elements/UniversalButton";
@@ -94,7 +94,7 @@ function WritePost() {
                   fileRef.current.click();
                 }}
               >
-                <OrientedImage file={file} />
+                <BasicImage file={file} />
                 <h4>Klick hier, wenn du ein anderes Bild wählen möchtest!</h4>
               </div>
             ) : (

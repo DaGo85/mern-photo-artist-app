@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
 import ErrorMsg from "../../components/elements/ErrorMsg";
 import ImageGrid from "../../components/elements/ImageGrid";
-import OrientedImage from "../../components/elements/OrientedImage";
+import BasicImage from "../../components/elements/BasicImage";
 import PageHeadLine from "../../components/elements/PageHeadline";
 import UniversalButton from "../../components/elements/UniversalButton";
 import Pagination from "../../components/Pagination";
@@ -146,7 +146,7 @@ function SingleStory() {
             <>
               <PageHeadLine headline={story.story} />
               <div className="card-setup py-4 md:py-10">
-                <OrientedImage
+                <BasicImage
                   image={story.photo}
                   path={PF}
                   alt="Einzelnes Story Bild"
@@ -191,7 +191,7 @@ function SingleStory() {
                         fileRef.current.value = null;
                       }}
                     >
-                      <OrientedImage file={file} />
+                      <BasicImage file={file} />
                       <h4>
                         Klick hier, wenn du ein anderes Bild wählen möchtest!
                       </h4>

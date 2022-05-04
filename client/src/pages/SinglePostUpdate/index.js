@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import OrientedImage from "../../components/elements/OrientedImage";
+import BasicImage from "../../components/elements/BasicImage";
 import getImageOrientation from "../../utility/getImageOrientation";
 import DeleteModal from "../../components/elements/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg";
@@ -115,7 +115,7 @@ function SinglePostUpdate() {
                       fileRef.current.value = null;
                     }}
                   >
-                    <OrientedImage file={file} />
+                    <BasicImage file={file} />
                     <h4>
                       Klick hier, wenn du ein anderes Bild wählen möchtest!
                     </h4>
@@ -128,7 +128,7 @@ function SinglePostUpdate() {
                       setIsError(false);
                     }}
                   >
-                    <OrientedImage
+                    <BasicImage
                       image={post.photo}
                       alt="Blog Post Bild"
                       path={PF}

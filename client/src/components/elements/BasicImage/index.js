@@ -1,6 +1,6 @@
 // rework or remove
 
-function OrientedImage({ image, path, alt, file }) {
+function BasicImage({ image, path, alt, file }) {
   return (
     <>
       {file ? (
@@ -16,4 +16,4 @@ function OrientedImage({ image, path, alt, file }) {
   );
 }
 
-export default OrientedImage;
+export default BasicImage;
