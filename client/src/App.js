@@ -31,8 +31,6 @@ import { db } from "./utility/firebase";
 // bg images optimation, field test image number and proportion for all grids
 // button blue : #0070c9 navgrey: #424245 hover?: #06c
 // delete mode button, homecards, orientation, firebase BE
-// Singlepost does not work sometimes, image with ingo
-// after updating some, the same error occurs
 // unsubscribe?
 
 function App() {

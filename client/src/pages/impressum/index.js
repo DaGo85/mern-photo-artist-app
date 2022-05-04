@@ -7,7 +7,7 @@ import { subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage";
 import ImpressumSocialIcons from "./components/ImpressumSocialIcons";
 import useGetBackGround from "../../utility/useGetBackGround";
-// todo übersetzen
+
 function Impressum() {
   const bg = useGetBackGround();
   return (

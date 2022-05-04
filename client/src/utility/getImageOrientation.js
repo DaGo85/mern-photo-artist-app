@@ -1,4 +1,4 @@
-// Custom Hook for detecting the image orientation
+// Custom function for detecting the image orientation
 // returns 1 for landscape and 2 for portrait orientation
 //todo: reject?
 

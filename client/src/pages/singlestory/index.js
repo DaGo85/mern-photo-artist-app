@@ -55,7 +55,7 @@ function SingleStory() {
     getStory();
   }, []);
 
-  // Fetches and filters all story gallery images todo: let BE filter
+  // Fetches filtered story gallery images
 
   useEffect(() => {
     const fetchStoryImages = async () => {

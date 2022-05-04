@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { address } from "../../../assets/data";
-
+//todo: delete or implement
 const Carousel = ({ data }) => {
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);

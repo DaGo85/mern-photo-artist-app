@@ -39,9 +39,15 @@ function SinglePostUpdate() {
 
   //Handler for deleting singlepost from the API
   const handleDelete = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     try {
       await axios.delete(`${apiroutes[2].url}${post._id}`, {
         data: { username: userCreds.name },
+        headers: headers,
       });
       navigate("/");
     } catch (err) {
@@ -64,6 +70,11 @@ function SinglePostUpdate() {
       photo: post.photo,
     };
 
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
         const data = new FormData();
@@ -84,7 +95,9 @@ function SinglePostUpdate() {
     }
     //Updating post on MongoDB
     try {
-      await axios.put(`${apiroutes[2].url}${post._id}`, newPost);
+      await axios.put(`${apiroutes[2].url}${post._id}`, newPost, {
+        headers: headers,
+      });
       navigate("/post" + post._id);
     } catch (err) {
       setIsError("standard");

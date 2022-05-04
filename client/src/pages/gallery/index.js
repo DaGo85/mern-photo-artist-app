@@ -13,7 +13,7 @@ import ErrorMsg from "../../components/elements/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import UniversalButton from "../../components/elements/UniversalButton";
 import useGetBackGround from "../../utility/useGetBackGround";
-
+// todo: BE security for multer delete
 const PageSize = 9;
 
 function Gallery() {
@@ -45,11 +45,16 @@ function Gallery() {
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username) => {
-    console.log(userCreds.name);
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     if (username === userCreds.name) {
       try {
         await axios.delete(`${apiroutes[0].url}${imageid}`, {
           data: { username: userCreds.name },
+          headers: headers,
         });
       } catch (err) {
         setIsError(
@@ -67,6 +72,11 @@ function Gallery() {
       username: userCreds.name,
     };
 
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${userCreds.token}`,
+    };
+
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
     if (file) {
@@ -82,7 +92,9 @@ function Gallery() {
           setIsError("standard");
         }
         try {
-          await axios.post(`${apiroutes[0].url}`, newPhoto);
+          await axios.post(`${apiroutes[0].url}`, newPhoto, {
+            headers: headers,
+          });
           setFile(null);
         } catch (err) {
           setIsError("standard");

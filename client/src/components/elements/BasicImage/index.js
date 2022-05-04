@@ -1,5 +1,3 @@
-// rework or remove
-
 function BasicImage({ image, path, alt, file }) {
   return (
     <>

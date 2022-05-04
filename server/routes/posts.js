@@ -6,9 +6,7 @@ const fs = require("fs");
 //Create post at MongoDB
 router.post("/", async (req, res) => {
   const auth = req.currentUser;
-  console.log(req.currentUser);
   if (auth) {
-    console.log("authenticated!", auth);
     const newPost = new Post(req.body);
     try {
       const savedPost = await newPost.save();
@@ -21,60 +19,66 @@ router.post("/", async (req, res) => {
 
 //Update post from MongoDB and delete old image from server
 router.put("/:id", async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-    if (post.username === req.body.username) {
-      try {
-        if (req.body.photo !== post.photo) {
+  const auth = req.currentUser;
+  if (auth) {
+    try {
+      const post = await Post.findById(req.params.id);
+      if (post.username === req.body.username) {
+        try {
+          if (req.body.photo !== post.photo) {
+            const path = `./postimages/${post.photo}`;
+            if (fs.existsSync(path)) {
+              fs.unlink(path, function (err) {
+                if (err) throw err;
+              });
+            }
+          }
+          const updatedPost = await Post.findByIdAndUpdate(
+            req.params.id,
+            {
+              $set: req.body,
+            },
+            { new: true }
+          );
+          res.status(200).json(updatedPost);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      } else {
+        res.status(401).json("You can only change your own posts!");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else res.status(403).send("Not authorized");
+});
+
+//Delete post from MongoDB and delete image from server
+router.delete("/:id", async (req, res) => {
+  const auth = req.currentUser;
+  if (auth) {
+    try {
+      const post = await Post.findById(req.params.id);
+      if (post.username === req.body.username) {
+        try {
           const path = `./postimages/${post.photo}`;
           if (fs.existsSync(path)) {
             fs.unlink(path, function (err) {
               if (err) throw err;
             });
           }
+          await post.delete();
+          res.status(200).json("Post deleted...");
+        } catch (err) {
+          res.status(500).json(err);
         }
-        const updatedPost = await Post.findByIdAndUpdate(
-          req.params.id,
-          {
-            $set: req.body,
-          },
-          { new: true }
-        );
-        res.status(200).json(updatedPost);
-      } catch (err) {
-        res.status(500).json(err);
+      } else {
+        res.status(401).json("You can only delete your own posts!");
       }
-    } else {
-      res.status(401).json("You can only change your own posts!");
+    } catch (err) {
+      res.status(500).json(err);
     }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//Delete post from MongoDB and delete image from server
-router.delete("/:id", async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-    if (post.username === req.body.username) {
-      try {
-        const path = `./postimages/${post.photo}`;
-        if (fs.existsSync(path)) {
-          fs.unlink(path, function (err) {
-            if (err) throw err;
-          });
-        }
-        await post.delete();
-        res.status(200).json("Post deleted...");
-      } catch (err) {
-        res.status(500).json(err);
-      }
-    } else {
-      res.status(401).json("You can only delete your own posts!");
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  } else res.status(403).send("Not authorized");
 });
 
 //Read post from MongoDB
