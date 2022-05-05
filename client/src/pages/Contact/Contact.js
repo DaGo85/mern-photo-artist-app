@@ -1,14 +1,15 @@
 // Contact page
 
-import TransitionWrapper from "../../utility/TransitionWrapper";
+import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
-import { useState } from "react";
-import { apiroutes, subtexts } from "../../assets/data";
-import axios from "axios";
-import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 
+import { apiroutes, subtexts } from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
+import TransitionWrapper from "../../utility/TransitionWrapper";
+
+import axios from "axios";
+import { useState } from "react";
 
 //todo: check functionality after setting up BE
 // rework button

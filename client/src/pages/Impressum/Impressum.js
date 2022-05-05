@@ -1,12 +1,13 @@
 // Impressum page
 
-import TransitionWrapper from "../../utility/TransitionWrapper";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
-import { subtexts } from "../../assets/data";
 import RandomImage from "../../components/elements/RandomImage/RandomImage";
 import ImpressumSocialIcons from "./components/ImpressumSocialIcons";
+
+import { subtexts } from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
+import TransitionWrapper from "../../utility/TransitionWrapper";
 
 function Impressum() {
   const bg = useGetBackGround();

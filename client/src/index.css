@@ -200,7 +200,7 @@
     );
   }
 
-  .strikediag:hover {
+  .button-setup:hover .strikediag {
     background: linear-gradient(
       to left top,
       transparent 47%,

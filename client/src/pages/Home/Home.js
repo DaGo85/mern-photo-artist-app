@@ -1,14 +1,16 @@
 // Home page
 
-import TransitionWrapper from "../../utility/TransitionWrapper";
-import axios from "axios";
-import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
-import SubText from "../../components/elements/SubText/SubText";
-import { apiroutes, subtexts } from "../../assets/data";
-import RandomImage from "../../components/elements/RandomImage/RandomImage";
-import { useEffect, useMemo, useRef, useState } from "react";
 import Pagination from "../../components/Pagination/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
+import RandomImage from "../../components/elements/RandomImage/RandomImage";
+
+import TransitionWrapper from "../../utility/TransitionWrapper";
+import { apiroutes, subtexts } from "../../assets/data";
+
+import axios from "axios";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const PageSize = 6;
 

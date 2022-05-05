@@ -1,10 +1,11 @@
 // Write page
 
-import TransitionWrapper from "../../utility/TransitionWrapper";
+import WriteCards from "./components/WriteCards";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
+
 import { subtexts } from "../../assets/data";
-import WriteCards from "./components/WriteCards";
+import TransitionWrapper from "../../utility/TransitionWrapper";
 
 function Write() {
   return (

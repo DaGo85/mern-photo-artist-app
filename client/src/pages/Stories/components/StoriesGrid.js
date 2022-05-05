@@ -1,8 +1,9 @@
 // StoriesGrid component for Stories
 
-import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
 import { motion, AnimatePresence } from "framer-motion";
+
+import { Link } from "react-router-dom";
 
 function StoriesGrid({ currentGridData }) {
   return (

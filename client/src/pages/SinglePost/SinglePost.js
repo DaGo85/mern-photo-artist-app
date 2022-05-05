@@ -1,16 +1,18 @@
 //SinglePost page
 
+import BasicImage from "../../components/elements/BasicImage/BasicImage";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
+
+import { address, apiroutes } from "../../assets/data";
+import { useAuthContext } from "../../utility/AuthContextProvider";
+import TransitionWrapper from "../../utility/TransitionWrapper";
+import useGetBackGround from "../../utility/useGetBackGround";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { address, apiroutes } from "../../assets/data";
-import BasicImage from "../../components/elements/BasicImage/BasicImage";
-import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
-import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
-import { useAuthContext } from "../../utility/AuthContextProvider";
-import TransitionWrapper from "../../utility/TransitionWrapper";
-import useGetBackGround from "../../utility/useGetBackGround";
 
 function SinglePost() {
   const [post, setPost] = useState();

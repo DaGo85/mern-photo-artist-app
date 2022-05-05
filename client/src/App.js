@@ -1,8 +1,6 @@
 // Router component
 
-import { Route, Routes, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
-import NavBar from "./components/NavBar/NavBar";
+// Import for pages and components
 import Contact from "./pages/Contact/Contact";
 import Gallery from "./pages/Gallery/Gallery";
 import Home from "./pages/Home/Home";
@@ -14,15 +12,22 @@ import Write from "./pages/Write/Write";
 import SinglePost from "./pages/SinglePost/SinglePost";
 import SingleStory from "./pages/SingleStory/SingleStory";
 import SinglePostUpdate from "./pages/SinglePostUpdate/SinglePostUpdate";
-import useScrollToTop from "./utility/ScrollToTop";
 import SingleStoryUpdate from "./pages/SingleStoryUpdate/SingleStoryUpdate";
-import ImageModal from "./components/ImageModal/ImageModal";
 import Login from "./pages/Login/Login";
-import { useEffect } from "react";
+import NavBar from "./components/NavBar/NavBar";
+import ImageModal from "./components/ImageModal/ImageModal";
+
+// Import for utilities and context
+import { AnimatePresence } from "framer-motion";
+import useScrollToTop from "./utility/ScrollToTop";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { useAuthContext } from "./utility/AuthContextProvider";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "./utility/firebase";
+
+// Import for React and dependencies
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 // todo: loading spinner?, Carousel?
 // button styles,

@@ -1,17 +1,19 @@
 // WritePost page
 
-import TransitionWrapper from "../../utility/TransitionWrapper";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
-import { apiroutes, subtexts } from "../../assets/data";
-import { useRef, useState } from "react";
-import { useNavigate } from "react-router";
-import getImageOrientation from "../../utility/getImageOrientation";
-import axios from "axios";
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
+
+import { apiroutes, subtexts } from "../../assets/data";
+import getImageOrientation from "../../utility/getImageOrientation";
+import TransitionWrapper from "../../utility/TransitionWrapper";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
+
+import axios from "axios";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
 function WritePost() {
   const { userCreds } = useAuthContext();

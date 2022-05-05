@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
-import { address } from "../../../assets/data";
+// Showcase for the last story
+
 import BasicImage from "../../../components/elements/BasicImage/BasicImage";
+
+import { address } from "../../../assets/data";
+
+import { Link } from "react-router-dom";
+
 //todo:rework
 function StoriesShowCase({ story }) {
   const PF = address[2].url;

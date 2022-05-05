@@ -1,10 +1,12 @@
 // Generates random image for Home and Impressum
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import BasicImage from "../BasicImage/BasicImage";
+
 import { address, apiroutes } from "../../../assets/data";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
-import BasicImage from "../BasicImage/BasicImage";
+
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function RandomImage() {
   const [images, setImages] = useState([]);

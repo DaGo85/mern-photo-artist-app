@@ -1,10 +1,11 @@
 // NavBar element
 
-import { useState } from "react";
 import NavBarHamBurger from "./components/NavBarHamBurger";
 import NavBarLinks from "./components/NavBarLinks";
 import NavBarLogo from "./components/NavBarLogo";
 import NavBarSocialIcons from "./components/NavBarSocialIcons";
+
+import { useState } from "react";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);

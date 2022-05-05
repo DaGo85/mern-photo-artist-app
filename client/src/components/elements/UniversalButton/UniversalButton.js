@@ -1,4 +1,4 @@
-// Button element for userinterface
+// Generic button element for userinterface
 
 function UniversalButton({ text, type, handler, modell, icon }) {
   const icons = {

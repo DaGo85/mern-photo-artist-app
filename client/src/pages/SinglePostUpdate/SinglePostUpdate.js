@@ -1,17 +1,18 @@
 // Update page for a single post
 
-import TransitionWrapper from "../../utility/TransitionWrapper";
-import { address, apiroutes } from "../../assets/data";
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router";
-import { useNavigate } from "react-router";
-import axios from "axios";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
-import getImageOrientation from "../../utility/getImageOrientation";
 import DeleteModal from "../../components/elements/DeleteModal/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
+
+import TransitionWrapper from "../../utility/TransitionWrapper";
+import { address, apiroutes } from "../../assets/data";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
+import getImageOrientation from "../../utility/getImageOrientation";
+
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
+import axios from "axios";
 
 function SinglePostUpdate() {
   const fileRef = useRef();

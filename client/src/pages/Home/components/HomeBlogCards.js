@@ -1,7 +1,8 @@
 // HomeBlogCard component for Home
 
-import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
+
+import { Link } from "react-router-dom";
 
 function HomeBlogCards({ currentGridData }) {
   const PF = address[1].url;
