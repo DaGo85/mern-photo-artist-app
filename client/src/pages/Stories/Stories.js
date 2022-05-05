@@ -1,14 +1,14 @@
 // Stories page
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import StoriesShowCase from "./components/StoriesShowCase";
 import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import StoriesGrid from "./components/StoriesGrid";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 
 const PageSize = 9;
 

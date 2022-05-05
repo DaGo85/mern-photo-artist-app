@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import BasicImage from "../../components/elements/BasicImage";
+import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import getImageOrientation from "../../utility/getImageOrientation";
-import DeleteModal from "../../components/elements/DeleteModal";
-import ErrorMsg from "../../components/elements/ErrorMsg";
+import DeleteModal from "../../components/elements/DeleteModal/DeleteModal";
+import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import UniversalButton from "../../components/elements/UniversalButton";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 
 function SinglePostUpdate() {
   const fileRef = useRef();

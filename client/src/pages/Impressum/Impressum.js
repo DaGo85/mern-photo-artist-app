@@ -1,10 +1,10 @@
 // Impressum page
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { subtexts } from "../../assets/data";
-import RandomImage from "../../components/elements/RandomImage";
+import RandomImage from "../../components/elements/RandomImage/RandomImage";
 import ImpressumSocialIcons from "./components/ImpressumSocialIcons";
 import useGetBackGround from "../../utility/useGetBackGround";
 

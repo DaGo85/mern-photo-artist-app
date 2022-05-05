@@ -1,16 +1,16 @@
 // WriteStory page
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import BasicImage from "../../components/elements/BasicImage";
-import ErrorMsg from "../../components/elements/ErrorMsg";
+import BasicImage from "../../components/elements/BasicImage/BasicImage";
+import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import UniversalButton from "../../components/elements/UniversalButton";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 
 function WriteStory() {
   const { userCreds } = useAuthContext();

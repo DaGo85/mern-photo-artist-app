@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { address } from "../../../assets/data";
-import BasicImage from "../../../components/elements/BasicImage";
+import BasicImage from "../../../components/elements/BasicImage/BasicImage";
 //todo:rework
 function StoriesShowCase({ story }) {
   const PF = address[2].url;

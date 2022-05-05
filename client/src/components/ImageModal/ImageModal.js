@@ -4,7 +4,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useModalContext } from "../../utility/ImageModalWrapper";
-import BasicImage from "../elements/BasicImage";
+import BasicImage from "../elements/BasicImage/BasicImage";
 
 function ImageModal() {
   const { imageData, isOpen, setIsOpen } = useModalContext();

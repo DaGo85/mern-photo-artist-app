@@ -4,10 +4,10 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { address, apiroutes } from "../../assets/data";
-import DeleteModal from "../../components/elements/DeleteModal";
-import ErrorMsg from "../../components/elements/ErrorMsg";
-import BasicImage from "../../components/elements/BasicImage";
-import UniversalButton from "../../components/elements/UniversalButton";
+import DeleteModal from "../../components/elements/DeleteModal/DeleteModal";
+import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
+import BasicImage from "../../components/elements/BasicImage/BasicImage";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 

@@ -1,17 +1,17 @@
 // Gallery page
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { address, apiroutes, subtexts } from "../../assets/data";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import { useEffect, useMemo, useRef, useState } from "react";
-import ImageGrid from "../../components/elements/ImageGrid";
+import ImageGrid from "../../components/elements/ImageGrid/ImageGrid";
 import axios from "axios";
-import BasicImage from "../../components/elements/BasicImage";
-import ErrorMsg from "../../components/elements/ErrorMsg";
+import BasicImage from "../../components/elements/BasicImage/BasicImage";
+import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import UniversalButton from "../../components/elements/UniversalButton";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 import useGetBackGround from "../../utility/useGetBackGround";
 // todo: BE security for multer delete
 const PageSize = 9;

@@ -1,14 +1,14 @@
 // Login page
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { subtexts } from "../../assets/data";
 import { logInWithEmailAndPassword, logout } from "../../utility/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import UniversalButton from "../../components/elements/UniversalButton";
+import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 
 // todo
 

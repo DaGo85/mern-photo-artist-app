@@ -1,12 +1,12 @@
 // Contact page
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { useState } from "react";
 import { apiroutes, subtexts } from "../../assets/data";
 import axios from "axios";
-import ErrorMsg from "../../components/elements/ErrorMsg";
+import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 
 import useGetBackGround from "../../utility/useGetBackGround";
 

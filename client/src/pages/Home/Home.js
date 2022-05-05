@@ -2,12 +2,12 @@
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import axios from "axios";
-import PageHeadLine from "../../components/elements/PageHeadline";
-import SubText from "../../components/elements/SubText";
+import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
+import SubText from "../../components/elements/SubText/SubText";
 import { apiroutes, subtexts } from "../../assets/data";
-import RandomImage from "../../components/elements/RandomImage";
+import RandomImage from "../../components/elements/RandomImage/RandomImage";
 import { useEffect, useMemo, useRef, useState } from "react";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import HomeBlogCards from "./components/HomeBlogCards";
 
 const PageSize = 6;
