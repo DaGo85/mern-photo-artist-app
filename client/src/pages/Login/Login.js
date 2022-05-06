@@ -19,7 +19,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const { userData, setUserData } = useAuthContext();
+  const { userData, setUserData, setUserCreds } = useAuthContext();
 
   const handleLogin = () => {
     logInWithEmailAndPassword(email, password);
@@ -29,6 +29,7 @@ function Login() {
   const logoutHandler = () => {
     logout();
     setUserData(null);
+    setUserCreds(null);
     navigate("/");
   };
 
@@ -39,45 +40,52 @@ function Login() {
           <PageHeadLine headline={"Login"} />
           <SubText subtext={subtexts.login} />
           <div className="card-setup md:w-[600px] py-form gap-form">
-            <div className="w-full relative">
-              <input
-                onChange={(e) => setEmail(e.target.value)}
-                id="email"
-                label="Email"
-                type="email"
-                className="peer"
-                autoComplete="email"
-                required
-                placeholder="Bitte gib deine Email ein"
-              />
-              <label htmlFor="email">Bitte gib deine Email ein</label>
-            </div>
-            <div className="w-full relative">
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                id="password"
-                label="password"
-                type="password"
-                className="peer"
-                autoComplete="password"
-                required
-                placeholder="Bitte gib dein Passwort ein"
-              />
-              <label htmlFor="password">Bitte gib dein Passwort ein</label>
-            </div>
-            <UniversalButton
-              text="Login"
-              handler={handleLogin}
-              modell="success"
-              type="button"
-            />
+            {!userData && (
+              <>
+                <div className="w-full relative">
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    id="email"
+                    label="Email"
+                    type="email"
+                    className="peer"
+                    autoComplete="email"
+                    required
+                    placeholder="Bitte gib deine Email ein"
+                  />
+                  <label htmlFor="email">Bitte gib deine Email ein</label>
+                </div>
+                <div className="w-full relative">
+                  <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    id="password"
+                    label="password"
+                    type="password"
+                    className="peer"
+                    autoComplete="password"
+                    required
+                    placeholder="Bitte gib dein Passwort ein"
+                  />
+                  <label htmlFor="password">Bitte gib dein Passwort ein</label>
+                </div>
+                <UniversalButton
+                  text="Login"
+                  handler={handleLogin}
+                  modell="success"
+                  type="button"
+                />
+              </>
+            )}
             {userData && (
-              <UniversalButton
-                text="Logout"
-                handler={logoutHandler}
-                modell="delete"
-                type="button"
-              />
+              <>
+                <h4>Du bist derzeitig eingeloggt!</h4>
+                <UniversalButton
+                  text="Logout"
+                  handler={logoutHandler}
+                  modell="delete"
+                  type="button"
+                />
+              </>
             )}
           </div>
         </div>
