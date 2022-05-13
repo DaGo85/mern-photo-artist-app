@@ -28,3 +28,9 @@ dev.js
 .env
 key.js
 prod.js
+
+# Image folder
+
+/galleryimages
+/postimages
+/storyimages

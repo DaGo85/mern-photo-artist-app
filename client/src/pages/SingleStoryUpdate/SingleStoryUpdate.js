@@ -73,25 +73,27 @@ function SingleStoryUpdate() {
       "Content-Type": "application/json",
       authorization: `Bearer ${userCreds.token}`,
     };
-
+    // todo: rework logic
     if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        const data = new FormData();
-        const filename = Date.now() + file.name;
-        data.append("name", filename);
-        data.append("file", file);
-        newStory.photo = filename;
+      if (!file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+        setIsError(
+          "Nur Bilder vom Typ: jpeg, jpg und png bis 3 MB sind erlaubt"
+        );
+        return;
+      }
+      const data = new FormData();
+      const filename = Date.now() + file.name;
+      data.append("name", filename);
+      data.append("file", file);
+      newStory.photo = filename;
 
-        //Uploading file to server
-        try {
-          await axios.post(apiroutes[5].url, data, {
-            headers: headers,
-          });
-        } catch (err) {
-          setIsError("standard");
-        }
-      } else {
-        setIsError("Die Datei ist zu gross!");
+      //Uploading file to server
+      try {
+        await axios.post(apiroutes[5].url, data, {
+          headers: headers,
+        });
+      } catch (err) {
+        setIsError("standard");
       }
     }
     //Updating post on MongoDB

@@ -16,6 +16,7 @@ const PageSize = 9;
 
 function Stories() {
   const [stories, setStories] = useState([]);
+  const [lastStory, setLastStory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const myRef = useRef(null);
@@ -25,7 +26,8 @@ function Stories() {
   useEffect(() => {
     const fetchStoryImages = async () => {
       const res = await axios.get(apiroutes[6].url);
-      setStories(res.data);
+      setLastStory(res.data[0]);
+      setStories(res.data.slice(1, res.data.length - 1));
     };
     fetchStoryImages();
   }, []);
@@ -48,7 +50,7 @@ function Stories() {
         <div className="bg-setup">
           <PageHeadLine headline={"Stories"} />
           <SubText subtext={subtexts.stories} />
-          {stories.length && <StoriesShowCase story={stories[0]} />}
+          {stories.length && <StoriesShowCase story={lastStory} />}
           <div ref={myRef} />
           <Pagination
             currentPage={currentPage}

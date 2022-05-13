@@ -44,9 +44,10 @@ function StoriesShowCase({ story }) {
   return (
     <Link
       to={`/story${story._id}`}
-      className="card-setup gap-form py-form"
+      className="card-setup gap-form py-form max-w-screen-xl"
       key={story.story}
     >
+      <h3 className="text-slate-100">Zuletzt hinzugefügte Story</h3>
       <BasicImage image={story.photo} path={PF} alt="Einzelner Story Post" />
       <h4 className="pb-2 md:pb-4 lg:pb-6">{story.story}</h4>
       <h5>Author: {story.username}</h5>
