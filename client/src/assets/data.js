@@ -89,15 +89,15 @@ const server = "http://localhost:5000/";
 export const address = [
   {
     id: 0,
-    url: `${server}galleryimages/`,
+    url: `${server}api/galleryimages/`,
   },
   {
     id: 1,
-    url: `${server}postimages/`,
+    url: `${server}api/postimages/`,
   },
   {
     id: 2,
-    url: `${server}storyimages/`,
+    url: `${server}api/storyimages/`,
   },
 ];
 

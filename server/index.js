@@ -18,6 +18,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(decodeIDToken);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //Connect to MongoDB
 mongoose
@@ -27,13 +29,6 @@ mongoose
   })
   .then(() => console.log(`MongoDB Connected...`))
   .catch((err) => console.log(err));
-
-// Middleware
-// 1. application/x-www-form-urlencoded data analysis
-// 2. application-json data analysis
-// 3. cookie analysis
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
@@ -50,12 +45,15 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api/contact", contactRoute);
 
 //PostRoute
-app.use("/postimages", express.static(path.join(__dirname, "../postimages/")));
+app.use(
+  "/api/postimages",
+  express.static(path.join(__dirname, "../postimages/"))
+);
 app.use("/api/posts", postRoute);
 
 //StoryRoute
 app.use(
-  "/storyimages",
+  "/api/storyimages",
   express.static(path.join(__dirname, "../storyimages/"))
 );
 app.use("/api/stories", storyRoute);
@@ -63,7 +61,7 @@ app.use("/api/stories", storyRoute);
 //GalleryRoute
 app.use("/api/gallery", galleryRoute);
 app.use(
-  "/galleryimages",
+  "/api/galleryimages",
   express.static(path.join(__dirname, "../galleryimages/"))
 );
 
@@ -100,12 +98,10 @@ const storagepostimg = multer.diskStorage({
 //Multer image upload settings for all routes
 const authAndLimitErrorHandler = (err, req, res, next) => {
   if (err) {
-    console.log(err.message);
     res.sendStatus(413);
   }
   const auth = req.currentUser;
   if (!auth) {
-    console.log(err.message);
     res.sendStatus(413);
   } else {
     next();
