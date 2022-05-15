@@ -30,7 +30,3 @@ key.js
 prod.js
 
 # Image folder
-
-
-/server/config/dev.js
-/server/config

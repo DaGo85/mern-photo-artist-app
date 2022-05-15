@@ -1,7 +1,6 @@
 //
 const express = require("express");
 
-const config = require("./config/key");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
@@ -23,7 +22,7 @@ app.use(bodyParser.json());
 
 //Connect to MongoDB
 mongoose
-  .connect(config.mongoURI, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

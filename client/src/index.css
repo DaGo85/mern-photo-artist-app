@@ -68,10 +68,6 @@
     background-image: url("/public/bg5.jpg");
   }
 
-  .impressum-bg {
-    background-image: url("/public/6911w.jpg");
-  }
-
   .bg-setup {
     @apply bg-fixed bg-center bg-cover py-40 md:py-48 lg:py-48
     w-full flex flex-col items-center justify-start gap-6 md:gap-12;
