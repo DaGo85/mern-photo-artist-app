@@ -31,6 +31,6 @@ prod.js
 
 # Image folder
 
-/galleryimages
-/postimages
-/storyimages
+
+/server/config/dev.js
+/server/config
