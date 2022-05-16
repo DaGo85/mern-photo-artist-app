@@ -2,7 +2,7 @@
 const router = require("express").Router();
 const Story = require("../models/Story");
 const fs = require("fs");
-const StoryPhoto = require("../models/StoryPhoto");
+const StoryPhoto = require("../models/Storyphoto");
 
 //Create story at MongoDB
 router.post("/story", async (req, res) => {

@@ -16,6 +16,6 @@ const StoryphotoSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const StoryPhoto = mongoose.model("StoryPhoto", StoryphotoSchema);
+const Storyphoto = mongoose.model("StoryPhoto", StoryphotoSchema);
 
-module.exports = StoryPhoto;
+module.exports = Storyphoto;
