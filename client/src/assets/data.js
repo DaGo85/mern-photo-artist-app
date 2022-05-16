@@ -81,7 +81,7 @@ export const write = [
 
 // Backend server address
 
-const server = "http://localhost:5000/";
+const server = "http://164.92.242.49:8080/";
 
 // Server side addresslist for photo requests
 // [0] = Gallery photo storage, [1] = Post photo storage, [2] = Story photo storage
