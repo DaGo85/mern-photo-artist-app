@@ -27,7 +27,7 @@ function ImageGrid({
                 <div className="w-full h-full block overflow-hidden aspect-square">
                   <img
                     className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                    src={`${address.url}${item.photo}`}
+                    src={`${item.photo}`}
                     alt="Potrait Bilderraster Inhalt"
                   />
                 </div>
@@ -66,7 +66,7 @@ function ImageGrid({
                   <div className="w-full h-full block overflow-hidden aspect-square">
                     <motion.img
                       className="w-full h-full hover:animate-sliderImage object-cover aspect-square"
-                      src={`${address.url}${item.photo}`}
+                      src={`${item.photo}`}
                       alt="Bilderraster Inhalt"
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
@@ -74,6 +74,7 @@ function ImageGrid({
                       whileInView="visible"
                       viewport={{ once: true }}
                     />
+                    {console.log(item.photo)}
                   </div>
                 </div>
               </AnimatePresence>

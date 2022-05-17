@@ -27,6 +27,7 @@ function Gallery() {
   const [deleteMode, setDeleteMode] = useState(false);
   const [file, setFile] = useState();
   const [selected, setSelected] = useState();
+  const [url, setUrl] = useState();
   const [images, setImages] = useState([]);
   const [isError, setIsError] = useState(false);
   const bg = useGetBackGround();
@@ -86,25 +87,15 @@ function Gallery() {
     // maximal 3000000 ( 3mb )
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        const data = new FormData();
-        const filename = Date.now() + file.name;
-        data.append("name", filename);
-        data.append("file", file);
-        newPhoto.photo = filename;
-        try {
-          await axios.post(`${apiroutes[1].url}`, data, {
-            headers: headers,
-          });
-          await setSelected(file);
-          console.log(file);
-        } catch (err) {
-          setIsError("standard");
-        }
+        setSelected(file);
+
+        newPhoto.photo = url;
         try {
           await axios.post(`${apiroutes[0].url}`, newPhoto, {
             headers: headers,
           });
           setFile(null);
+          setUrl(null);
         } catch (err) {
           setIsError("standard");
         }
@@ -208,6 +199,13 @@ function Gallery() {
               />
             </>
           )}
+          {selected && (
+            <ProgressBar
+              selected={selected}
+              setSelected={setSelected}
+              setUrl={setUrl}
+            />
+          )}
           <ErrorMsg isError={isError} />
           <Pagination
             currentPage={currentPage}
@@ -215,9 +213,6 @@ function Gallery() {
             pageSize={PageSize}
             onPageChange={(page) => setCurrentPage(page)}
           />
-          {selected && (
-            <ProgressBar selected={selected} setSelected={setSelected} />
-          )}
           <ImageGrid
             deleteMode={deleteMode}
             handleDeleteImg={handleDeleteImg}

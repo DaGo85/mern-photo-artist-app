@@ -205,4 +205,8 @@
       transparent 52%
     );
   }
+
+  .progress-bar {
+    @apply h-4 bg-green-300 mt-10 w-max;
+  }
 }

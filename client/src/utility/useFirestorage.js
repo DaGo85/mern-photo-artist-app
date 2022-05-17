@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { projectStorage } from "./firebase";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const useStorage = (file) => {
   const [progress, setProgress] = useState(0);
@@ -9,21 +9,27 @@ const useStorage = (file) => {
 
   useEffect(() => {
     // references
-    const storageRef = ref(projectStorage, file.name);
+    const storageRef = ref(projectStorage, Date.now() + file.name);
 
-    uploadBytes(storageRef, file).then(
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
       (snapshot) => {
-        let percentage =
+        const percentage =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(percentage);
       },
-      (err) => {
-        setError(err);
+      (error) => {
+        // Handle unsuccessful uploads
       },
-      async () => {
-        const url = await storageRef.getDownloadURL();
-
-        setUrl(url);
+      () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("File available at", downloadURL);
+          setUrl(downloadURL);
+        });
       }
     );
   }, [file]);
