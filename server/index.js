@@ -33,11 +33,6 @@ mongoose
 
 app.use(express.static("client/build"));
 
-// index.html for all page routes
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
-});
-
 //ContactRoute
 app.use("/api/contact", contactRoute);
 
@@ -61,16 +56,6 @@ app.use(
   "/api/galleryimages",
   express.static(path.join(__dirname, "../galleryimages/"))
 );
-
-// Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
 
 //Multer storage settings for galleryimages
 const storagegallery = multer.diskStorage({
@@ -173,8 +158,23 @@ app.post(
   }
 );
 
-//When running on heroku, use process.env.PORT
-const port = process.env.PORT || 5000;
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
+// index.html for all page routes
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+});
+
+//When running on digital ocean, use process.env.PORT
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server Running on port: ${port}`);
 });
