@@ -8,7 +8,7 @@ function HomeBlogCards({ currentGridData }) {
   const PF = address[1].url;
   return (
     <section className="flex flex-col gap-form max-w-7xl">
-      {currentGridData &&
+      {currentGridData.length &&
         currentGridData.map((post, index) => {
           // Trimmed strings for portrait images
           // Maximum number of characters to extract
