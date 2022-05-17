@@ -3,6 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -36,4 +37,6 @@ const logout = () => {
   signOut(auth);
 };
 
-export { auth, db, logInWithEmailAndPassword, logout };
+const projectStorage = getStorage(app);
+
+export { auth, db, logInWithEmailAndPassword, logout, projectStorage };

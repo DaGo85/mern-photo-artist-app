@@ -15,6 +15,7 @@ import useGetBackGround from "../../utility/useGetBackGround";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 // todo: BE security for multer delete
 const PageSize = 9;
@@ -25,6 +26,7 @@ function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteMode, setDeleteMode] = useState(false);
   const [file, setFile] = useState();
+  const [selected, setSelected] = useState();
   const [images, setImages] = useState([]);
   const [isError, setIsError] = useState(false);
   const bg = useGetBackGround();
@@ -93,6 +95,8 @@ function Gallery() {
           await axios.post(`${apiroutes[1].url}`, data, {
             headers: headers,
           });
+          await setSelected(file);
+          console.log(file);
         } catch (err) {
           setIsError("standard");
         }
@@ -211,6 +215,9 @@ function Gallery() {
             pageSize={PageSize}
             onPageChange={(page) => setCurrentPage(page)}
           />
+          {selected && (
+            <ProgressBar selected={selected} setSelected={setSelected} />
+          )}
           <ImageGrid
             deleteMode={deleteMode}
             handleDeleteImg={handleDeleteImg}

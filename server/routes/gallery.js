@@ -29,12 +29,14 @@ Router.delete("/:id", async (req, res) => {
       res.status(401).json("Es können nur die eigenen Fotos gelöscht werden!");
 
     const path = `./galleryimages/${photo.photo}`;
-    if (!fs.existsSync(path))
+    if (fs.existsSync(path)) {
+      fs.unlink(path, function (err) {
+        if (err) throw err;
+      });
+    } else {
       res.status(403).send("Die Datei existiert nicht!");
+    }
 
-    fs.unlink(path, function (err) {
-      if (err) throw err;
-    });
     await photo.delete();
 
     res.status(200).json("Foto gelöscht...");

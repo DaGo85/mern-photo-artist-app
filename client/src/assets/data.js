@@ -81,7 +81,7 @@ export const write = [
 
 // Backend server address
 
-const server = "https://mern-photo-artist-app-zzpnp.ondigitalocean.app/";
+const server = "http://localhost:8080/";
 
 // Server side addresslist for photo requests
 // [0] = Gallery photo storage, [1] = Post photo storage, [2] = Story photo storage
