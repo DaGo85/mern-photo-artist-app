@@ -10,8 +10,14 @@ import UniversalButton from "../../components/elements/UniversalButton/Universal
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import { address, apiroutes, subtexts } from "../../assets/data";
+import {
+  address,
+  apiroutes,
+  firebaseBaseUrl,
+  subtexts,
+} from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
+import { getStorage, ref, deleteObject } from "firebase/storage";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
@@ -50,7 +56,26 @@ function Gallery() {
   }, [rerenderComponent]);
 
   // Handler for deleting image
-  const handleDeleteImg = async (imageid, username) => {
+  const handleDeleteImg = async (imageid, username, url) => {
+    const firebaseImageId = url.split(firebaseBaseUrl)[1].split("?")[0];
+
+    const storage = getStorage();
+
+    // Create a reference to the file to delete
+    const deleteRef = ref(storage, firebaseImageId);
+
+    // Delete the file
+    deleteObject(deleteRef)
+      .then(() => {
+        setRerenderComponent(!rerenderComponent);
+        setIsError(false);
+      })
+      .catch((error) => {
+        setIsError(
+          "Das Bild konnte nicht gelöscht werden. Versuche es später noch einmal!"
+        );
+      });
+
     const headers = {
       "Content-Type": "application/json",
       authorization: `Bearer ${userCreds.token}`,
@@ -71,42 +96,52 @@ function Gallery() {
     }
   };
 
+  //todo check for 2nd render?
   // Handler for adding image
-  //todo: uploadorder
   const handleSubmit = async () => {
-    const newPhoto = {
-      username: userCreds.name,
-    };
-
-    const headers = {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${userCreds.token}`,
-    };
-
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
         setSelected(file);
-
-        newPhoto.photo = url;
-        try {
-          await axios.post(`${apiroutes[0].url}`, newPhoto, {
-            headers: headers,
-          });
-          setFile(null);
-          setUrl(null);
-        } catch (err) {
-          setIsError("standard");
-        }
-        setRerenderComponent(!rerenderComponent);
-        // document.getElementById("input-reset").reset();
       } else {
         setIsError("Die Datei ist zu gross!");
         setFile(null);
       }
     }
   };
+
+  useEffect(() => {
+    if (url === undefined) return;
+
+    const handleMdb = async () => {
+      const headers = {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${userCreds.token}`,
+      };
+
+      const newPhoto = {
+        username: userCreds.name,
+      };
+
+      newPhoto.photo = url;
+
+      try {
+        await axios.post(`${apiroutes[0].url}`, newPhoto, {
+          headers: headers,
+        });
+        setFile(null);
+
+        setUrl(undefined);
+
+        setRerenderComponent(!rerenderComponent);
+      } catch (err) {
+        setIsError("standard");
+      }
+    };
+
+    handleMdb();
+  }, [url]);
 
   // Handler for input
   const handleInput = async (e) => {
@@ -204,6 +239,7 @@ function Gallery() {
               selected={selected}
               setSelected={setSelected}
               setUrl={setUrl}
+              setFile={setFile}
             />
           )}
           <ErrorMsg isError={isError} />

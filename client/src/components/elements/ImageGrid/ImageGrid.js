@@ -36,7 +36,7 @@ function ImageGrid({
                     <svg
                       aria-label="delete image"
                       onClick={() => {
-                        handleDeleteImg(item._id, item.username);
+                        handleDeleteImg(item._id, item.username, item.photo);
                       }}
                       className="cursor-pointer h-1/3 opacity-70 fill-slate-100 hover:opacity-100 hover:fill-red-400 transition-color duration-300"
                       xmlns="http://www.w3.org/2000/svg"

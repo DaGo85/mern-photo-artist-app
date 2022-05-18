@@ -79,6 +79,11 @@ export const write = [
   },
 ];
 
+// Firebase base Url for storage
+
+export const firebaseBaseUrl =
+  "https://firebasestorage.googleapis.com/v0/b/auth-test-8781d.appspot.com/o/";
+
 // Backend server address
 
 const server = "http://localhost:8080/";
