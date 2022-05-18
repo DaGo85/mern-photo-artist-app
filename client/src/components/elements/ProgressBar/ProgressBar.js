@@ -2,16 +2,15 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import useStorage from "../../../utility/useFirestorage";
 
-const ProgressBar = ({ selected, setSelected, setUrl, setFile }) => {
-  const { progress, url } = useStorage(selected);
+const ProgressBar = ({ selected, setSelected, setUrl, folder }) => {
+  const { progress, url } = useStorage(selected, folder);
 
   useEffect(() => {
     if (url) {
       setUrl(url);
-      setFile(null);
       setSelected(null);
     }
-  }, [url, setSelected, setUrl, setFile]);
+  }, [url, setSelected, setUrl]);
 
   return (
     <div className="h-20 w-72 ">

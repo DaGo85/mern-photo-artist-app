@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import { projectStorage } from "./firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-const useStorage = (file) => {
+const useStorage = (file, folder) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
 
   useEffect(() => {
     // references
-    const storageRef = ref(projectStorage, Date.now() + file.name);
+    const imageRef = ref(projectStorage, `${folder}/${Date.now() + file.name}`);
 
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const uploadTask = uploadBytesResumable(imageRef, file);
 
     uploadTask.on(
       "state_changed",

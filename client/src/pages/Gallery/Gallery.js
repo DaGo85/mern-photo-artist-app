@@ -57,15 +57,20 @@ function Gallery() {
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username, url) => {
-    const firebaseImageId = url.split(firebaseBaseUrl)[1].split("?")[0];
+    const firebaseImageId = url
+      .split(firebaseBaseUrl)[1]
+      .split("F")[1]
+      .split("?")[0];
 
     const storage = getStorage();
 
     // Create a reference to the file to delete
-    const deleteRef = ref(storage, firebaseImageId);
+    const deleteRef = ref(storage, "gallery");
+
+    const imageRef = ref(deleteRef, firebaseImageId);
 
     // Delete the file
-    deleteObject(deleteRef)
+    deleteObject(imageRef)
       .then(() => {
         setRerenderComponent(!rerenderComponent);
         setIsError(false);
@@ -134,14 +139,14 @@ function Gallery() {
 
         setUrl(undefined);
 
-        setRerenderComponent(!rerenderComponent);
+        setRerenderComponent((prevRerender) => !prevRerender);
       } catch (err) {
         setIsError("standard");
       }
     };
 
     handleMdb();
-  }, [url]);
+  }, [url, setRerenderComponent]);
 
   // Handler for input
   const handleInput = async (e) => {
@@ -224,22 +229,22 @@ function Gallery() {
                   icon="trash"
                 />
               )}
-              <input
-                accept="image/jpg,image/png,image/jpeg"
-                className="hidden"
-                type="file"
-                onChange={handleInput}
-                multiple={false}
-                ref={fileRef}
-              />
             </>
           )}
+          <input
+            accept="image/jpg,image/png,image/jpeg"
+            className="hidden"
+            type="file"
+            onChange={handleInput}
+            multiple={false}
+            ref={fileRef}
+          />
           {selected && (
             <ProgressBar
               selected={selected}
               setSelected={setSelected}
               setUrl={setUrl}
-              setFile={setFile}
+              folder="gallery"
             />
           )}
           <ErrorMsg isError={isError} />
