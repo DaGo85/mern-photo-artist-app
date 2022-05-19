@@ -29,15 +29,6 @@ router.put("/:id", async (req, res) => {
     if (post.username !== req.body.username)
       res.status(401).json("Es können nur die eigenen Posts verändert werden!");
 
-    if (req.body.photo !== post.photo) {
-      const path = `./postimages/${post.photo}`;
-      if (!fs.existsSync(path)) return;
-
-      fs.unlink(path, function (err) {
-        if (err) throw err;
-      });
-    }
-
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.id,
       {
