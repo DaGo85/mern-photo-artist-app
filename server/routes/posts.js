@@ -5,6 +5,7 @@ const fs = require("fs");
 
 //Create post at MongoDB
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
 

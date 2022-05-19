@@ -12,13 +12,18 @@ import TransitionWrapper from "../../utility/TransitionWrapper";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 function WritePost() {
   const { userCreds } = useAuthContext();
   const [file, setFile] = useState(null);
   const [orientation, setOrientation] = useState(1);
+  const [title, setTitle] = useState();
+  const [desc, setDesc] = useState();
+  const [url, setUrl] = useState();
+  const [selected, setSelected] = useState();
   const fileRef = useRef();
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -27,52 +32,48 @@ function WritePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { title, message } = e.target.elements;
-
-    const newPost = {
-      username: userCreds.name,
-      title: title.value,
-      desc: message.value,
-    };
-
-    const headers = {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${userCreds.token}`,
-    };
-
+    // Restriction for files: jpeg,jpg and png only, also the size has to be
+    // maximal 3000000 ( 3mb )
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        const data = new FormData();
-        const filename = Date.now() + file.name;
-        data.append("name", filename);
-        data.append("file", file);
-        newPost.photo = filename;
-        newPost.orientation = orientation;
-        try {
-          await axios.post(apiroutes[3].url, data, {
-            headers: headers,
-          });
-        } catch (err) {
-          setIsError("standard");
-        }
-        try {
-          const res = await axios.post(apiroutes[2].url, newPost, {
-            headers: headers,
-          });
-          navigate("/post" + res.data._id);
-        } catch (err) {
-          setIsError("standard");
-        }
-        setIsError(false);
+        setSelected(file);
       } else {
         setIsError("Die Datei ist zu gross!");
-        setIsError(true);
+        setFile(null);
       }
     }
-    if (!file) {
-      setIsError("Du hast kein Bild ausgesucht!");
-    }
   };
+
+  useEffect(() => {
+    if (url === undefined) return;
+
+    const handleMdb = async () => {
+      const headers = {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${userCreds.token}`,
+      };
+
+      const newPost = {
+        username: userCreds?.name,
+        title: title,
+        desc: desc,
+        photo: url,
+        orientation: orientation,
+      };
+
+      try {
+        const res = await axios.post(apiroutes[2].url, newPost, {
+          headers: headers,
+        });
+        navigate("/post" + res.data._id);
+      } catch (err) {
+        setIsError("standard");
+      }
+      setIsError(false);
+    };
+
+    handleMdb();
+  }, [url, userCreds, navigate, desc, title, orientation]);
 
   // Handler for getting image orientation
   const handleInput = async (e) => {
@@ -127,6 +128,14 @@ function WritePost() {
             multiple={false}
             ref={fileRef}
           />
+          {selected && (
+            <ProgressBar
+              selected={selected}
+              setSelected={setSelected}
+              setUrl={setUrl}
+              folder="posts"
+            />
+          )}
           <form
             onSubmit={handleSubmit}
             className="card-setup max-w-[800px] w-full py-form gap-form"
@@ -139,6 +148,7 @@ function WritePost() {
                 className="peer"
                 required
                 placeholder="Bitte gib einen Titel ein"
+                onChange={(e) => setTitle(e.target.value)}
               />
               <label htmlFor="title">Bitte gib einen Titel ein</label>
             </div>
@@ -149,6 +159,7 @@ function WritePost() {
                 className="peer h-96 pt-2"
                 required
                 placeholder="Bitte gib eine Nachricht ein"
+                onChange={(e) => setDesc(e.target.value)}
               />
               <label htmlFor="message">Bitte gib eine Nachricht ein</label>
             </div>

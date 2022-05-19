@@ -17,12 +17,12 @@ import {
   subtexts,
 } from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
-import { getStorage, ref, deleteObject } from "firebase/storage";
+import { ref, deleteObject } from "firebase/storage";
+import { projectStorage } from "../../utility/firebase";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
-import { projectStorage } from "../../utility/firebase";
 
 // todo: BE security for multer delete
 const PageSize = 9;
@@ -145,7 +145,7 @@ function Gallery() {
     };
 
     handleMdb();
-  }, [url, setRerenderComponent]);
+  }, [url, setRerenderComponent, userCreds]);
 
   // Handler for input
   const handleInput = async (e) => {
