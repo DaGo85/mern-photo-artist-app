@@ -1,6 +1,6 @@
 // Generic button element for userinterface
 
-function UniversalButton({ text, type, handler, modell, icon }) {
+function UniversalButton({ text, type, handler, modell, icon, disabled }) {
   const icons = {
     trash: (
       <svg
@@ -72,11 +72,14 @@ function UniversalButton({ text, type, handler, modell, icon }) {
     select: "bg-sselect hover:text-d button-effect-select",
   };
 
+  //todo grey out on disable
+
   return (
     <button
       className={`button-setup relative ${buttonStyles[modell]}`}
       type={type}
       onClick={handler && (() => handler())}
+      disabled={disabled}
     >
       {icon && icons[icon]}
       {text}

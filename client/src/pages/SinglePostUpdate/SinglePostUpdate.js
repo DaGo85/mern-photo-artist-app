@@ -62,6 +62,7 @@ function SinglePostUpdate() {
         "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
       );
     }
+    handleDeleteFirebase(post.photo);
   };
 
   //Handler for updating singlepost
@@ -91,7 +92,7 @@ function SinglePostUpdate() {
       username: userCreds.name,
       title: title,
       desc: desc,
-      photo: url,
+      photo: url ? url : post.photo,
       orientation: orientation,
     };
 
@@ -116,8 +117,8 @@ function SinglePostUpdate() {
   };
 
   //delete image if u want another
-  const handleOtherImage = async () => {
-    const firebaseImageId = url
+  const handleDeleteFirebase = async (id) => {
+    const firebaseImageId = id
       .split(firebaseBaseUrl)[1]
       .split("F")[1]
       .split("?")[0];
@@ -137,6 +138,7 @@ function SinglePostUpdate() {
           "Das Bild konnte nicht gelöscht werden. Versuche es später noch einmal!"
         );
       });
+    setUrl(null);
   };
 
   const deleteHandler = () => setShowModal(true);
@@ -154,8 +156,7 @@ function SinglePostUpdate() {
                     onClick={() => {
                       setFile(null);
                       fileRef.current.value = null;
-                      handleOtherImage();
-                      setUrl(null);
+                      handleDeleteFirebase(url);
                     }}
                   >
                     <BasicImage file={file} />
@@ -222,6 +223,7 @@ function SinglePostUpdate() {
                   modell="success"
                   type="submit"
                   icon="send"
+                  disabled={selected}
                 />
               </form>
               <ErrorMsg isError={isError} />
