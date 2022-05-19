@@ -16,6 +16,7 @@ import axios from "axios";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 const PageSize = 9;
 
@@ -26,9 +27,11 @@ function SingleStory() {
   const executeScroll = (to) =>
     myRef.current.scrollIntoView({ behavior: "smooth", block: to });
 
-  const [story, setStory] = useState();
+  const [story, setStory] = useState("");
   const [storyImages, setStoryImages] = useState([]);
   const [file, setFile] = useState(null);
+  const [selected, setSelected] = useState();
+  const [url, setUrl] = useState();
   const [deleteMode, setDeleteMode] = useState(false);
   const [rerenderComponent, setRerenderComponent] = useState(false);
   const bg = useGetBackGround();
@@ -67,53 +70,6 @@ function SingleStory() {
     fetchStoryImages();
   }, [rerenderComponent]);
 
-  //Handler for submitting a photo for singlestory
-  const handleSubmit = async () => {
-    const newStoryPhoto = {
-      username: userCreds.name,
-      story: story._id,
-    };
-
-    const headers = {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${userCreds.token}`,
-    };
-
-    // Restriction for files: jpeg,jpg and png only, also the size has to be
-    // maximal 3000000 ( 3mb )
-    if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        const data = new FormData();
-        const filename = Date.now() + file.name;
-        data.append("name", filename);
-        data.append("file", file);
-        newStoryPhoto.photo = filename;
-        //Uploading file to server
-        try {
-          await axios.post(apiroutes[5].url, data, {
-            headers: headers,
-          });
-        } catch (err) {
-          setIsError("standard");
-        }
-        //Posting  on MongoDB
-        try {
-          await axios.post(apiroutes[4].url, newStoryPhoto, {
-            headers: headers,
-          });
-          setFile(null);
-        } catch (err) {
-          setIsError("standard");
-        }
-        setRerenderComponent(!rerenderComponent);
-        // document.getElementById("form-reset").reset();
-      } else {
-        setIsError("Die Datei ist zu gross!");
-        setFile(null);
-      }
-    }
-  };
-
   // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
@@ -147,6 +103,49 @@ function SingleStory() {
       setRerenderComponent(!rerenderComponent);
     }
   };
+
+  // Handler for adding image
+  const handleSubmit = async () => {
+    // Restriction for files: jpeg,jpg and png only, also the size has to be
+    // maximal 3000000 ( 3mb )
+    if (file) {
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+        setSelected(file);
+      } else {
+        setIsError("Die Datei ist zu gross!");
+        setFile(null);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (url === undefined) return;
+
+    const handleMdb = async () => {
+      const headers = {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${userCreds.token}`,
+      };
+
+      const newStoryPhoto = {
+        username: userCreds.name,
+        story: story._id,
+        photo: url,
+      };
+
+      try {
+        await axios.post(apiroutes[4].url, newStoryPhoto, {
+          headers: headers,
+        });
+        setFile(null);
+        setRerenderComponent((prevRender) => !prevRender);
+      } catch (err) {
+        setIsError("standard");
+      }
+    };
+
+    handleMdb();
+  }, [url, setRerenderComponent, userCreds, story._id]);
 
   const handleSelectFile = () => fileRef.current.click();
   const handleDeleteMode = () => {
@@ -250,6 +249,14 @@ function SingleStory() {
                 </>
               )}
             </>
+          )}
+          {selected && (
+            <ProgressBar
+              selected={selected}
+              setSelected={setSelected}
+              setUrl={setUrl}
+              folder="stories"
+            />
           )}
           <ErrorMsg isError={isError} />
           <div ref={myRef} />

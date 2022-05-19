@@ -126,9 +126,8 @@ function Gallery() {
 
       const newPhoto = {
         username: userCreds.name,
+        photo: url,
       };
-
-      newPhoto.photo = url;
 
       try {
         await axios.post(`${apiroutes[0].url}`, newPhoto, {
