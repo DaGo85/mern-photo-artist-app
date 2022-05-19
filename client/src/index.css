@@ -69,7 +69,7 @@
   }
 
   .bg-setup {
-    @apply bg-fixed bg-center bg-cover py-40 md:py-48 lg:py-48 h-full
+    @apply bg-fixed bg-center bg-cover bg-no-repeat py-40 md:py-48 lg:py-48 
     w-full flex flex-col items-center justify-start gap-6 md:gap-12;
   }
 

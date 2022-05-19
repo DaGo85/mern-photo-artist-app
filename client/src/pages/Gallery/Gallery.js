@@ -22,6 +22,7 @@ import { getStorage, ref, deleteObject } from "firebase/storage";
 import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
+import { projectStorage } from "../../utility/firebase";
 
 // todo: BE security for multer delete
 const PageSize = 9;
@@ -57,15 +58,15 @@ function Gallery() {
 
   // Handler for deleting image
   const handleDeleteImg = async (imageid, username, url) => {
+    if (username !== userCreds.name) return;
+
     const firebaseImageId = url
       .split(firebaseBaseUrl)[1]
       .split("F")[1]
       .split("?")[0];
 
-    const storage = getStorage();
-
     // Create a reference to the file to delete
-    const deleteRef = ref(storage, "gallery");
+    const deleteRef = ref(projectStorage, "gallery");
 
     const imageRef = ref(deleteRef, firebaseImageId);
 
@@ -86,22 +87,20 @@ function Gallery() {
       authorization: `Bearer ${userCreds.token}`,
     };
 
-    if (username === userCreds.name) {
-      try {
-        await axios.delete(`${apiroutes[0].url}${imageid}`, {
-          data: { username: userCreds.name },
-          headers: headers,
-        });
-      } catch (err) {
-        setIsError(
-          "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
-        );
-      }
-      setRerenderComponent(!rerenderComponent);
+    try {
+      await axios.delete(`${apiroutes[0].url}${imageid}`, {
+        data: { username: userCreds.name },
+        headers: headers,
+      });
+    } catch (err) {
+      setIsError(
+        "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
+      );
     }
+
+    setRerenderComponent(!rerenderComponent);
   };
 
-  //todo check for 2nd render?
   // Handler for adding image
   const handleSubmit = async () => {
     // Restriction for files: jpeg,jpg and png only, also the size has to be

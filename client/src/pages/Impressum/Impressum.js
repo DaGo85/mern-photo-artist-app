@@ -18,7 +18,7 @@ function Impressum() {
           <PageHeadLine headline={"Impressum"} />
           <SubText subtext={subtexts.impressum} />
           <RandomImage />
-          <section className="card-setup gap-6 py-6">
+          <section className="card-setup gap-6 pt-6 pb-40">
             <h4>AGO Photography</h4>
             <span className="flex flex-col gap-4 w-full px-6">
               <h5>Gemäß zu § 5 TMG:</h5>
