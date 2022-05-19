@@ -1,12 +1,8 @@
 // HomeBlogCard component for Home
 
-import { address } from "../../../assets/data";
-
 import { Link } from "react-router-dom";
 
 function HomeBlogCards({ currentGridData }) {
-  const PF = address[1].url;
-
   return (
     <section className="flex flex-col gap-form max-w-7xl">
       {currentGridData.map((post, index) => {
@@ -50,7 +46,7 @@ function HomeBlogCards({ currentGridData }) {
           >
             <img
               className="object-cover "
-              src={PF + post.photo}
+              src={post.photo}
               alt="Einzelner blog Post mit Landschaftsbild"
             />
             <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
@@ -76,7 +72,7 @@ function HomeBlogCards({ currentGridData }) {
             <div className="md:max-w-[50%] flex justify-center w-full">
               <img
                 className="object-cover md:max-h-[55vh] overflow-hidden"
-                src={PF + post.photo}
+                src={post.photo}
                 alt="Einzelner blog Post mit Portraitbild"
               />
             </div>

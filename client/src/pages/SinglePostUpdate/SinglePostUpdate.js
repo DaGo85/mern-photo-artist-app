@@ -88,6 +88,10 @@ function SinglePostUpdate() {
       authorization: `Bearer ${userCreds.token}`,
     };
 
+    if (url) {
+      handleDeleteFirebase(post.photo);
+    }
+
     const newPost = {
       username: userCreds.name,
       title: title,

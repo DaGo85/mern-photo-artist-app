@@ -53,13 +53,6 @@ router.delete("/:id", async (req, res) => {
     if (post.username !== req.body.username)
       res.status(401).json("Nur die eigenen Posts können gelöscht werden!");
 
-    const path = `./postimages/${post.photo}`;
-    if (fs.existsSync(path)) {
-      fs.unlink(path, function (err) {
-        if (err) throw err;
-      });
-    }
-
     await post.delete();
 
     res.status(200).json("Post gelöscht...");

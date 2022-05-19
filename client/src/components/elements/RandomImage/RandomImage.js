@@ -37,8 +37,7 @@ function RandomImage() {
           }}
         >
           <BasicImage
-            image={images[0].photo}
-            path={PF}
+            image={images[0]?.photo}
             alt="Zufälliges Bild aus der Gallerie"
           />
         </div>

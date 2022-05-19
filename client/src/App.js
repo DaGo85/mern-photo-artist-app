@@ -36,7 +36,7 @@ import { useEffect } from "react";
 // bg images optimation, field test image number and proportion for all grids
 // button blue : #0070c9 navgrey: #424245 hover?: #06c
 // delete mode button, homecards, orientation, firebase BE
-// unsubscribe? fix logo @firefox
+// unsubscribe? fix logo @firefox, check gallery add image
 
 function App() {
   const location = useLocation();

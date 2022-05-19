@@ -24,7 +24,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
-// todo: BE security for multer delete
+// todo: why first add buggy?
 const PageSize = 9;
 
 function Gallery() {
