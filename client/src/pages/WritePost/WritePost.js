@@ -5,6 +5,7 @@ import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 import { apiroutes, subtexts } from "../../assets/data";
 import getImageOrientation from "../../utility/getImageOrientation";
@@ -14,7 +15,6 @@ import { useAuthContext } from "../../utility/AuthContextProvider";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 function WritePost() {
   const { userCreds } = useAuthContext();

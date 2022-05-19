@@ -5,18 +5,23 @@ import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 import { apiroutes, subtexts } from "../../assets/data";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
 function WriteStory() {
   const { userCreds } = useAuthContext();
   const [file, setFile] = useState(null);
+  const [title, setTitle] = useState();
+  const [desc, setDesc] = useState();
+  const [url, setUrl] = useState();
+  const [selected, setSelected] = useState();
   const [isError, setIsError] = useState(false);
   const fileRef = useRef();
   const navigate = useNavigate();
@@ -25,56 +30,48 @@ function WriteStory() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { title, story } = e.target.elements;
-
-    const newStory = {
-      username: userCreds.name,
-      story: title.value,
-      desc: story.value,
-    };
-
-    const headers = {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${userCreds.token}`,
-    };
-
+    // Restriction for files: jpeg,jpg and png only, also the size has to be
+    // maximal 3000000 ( 3mb )
     if (file) {
       if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        const data = new FormData();
-        const filename = Date.now() + file.name;
-        data.append("name", filename);
-        data.append("file", file);
-        newStory.photo = filename;
-        try {
-          const res = await axios.post(apiroutes[6].url, newStory, {
-            headers: headers,
-          });
-          navigate("/story" + res.data._id);
-        } catch (err) {
-          setIsError("standard");
-          return;
-        }
-        try {
-          await axios.post(apiroutes[5].url, data, {
-            headers: headers,
-          });
-        } catch (err) {
-          setIsError("standard");
-          return;
-        }
+        setSelected(file);
       } else {
         setIsError("Die Datei ist zu gross!");
+        setFile(null);
       }
-    }
-    if (!file) {
-      setIsError("Du hast kein Bild ausgesucht!");
     }
   };
 
-  // Handler for input
-  const handleInput = async (e) => {
-    setFile(e.target.files[0]);
-  };
+  useEffect(() => {
+    if (url === undefined) return;
+
+    const handleMdb = async () => {
+      const headers = {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${userCreds.token}`,
+      };
+
+      const newStory = {
+        username: userCreds?.name,
+        story: title,
+        desc: desc,
+        photo: url,
+      };
+
+      try {
+        const res = await axios.post(apiroutes[6].url, newStory, {
+          headers: headers,
+        });
+        navigate("/story" + res.data._id);
+      } catch (err) {
+        setIsError("standard");
+        return;
+      }
+      setIsError(false);
+    };
+
+    handleMdb();
+  }, [url, userCreds, navigate, desc, title]);
 
   return (
     <TransitionWrapper>
@@ -118,10 +115,18 @@ function WriteStory() {
             accept="image/jpg,image/png,image/jpeg"
             className="hidden"
             type="file"
-            onChange={handleInput}
+            onChange={(e) => setFile(e.target.files[0])}
             multiple={false}
             ref={fileRef}
           />
+          {selected && (
+            <ProgressBar
+              selected={selected}
+              setSelected={setSelected}
+              setUrl={setUrl}
+              folder="stories"
+            />
+          )}
           <form
             onSubmit={handleSubmit}
             className="card-setup max-w-[800px] w-full py-form gap-form"
@@ -134,6 +139,7 @@ function WriteStory() {
                 className="peer"
                 required
                 placeholder="Bitte gib einen Titel ein"
+                onChange={(e) => setTitle(e.target.value)}
               />
               <label htmlFor="title">Bitte gib einen Titel ein</label>
             </div>
@@ -144,6 +150,7 @@ function WriteStory() {
                 className="peer h-96 pt-2"
                 required
                 placeholder="Bitte gib eine Story ein"
+                onChange={(e) => setDesc(e.target.value)}
               />
               <label htmlFor="story">Bitte gib eine Story ein</label>
             </div>

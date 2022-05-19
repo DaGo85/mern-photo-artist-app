@@ -7,7 +7,6 @@ const StoryPhoto = require("../models/Storyphoto");
 //Create story at MongoDB
 router.post("/story", async (req, res) => {
   const auth = req.currentUser;
-  console.log("auth" + JSON.stringify(auth));
   if (!auth) res.status(403).send("Nicht autorisiert!");
 
   const newStory = new Story(req.body);
