@@ -88,24 +88,6 @@ export const firebaseBaseUrl =
 
 const server = "http://localhost:8080/";
 
-// Server side addresslist for photo requests
-// [0] = Gallery photo storage, [1] = Post photo storage, [2] = Story photo storage
-
-export const address = [
-  {
-    id: 0,
-    url: `${server}api/galleryimages/`,
-  },
-  {
-    id: 1,
-    url: `${server}api/postimages/`,
-  },
-  {
-    id: 2,
-    url: `${server}api/storyimages/`,
-  },
-];
-
 // Server side addresslist for API requests
 // [0] = Gallery route (/ = post, /:id = get, delete, /photos = get )
 // [1] = Gallery upload photo route (/ = post)

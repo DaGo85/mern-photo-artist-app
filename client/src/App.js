@@ -29,14 +29,13 @@ import { db } from "./utility/firebase";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-// todo: loading spinner?, Carousel?
+// todo: loading spinner?
 // button styles,
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.
-// bg images optimation, field test image number and proportion for all grids
-// button blue : #0070c9 navgrey: #424245 hover?: #06c
-// delete mode button, homecards, orientation, firebase BE
-// unsubscribe? fix logo @firefox, check gallery add image
+// field test image number and proportion for all grids
+// delete mode button, homecards
+// todo: refactor contact because of googles new rules
 
 function App() {
   const location = useLocation();
@@ -63,6 +62,8 @@ function App() {
         setUserData(newUser);
       }
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
 
   useEffect(() => {
@@ -85,6 +86,8 @@ function App() {
       }
     };
     fetchUserName();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
   return (

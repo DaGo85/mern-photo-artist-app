@@ -4,7 +4,7 @@ import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 
-import { address, apiroutes } from "../../assets/data";
+import { apiroutes } from "../../assets/data";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import useGetBackGround from "../../utility/useGetBackGround";
@@ -22,7 +22,6 @@ function SinglePost() {
 
   const location = useLocation();
   const path = location.pathname.split("/post")[1];
-  const PF = address[1].url;
 
   // Fetching singlepost from the API
   useEffect(() => {
@@ -43,11 +42,7 @@ function SinglePost() {
             <>
               <PageHeadLine headline={post.title} />
               <div className="card-setup py-4 md:py-10">
-                <BasicImage
-                  image={post.photo}
-                  path={PF}
-                  alt="Einzelner blog Post"
-                />
+                <BasicImage image={post.photo} alt="Einzelner blog Post" />
               </div>
               <div className="card-setup text-setup py-4 md:py-10">
                 <h5>Author: {post.username}</h5>

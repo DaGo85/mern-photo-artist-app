@@ -4,7 +4,6 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const useStorage = (file, folder) => {
   const [progress, setProgress] = useState(0);
-  const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
 
   useEffect(() => {
@@ -20,9 +19,7 @@ const useStorage = (file, folder) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(percentage);
       },
-      (error) => {
-        // Handle unsuccessful uploads
-      },
+      (error) => {},
       () => {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
@@ -32,9 +29,11 @@ const useStorage = (file, folder) => {
         });
       }
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file]);
 
-  return { progress, url, error };
+  return { progress, url };
 };
 
 export default useStorage;

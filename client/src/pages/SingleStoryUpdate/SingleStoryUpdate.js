@@ -8,7 +8,7 @@ import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import { address, apiroutes } from "../../assets/data";
+import { apiroutes } from "../../assets/data";
 
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
@@ -32,7 +32,6 @@ function SingleStoryUpdate() {
 
   const location = useLocation();
   const path = location.pathname.split("singlestoryupdate")[1];
-  const PF = address[2].url;
 
   // Fetching singlestory from API
   useEffect(() => {
@@ -161,11 +160,7 @@ function SingleStoryUpdate() {
                       fileRef.current.click();
                     }}
                   >
-                    <BasicImage
-                      image={story.photo}
-                      alt="Story Bild"
-                      path={PF}
-                    />
+                    <BasicImage image={story.photo} alt="Story Bild" />
                     <h4>Klick hier, wenn du das Titel Bild ändern möchtest!</h4>
                   </div>
                 )}
@@ -215,7 +210,7 @@ function SingleStoryUpdate() {
                     selected={selected}
                     setSelected={setSelected}
                     setUrl={setUrl}
-                    folder="posts"
+                    folder="stories"
                   />
                 )}
               </form>
@@ -231,7 +226,6 @@ function SingleStoryUpdate() {
                 handleDelete={handleDelete}
                 showModal={showModal}
                 setShowModal={setShowModal}
-                deleteType="post"
               />
             </>
           )}

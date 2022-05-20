@@ -218,7 +218,6 @@ function SinglePostUpdate() {
                 handleDelete={handleDelete}
                 showModal={showModal}
                 setShowModal={setShowModal}
-                deleteType="post"
               />
             </>
           )}

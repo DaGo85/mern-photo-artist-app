@@ -2,7 +2,7 @@
 
 import BasicImage from "../BasicImage/BasicImage";
 
-import { address, apiroutes } from "../../../assets/data";
+import { apiroutes } from "../../../assets/data";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
 
 import axios from "axios";
@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 function RandomImage() {
   const [images, setImages] = useState([]);
   const { setIsOpen, setImageData } = useModalContext();
-  const PF = address[0].url;
 
   // Fetching images from gallery route
   useEffect(() => {
@@ -31,7 +30,6 @@ function RandomImage() {
             setImageData({
               images: images,
               currentimage: images[0],
-              path: address[0],
             });
             setIsOpen(true);
           }}
