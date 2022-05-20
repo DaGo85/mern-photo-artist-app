@@ -75,7 +75,7 @@ function WritePost() {
     handleMdb();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url, userCreds, navigate, desc, title, orientation]);
+  }, [url]);
 
   // Handler for getting image orientation
   const handleInput = async (e) => {

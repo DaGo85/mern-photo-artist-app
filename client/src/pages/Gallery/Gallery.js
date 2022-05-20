@@ -10,7 +10,7 @@ import UniversalButton from "../../components/elements/UniversalButton/Universal
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import { address, apiroutes, subtexts } from "../../assets/data";
+import { apiroutes, subtexts } from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -19,7 +19,7 @@ import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 // todo: why first add buggy?
-const PageSize = 9;
+const PageSize = 5;
 
 function Gallery() {
   const { userCreds } = useAuthContext();
@@ -90,7 +90,7 @@ function Gallery() {
   };
 
   useEffect(() => {
-    if (url === undefined) return;
+    if (!url) return;
 
     const handleMdb = async () => {
       const headers = {
@@ -232,7 +232,6 @@ function Gallery() {
             deleteMode={deleteMode}
             handleDeleteImg={handleDeleteImg}
             currentGridData={currentGridData}
-            address={address[0]}
             images={images}
           />
           <Pagination

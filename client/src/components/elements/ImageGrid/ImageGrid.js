@@ -4,13 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
 import { useAuthContext } from "../../../utility/AuthContextProvider";
 
-function ImageGrid({
-  currentGridData,
-  address,
-  handleDeleteImg,
-  deleteMode,
-  images,
-}) {
+function ImageGrid({ currentGridData, handleDeleteImg, deleteMode, images }) {
   const { setIsOpen, setImageData } = useModalContext();
   const { userCreds } = useAuthContext();
 
@@ -57,7 +51,6 @@ function ImageGrid({
                     setImageData({
                       images: images,
                       currentimage: item,
-                      path: address,
                     });
                     setIsOpen(true);
                   }}

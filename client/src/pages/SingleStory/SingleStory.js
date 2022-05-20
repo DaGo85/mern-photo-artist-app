@@ -8,7 +8,7 @@ import UniversalButton from "../../components/elements/UniversalButton/Universal
 import Pagination from "../../components/Pagination/Pagination";
 
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import { address, apiroutes } from "../../assets/data";
+import { apiroutes } from "../../assets/data";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import useGetBackGround from "../../utility/useGetBackGround";
 
@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
-const PageSize = 9;
+const PageSize = 4;
 
 function SingleStory() {
   const { userCreds } = useAuthContext();
@@ -41,15 +41,8 @@ function SingleStory() {
 
   const location = useLocation();
   const path = location.pathname.split("story")[1];
-  const PF = address[2].url;
 
   const [currentPage, setCurrentPage] = useState(1);
-
-  const currentGridData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return storyImages.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, storyImages]);
 
   // Fetching singlestory from the API
   useEffect(() => {
@@ -75,18 +68,6 @@ function SingleStory() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rerenderComponent]);
 
-  // Handler for input
-  const handleInput = async (e) => {
-    setFile(e.target.files[0]);
-    executeScroll("end");
-  };
-
-  useEffect(() => {
-    if (currentPage !== 1) {
-      executeScroll("center");
-    }
-  }, [currentGridData, currentPage]);
-
   // Handler for deleting storygalleryimage
   const handleDeleteImg = async (imageid, username, photo) => {
     const headers = {
@@ -109,6 +90,7 @@ function SingleStory() {
         "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
       );
     }
+
     handleDeleteFirebaseImg(photo, "stories", setRerenderComponent, setIsError);
   };
 
@@ -156,12 +138,32 @@ function SingleStory() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
+  const currentGridData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return storyImages.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, storyImages]);
+
+  useEffect(() => {
+    if (currentPage !== 1) {
+      executeScroll("center");
+    }
+  }, [currentGridData, currentPage]);
+
+  // Handler for input
+  const handleInput = async (e) => {
+    setFile(e.target.files[0]);
+    executeScroll("end");
+  };
+
   const handleSelectFile = () => fileRef.current.click();
+
   const handleDeleteMode = () => {
     setDeleteMode(!deleteMode);
     setIsError(false);
   };
 
+  console.log("first" + JSON.stringify(storyImages));
   return (
     <TransitionWrapper>
       <main>
@@ -170,11 +172,7 @@ function SingleStory() {
             <>
               <PageHeadLine headline={story.story} />
               <div className="card-setup py-4 md:py-10">
-                <BasicImage
-                  image={story.photo}
-                  path={PF}
-                  alt="Einzelnes Story Bild"
-                />
+                <BasicImage image={story.photo} alt="Einzelnes Story Bild" />
               </div>
               <div className="card-setup text-setup py-4 md:py-10">
                 <h5>Author: {story.username}</h5>
@@ -269,7 +267,7 @@ function SingleStory() {
           )}
           <ErrorMsg isError={isError} />
           <div ref={myRef} />
-          {story && (
+          {storyImages && (
             <>
               <Pagination
                 currentPage={currentPage}
@@ -278,10 +276,9 @@ function SingleStory() {
                 onPageChange={(page) => setCurrentPage(page)}
               />
               <ImageGrid
-                currentGridData={currentGridData}
-                address={address[2]}
-                handleDeleteImg={handleDeleteImg}
                 deleteMode={deleteMode}
+                handleDeleteImg={handleDeleteImg}
+                currentGridData={currentGridData}
                 images={storyImages}
               />
               <Pagination

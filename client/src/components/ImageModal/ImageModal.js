@@ -72,7 +72,6 @@ function ImageModal() {
           >
             <BasicImage
               image={imageData.images[idx].photo}
-              path={imageData.path.url}
               alt="geöffnet in der Detailansicht"
             />
           </motion.div>
