@@ -4,6 +4,7 @@ import DeleteModal from "../../components/elements/DeleteModal/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import TransitionWrapper from "../../utility/TransitionWrapper";
@@ -12,13 +13,18 @@ import { address, apiroutes } from "../../assets/data";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 function SingleStoryUpdate() {
   const { userCreds } = useAuthContext();
   const fileRef = useRef();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
+  const [storyName, setStoryName] = useState();
+  const [desc, setDesc] = useState();
   const [story, setStory] = useState();
+  const [url, setUrl] = useState();
+  const [selected, setSelected] = useState();
   const [showModal, setShowModal] = useState(false);
 
   const [isError, setIsError] = useState(false);
@@ -34,6 +40,8 @@ function SingleStoryUpdate() {
       setStory(res.data);
     };
     getStory();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Handler for deleting singlestory
@@ -56,47 +64,41 @@ function SingleStoryUpdate() {
     }
   };
 
-  //Handler for updating singlepost
+  //Handler for updating singlestory
+  const handleUpdateImage = async (e) => {
+    // Restriction for files: jpeg,jpg and png only, also the size has to be
+    // maximal 3000000 ( 3mb )
+    if (
+      e.target.files[0].name.match(/\.(jpeg|jpg|png)$/) &&
+      e.target.files[0].size <= 3000000
+    ) {
+      setSelected(e.target.files[0]);
+    } else {
+      setIsError("Die Datei ist zu gross!");
+      setFile(null);
+    }
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
-
-    const { storyName, desc } = e.target.elements;
-
-    const newStory = {
-      username: userCreds.name,
-      story: storyName.value,
-      desc: desc.value,
-      photo: story.photo,
-    };
 
     const headers = {
       "Content-Type": "application/json",
       authorization: `Bearer ${userCreds.token}`,
     };
-    // todo: rework logic
-    if (file) {
-      if (!file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        setIsError(
-          "Nur Bilder vom Typ: jpeg, jpg und png bis 3 MB sind erlaubt"
-        );
-        return;
-      }
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-      newStory.photo = filename;
 
-      //Uploading file to server
-      try {
-        await axios.post(apiroutes[5].url, data, {
-          headers: headers,
-        });
-      } catch (err) {
-        setIsError("standard");
-      }
+    if (url) {
+      handleDeleteFirebaseImg(story.photo, "stories", setIsError);
     }
-    //Updating post on MongoDB
+
+    const newStory = {
+      username: userCreds.name,
+      story: storyName,
+      desc: desc,
+      photo: url ? url : story.photo,
+    };
+
+    //Updating story on MongoDB
     try {
       await axios.put(`${apiroutes[6].url}${story._id}`, newStory, {
         headers: headers,
@@ -105,11 +107,13 @@ function SingleStoryUpdate() {
     } catch (err) {
       setIsError("standard");
     }
+    setIsError(false);
   };
 
   // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
+    handleUpdateImage(e);
   };
 
   const deleteHandler = () => setShowModal(true);
@@ -170,6 +174,7 @@ function SingleStoryUpdate() {
                     defaultValue={story.story}
                     type="text"
                     required
+                    onChange={(e) => setStoryName(e.target.value)}
                   />
                   <label htmlFor="storyName">
                     Bitte gib einen Story Titel ein
@@ -181,6 +186,7 @@ function SingleStoryUpdate() {
                     defaultValue={story.desc}
                     className="h-96 pt-2"
                     required
+                    onChange={(e) => setDesc(e.target.value)}
                   />
                 </div>
                 <UniversalButton
@@ -189,6 +195,14 @@ function SingleStoryUpdate() {
                   type="submit"
                   icon="send"
                 />
+                {selected && (
+                  <ProgressBar
+                    selected={selected}
+                    setSelected={setSelected}
+                    setUrl={setUrl}
+                    folder="posts"
+                  />
+                )}
               </form>
               <ErrorMsg isError={isError} />
               <UniversalButton

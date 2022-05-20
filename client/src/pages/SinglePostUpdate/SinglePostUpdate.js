@@ -4,6 +4,7 @@ import UniversalButton from "../../components/elements/UniversalButton/Universal
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import DeleteModal from "../../components/elements/DeleteModal/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
+import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import { apiroutes } from "../../assets/data";
@@ -13,7 +14,6 @@ import getImageOrientation from "../../utility/getImageOrientation";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
-import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 function SinglePostUpdate() {

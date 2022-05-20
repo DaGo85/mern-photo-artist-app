@@ -29,16 +29,6 @@ router.put("/story/:id", async (req, res) => {
     if (story.username !== req.body.username)
       res.status(401).json("Nur die eigene Story kann verändert werden!");
 
-    if (req.body.photo !== story.photo) {
-      const path = `./storyimages/${story.photo}`;
-
-      if (fs.existsSync(path)) {
-        fs.unlink(path, function (err) {
-          if (err) throw err;
-        });
-      }
-    }
-
     const updatedStory = await Story.findByIdAndUpdate(
       req.params.id,
       {
@@ -72,6 +62,7 @@ router.delete("/story/:id", async (req, res) => {
       story: req.params.id,
     });
 
+    /*
     deleteStoryPhotos.forEach((dsp) => {
       try {
         const path = `./storyimages/${dsp.photo}`;
@@ -91,6 +82,7 @@ router.delete("/story/:id", async (req, res) => {
         if (err) throw err;
       });
     }
+    */
 
     await story.delete();
 

@@ -54,7 +54,6 @@ function App() {
           setUserCreds((prevState) => {
             return { ...prevState, token };
           });
-          console.log("token" + token);
         });
         const uid = user.uid;
         const email = user.email;

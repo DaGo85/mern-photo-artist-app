@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
-const PageSize = 4;
+const PageSize = 9;
 
 function SingleStory() {
   const { userCreds } = useAuthContext();
@@ -163,7 +163,6 @@ function SingleStory() {
     setIsError(false);
   };
 
-  console.log("first" + JSON.stringify(storyImages));
   return (
     <TransitionWrapper>
       <main>

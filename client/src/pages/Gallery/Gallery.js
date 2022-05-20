@@ -19,7 +19,7 @@ import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 // todo: why first add buggy?
-const PageSize = 5;
+const PageSize = 9;
 
 function Gallery() {
   const { userCreds } = useAuthContext();
