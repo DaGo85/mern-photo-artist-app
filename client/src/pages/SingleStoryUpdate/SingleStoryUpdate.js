@@ -23,6 +23,7 @@ function SingleStoryUpdate() {
   const [storyName, setStoryName] = useState();
   const [desc, setDesc] = useState();
   const [story, setStory] = useState();
+  const [storyImages, setStoryImages] = useState();
   const [url, setUrl] = useState();
   const [selected, setSelected] = useState();
   const [showModal, setShowModal] = useState(false);
@@ -40,6 +41,14 @@ function SingleStoryUpdate() {
       setStory(res.data);
     };
     getStory();
+
+    const fetchStoryImages = async () => {
+      const res = await axios.post(apiroutes[4].url + "storyphotoq", {
+        storyPhotoQuery: path,
+      });
+      setStoryImages(res.data);
+    };
+    fetchStoryImages();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -62,6 +71,12 @@ function SingleStoryUpdate() {
         "Diese Story kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
       );
     }
+
+    handleDeleteFirebaseImg(story.photo, "stories", setIsError);
+
+    storyImages.forEach((storyImage) => {
+      handleDeleteFirebaseImg(storyImage.photo, "stories", setIsError);
+    });
   };
 
   //Handler for updating singlestory

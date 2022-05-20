@@ -43,7 +43,7 @@ router.put("/story/:id", async (req, res) => {
   }
 });
 
-//Delete story from MongoDB and images from server
+//Delete story from MongoDB
 router.delete("/story/:id", async (req, res) => {
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
