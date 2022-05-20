@@ -71,7 +71,9 @@ function WriteStory() {
     };
 
     handleMdb();
-  }, [url, userCreds, navigate, desc, title]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
   return (
     <TransitionWrapper>

@@ -118,7 +118,9 @@ function Gallery() {
     };
 
     handleMdb();
-  }, [url, setRerenderComponent, userCreds]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
   // Handler for input
   const handleInput = async (e) => {

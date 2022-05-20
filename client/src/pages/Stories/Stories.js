@@ -30,6 +30,7 @@ function Stories() {
 
       setStories(res.data.slice(1, res.data.length));
     };
+
     fetchStoryImages();
   }, []);
 
@@ -44,7 +45,7 @@ function Stories() {
       executeScroll();
     }
   }, [currentGridData, currentPage]);
-  console.log("last" + JSON.stringify(lastStory));
+
   return (
     <TransitionWrapper>
       <main>

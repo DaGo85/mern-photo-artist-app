@@ -58,6 +58,8 @@ function SingleStory() {
       setStory(res.data);
     };
     getStory();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fetches filtered story gallery images
@@ -69,6 +71,8 @@ function SingleStory() {
       setStoryImages(res.data);
     };
     fetchStoryImages();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rerenderComponent]);
 
   // Handler for input
@@ -112,13 +116,12 @@ function SingleStory() {
   const handleSubmit = async () => {
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
-    if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        setSelected(file);
-      } else {
-        setIsError("Die Datei ist zu gross!");
-        setFile(null);
-      }
+
+    if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+      setSelected(file);
+    } else {
+      setIsError("Die Datei ist zu gross!");
+      setFile(null);
     }
   };
 
@@ -149,7 +152,9 @@ function SingleStory() {
     };
 
     handleMdb();
-  }, [url, setRerenderComponent, userCreds, story._id]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
   const handleSelectFile = () => fileRef.current.click();
   const handleDeleteMode = () => {

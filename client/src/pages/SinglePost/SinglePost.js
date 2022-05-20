@@ -31,6 +31,8 @@ function SinglePost() {
       setPost(res.data);
     };
     getPost();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

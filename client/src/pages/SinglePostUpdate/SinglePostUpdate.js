@@ -41,6 +41,8 @@ function SinglePostUpdate() {
       setPost(res.data);
     };
     getPost();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Handler for deleting singlepost from the API
