@@ -1,6 +1,5 @@
 // StoriesGrid component for Stories
 
-import { address } from "../../../assets/data";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Link } from "react-router-dom";
@@ -66,7 +65,7 @@ function StoriesGrid({ currentGridData }) {
               </div>
               <motion.img
                 className="w-full h-full object-cover aspect-square"
-                src={`${address[2].url}${item.photo}`}
+                src={item.photo}
                 alt="Story Bilderraster Titel Bild"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}

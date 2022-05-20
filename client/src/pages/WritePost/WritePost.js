@@ -45,7 +45,7 @@ function WritePost() {
   };
 
   useEffect(() => {
-    if (url === undefined) return;
+    if (!url) return;
 
     const handleMdb = async () => {
       const headers = {

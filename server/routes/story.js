@@ -150,13 +150,6 @@ router.delete("/photos/:id", async (req, res) => {
     if (storyPhoto.username !== req.body.username)
       res.status(401).json("Nur das eigene Storyphoto kann gelöscht werden!");
 
-    const path = `./storyimages/${storyPhoto.photo}`;
-    if (fs.existsSync(path)) {
-      fs.unlink(path, function (err) {
-        if (err) throw err;
-      });
-    }
-
     await storyPhoto.delete();
 
     res.status(200).json("Storyphoto gelöscht...");

@@ -32,18 +32,17 @@ function WriteStory() {
 
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
-    if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
-        setSelected(file);
-      } else {
-        setIsError("Die Datei ist zu gross!");
-        setFile(null);
-      }
+
+    if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+      setSelected(file);
+    } else {
+      setIsError("Die Datei ist zu gross!");
+      setFile(null);
     }
   };
 
   useEffect(() => {
-    if (url === undefined) return;
+    if (!url) return;
 
     const handleMdb = async () => {
       const headers = {
@@ -62,6 +61,7 @@ function WriteStory() {
         const res = await axios.post(apiroutes[6].url, newStory, {
           headers: headers,
         });
+        setUrl("");
         navigate("/story" + res.data._id);
       } catch (err) {
         setIsError("standard");

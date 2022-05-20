@@ -16,7 +16,7 @@ const PageSize = 9;
 
 function Stories() {
   const [stories, setStories] = useState([]);
-  const [lastStory, setLastStory] = useState([]);
+  const [lastStory, setLastStory] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
   const myRef = useRef(null);
@@ -27,7 +27,8 @@ function Stories() {
     const fetchStoryImages = async () => {
       const res = await axios.get(apiroutes[6].url);
       setLastStory(res.data[0]);
-      setStories(res.data.slice(1, res.data.length - 1));
+
+      setStories(res.data.slice(1, res.data.length));
     };
     fetchStoryImages();
   }, []);
@@ -43,14 +44,14 @@ function Stories() {
       executeScroll();
     }
   }, [currentGridData, currentPage]);
-
+  console.log("last" + JSON.stringify(lastStory));
   return (
     <TransitionWrapper>
       <main>
         <div className="bg-setup">
           <PageHeadLine headline={"Stories"} />
           <SubText subtext={subtexts.stories} />
-          {stories.length && <StoriesShowCase story={lastStory} />}
+          {lastStory && <StoriesShowCase story={lastStory} />}
           <div ref={myRef} />
           <Pagination
             currentPage={currentPage}
@@ -58,7 +59,11 @@ function Stories() {
             pageSize={PageSize}
             onPageChange={(page) => setCurrentPage(page)}
           />
-          {stories.length && <StoriesGrid currentGridData={currentGridData} />}
+          {stories.length ? (
+            <StoriesGrid currentGridData={currentGridData} />
+          ) : (
+            <></>
+          )}
           <Pagination
             currentPage={currentPage}
             totalCount={stories.length}

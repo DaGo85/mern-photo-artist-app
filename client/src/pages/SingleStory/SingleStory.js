@@ -17,6 +17,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
+import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 const PageSize = 9;
 
@@ -83,25 +84,28 @@ function SingleStory() {
   }, [currentGridData, currentPage]);
 
   // Handler for deleting storygalleryimage
-  const handleDeleteImg = async (imageid, username) => {
+  const handleDeleteImg = async (imageid, username, photo) => {
     const headers = {
       "Content-Type": "application/json",
       authorization: `Bearer ${userCreds.token}`,
     };
 
-    if (username === userCreds.name) {
-      try {
-        await axios.delete(`${apiroutes[4].url}${imageid}`, {
-          data: { username: username },
-          headers: headers,
-        });
-      } catch (err) {
-        setIsError(
-          "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
-        );
-      }
-      setRerenderComponent(!rerenderComponent);
+    if (username !== userCreds.name) {
+      setIsError("Dieses Bild gehört dir nicht!");
+      return;
     }
+
+    try {
+      await axios.delete(`${apiroutes[4].url}${imageid}`, {
+        data: { username: username },
+        headers: headers,
+      });
+    } catch (err) {
+      setIsError(
+        "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
+      );
+    }
+    handleDeleteFirebaseImg(photo, "stories", setRerenderComponent, setIsError);
   };
 
   // Handler for adding image

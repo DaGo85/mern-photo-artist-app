@@ -10,19 +10,13 @@ import UniversalButton from "../../components/elements/UniversalButton/Universal
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import { useAuthContext } from "../../utility/AuthContextProvider";
-import {
-  address,
-  apiroutes,
-  firebaseBaseUrl,
-  subtexts,
-} from "../../assets/data";
+import { address, apiroutes, subtexts } from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
-import { ref, deleteObject } from "firebase/storage";
-import { projectStorage } from "../../utility/firebase";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
+import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 // todo: why first add buggy?
 const PageSize = 9;
@@ -60,27 +54,7 @@ function Gallery() {
   const handleDeleteImg = async (imageid, username, url) => {
     if (username !== userCreds.name) return;
 
-    const firebaseImageId = url
-      .split(firebaseBaseUrl)[1]
-      .split("F")[1]
-      .split("?")[0];
-
-    // Create a reference to the file to delete
-    const deleteRef = ref(projectStorage, "gallery");
-
-    const imageRef = ref(deleteRef, firebaseImageId);
-
-    // Delete the file
-    deleteObject(imageRef)
-      .then(() => {
-        setRerenderComponent(!rerenderComponent);
-        setIsError(false);
-      })
-      .catch((error) => {
-        setIsError(
-          "Das Bild konnte nicht gelöscht werden. Versuche es später noch einmal!"
-        );
-      });
+    handleDeleteFirebaseImg(url, setRerenderComponent, "gallery", setIsError);
 
     const headers = {
       "Content-Type": "application/json",

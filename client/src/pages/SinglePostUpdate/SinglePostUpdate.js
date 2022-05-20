@@ -6,7 +6,7 @@ import DeleteModal from "../../components/elements/DeleteModal/DeleteModal";
 import ErrorMsg from "../../components/elements/ErrorMsg/ErrorMsg";
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import { apiroutes, firebaseBaseUrl } from "../../assets/data";
+import { apiroutes } from "../../assets/data";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import getImageOrientation from "../../utility/getImageOrientation";
 
@@ -14,8 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
-import { projectStorage } from "../../utility/firebase";
-import { deleteObject, ref } from "firebase/storage";
+import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
 function SinglePostUpdate() {
   const fileRef = useRef();
@@ -62,7 +61,7 @@ function SinglePostUpdate() {
         "Dieses Foto kann derzeit nicht gelöscht werden, versuche es später noch einmal!"
       );
     }
-    handleDeleteFirebase(post.photo);
+    handleDeleteFirebaseImg(post.photo, "posts", setIsError);
   };
 
   //Handler for updating singlepost
@@ -89,7 +88,7 @@ function SinglePostUpdate() {
     };
 
     if (url) {
-      handleDeleteFirebase(post.photo);
+      handleDeleteFirebaseImg(post.photo, "posts", setIsError);
     }
 
     const newPost = {
@@ -120,31 +119,6 @@ function SinglePostUpdate() {
     handleUpdateImage(e);
   };
 
-  //delete image if u want another
-  const handleDeleteFirebase = async (id) => {
-    const firebaseImageId = id
-      .split(firebaseBaseUrl)[1]
-      .split("F")[1]
-      .split("?")[0];
-
-    // Create a reference to the file to delete
-    const deleteRef = ref(projectStorage, "posts");
-
-    const imageRef = ref(deleteRef, firebaseImageId);
-
-    // Delete the file
-    deleteObject(imageRef)
-      .then(() => {
-        setIsError(false);
-      })
-      .catch((error) => {
-        setIsError(
-          "Das Bild konnte nicht gelöscht werden. Versuche es später noch einmal!"
-        );
-      });
-    setUrl(null);
-  };
-
   const deleteHandler = () => setShowModal(true);
 
   return (
@@ -160,7 +134,7 @@ function SinglePostUpdate() {
                     onClick={() => {
                       setFile(null);
                       fileRef.current.value = null;
-                      handleDeleteFirebase(url);
+                      handleDeleteFirebaseImg(url, "posts");
                     }}
                   >
                     <BasicImage file={file} />
