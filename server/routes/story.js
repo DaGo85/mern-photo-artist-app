@@ -1,7 +1,6 @@
 //Route for stories
 const router = require("express").Router();
 const Story = require("../models/Story");
-const fs = require("fs");
 const StoryPhoto = require("../models/Storyphoto");
 
 //Create story at MongoDB
@@ -10,6 +9,7 @@ router.post("/story", async (req, res) => {
   if (!auth) res.status(403).send("Nicht autorisiert!");
 
   const newStory = new Story(req.body);
+
   try {
     const savedStory = await newStory.save();
 
@@ -26,6 +26,7 @@ router.put("/story/:id", async (req, res) => {
 
   try {
     const story = await Story.findById(req.params.id);
+
     if (story.username !== req.body.username)
       res.status(401).json("Nur die eigene Story kann verändert werden!");
 
@@ -50,10 +51,6 @@ router.delete("/story/:id", async (req, res) => {
 
   try {
     const story = await Story.findById(req.params.id);
-    const storyPhotos = await StoryPhoto.find();
-    const deleteStoryPhotos = storyPhotos.filter(
-      (s) => s.story === req.params.id
-    );
 
     if (story.username !== req.body.username)
       res.status(401).json("Nur die eigene Story!");
@@ -61,28 +58,6 @@ router.delete("/story/:id", async (req, res) => {
     await StoryPhoto.deleteMany({
       story: req.params.id,
     });
-
-    /*
-    deleteStoryPhotos.forEach((dsp) => {
-      try {
-        const path = `./storyimages/${dsp.photo}`;
-        if (fs.existsSync(path)) {
-          fs.unlink(path, function (err) {
-            if (err) throw err;
-          });
-        }
-      } catch (err) {
-        res.status(500).json(err);
-      }
-    });
-
-    const path = `./storyimages/${story.photo}`;
-    if (fs.existsSync(path)) {
-      fs.unlink(path, function (err) {
-        if (err) throw err;
-      });
-    }
-    */
 
     await story.delete();
 
@@ -132,13 +107,14 @@ router.post("/photos", async (req, res) => {
   }
 });
 
-//Delete storygallery image from MongoDB and server
+//Delete storygallery image from MongoDB
 router.delete("/photos/:id", async (req, res) => {
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
 
   try {
     const storyPhoto = await StoryPhoto.findById(req.params.id);
+
     if (storyPhoto.username !== req.body.username)
       res.status(401).json("Nur das eigene Storyphoto kann gelöscht werden!");
 

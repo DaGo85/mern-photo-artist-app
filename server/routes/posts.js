@@ -1,15 +1,14 @@
 //Route for posts
 const router = require("express").Router();
 const Post = require("../models/Post");
-const fs = require("fs");
 
 //Create post at MongoDB
 router.post("/", async (req, res) => {
-  console.log(req.body);
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
 
   const newPost = new Post(req.body);
+
   try {
     const savedPost = await newPost.save();
 
@@ -19,13 +18,14 @@ router.post("/", async (req, res) => {
   }
 });
 
-//Update post from MongoDB and delete old image from server
+//Update post from MongoDB
 router.put("/:id", async (req, res) => {
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
 
   try {
     const post = await Post.findById(req.params.id);
+
     if (post.username !== req.body.username)
       res.status(401).json("Es können nur die eigenen Posts verändert werden!");
 
@@ -43,13 +43,14 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//Delete post from MongoDB and delete image from server
+//Delete post from MongoDB
 router.delete("/:id", async (req, res) => {
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
 
   try {
     const post = await Post.findById(req.params.id);
+
     if (post.username !== req.body.username)
       res.status(401).json("Nur die eigenen Posts können gelöscht werden!");
 

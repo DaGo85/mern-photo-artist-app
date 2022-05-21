@@ -3,13 +3,12 @@ const express = require("express");
 const Photo = require("../models/Galleryphoto");
 const Router = express.Router();
 
-const fs = require("fs");
-
 //Create image at MongoDB
 Router.post("/", async (req, res) => {
   const auth = req.currentUser;
   const photo = new Photo(req.body);
   if (!auth) res.status(403).send("Nicht autorisiert!");
+
   try {
     const savedPhoto = await photo.save();
 
@@ -23,6 +22,7 @@ Router.post("/", async (req, res) => {
 Router.delete("/:id", async (req, res) => {
   const auth = req.currentUser;
   if (!auth) res.status(403).send("Nicht autorisiert!");
+
   try {
     const photo = await Photo.findById(req.params.id);
     if (photo.username !== req.body.username)
