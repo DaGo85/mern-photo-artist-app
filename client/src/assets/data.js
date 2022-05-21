@@ -9,6 +9,7 @@ export const navLinks = [
   { name: "Stories", link: "/stories" },
   { name: "Kontakt", link: "/contact" },
   { name: "Impressum", link: "/impressum" },
+  { name: "Login", link: "/login" },
 ];
 
 // Social-icon list for NavBar and Impressum

@@ -67,7 +67,6 @@ function ImageGrid({ currentGridData, handleDeleteImg, deleteMode, images }) {
                       whileInView="visible"
                       viewport={{ once: true }}
                     />
-                    {console.log(item.photo)}
                   </div>
                 </div>
               </AnimatePresence>
