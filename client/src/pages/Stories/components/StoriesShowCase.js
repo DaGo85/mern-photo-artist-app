@@ -8,19 +8,20 @@ import { Link } from "react-router-dom";
 function StoriesShowCase({ story }) {
   // Trimmed strings for portrait images
   // Maximum number of characters to extract
-
+  /*
   const maxLengthPortrait = 600;
 
   // Trim the string to the maximum length
   let trimmedStringPortrait = story.desc.substr(0, maxLengthPortrait);
   // Re-trim if it ended in the middle of a word
+
   trimmedStringPortrait = trimmedStringPortrait.substr(
     0,
     Math.min(
       trimmedStringPortrait.length,
       trimmedStringPortrait.lastIndexOf(" ")
     )
-  );
+  ); */
 
   // Trimmed strings for landscape images
   // Maximum number of characters to extract
