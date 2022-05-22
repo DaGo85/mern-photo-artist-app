@@ -87,7 +87,7 @@ export const firebaseBaseUrl =
 
 // Backend server address
 
-const server = "https://agophotography.herokuapp.com/";
+const server = "https://ago-photography.herokuapp.com/";
 
 // Server side addresslist for API requests
 // [0] = Gallery route (/ = post, /:id = get, delete, /photos = get )
