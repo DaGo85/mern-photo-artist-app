@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* Basic style for html */
   body {
     @apply p-0 m-0 relative bg-basic;
     font-family: "sans-serif", "roboto";
@@ -43,11 +44,29 @@
   p {
     @apply text-slate-100;
   }
+
+  [type="password"],
+  [type="text"],
+  [type="email"],
+  textarea {
+    @apply w-full resize-none h-14 rounded-lg border-2 border-d
+    focus:border-black focus:ring-black px-1
+    shadow-sm placeholder-transparent text-d;
+  }
+
+  label {
+    @apply font-normal absolute z-10 left-2 -top-3  text-xs rounded-full py-1 px-2 bg-white
+    peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:bg-transparent
+    transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:bg-white text-d;
+  }
+
+  /* Basic style for html end */
 }
 
 @tailwind components;
 
 @layer components {
+  /* Background images for random backgrounds */
   .bg-1 {
     background-image: url("/public/bg1.jpg");
   }
@@ -68,24 +87,13 @@
     background-image: url("/public/bg5.jpg");
   }
 
+  /* Background images for random backgrounds end */
+
+  /* General setups for several page elements */
+
   .bg-setup {
     @apply bg-fixed bg-center bg-cover bg-no-repeat py-40 md:py-48 lg:py-48 
     w-full flex flex-col items-center justify-start gap-6 md:gap-12;
-  }
-
-  [type="password"],
-  [type="text"],
-  [type="email"],
-  textarea {
-    @apply w-full resize-none h-14 rounded-lg border-2 border-d
-    focus:border-black focus:ring-black px-1
-    shadow-sm placeholder-transparent text-d;
-  }
-
-  label {
-    @apply font-normal absolute z-10 left-2 -top-3  text-xs rounded-full py-1 px-2 bg-white
-    peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:bg-transparent
-    transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:bg-white text-d;
   }
 
   .card-setup {
@@ -95,38 +103,6 @@
 
   .text-setup {
     @apply flex flex-col items-center justify-center gap-2;
-  }
-
-  .image-grid {
-    @apply grid gap-4 grid-cols-12;
-  }
-
-  .gap-form {
-    @apply gap-4 md:gap-6 lg:gap-8;
-  }
-
-  .gap-image {
-    @apply gap-4 md:gap-6 lg:gap-8;
-  }
-
-  .py-form {
-    @apply py-4 md:py-8 lg:py-10;
-  }
-
-  .text-err {
-    @apply text-red-400;
-  }
-
-  .text-light {
-    @apply text-slate-100;
-  }
-
-  .text-dark {
-    @apply text-d;
-  }
-
-  .status-msg {
-    @apply py-6 my-8 text-center text-2xl;
   }
 
   .button-setup {
@@ -143,34 +119,28 @@
     @apply fill-d;
   }
 
-  /*rework unique buttons */
+  /* General setups for several page elements end */
+
+  /* General style for text */
+
+  .text-err {
+    @apply text-red-400;
+  }
+
+  .text-light {
+    @apply text-slate-100;
+  }
+
+  .text-dark {
+    @apply text-d;
+  }
+
+  /* General style for text end */
+
+  /* Style for buttons */
 
   .button-success {
     @apply bg-ssuccess text-white hover:text-d;
-  }
-
-  .pagination-item {
-    @apply flex items-center box-border h-8 text-center mx-auto my-1 
-    tracking-wide rounded-2xl leading-normal text-lg 
-    cursor-pointer px-3
-    md:text-2xl md:px-4 md:py-6 md:rounded-3xl;
-  }
-  .pagination-dots {
-    @apply flex items-center box-border h-8 text-center mx-auto my-1  
-    tracking-wide rounded-2xl leading-normal text-lg text-d px-1;
-  }
-
-  .pagination-arrow {
-    @apply flex items-center h-8 text-center mx-auto my-1 text-d cursor-pointer
-    md:px-4 md:py-6;
-  }
-
-  .navhover:hover {
-    text-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 32px #fff;
-  }
-
-  .navsvghover:hover {
-    filter: drop-shadow(0.5px 0.5px 12px rgb(255 255 255 / 1));
   }
 
   .button-effect-success:hover {
@@ -206,7 +176,70 @@
     );
   }
 
+  /* Style for buttons end */
+
+  /* Style for pagination */
+
+  .pagination-item {
+    @apply flex items-center box-border h-8 text-center mx-auto my-1 
+    tracking-wide rounded-2xl leading-normal text-lg 
+    cursor-pointer px-3
+    md:text-2xl md:px-4 md:py-6 md:rounded-3xl;
+  }
+
+  .pagination-dots {
+    @apply flex items-center box-border h-8 text-center mx-auto my-1  
+    tracking-wide rounded-2xl leading-normal text-lg text-d px-1;
+  }
+
+  .pagination-arrow {
+    @apply flex items-center h-8 text-center mx-auto my-1 text-d cursor-pointer
+    md:px-4 md:py-6;
+  }
+
+  /* Style for pagination end */
+
+  /* Spacing */
+
+  .gap-form {
+    @apply gap-4 md:gap-6 lg:gap-8;
+  }
+
+  .gap-image {
+    @apply gap-4 md:gap-6 lg:gap-8;
+  }
+
+  .py-form {
+    @apply py-4 md:py-8 lg:py-10;
+  }
+
+  /* Spacing end */
+
+  /* Image grid style */
+
+  .image-grid {
+    @apply grid gap-4 grid-cols-12;
+  }
+
+  /* Image grid style end */
+
+  /* Overall styles */
+
+  .status-msg {
+    @apply py-6 my-8 text-center text-2xl;
+  }
+
+  .navhover:hover {
+    text-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 32px #fff;
+  }
+
+  .navsvghover:hover {
+    filter: drop-shadow(0.5px 0.5px 12px rgb(255 255 255 / 1));
+  }
+
   .progress-bar {
     @apply h-4 bg-green-300 mt-10 w-max;
   }
+
+  /* Overall styles end */
 }
