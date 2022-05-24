@@ -4,7 +4,6 @@ import BasicImage from "../../../components/elements/BasicImage/BasicImage";
 
 import { Link } from "react-router-dom";
 
-//todo:rework
 function StoriesShowCase({ story }) {
   // Trimmed strings for portrait images
   // Maximum number of characters to extract

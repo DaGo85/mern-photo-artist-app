@@ -1,6 +1,6 @@
 // Logo component for NavBar
 
-import ago from "../../../assets/images/ago-logo.png";
+import ago from "../../../assets/images/ago7.png";
 
 import { Link } from "react-router-dom";
 
