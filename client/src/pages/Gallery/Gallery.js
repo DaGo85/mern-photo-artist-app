@@ -18,7 +18,6 @@ import axios from "axios";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
 
-// todo: why first add buggy?
 const PageSize = 9;
 
 function Gallery() {
