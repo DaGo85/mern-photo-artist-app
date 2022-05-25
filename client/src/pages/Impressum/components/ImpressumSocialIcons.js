@@ -8,6 +8,8 @@ function ImpressumSocialIcons() {
       {socialIconsList.map((icon) => {
         return (
           <a
+            target="_blank"
+            rel="noreferrer"
             key={icon.name}
             href={icon.link}
             className="navsvghover transition-all duration-300"

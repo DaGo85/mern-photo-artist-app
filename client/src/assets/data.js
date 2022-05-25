@@ -53,7 +53,7 @@ export const subtexts = {
     '"Mach sichtbar, was vielleicht ohne dich nie wahrgenommen worden wäre." - Robert Bresson',
   home: '"Bilder, welche Du gemacht hast haben Einfluss auf die, welche du machen wirst. So ist das Leben!" – John Sexton',
   stories:
-    "“If I could tell the story in words, I wouldn’t need to lug around a camera.” - Lewis Hine",
+    "“Worte und Bilder kommunizieren gemeinsam viel stärker als alleine.” – William Albert Allard",
   write: "Der richtige Ort um deine Kreativität auszuleben",
   writepost: "Erstell einen neuen Blog-Eintrag",
   writestory: "Erstell eine neue Story",

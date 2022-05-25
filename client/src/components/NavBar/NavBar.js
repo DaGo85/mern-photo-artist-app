@@ -13,6 +13,7 @@ function NavBar() {
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <header className="z-30 w-full pb-2 pt-4 fixed flex flex-col items-center justify-between bg-b/75">
       <span className="flex flex-row justify-between items-center w-full px-2">
