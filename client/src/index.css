@@ -24,8 +24,12 @@
     @apply text-6xl font-extrabold text-d text-center;
   }
 
+  h2 {
+    @apply text-4xl text-center text-d;
+  }
+
   h3 {
-    @apply text-4xl text-center text-d/80;
+    @apply text-4xl text-center text-d;
   }
 
   h4 {
@@ -85,6 +89,14 @@
 
   .bg-5 {
     background-image: url("/public/bg5.jpg");
+  }
+
+  .bg-6 {
+    background-image: url("/public/bg6.jpg");
+  }
+
+  .bg-7 {
+    background-image: url("/public/bg7.jpg");
   }
 
   /* Background images for random backgrounds end */
@@ -239,6 +251,10 @@
 
   .progress-bar {
     @apply h-4 bg-green-300 mt-10 w-max;
+  }
+
+  .shadow-sub {
+    box-shadow: 0 0 32px #fff;
   }
 
   /* Overall styles end */

@@ -24,7 +24,7 @@ function Impressum() {
               <h5>Gemäß zu § 5 TMG:</h5>
               <hr />
               <p>
-                D. Goergens
+                Achim und Anne Goergens
                 <br />
                 Dorstener Strasse 534
                 <br />
