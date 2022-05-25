@@ -9,6 +9,8 @@ import { subtexts } from "../../assets/data";
 import useGetBackGround from "../../utility/useGetBackGround";
 import TransitionWrapper from "../../utility/TransitionWrapper";
 
+// todo: hover?
+
 function Impressum() {
   const bg = useGetBackGround();
   return (
@@ -35,11 +37,39 @@ function Impressum() {
               <h5>Kontakt:</h5>
               <hr />
               <p>
-                Tel. Nr.: +49 (0) 177 1234567
+                E-Mail: goergensjoa@gmail.com <br />
+                <a href="https://www.facebook.com/an.na.988711/">
+                  Annes Facebook Profil
+                </a>
                 <br />
-                E-Mail: d.goergens@gmail.com
+                <a href="https://www.facebook.com/achim.goergens">
+                  Achims Facebook Profil
+                </a>
               </p>
               <hr />
+            </span>
+            <span className="flex flex-col gap-4 w-full px-6">
+              <h5>Haftungsausschluss</h5>
+              <hr />
+              <p>
+                Für den Inhalt der Webseite: www.ago-photography.com sind Anne
+                und Achim Goergens verantwortlich. Die Webseite wird rein privat
+                betrieben und hat keinerlei kommerzielle Interessen.
+                <br />
+                Die auf dieser Webseite verwendeten Bilder unterliegen dem
+                Copyright. Ohne eine vorherige Anfrage und dadurch
+                gegebenenfalls erteilte Erlaubnis, dürfen diese Bilder nicht
+                verwendet, heruntergeladen oder verbreitet werden.
+                <br />
+                Für den Inhalt dieser Seite sind die Autoren zuständig. Es kann
+                keine Garantie für die Richtigkeit der angegebenen Informationen
+                gegeben werden. Eine dauerhafte technische Erreichbarkeit ist
+                nicht vorhanden. Dazu besteht ein Haftungsausschluss für den
+                Inhalt von verlinkten Webseiten, auf deren Inhalt kein Einfluss
+                von unserer Seite aus genommen werden kann. Gegebenenfalls lässt
+                sich der Inhalt dieser Webseite durch eine Anfrage mithilfe
+                eines Hinweises auf die entsprechende Stelle ändern.
+              </p>
             </span>
             <ImpressumSocialIcons />
           </section>
