@@ -11,37 +11,32 @@ function NavBarLinks({ toggleNav }) {
     <>
       {navLinks.map((item) => {
         return (
-          <Link
-            key={item.name}
-            to={item.link}
-            aria-label={`link to ${item.name}`}
-          >
-            <li
-              onClick={() => {
-                if (toggleNav) {
-                  toggleNav();
-                }
-              }}
-              className="text-2xl text-white navhover transition-all duration-300"
-            >
-              {item.name}
-            </li>
-          </Link>
-        );
-      })}
-      {userCreds && (
-        <Link to="/write">
           <li
+            key={item.name}
             onClick={() => {
               if (toggleNav) {
                 toggleNav();
               }
             }}
-            className="navhover text-2xl text-basic"
+            className="text-2xl text-white navhover transition-all duration-300"
           >
-            Hinzufügen
+            <Link to={item.link} aria-label={`link to ${item.name}`}>
+              {item.name}
+            </Link>
           </li>
-        </Link>
+        );
+      })}
+      {userCreds && (
+        <li
+          onClick={() => {
+            if (toggleNav) {
+              toggleNav();
+            }
+          }}
+          className="navhover text-2xl text-basic"
+        >
+          <Link to="/write">Hinzufügen</Link>
+        </li>
       )}
     </>
   );
