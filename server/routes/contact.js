@@ -8,12 +8,8 @@ dotenv.config();
 const contactEmail = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    type: "OAuth2",
     user: process.env.MAIL_USERNAME,
     pass: process.env.MAIL_PASSWORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
   },
 });
 
@@ -31,7 +27,7 @@ router.post("/", (req, res) => {
   const message = req.body.message;
   const mail = {
     from: name,
-    to: "dgoergens@gmail.com",
+    to: "danielgoerg1983@gmail.com",
     subject: "Contact Form Submission",
     html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
