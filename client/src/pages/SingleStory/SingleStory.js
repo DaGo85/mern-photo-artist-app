@@ -10,7 +10,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import { apiroutes } from "../../assets/data";
 import TransitionWrapper from "../../utility/TransitionWrapper";
-import useGetBackGround from "../../utility/useGetBackGround";
 
 import axios from "axios";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -35,7 +34,6 @@ function SingleStory() {
   const [url, setUrl] = useState();
   const [deleteMode, setDeleteMode] = useState(false);
   const [rerenderComponent, setRerenderComponent] = useState(false);
-  const bg = useGetBackGround();
 
   const [isError, setIsError] = useState(false);
 
