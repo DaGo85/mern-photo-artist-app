@@ -45,7 +45,7 @@
   }
 
   p {
-    @apply text-slate-100;
+    @apply text-slate-100 text-lg font-medium;
   }
 
   [type="password"],

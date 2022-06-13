@@ -35,7 +35,7 @@ import { useEffect } from "react";
 // for readme: on back in browser: stick on same pagination etc.
 // field test image number and proportion for all grids
 // delete mode button, homecards
-// todo: fix mongodb security after heroku kk setup
+// todo: refactor contact because of googles new rules
 
 function App() {
   const location = useLocation();
@@ -54,7 +54,6 @@ function App() {
             return { ...prevState, token };
           });
         });
-
         const uid = user.uid;
         const email = user.email;
 

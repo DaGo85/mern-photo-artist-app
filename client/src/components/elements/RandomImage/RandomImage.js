@@ -23,7 +23,7 @@ function RandomImage() {
   }, []);
 
   return (
-    <div className="card-setup py-form">
+    <div className="card-setup py-form hover:cursor-pointer">
       {images.length > 0 && (
         <div
           onClick={() => {

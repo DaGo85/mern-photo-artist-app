@@ -19,7 +19,7 @@ function Impressum() {
         <div className={`bg-setup ${bg}`}>
           <PageHeadLine headline={"Impressum"} />
           <SubText subtext={subtexts.impressum} />
-          <RandomImage />
+
           <section className="card-setup gap-6 pt-6 pb-40">
             <h4>AGO Photography</h4>
             <span className="flex flex-col gap-4 w-full px-6">
@@ -73,6 +73,7 @@ function Impressum() {
             </span>
             <ImpressumSocialIcons />
           </section>
+          <RandomImage />
         </div>
       </main>
     </TransitionWrapper>
