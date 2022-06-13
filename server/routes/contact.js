@@ -1,45 +1,37 @@
 // Route for contact form
+
+const sendgrid = require("@sendgrid/mail");
 const router = require("express").Router();
-const nodemailer = require("nodemailer");
 
 const dotenv = require("dotenv");
 dotenv.config();
 
-const contactEmail = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.MAIL_USERNAME,
-    pass: process.env.MAIL_PASSWORD,
-  },
-});
-
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Ready to Send");
-  }
-});
+const apiKey = process.env.SENDGRID_API_KEY;
+const sender = process.env.EMAIL_ADDRESS;
+sendgrid.setApiKey(apiKey);
 
 router.post("/", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const message = req.body.message;
-  const mail = {
-    from: name,
-    to: "danielgoerg1983@gmail.com",
-    subject: "Contact Form Submission",
-    html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Message: ${message}</p>`,
+
+  const msg = {
+    to: "goergensjoa@gmail.com",
+    from: sender,
+    subject: `Du hast eine Nachricht von ${name} erhalten!`,
+    text: "message",
+    html: `<p>Name: ${name}<br/>
+           Email: ${email}<br/>
+           Message: <pre>${message}</pre></p>`,
   };
-  contactEmail.sendMail(mail, (error) => {
-    if (error) {
-      res.json({ status: "ERROR" });
-    } else {
+  sendgrid
+    .send(msg)
+    .then((resp) => {
       res.json({ status: "Message Sent" });
-    }
-  });
+    })
+    .catch((error) => {
+      res.json({ status: "ERROR" });
+    });
 });
 
 module.exports = router;
