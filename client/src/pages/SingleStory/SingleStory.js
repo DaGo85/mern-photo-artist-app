@@ -173,129 +173,135 @@ function SingleStory() {
               "--background": `url(${story.photo})`,
             }}
           >
-            {story && (
-              <>
-                <PageHeadLine headline={story.story} />
-                <div className="card-setup py-4 md:py-10">
-                  <BasicImage image={story.photo} alt="Einzelnes Story Bild" />
-                </div>
-                <div className="card-setup text-setup py-4 md:py-10">
-                  <h5>Author: {story.username}</h5>
-                  <hr className="w-full" />
-                  <h6>
-                    Erstellt am: {new Date(story.createdAt).toDateString()}
-                  </h6>
-                  <h6>
-                    Letztes Update: {new Date(story.updatedAt).toDateString()}
-                  </h6>
-                </div>
-                <div className="card-setup text-setup py-4 md:py-10">
-                  <pre>
-                    <p className="whitespace-pre-line">{story.desc}</p>
-                  </pre>
-                </div>
-                {userCreds?.name === story.username && (
-                  <>
-                    <Link to={`/singlestoryupdate${story._id}`}>
-                      <UniversalButton
-                        text="Update Story"
-                        type="button"
-                        modell="success"
-                        icon="update"
-                      />
-                    </Link>
-                    <input
-                      accept="image/jpg,image/png,image/jpeg"
-                      className="hidden"
-                      type="file"
-                      onChange={handleInput}
-                      multiple={false}
-                      ref={fileRef}
+            <div className="relative w-full flex flex-col items-center justify-start gap-6 md:gap-12">
+              {story && (
+                <>
+                  <PageHeadLine headline={story.story} />
+                  <div className="card-setup py-4 md:py-10">
+                    <BasicImage
+                      image={story.photo}
+                      alt="Einzelnes Story Bild"
                     />
-                    {file && (
-                      <div
-                        className="flex flex-col hover:cursor-pointer gap-image text-center card-setup py-4 md:py-10 max-w-7xl"
-                        onClick={() => {
-                          setFile(null);
-                          fileRef.current.value = null;
-                        }}
-                      >
-                        <BasicImage file={file} />
-                        <h4>
-                          Klick hier, wenn du ein anderes Bild wählen möchtest!
-                        </h4>
-                      </div>
-                    )}
-                    {file ? (
-                      <UniversalButton
-                        text="Bild hochladen!"
-                        type="button"
-                        modell="success"
-                        handler={handleSubmit}
-                        icon="upload"
+                  </div>
+                  <div className="card-setup text-setup py-4 md:py-10">
+                    <h5>Author: {story.username}</h5>
+                    <hr className="w-full" />
+                    <h6>
+                      Erstellt am: {new Date(story.createdAt).toDateString()}
+                    </h6>
+                    <h6>
+                      Letztes Update: {new Date(story.updatedAt).toDateString()}
+                    </h6>
+                  </div>
+                  <div className="card-setup text-setup py-4 md:py-10">
+                    <pre>
+                      <p className="whitespace-pre-line">{story.desc}</p>
+                    </pre>
+                  </div>
+                  {userCreds?.name === story.username && (
+                    <>
+                      <Link to={`/singlestoryupdate${story._id}`}>
+                        <UniversalButton
+                          text="Update Story"
+                          type="button"
+                          modell="success"
+                          icon="update"
+                        />
+                      </Link>
+                      <input
+                        accept="image/jpg,image/png,image/jpeg"
+                        className="hidden"
+                        type="file"
+                        onChange={handleInput}
+                        multiple={false}
+                        ref={fileRef}
                       />
-                    ) : (
-                      <UniversalButton
-                        text="Bild aussuchen!"
-                        type="button"
-                        modell="select"
-                        handler={handleSelectFile}
-                        icon="selectImage"
-                      />
-                    )}
-                    {deleteMode ? (
-                      <UniversalButton
-                        text="Modus deaktivieren!"
-                        handler={handleDeleteMode}
-                        modell="delete"
-                        type="button"
-                        icon="trashStrike"
-                      />
-                    ) : (
-                      <UniversalButton
-                        text="Löschmodus!"
-                        handler={handleDeleteMode}
-                        modell="delete"
-                        type="button"
-                        icon="trash"
-                      />
-                    )}
-                  </>
-                )}
-              </>
-            )}
-            {selected && (
-              <ProgressBar
-                selected={selected}
-                setSelected={setSelected}
-                setUrl={setUrl}
-                folder="stories"
-              />
-            )}
-            <ErrorMsg isError={isError} />
-            <div ref={myRef} />
-            {storyImages && (
-              <>
-                <Pagination
-                  currentPage={currentPage}
-                  totalCount={storyImages.length}
-                  pageSize={PageSize}
-                  onPageChange={(page) => setCurrentPage(page)}
+                      {file && (
+                        <div
+                          className="flex flex-col hover:cursor-pointer gap-image text-center card-setup py-4 md:py-10 max-w-7xl"
+                          onClick={() => {
+                            setFile(null);
+                            fileRef.current.value = null;
+                          }}
+                        >
+                          <BasicImage file={file} />
+                          <h4>
+                            Klick hier, wenn du ein anderes Bild wählen
+                            möchtest!
+                          </h4>
+                        </div>
+                      )}
+                      {file ? (
+                        <UniversalButton
+                          text="Bild hochladen!"
+                          type="button"
+                          modell="success"
+                          handler={handleSubmit}
+                          icon="upload"
+                        />
+                      ) : (
+                        <UniversalButton
+                          text="Bild aussuchen!"
+                          type="button"
+                          modell="select"
+                          handler={handleSelectFile}
+                          icon="selectImage"
+                        />
+                      )}
+                      {deleteMode ? (
+                        <UniversalButton
+                          text="Modus deaktivieren!"
+                          handler={handleDeleteMode}
+                          modell="delete"
+                          type="button"
+                          icon="trashStrike"
+                        />
+                      ) : (
+                        <UniversalButton
+                          text="Löschmodus!"
+                          handler={handleDeleteMode}
+                          modell="delete"
+                          type="button"
+                          icon="trash"
+                        />
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+              {selected && (
+                <ProgressBar
+                  selected={selected}
+                  setSelected={setSelected}
+                  setUrl={setUrl}
+                  folder="stories"
                 />
-                <ImageGrid
-                  deleteMode={deleteMode}
-                  handleDeleteImg={handleDeleteImg}
-                  currentGridData={currentGridData}
-                  images={storyImages}
-                />
-                <Pagination
-                  currentPage={currentPage}
-                  totalCount={storyImages.length}
-                  pageSize={PageSize}
-                  onPageChange={(page) => setCurrentPage(page)}
-                />
-              </>
-            )}
+              )}
+              <ErrorMsg isError={isError} />
+              <div ref={myRef} />
+              {storyImages && (
+                <>
+                  <Pagination
+                    currentPage={currentPage}
+                    totalCount={storyImages.length}
+                    pageSize={PageSize}
+                    onPageChange={(page) => setCurrentPage(page)}
+                  />
+                  <ImageGrid
+                    deleteMode={deleteMode}
+                    handleDeleteImg={handleDeleteImg}
+                    currentGridData={currentGridData}
+                    images={storyImages}
+                  />
+                  <Pagination
+                    currentPage={currentPage}
+                    totalCount={storyImages.length}
+                    pageSize={PageSize}
+                    onPageChange={(page) => setCurrentPage(page)}
+                  />
+                </>
+              )}
+            </div>
           </div>
         )}
       </main>

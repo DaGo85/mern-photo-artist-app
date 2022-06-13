@@ -109,6 +109,23 @@
     w-full flex flex-col items-center justify-start gap-6 md:gap-12;
   }
 
+  .story-bg {
+    position: relative;
+  }
+
+  .story-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--background);
+    filter: grayscale(100%);
+    @apply bg-fixed bg-center bg-cover bg-no-repeat py-40 md:py-48 lg:py-48 
+    w-full flex flex-col items-center justify-start gap-6 md:gap-12;
+  }
+
   .card-setup {
     @apply flex flex-col min-w-[320px] 
     items-center px-4 md:px-12 rounded-xl shadow-lg bg-b/95;
@@ -259,23 +276,4 @@
   }
 
   /* Overall styles end */
-}
-
-:root {
-  --background: url("/public/bg7.jpg");
-}
-
-.story-bg {
-  position: relative;
-}
-
-.story-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: var(--background);
-  filter: grayscale(100%);
 }
