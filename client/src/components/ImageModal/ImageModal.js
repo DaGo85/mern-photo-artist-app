@@ -103,7 +103,8 @@ function ImageModal() {
             <p className="animate-buttonPulse">
               von: {imageData.images[idx].username}
               <br />
-              am: {new Date(imageData.images[idx].createdAt).toDateString()}
+              am:{" "}
+              {new Date(imageData.images[idx].createdAt).toLocaleDateString()}
             </p>
           </span>
         </div>

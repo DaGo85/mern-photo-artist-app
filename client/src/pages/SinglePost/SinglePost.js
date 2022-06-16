@@ -37,7 +37,7 @@ function SinglePost() {
   return (
     <TransitionWrapper>
       <main>
-        <div className={`bg-setup ${bg}`}>
+        <article className={`bg-setup ${bg}`}>
           {post && (
             <>
               <PageHeadLine headline={post.title} />
@@ -47,14 +47,17 @@ function SinglePost() {
               <div className="card-setup text-setup py-4 md:py-10">
                 <h5>Author: {post.username}</h5>
                 <hr className="w-full" />
-                <h6>Erstellt am: {new Date(post.createdAt).toDateString()}</h6>
                 <h6>
-                  Letztes Update: {new Date(post.updatedAt).toDateString()}
+                  Erstellt am: {new Date(post.createdAt).toLocaleDateString()}
+                </h6>
+                <h6>
+                  Letztes Update:{" "}
+                  {new Date(post.updatedAt).toLocaleDateString()}
                 </h6>
               </div>
               <div className="card-setup text-setup py-4 md:py-10">
                 <pre>
-                  <p className="whitespace-pre-line">{post.desc}</p>
+                  <p className="whitespace-pre-line ">{post.desc}</p>
                 </pre>
               </div>
               {userCreds?.name === post.username && post && (
@@ -69,7 +72,7 @@ function SinglePost() {
               )}
             </>
           )}
-        </div>
+        </article>
       </main>
     </TransitionWrapper>
   );

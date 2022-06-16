@@ -165,7 +165,7 @@ function SingleStory() {
     <TransitionWrapper>
       <main>
         {story && (
-          <div
+          <article
             className={`bg-setup story-bg `}
             style={{
               "--background": `url(${story.photo})`,
@@ -185,10 +185,12 @@ function SingleStory() {
                     <h5>Author: {story.username}</h5>
                     <hr className="w-full" />
                     <h6>
-                      Erstellt am: {new Date(story.createdAt).toDateString()}
+                      Erstellt am:{" "}
+                      {new Date(story.createdAt).toLocaleDateString()}
                     </h6>
                     <h6>
-                      Letztes Update: {new Date(story.updatedAt).toDateString()}
+                      Letztes Update:{" "}
+                      {new Date(story.updatedAt).toLocaleDateString()}
                     </h6>
                   </div>
                   <div className="card-setup text-setup py-4 md:py-10">
@@ -300,7 +302,7 @@ function SingleStory() {
                 </>
               )}
             </div>
-          </div>
+          </article>
         )}
       </main>
     </TransitionWrapper>

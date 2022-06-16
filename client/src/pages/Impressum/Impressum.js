@@ -25,27 +25,33 @@ function Impressum() {
             <span className="flex flex-col gap-4 w-full px-6">
               <h5>Gemäß zu § 5 TMG:</h5>
               <hr />
-              <p>
+              <address>
                 Achim und Anne Goergens
                 <br />
                 Dorstener Strasse 534
                 <br />
                 46119 Oberhausen
-              </p>
+              </address>
             </span>
             <span className="flex flex-col gap-4 w-full px-6">
               <h5>Kontakt:</h5>
               <hr />
-              <p>
+              <address>
                 E-Mail: goergensjoa@gmail.com <br />
-                <a href="https://www.facebook.com/an.na.988711/">
+                <a
+                  className="underline navsvghover"
+                  href="https://www.facebook.com/an.na.988711/"
+                >
                   Annes Facebook Profil
                 </a>
                 <br />
-                <a href="https://www.facebook.com/achim.goergens">
+                <a
+                  className="underline navsvghover"
+                  href="https://www.facebook.com/achim.goergens"
+                >
                   Achims Facebook Profil
                 </a>
-              </p>
+              </address>
               <hr />
             </span>
             <span className="flex flex-col gap-4 w-full px-6">

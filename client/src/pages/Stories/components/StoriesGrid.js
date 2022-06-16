@@ -41,13 +41,14 @@ function StoriesGrid({ currentGridData }) {
               to={`/story${item._id}`}
               className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative"
             >
-              <div className="w-full h-full block overflow-hidden aspect-square absolute">
+              <article className="w-full h-full block overflow-hidden aspect-square absolute">
                 <div className="bg-slate-600/70 opacity-0 hover:opacity-100 flex flex-col gap-2 px-2 justify-center items-center w-full h-full  transition-all duration-300">
                   <h4 className="pb-2 md:pb-4 lg:pb-6">{item.story}</h4>
                   <h5>Author: {item.username}</h5>
                   <hr className="w-full" />
                   <h6>
-                    Letztes Update: {new Date(item.updatedAt).toDateString()}
+                    Letztes Update:{" "}
+                    {new Date(item.updatedAt).toLocaleDateString()}
                   </h6>
                   <hr className="w-full" />
                   <pre>
@@ -62,7 +63,7 @@ function StoriesGrid({ currentGridData }) {
                     </p>
                   </pre>
                 </div>
-              </div>
+              </article>
               <motion.img
                 className="w-full h-full object-cover aspect-square"
                 src={item.photo}

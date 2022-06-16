@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function HomeBlogCards({ currentGridData }) {
   return (
-    <section className="flex flex-col gap-form max-w-7xl">
+    <article className="flex flex-col gap-form max-w-7xl">
       {currentGridData.map((post, index) => {
         // Trimmed strings for portrait images
         // Maximum number of characters to extract
@@ -52,8 +52,12 @@ function HomeBlogCards({ currentGridData }) {
             <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
             <h5>Author: {post.username}</h5>
             <hr className="w-full" />
-            <h6>Erstellt am: {new Date(post.createdAt).toDateString()}</h6>
-            <h6>Letztes Update: {new Date(post.updatedAt).toDateString()}</h6>
+            <h6>
+              Erstellt am: {new Date(post.createdAt).toLocaleDateString()}
+            </h6>
+            <h6>
+              Letztes Update: {new Date(post.updatedAt).toLocaleDateString()}
+            </h6>
             <hr className="w-full" />
             <pre>
               <p className="whitespace-pre-line font-sans">
@@ -80,8 +84,12 @@ function HomeBlogCards({ currentGridData }) {
               <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
               <h5>Author: {post.username}</h5>
               <hr className="w-full" />
-              <h6>Erstellt am: {new Date(post.createdAt).toDateString()}</h6>
-              <h6>Letztes Update: {new Date(post.updatedAt).toDateString()}</h6>
+              <h6>
+                Erstellt am: {new Date(post.createdAt).toLocaleDateString()}
+              </h6>
+              <h6>
+                Letztes Update: {new Date(post.updatedAt).toLocaleDateString()}
+              </h6>
               <hr className="w-full" />
               <pre>
                 <p className="whitespace-pre-line font-sans">
@@ -92,7 +100,7 @@ function HomeBlogCards({ currentGridData }) {
           </Link>
         );
       })}
-    </section>
+    </article>
   );
 }
 

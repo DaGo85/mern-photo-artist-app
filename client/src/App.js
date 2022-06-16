@@ -29,7 +29,7 @@ import { db } from "./utility/firebase";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-// todo: loading spinner?
+// todo: loading spinner? change id="" for images and make it unique
 // button styles,
 // error handling: general cant fetch data error
 // for readme: on back in browser: stick on same pagination etc.

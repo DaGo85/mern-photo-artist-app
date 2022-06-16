@@ -44,7 +44,8 @@
     @apply text-slate-100 text-xl;
   }
 
-  p {
+  p,
+  address {
     font-family: "sans-serif", "roboto";
     @apply text-slate-100 text-lg font-medium;
   }
