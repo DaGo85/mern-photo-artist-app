@@ -39,6 +39,8 @@ function Impressum() {
               <address>
                 E-Mail: goergensjoa@gmail.com <br />
                 <a
+                  target="_blank"
+                  rel="noreferrer"
                   className="underline navsvghover"
                   href="https://www.facebook.com/an.na.988711/"
                 >
@@ -46,6 +48,8 @@ function Impressum() {
                 </a>
                 <br />
                 <a
+                  target="_blank"
+                  rel="noreferrer"
                   className="underline navsvghover"
                   href="https://www.facebook.com/achim.goergens"
                 >

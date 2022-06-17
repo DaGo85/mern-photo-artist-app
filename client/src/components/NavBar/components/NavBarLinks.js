@@ -3,7 +3,7 @@
 import { navLinks } from "../../../assets/data";
 import { useAuthContext } from "../../../utility/AuthContextProvider";
 
-import { Link } from "react-router-dom";
+import CustomLink from "../../elements/CustomLink/CustomLink";
 
 function NavBarLinks({ toggleNav }) {
   const { userCreds } = useAuthContext();
@@ -20,9 +20,9 @@ function NavBarLinks({ toggleNav }) {
             }}
             className="text-2xl text-white navhover transition-all duration-300"
           >
-            <Link to={item.link} aria-label={`link to ${item.name}`}>
+            <CustomLink to={item.link} aria-label={`link to ${item.name}`}>
               {item.name}
-            </Link>
+            </CustomLink>
           </li>
         );
       })}
@@ -35,7 +35,7 @@ function NavBarLinks({ toggleNav }) {
           }}
           className="navhover text-2xl text-basic"
         >
-          <Link to="/write">Hinzufügen</Link>
+          <CustomLink to="/write">Hinzufügen</CustomLink>
         </li>
       )}
     </>
