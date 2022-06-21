@@ -7,6 +7,7 @@ import { useModalContext } from "../../../utility/ImageModalWrapper";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import SkeletonImage from "../../../skeletons/SkeletonImage";
 
 function RandomImage() {
   const [images, setImages] = useState([]);
@@ -24,7 +25,7 @@ function RandomImage() {
 
   return (
     <div className="card-setup py-form hover:cursor-pointer">
-      {images.length > 0 && (
+      {images.length === 0 ? (
         <div
           onClick={() => {
             setImageData({
@@ -39,6 +40,8 @@ function RandomImage() {
             alt="Zufälliges Bild aus der Gallerie"
           />
         </div>
+      ) : (
+        <SkeletonImage />
       )}
     </div>
   );

@@ -28,7 +28,7 @@ module.exports = {
         },
         skeletonLoading: {
           "0%": { backgroundColor: "#f5f5f7" },
-          "100%": { backgroundColor: "#dcdcde" },
+          "100%": { backgroundColor: "#707070" },
         },
       },
       animation: {
