@@ -26,10 +26,15 @@ module.exports = {
           "50%": { color: "#112031" },
           "100%": { color: "rgb(241 245 249)" },
         },
+        skeletonLoading: {
+          "0%": { backgroundColor: "#f5f5f7" },
+          "100%": { backgroundColor: "#dcdcde" },
+        },
       },
       animation: {
         buttonPulse: "buttonPulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         sliderImage: "sliderImage 30s linear infinite",
+        skeletonBg: "skeletonLoading 1s linear infinite alternate",
       },
     },
   },

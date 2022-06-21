@@ -41,7 +41,7 @@ function HomeBlogCards({ currentGridData }) {
         return post.orientation === 1 ? (
           <Link
             to={`/post${post._id}`}
-            className="card-setup gap-form py-form "
+            className="card-setup gap-form py-form"
             key={post.title}
           >
             <img

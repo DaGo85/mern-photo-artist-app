@@ -11,6 +11,7 @@ import { apiroutes, subtexts } from "../../assets/data";
 
 import axios from "axios";
 import { useEffect, useMemo, useRef, useState } from "react";
+import SkeletonPreview from "../../skeletons/SkeletonPreview";
 
 const PageSize = 6;
 
@@ -51,7 +52,7 @@ function Home() {
           <SubText subtext={subtexts.home} />
           <RandomImage />
           <div ref={myRef} />
-          {posts && (
+          {posts ? (
             <>
               <Pagination
                 currentPage={currentPage}
@@ -66,6 +67,12 @@ function Home() {
                 pageSize={PageSize}
                 onPageChange={(page) => setCurrentPage(page)}
               />
+            </>
+          ) : (
+            <>
+              <SkeletonPreview />
+              <SkeletonPreview />
+              <SkeletonPreview />
             </>
           )}
         </div>
