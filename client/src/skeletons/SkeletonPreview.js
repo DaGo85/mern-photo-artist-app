@@ -1,4 +1,5 @@
-import React from "react";
+// SkeletonPreview component
+
 import SkeletonImage from "./SkeletonImage";
 import SkeletonText from "./SkeletonText";
 
@@ -13,7 +14,7 @@ function SkeletonPreview() {
           <SkeletonText />
         </div>
       </div>
-      <div className="flex flex-col w-5/6 gap-10 items-center">
+      <div className="flex flex-col w-5/6 gap-10 items-center pt-4">
         <SkeletonText />
         <SkeletonText />
         <SkeletonText />

@@ -1,9 +1,10 @@
 // Imagegrid for Gallery and SingleStory, also handles deleteMode
 
+import SkeletonGrid from "../../../skeletons/SkeletonGrid";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useModalContext } from "../../../utility/ImageModalWrapper";
 import { useAuthContext } from "../../../utility/AuthContextProvider";
-import SkeletonGrid from "../../../skeletons/SkeletonGrid";
 
 function ImageGrid({ currentGridData, handleDeleteImg, deleteMode, images }) {
   const { setIsOpen, setImageData } = useModalContext();
@@ -11,7 +12,7 @@ function ImageGrid({ currentGridData, handleDeleteImg, deleteMode, images }) {
 
   return (
     <>
-      {!currentGridData ? (
+      {currentGridData ? (
         <section className="card-setup image-grid py-6 justify-center">
           {/* Displays ImageGrid with or without delete buttons */}
           {deleteMode

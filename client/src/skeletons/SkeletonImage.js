@@ -1,4 +1,4 @@
-import React from "react";
+// SkeletonImage component
 
 function SkeletonImage() {
   return (

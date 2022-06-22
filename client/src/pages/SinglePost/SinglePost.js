@@ -3,6 +3,7 @@
 import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
+import SkeletonPreview from "../../skeletons/SkeletonPreview";
 
 import { apiroutes } from "../../assets/data";
 import { useAuthContext } from "../../utility/AuthContextProvider";
@@ -38,7 +39,7 @@ function SinglePost() {
     <TransitionWrapper>
       <main>
         <article className={`bg-setup ${bg}`}>
-          {post && (
+          {post ? (
             <>
               <PageHeadLine headline={post.title} />
               <div className="card-setup py-4 md:py-10">
@@ -71,6 +72,8 @@ function SinglePost() {
                 </Link>
               )}
             </>
+          ) : (
+            <SkeletonPreview />
           )}
         </article>
       </main>

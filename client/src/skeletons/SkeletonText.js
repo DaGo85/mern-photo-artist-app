@@ -1,4 +1,4 @@
-import React from "react";
+// SkeletonText Component
 
 function SkeletonText() {
   return (

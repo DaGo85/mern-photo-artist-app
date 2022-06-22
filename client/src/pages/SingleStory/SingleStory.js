@@ -6,6 +6,8 @@ import BasicImage from "../../components/elements/BasicImage/BasicImage";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import UniversalButton from "../../components/elements/UniversalButton/UniversalButton";
 import Pagination from "../../components/Pagination/Pagination";
+import SkeletonPreview from "../../skeletons/SkeletonPreview";
+import SkeletonGrid from "../../skeletons/SkeletonGrid";
 
 import { useAuthContext } from "../../utility/AuthContextProvider";
 import { apiroutes } from "../../assets/data";
@@ -17,8 +19,6 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import ProgressBar from "../../components/elements/ProgressBar/ProgressBar";
 import handleDeleteFirebaseImg from "../../utility/handleDeleteFirebaseImg";
-import SkeletonPreview from "../../skeletons/SkeletonPreview";
-import SkeletonGrid from "../../skeletons/SkeletonGrid";
 
 const PageSize = 9;
 
@@ -172,7 +172,7 @@ function SingleStory() {
             "--background": `url(${story.photo})`,
           }}
         >
-          {!story ? (
+          {story ? (
             <div className="relative w-full flex flex-col items-center justify-start gap-6 md:gap-12">
               <>
                 <PageHeadLine headline={story.story} />

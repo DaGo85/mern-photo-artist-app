@@ -1,3 +1,5 @@
+// SkeletonGrid component for GalleryGrid, StoriesGrid and SingleStoryGrid
+
 import SkeletonImage from "./SkeletonImage";
 
 function SkeletonGrid() {
