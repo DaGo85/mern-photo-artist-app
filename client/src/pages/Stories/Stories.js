@@ -5,6 +5,8 @@ import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
 import StoriesGrid from "./components/StoriesGrid";
 import Pagination from "../../components/Pagination/Pagination";
+import SkeletonPreview from "../../skeletons/SkeletonPreview";
+import SkeletonGrid from "../../skeletons/SkeletonGrid";
 
 import { apiroutes, subtexts } from "../../assets/data";
 import TransitionWrapper from "../../utility/TransitionWrapper";
@@ -52,7 +54,11 @@ function Stories() {
         <div className="bg-setup">
           <PageHeadLine headline={"Stories"} />
           <SubText subtext={subtexts.stories} />
-          {lastStory && <StoriesShowCase story={lastStory} />}
+          {lastStory ? (
+            <StoriesShowCase story={lastStory} />
+          ) : (
+            <SkeletonPreview />
+          )}
           <div ref={myRef} />
           <Pagination
             currentPage={currentPage}
@@ -63,7 +69,7 @@ function Stories() {
           {stories.length ? (
             <StoriesGrid currentGridData={currentGridData} />
           ) : (
-            <></>
+            <SkeletonGrid />
           )}
           <Pagination
             currentPage={currentPage}

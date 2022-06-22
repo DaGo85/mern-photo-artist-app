@@ -5,13 +5,13 @@ import HomeBlogCards from "./components/HomeBlogCards";
 import PageHeadLine from "../../components/elements/PageHeadline/PageHeadLine";
 import SubText from "../../components/elements/SubText/SubText";
 import RandomImage from "../../components/elements/RandomImage/RandomImage";
+import SkeletonPreview from "../../skeletons/SkeletonPreview";
 
 import TransitionWrapper from "../../utility/TransitionWrapper";
 import { apiroutes, subtexts } from "../../assets/data";
 
 import axios from "axios";
 import { useEffect, useMemo, useRef, useState } from "react";
-import SkeletonPreview from "../../skeletons/SkeletonPreview";
 
 const PageSize = 6;
 

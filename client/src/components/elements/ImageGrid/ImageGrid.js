@@ -12,7 +12,7 @@ function ImageGrid({ currentGridData, handleDeleteImg, deleteMode, images }) {
   return (
     <>
       {!currentGridData ? (
-        <section className="card-setup image-grid py-6 justify-center ">
+        <section className="card-setup image-grid py-6 justify-center">
           {/* Displays ImageGrid with or without delete buttons */}
           {deleteMode
             ? currentGridData.map((item) => {
