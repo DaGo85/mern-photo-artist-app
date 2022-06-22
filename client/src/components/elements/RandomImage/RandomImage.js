@@ -41,7 +41,9 @@ function RandomImage() {
           />
         </div>
       ) : (
-        <SkeletonImage />
+        <div className="md:w-96">
+          <SkeletonImage />
+        </div>
       )}
     </div>
   );

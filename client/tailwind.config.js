@@ -34,7 +34,7 @@ module.exports = {
       animation: {
         buttonPulse: "buttonPulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         sliderImage: "sliderImage 30s linear infinite",
-        skeletonBg: "skeletonLoading 1s linear infinite alternate",
+        skeletonBg: "skeletonLoading 2s linear infinite alternate",
       },
     },
   },

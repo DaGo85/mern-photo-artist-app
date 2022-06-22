@@ -5,10 +5,10 @@ export default function CustomLink({ to, children, ...props }) {
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
-    <li className={isActive ? "nav-active" : ""}>
+    <div className={isActive ? "nav-active" : ""}>
       <Link to={to} {...props}>
         {children}
       </Link>
-    </li>
+    </div>
   );
 }
