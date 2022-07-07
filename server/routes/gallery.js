@@ -7,7 +7,10 @@ const Router = express.Router();
 Router.post("/", async (req, res) => {
   const auth = req.currentUser;
   const photo = new Photo(req.body);
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const savedPhoto = await photo.save();
@@ -21,7 +24,10 @@ Router.post("/", async (req, res) => {
 //Delete image from MongoDB and server
 Router.delete("/:id", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const photo = await Photo.findById(req.params.id);

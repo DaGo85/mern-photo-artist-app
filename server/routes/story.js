@@ -6,7 +6,11 @@ const StoryPhoto = require("../models/Storyphoto");
 //Create story at MongoDB
 router.post("/story", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   const newStory = new Story(req.body);
 
@@ -22,7 +26,10 @@ router.post("/story", async (req, res) => {
 //Update story at MongoDB
 router.put("/story/:id", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const story = await Story.findById(req.params.id);
@@ -47,7 +54,10 @@ router.put("/story/:id", async (req, res) => {
 //Delete story from MongoDB
 router.delete("/story/:id", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const story = await Story.findById(req.params.id);
@@ -94,7 +104,10 @@ router.get("/story", async (req, res) => {
 //Create storygallery image at MongoDB
 router.post("/photos", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   const newStoryPhoto = new StoryPhoto(req.body);
 
@@ -110,7 +123,10 @@ router.post("/photos", async (req, res) => {
 //Delete storygallery image from MongoDB
 router.delete("/photos/:id", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const storyPhoto = await StoryPhoto.findById(req.params.id);

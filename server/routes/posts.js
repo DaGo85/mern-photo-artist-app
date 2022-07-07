@@ -5,7 +5,10 @@ const Post = require("../models/Post");
 //Create post at MongoDB
 router.post("/", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   const newPost = new Post(req.body);
 
@@ -21,7 +24,10 @@ router.post("/", async (req, res) => {
 //Update post from MongoDB
 router.put("/:id", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const post = await Post.findById(req.params.id);
@@ -46,7 +52,10 @@ router.put("/:id", async (req, res) => {
 //Delete post from MongoDB
 router.delete("/:id", async (req, res) => {
   const auth = req.currentUser;
-  if (!auth) res.status(403).send("Nicht autorisiert!");
+  if (!auth) {
+    res.status(403).send("Nicht autorisiert!");
+    return;
+  }
 
   try {
     const post = await Post.findById(req.params.id);
