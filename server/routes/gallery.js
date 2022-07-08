@@ -7,6 +7,7 @@ const Router = express.Router();
 Router.post("/", async (req, res) => {
   const auth = req.currentUser;
   const photo = new Photo(req.body);
+
   if (!auth) {
     res.status(403).send("Nicht autorisiert!");
     return;
@@ -31,8 +32,11 @@ Router.delete("/:id", async (req, res) => {
 
   try {
     const photo = await Photo.findById(req.params.id);
-    if (photo.username !== req.body.username)
+
+    if (photo.username !== req.body.username) {
       res.status(401).json("Es können nur die eigenen Fotos gelöscht werden!");
+      return;
+    }
 
     await photo.delete();
 

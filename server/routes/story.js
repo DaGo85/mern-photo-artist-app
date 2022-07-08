@@ -34,8 +34,10 @@ router.put("/story/:id", async (req, res) => {
   try {
     const story = await Story.findById(req.params.id);
 
-    if (story.username !== req.body.username)
+    if (story.username !== req.body.username) {
       res.status(401).json("Nur die eigene Story kann verändert werden!");
+      return;
+    }
 
     const updatedStory = await Story.findByIdAndUpdate(
       req.params.id,
@@ -62,16 +64,17 @@ router.delete("/story/:id", async (req, res) => {
   try {
     const story = await Story.findById(req.params.id);
 
-    if (story.username !== req.body.username)
-      res.status(401).json("Nur die eigene Story!");
-
+    if (story.username !== req.body.username) {
+      res.status(401).json("Nur die eigene Story kann geupdatet werden!");
+      return;
+    }
     await StoryPhoto.deleteMany({
       story: req.params.id,
     });
 
     await story.delete();
 
-    res.status(200).json("Story gelöscht...");
+    res.status(200).json("Die Story wurde gelöscht...");
   } catch (err) {
     res.status(500).json(err);
   }
@@ -131,8 +134,10 @@ router.delete("/photos/:id", async (req, res) => {
   try {
     const storyPhoto = await StoryPhoto.findById(req.params.id);
 
-    if (storyPhoto.username !== req.body.username)
+    if (storyPhoto.username !== req.body.username) {
       res.status(401).json("Nur das eigene Storyphoto kann gelöscht werden!");
+      return;
+    }
 
     await storyPhoto.delete();
 

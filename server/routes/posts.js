@@ -32,8 +32,10 @@ router.put("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
-    if (post.username !== req.body.username)
+    if (post.username !== req.body.username) {
       res.status(401).json("Es können nur die eigenen Posts verändert werden!");
+      return;
+    }
 
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.id,
@@ -60,8 +62,10 @@ router.delete("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
-    if (post.username !== req.body.username)
+    if (post.username !== req.body.username) {
       res.status(401).json("Nur die eigenen Posts können gelöscht werden!");
+      return;
+    }
 
     await post.delete();
 
