@@ -179,7 +179,7 @@ function SingleStory() {
                 <div className="card-setup py-4 md:py-10">
                   <BasicImage image={story.photo} alt="Einzelnes Story Bild" />
                 </div>
-                <div className="card-setup text-setup py-4 md:py-10">
+                <div className="card-setup flex flex-col items-center justify-center gap-2 py-4 md:py-10">
                   <h5>Author: {story.username}</h5>
                   <hr className="w-full" />
                   <h6>
@@ -191,7 +191,7 @@ function SingleStory() {
                     {new Date(story.updatedAt).toLocaleDateString()}
                   </h6>
                 </div>
-                <div className="card-setup text-setup py-4 md:py-10">
+                <div className="card-setup flex flex-col items-center justify-center gap-2 py-4 md:py-10">
                   <pre>
                     <p className="whitespace-pre-line">{story.desc}</p>
                   </pre>

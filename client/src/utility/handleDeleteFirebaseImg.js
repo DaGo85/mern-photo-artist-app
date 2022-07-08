@@ -10,7 +10,6 @@ const handleDeleteFirebaseImg = async (
   setIsError,
   setRerenderComponent
 ) => {
-  console.log(url);
   const firebaseImageId = url
     .split(firebaseBaseUrl)[1]
     .split("F")[1]

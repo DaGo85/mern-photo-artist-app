@@ -132,10 +132,6 @@
     items-center px-4 md:px-12 rounded-xl shadow-lg bg-b/95;
   }
 
-  .text-setup {
-    @apply flex flex-col items-center justify-center gap-2;
-  }
-
   .button-setup {
     @apply flex flex-row py-3 px-6 gap-6 justify-center items-center text-light
     font-medium rounded cursor-pointer ease-in-out duration-300;
@@ -152,27 +148,7 @@
 
   /* General setups for several page elements end */
 
-  /* General style for text */
-
-  .text-err {
-    @apply text-red-400;
-  }
-
-  .text-light {
-    @apply text-slate-100;
-  }
-
-  .text-dark {
-    @apply text-d;
-  }
-
-  /* General style for text end */
-
   /* Style for buttons */
-
-  .button-success {
-    @apply bg-ssuccess text-white hover:text-d;
-  }
 
   .button-effect-success:hover {
     filter: drop-shadow(1px 1px 24px rgb(101 193 140 / 2));
@@ -209,27 +185,6 @@
 
   /* Style for buttons end */
 
-  /* Style for pagination */
-
-  .pagination-item {
-    @apply flex items-center box-border h-8 text-center mx-auto my-1 
-    tracking-wide rounded-2xl leading-normal text-lg 
-    cursor-pointer px-3
-    md:text-2xl md:px-4 md:py-6 md:rounded-3xl;
-  }
-
-  .pagination-dots {
-    @apply flex items-center box-border h-8 text-center mx-auto my-1  
-    tracking-wide rounded-2xl leading-normal text-lg text-d px-1;
-  }
-
-  .pagination-arrow {
-    @apply flex items-center h-8 text-center mx-auto my-1 text-d cursor-pointer
-    md:px-4 md:py-6;
-  }
-
-  /* Style for pagination end */
-
   /* Spacing */
 
   .gap-form {
@@ -256,10 +211,6 @@
 
   /* Overall styles */
 
-  .status-msg {
-    @apply py-6 my-8 text-center text-2xl;
-  }
-
   .navhover:hover {
     text-shadow: 0 0 8px #fff, 0 0 16px #fff, 0 0 32px #fff;
   }
@@ -270,10 +221,6 @@
 
   .navsvghover:hover {
     filter: drop-shadow(0.5px 0.5px 12px rgb(255 255 255 / 1));
-  }
-
-  .progress-bar {
-    @apply h-4 bg-green-300 mt-10 w-max;
   }
 
   .shadow-sub {

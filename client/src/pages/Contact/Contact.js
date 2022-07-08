@@ -94,7 +94,7 @@ function Contact() {
             <button
               disabled={isError}
               type="submit"
-              className="button-setup button-success button-effect-success"
+              className="button-setup bg-ssuccess text-white hover:text-d button-effect-success"
             >
               <svg
                 className="w-6 fill-white"
@@ -107,7 +107,7 @@ function Contact() {
             </button>
           </form>
           {status === "Done" ? (
-            <p className="card-setup status-msg text-slate-100">
+            <p className="card-setup py-6 my-8 text-center text-2xl text-slate-100">
               Vielen Dank für deine Nachricht!
             </p>
           ) : (

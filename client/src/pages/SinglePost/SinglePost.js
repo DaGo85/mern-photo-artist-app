@@ -45,7 +45,7 @@ function SinglePost() {
               <div className="card-setup py-4 md:py-10">
                 <BasicImage image={post.photo} alt="Einzelner blog Post" />
               </div>
-              <div className="card-setup text-setup py-4 md:py-10">
+              <div className="card-setup flex flex-col items-center justify-center gap-2 py-4 md:py-10">
                 <h5>Author: {post.username}</h5>
                 <hr className="w-full" />
                 <h6>
@@ -56,7 +56,7 @@ function SinglePost() {
                   {new Date(post.updatedAt).toLocaleDateString()}
                 </h6>
               </div>
-              <div className="card-setup text-setup py-4 md:py-10">
+              <div className="card-setup flex flex-col items-center justify-center gap-2 py-4 md:py-10">
                 <pre>
                   <p className="whitespace-pre-line ">{post.desc}</p>
                 </pre>
