@@ -91,7 +91,7 @@ function SingleStory() {
       );
     }
 
-    handleDeleteFirebaseImg(photo, "stories", setRerenderComponent, setIsError);
+    handleDeleteFirebaseImg(photo, "stories", setIsError, setRerenderComponent);
   };
 
   // Handler for adding image

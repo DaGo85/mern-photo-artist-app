@@ -53,7 +53,7 @@ function Gallery() {
   const handleDeleteImg = async (imageid, username, url) => {
     if (username !== userCreds.name) return;
 
-    handleDeleteFirebaseImg(url, setRerenderComponent, "gallery", setIsError);
+    handleDeleteFirebaseImg(url, "gallery", setIsError, setRerenderComponent);
 
     const headers = {
       "Content-Type": "application/json",

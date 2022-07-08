@@ -8,7 +8,8 @@ const useStorage = (file, folder) => {
 
   useEffect(() => {
     // references
-    const imageRef = ref(projectStorage, `${folder}/${Date.now() + file.name}`);
+    const image = `${folder}/${Date.now() + file.name}`;
+    const imageRef = ref(projectStorage, image.replaceAll(" ", ""));
 
     const uploadTask = uploadBytesResumable(imageRef, file);
 
