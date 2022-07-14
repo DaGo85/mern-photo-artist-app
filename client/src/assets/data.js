@@ -81,15 +81,14 @@ export const write = [
 
 // Firebase base Url for storage
 
-// export const firebaseBaseUrl =  "https://firebasestorage.googleapis.com/v0/b/auth-test-8781d.appspot.com/o/";
+export const firebaseBaseUrl = process.env.REACT_APP_STORAGE_URL;
 
-export const firebaseBaseUrl =
-  "https://firebasestorage.googleapis.com/v0/b/ago-photography.appspot.com/o/";
+//export const firebaseBaseUrl =  "https://firebasestorage.googleapis.com/v0/b/ago-photography.appspot.com/o/";
 
 // Backend server address
 
-const server = "https://ago-photography.herokuapp.com/";
-//const server = "http://localhost:2000/";
+// const server = "https://ago-photography.herokuapp.com/";
+const server = process.env.REACT_APP_BE_URL;
 
 // Server side addresslist for API requests
 // [0] = Gallery route (/ = post, /:id = get, delete, /photos = get )

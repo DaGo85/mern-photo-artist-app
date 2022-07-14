@@ -133,7 +133,7 @@
   }
 
   .button-setup {
-    @apply flex flex-row py-3 px-6 gap-6 justify-center items-center text-light
+    @apply flex flex-row py-3 px-6 gap-6 justify-center items-center
     font-medium rounded cursor-pointer ease-in-out duration-300;
   }
 
