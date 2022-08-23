@@ -106,8 +106,8 @@
   /* General setups for several page elements */
 
   .bg-setup {
-    @apply bg-fixed bg-center bg-cover bg-no-repeat py-40 md:py-48 lg:py-48 
-    w-full flex flex-col items-center justify-start gap-6 md:gap-12;
+    @apply fixed bg-center bg-cover bg-no-repeat py-40 md:py-48 lg:py-48 
+    w-screen h-screen z-[-1] flex flex-col items-center justify-start gap-6 md:gap-12;
   }
 
   .story-bg {

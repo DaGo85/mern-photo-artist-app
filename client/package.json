@@ -1,5 +1,5 @@
 {
-  "proxy": "https://ago-photography.herokuapp.com/",
+  "proxy": "https://photo-artist-page.herokuapp.com/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
