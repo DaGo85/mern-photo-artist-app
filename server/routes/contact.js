@@ -16,7 +16,7 @@ router.post("/", (req, res) => {
   const message = req.body.message;
 
   const msg = {
-    to: "goergensjoa@gmail.com",
+    to: "devgoergens@gmail.com",
     from: sender,
     subject: `Du hast eine Nachricht von ${name} erhalten!`,
     text: "message",
