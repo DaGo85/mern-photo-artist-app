@@ -30,6 +30,10 @@ function Login() {
     logout();
     setUserData(null);
     setUserCreds(null);
+  };
+
+  const handleDemo = () => {
+    logInWithEmailAndPassword("devgoergens@gmail.com", "123456");
     navigate("/");
   };
 
@@ -42,7 +46,7 @@ function Login() {
           <div className="card-setup md:w-[600px] py-form gap-form">
             {!userData && (
               <>
-                <div className="w-full relative">
+                <div className="relative w-full">
                   <input
                     onChange={(e) => setEmail(e.target.value)}
                     id="email"
@@ -55,7 +59,7 @@ function Login() {
                   />
                   <label htmlFor="email">Bitte gib deine Email ein</label>
                 </div>
-                <div className="w-full relative">
+                <div className="relative w-full">
                   <input
                     onChange={(e) => setPassword(e.target.value)}
                     id="password"
@@ -71,6 +75,12 @@ function Login() {
                 <UniversalButton
                   text="Login"
                   handler={handleLogin}
+                  modell="success"
+                  type="button"
+                />
+                <UniversalButton
+                  text="Demo ausprobieren? Klick hier"
+                  handler={handleDemo}
                   modell="success"
                   type="button"
                 />
