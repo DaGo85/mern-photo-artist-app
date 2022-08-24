@@ -19,9 +19,8 @@ function Impressum() {
         <div className={`bg-setup ${bg}`}></div>
         <PageHeadLine headline={"Impressum"} />
         <SubText subtext={subtexts.impressum} />
-
         <section className="gap-6 pt-6 pb-40 card-setup">
-          <h4>AGO Photography</h4>
+          <h4>David Goergens Photography</h4>
           <span className="flex flex-col w-full gap-4 px-6">
             <h5>Gemäß zu § 5 TMG:</h5>
             <hr />
