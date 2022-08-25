@@ -1,3 +1,4 @@
 # Redirects from what the browser requests to what we serve
 
+https://photo.davidgo.ch/* https://www.photo.davidgo.ch/ 301
 /* /index.html 200

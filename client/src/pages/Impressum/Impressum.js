@@ -44,9 +44,9 @@ function Impressum() {
             <h5>Haftungsausschluss</h5>
             <hr />
             <p>
-              Für den Inhalt der Webseite: www.ago-photography.com sind Anne und
-              Achim Goergens verantwortlich. Die Webseite wird rein privat
-              betrieben und hat keinerlei kommerzielle Interessen.
+              Für den Inhalt der Webseite: www.photo.davidgo.ch ist David
+              Goergens verantwortlich. Die Webseite wird rein privat betrieben
+              und hat keinerlei kommerzielle Interessen.
               <br />
               Die auf dieser Webseite verwendeten Bilder unterliegen dem
               Copyright. Ohne eine vorherige Anfrage und dadurch gegebenenfalls
