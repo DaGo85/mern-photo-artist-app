@@ -35,7 +35,7 @@ function WritePost() {
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
     if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 6000000) {
         setSelected(file);
       } else {
         setIsError("Die Datei ist zu gross!");
@@ -90,10 +90,10 @@ function WritePost() {
         <div className="home-bg bg-setup">
           <PageHeadLine headline={"Blog-Eintrag"} />
           <SubText subtext={subtexts.writepost} />
-          <div className="card-setup py-4 md:py-10 max-w-7xl">
+          <div className="py-4 card-setup md:py-10 max-w-7xl">
             {file ? (
               <div
-                className="flex flex-col hover:cursor-pointer gap-image text-center"
+                className="flex flex-col text-center hover:cursor-pointer gap-image"
                 onClick={() => {
                   setFile(null);
                   fileRef.current.value = null;
@@ -106,7 +106,7 @@ function WritePost() {
               </div>
             ) : (
               <div
-                className="flex flex-col hover:cursor-pointer gap-image text-center max-w-7xl"
+                className="flex flex-col text-center hover:cursor-pointer gap-image max-w-7xl"
                 onClick={() => {
                   setIsError(false);
                   fileRef.current.click();
@@ -142,7 +142,7 @@ function WritePost() {
             onSubmit={handleSubmit}
             className="card-setup max-w-[800px] w-full py-form gap-form"
           >
-            <div className="w-full relative">
+            <div className="relative w-full">
               <input
                 id="title"
                 label="Title"
@@ -154,11 +154,11 @@ function WritePost() {
               />
               <label htmlFor="title">Bitte gib einen Titel ein</label>
             </div>
-            <div className="w-full relative">
+            <div className="relative w-full">
               <textarea
                 id="message"
                 label="Message"
-                className="peer h-96 pt-2"
+                className="pt-2 peer h-96"
                 required
                 placeholder="Bitte gib eine Nachricht ein"
                 onChange={(e) => setDesc(e.target.value)}

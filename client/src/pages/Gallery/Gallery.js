@@ -79,7 +79,7 @@ function Gallery() {
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
     if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 6000000) {
         setSelected(file);
       } else {
         setIsError("Die Datei ist zu gross!");
@@ -158,7 +158,7 @@ function Gallery() {
             <>
               {file && (
                 <div
-                  className="flex flex-col hover:cursor-pointer gap-image text-center card-setup py-4 md:py-10 max-w-7xl"
+                  className="flex flex-col py-4 text-center hover:cursor-pointer gap-image card-setup md:py-10 max-w-7xl"
                   onClick={() => {
                     setFile(null);
                     fileRef.current.value = null;
