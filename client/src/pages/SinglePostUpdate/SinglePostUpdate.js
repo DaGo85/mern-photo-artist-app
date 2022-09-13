@@ -72,7 +72,7 @@ function SinglePostUpdate() {
     // maximal 3000000 ( 3mb )
     if (
       e.target.files[0].name.match(/\.(jpeg|jpg|png)$/) &&
-      e.target.files[0].size <= 6000000
+      e.target.files[0].size <= 3000000
     ) {
       setSelected(e.target.files[0]);
     } else {

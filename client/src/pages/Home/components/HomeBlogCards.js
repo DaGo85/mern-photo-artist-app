@@ -50,7 +50,7 @@ function HomeBlogCards({ currentGridData }) {
               alt="Einzelner blog Post mit Landschaftsbild"
             />
             <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
-            <h5>Author: {post.username}</h5>
+            <h5>Autor: {post.username}</h5>
             <hr className="w-full" />
             <h6>
               Erstellt am: {new Date(post.createdAt).toLocaleDateString()}
@@ -60,7 +60,7 @@ function HomeBlogCards({ currentGridData }) {
             </h6>
             <hr className="w-full" />
             <pre>
-              <p className="whitespace-pre-line font-sans">
+              <p className="font-sans whitespace-pre-line">
                 {trimmedStringLandscape}...
               </p>
             </pre>
@@ -82,7 +82,7 @@ function HomeBlogCards({ currentGridData }) {
             </div>
             <div className="flex flex-col md:max-w-[50%] grow md:max-h-[55vh] overflow-hidden">
               <h4 className="pb-2 md:pb-4 lg:pb-6">{post.title}</h4>
-              <h5>Author: {post.username}</h5>
+              <h5>Autor: {post.username}</h5>
               <hr className="w-full" />
               <h6>
                 Erstellt am: {new Date(post.createdAt).toLocaleDateString()}
@@ -92,7 +92,7 @@ function HomeBlogCards({ currentGridData }) {
               </h6>
               <hr className="w-full" />
               <pre>
-                <p className="whitespace-pre-line font-sans">
+                <p className="font-sans whitespace-pre-line">
                   {trimmedStringPortrait}...
                 </p>
               </pre>

@@ -33,7 +33,7 @@ function WriteStory() {
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 6000000 ( 6mb )
 
-    if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 6000000) {
+    if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
       setSelected(file);
     } else {
       setIsError("Die Datei ist zu gross!");
@@ -157,7 +157,7 @@ function WriteStory() {
               <label htmlFor="story">Bitte gib eine Story ein</label>
             </div>
             <UniversalButton
-              text="Publish"
+              text="Veröffentlichen"
               type="submit"
               modell="success"
               icon="send"

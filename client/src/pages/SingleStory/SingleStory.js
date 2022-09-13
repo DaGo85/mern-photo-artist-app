@@ -99,7 +99,7 @@ function SingleStory() {
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
 
-    if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 6000000) {
+    if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
       setSelected(file);
     } else {
       setIsError("Die Datei ist zu gross!");
@@ -153,7 +153,7 @@ function SingleStory() {
   // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
-    executeScroll("end");
+    executeScroll("start");
   };
 
   const handleSelectFile = () => fileRef.current.click();
@@ -167,7 +167,7 @@ function SingleStory() {
     <TransitionWrapper>
       <main>
         <article
-          className={`bg-setup story-bg `}
+          className={`bg-setup story-bg`}
           style={{
             "--background": `url(${story.photo})`,
           }}
@@ -180,7 +180,7 @@ function SingleStory() {
                   <BasicImage image={story.photo} alt="Einzelnes Story Bild" />
                 </div>
                 <div className="flex flex-col items-center justify-center gap-2 py-4 card-setup md:py-10">
-                  <h5>Author: {story.username}</h5>
+                  <h5>Autor: {story.username}</h5>
                   <hr className="w-full" />
                   <h6>
                     Erstellt am:{" "}

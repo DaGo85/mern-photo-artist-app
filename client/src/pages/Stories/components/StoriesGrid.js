@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function StoriesGrid({ currentGridData }) {
   return (
-    <section className="card-setup image-grid py-6 justify-center">
+    <section className="justify-center py-6 card-setup image-grid">
       {currentGridData.map((item) => {
         // Trimmed strings for stories
         // Maximum number of characters to extract
@@ -39,12 +39,12 @@ function StoriesGrid({ currentGridData }) {
           <AnimatePresence key={item.photo}>
             <Link
               to={`/story${item._id}`}
-              className="h-full w-full col-span-12 lg:col-span-6 xl:col-span-4 relative"
+              className="relative w-full h-full col-span-12 lg:col-span-6 xl:col-span-4"
             >
-              <article className="w-full h-full block overflow-hidden aspect-square absolute">
-                <div className="bg-slate-600/70 opacity-0 hover:opacity-100 flex flex-col gap-2 px-2 justify-center items-center w-full h-full  transition-all duration-300">
+              <article className="absolute block w-full h-full overflow-hidden aspect-square">
+                <div className="flex flex-col items-center justify-center w-full h-full gap-2 px-2 transition-all duration-300 opacity-0 bg-slate-600/70 hover:opacity-100">
                   <h4 className="pb-2 md:pb-4 lg:pb-6">{item.story}</h4>
-                  <h5>Author: {item.username}</h5>
+                  <h5>Autor: {item.username}</h5>
                   <hr className="w-full" />
                   <h6>
                     Letztes Update:{" "}
@@ -52,10 +52,10 @@ function StoriesGrid({ currentGridData }) {
                   </h6>
                   <hr className="w-full" />
                   <pre>
-                    <p className="whitespace-pre-line hidden lg:block">
+                    <p className="hidden whitespace-pre-line lg:block">
                       {trimmedString}
                     </p>
-                    <p className="whitespace-pre-line hidden md:block lg:hidden">
+                    <p className="hidden whitespace-pre-line md:block lg:hidden">
                       {trimmedStringMed}
                     </p>
                     <p className="whitespace-pre-line md:hidden">
@@ -65,7 +65,7 @@ function StoriesGrid({ currentGridData }) {
                 </div>
               </article>
               <motion.img
-                className="w-full h-full object-cover aspect-square"
+                className="object-cover w-full h-full aspect-square"
                 src={item.photo}
                 alt="Story Bilderraster Titel Bild"
                 initial={{ scale: 0 }}

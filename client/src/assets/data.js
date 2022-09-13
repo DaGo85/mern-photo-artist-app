@@ -47,7 +47,7 @@ export const socialIconsList = [
 // Data for SubTexts
 
 export const subtexts = {
-  contact: "Wir helfen dir gerne weiter, schreib uns!",
+  contact: "Ich helfen dir gerne weiter, schreib mir!",
   impressum: "Rechtliche Informationen und Hinweise",
   gallery:
     '"Mach sichtbar, was vielleicht ohne dich nie wahrgenommen worden wäre." - Robert Bresson',

@@ -35,7 +35,7 @@ function WritePost() {
     // Restriction for files: jpeg,jpg and png only, also the size has to be
     // maximal 3000000 ( 3mb )
     if (file) {
-      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 6000000) {
+      if (file.name.match(/\.(jpeg|jpg|png)$/) && file.size <= 3000000) {
         setSelected(file);
       } else {
         setIsError("Die Datei ist zu gross!");
