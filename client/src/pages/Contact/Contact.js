@@ -50,14 +50,14 @@ function Contact() {
     <TransitionWrapper>
       <main>
         <div className={`bg-setup ${bg}`}>
-          <PageHeadLine headline={"Contact"} />
+          <PageHeadLine headline={"Kontakt"} />
           <SubText subtext={subtexts.contact} />
           <form
             id="form-reset"
             onSubmit={handleSubmit}
             className="card-setup md:w-[600px] py-form gap-form"
           >
-            <div className="w-full relative">
+            <div className="relative w-full">
               <input
                 id="name"
                 label="Name"
@@ -69,7 +69,7 @@ function Contact() {
               />
               <label htmlFor="name">Bitte gib deinen Namen ein</label>
             </div>
-            <div className="w-full relative">
+            <div className="relative w-full">
               <input
                 id="email"
                 label="Email"
@@ -81,11 +81,11 @@ function Contact() {
               />
               <label htmlFor="email">Bitte gib deine Email ein</label>
             </div>
-            <div className="w-full relative">
+            <div className="relative w-full">
               <textarea
                 id="message"
                 label="Message"
-                className="peer h-96 pt-2 "
+                className="pt-2 peer h-96 "
                 required
                 placeholder="Bitte gib deine Nachricht ein"
               />
@@ -94,7 +94,7 @@ function Contact() {
             <button
               disabled={isError}
               type="submit"
-              className="button-setup bg-ssuccess text-white hover:text-d button-effect-success"
+              className="text-white button-setup bg-ssuccess hover:text-d button-effect-success"
             >
               <svg
                 className="w-6 fill-white"
@@ -107,7 +107,7 @@ function Contact() {
             </button>
           </form>
           {status === "Done" ? (
-            <p className="card-setup py-6 my-8 text-center text-2xl text-slate-100">
+            <p className="py-6 my-8 text-2xl text-center card-setup text-slate-100">
               Vielen Dank für deine Nachricht!
             </p>
           ) : (

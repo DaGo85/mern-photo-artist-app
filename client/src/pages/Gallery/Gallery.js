@@ -124,7 +124,7 @@ function Gallery() {
   // Handler for input
   const handleInput = async (e) => {
     setFile(e.target.files[0]);
-    executeScroll("nearest");
+    executeScroll("start");
   };
 
   const currentGridData = useMemo(() => {
