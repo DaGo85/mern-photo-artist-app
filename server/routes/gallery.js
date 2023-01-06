@@ -54,7 +54,7 @@ Router.get("/photos", async (req, res) => {
     photos.reverse();
 
     res.send(photos);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json(err);
   }
 });

@@ -8,6 +8,7 @@ dotenv.config();
 
 const apiKey = process.env.SENDGRID_API_KEY;
 const sender = process.env.EMAIL_ADDRESS;
+
 sendgrid.setApiKey(apiKey);
 
 router.post("/", (req, res) => {

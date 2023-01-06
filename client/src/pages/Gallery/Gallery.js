@@ -43,7 +43,7 @@ function Gallery() {
   // array manually)
   useEffect(() => {
     const fetchImages = async () => {
-      const res = await axios.get(`${apiroutes[0].url}/photos`);
+      const res = await axios.get(`${apiroutes[0].url}photos`);
       setImages(res.data);
     };
     fetchImages();

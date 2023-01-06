@@ -16,7 +16,7 @@ function RandomImage() {
   // Fetching images from gallery route
   useEffect(() => {
     const fetchImages = async () => {
-      const res = await axios.get(`${apiroutes[0].url}/photos`);
+      const res = await axios.get(`${apiroutes[0].url}photos`);
       const rndimg = [res.data[Math.floor(Math.random() * res.data.length)]];
       setImages(rndimg);
     };
